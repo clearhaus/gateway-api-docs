@@ -1,0 +1,46 @@
+doctype html
+/[if lt IE 7]
+	| <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7]
+	| <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8]
+	| <html class="no-js lt-ie9" lang="en">
+| <!--[if gt IE 8]<!-->
+html.no-js lang="en"
+	| <!--<![endif]-->
+	head
+		meta charset="utf-8"
+		meta http-equiv="X-UA-Compatible" content="IE=edge"
+		/ Use title if it's in the page YAML frontmatter
+		title= current_page.data.title || ""
+		script src="/javascripts/vendor/modernizr.js"
+		meta name="description" content=""
+		meta name="viewport" content="width=device-width, initial-scale=1"
+
+		/ Le HTML5 shim, for IE6-8 support of HTML elements
+		/[if lt IE 9]
+		script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"
+
+		= stylesheet_link_tag "all", media: "all"
+	body
+		div.navbar.navbar-inverse.navbar-fixed-top
+			div.container
+				div.navbar-header
+					button.navbar-toggle
+						.icon-bar
+						.icon-bar
+						.icon-bar
+					a.navbar-brand Project Name
+				div.collase.navbar-collapse
+					ul.nav.navbar-nav
+						li 
+							a href="#" Home
+						li 
+							a href="#" Contact
+		div.container
+			.row
+				.span12
+					= yield
+			footer
+			p &copy; 2013
+		script src="/javascripts/all.js"
