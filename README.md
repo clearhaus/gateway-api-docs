@@ -16,9 +16,7 @@ git clone https://github.com/acoustep/middleman-bootstrap3-sass-slim.git ~/.midd
 
 middleman init project_name --template=bootstrap3-sass-slim
 
-cd project_ame
-
-bundle install
+cd project_name
 
 bower install
 
