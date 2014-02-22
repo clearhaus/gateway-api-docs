@@ -15,6 +15,6 @@ platforms :mri_18 do
   gem "ruby18_source_location"
 end
 
-gem 'slim'
+gem 'slim', "~>2.0.2"
 gem 'sass'
 gem 'bootstrap-sass', "~>3.1.1"
