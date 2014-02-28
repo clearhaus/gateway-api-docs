@@ -1,46 +1,52 @@
 doctype html
-/[if lt IE 7]
-	| <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
-/[if IE 7]
-	| <html class="no-js lt-ie9 lt-ie8" lang="en">
-/[if IE 8]
-	| <html class="no-js lt-ie9" lang="en">
-| <!--[if gt IE 8]<!-->
-html.no-js lang="en"
-	| <!--<![endif]-->
-	head
-		meta charset="utf-8"
-		meta http-equiv="X-UA-Compatible" content="IE=edge"
-		/ Use title if it's in the page YAML frontmatter
-		title= current_page.data.title || ""
-		script src="/javascripts/vendor/modernizr.js"
-		meta name="description" content=""
-		meta name="viewport" content="width=device-width, initial-scale=1"
+html
+  head
+    title= current_page.data.title || ""
+    script src="/javascripts/vendor/modernizr.js"
+    meta name="description" content=""
+    meta name="viewport" content="width=device-width, initial-scale=1"
 
-		/ Le HTML5 shim, for IE6-8 support of HTML elements
-		/[if lt IE 9]
-		script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"
+    /[if lt IE 9]
+    script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"
 
-		= stylesheet_link_tag "all", media: "all"
-	body
-		div.navbar.navbar-inverse.navbar-fixed-top
-			div.container
-				div.navbar-header
-					button.navbar-toggle
-						.icon-bar
-						.icon-bar
-						.icon-bar
-					a.navbar-brand Project Name
-				div.collase.navbar-collapse
-					ul.nav.navbar-nav
-						li 
-							a href="#" Home
-						li 
-							a href="#" Contact
-		div.container
-			.row
-				.col-lg-12
-					= yield
-			footer
-			p &copy; 2013
-		script src="/javascripts/all.js"
+    = stylesheet_link_tag "all", media: "all"
+    = stylesheet_link_tag "syntax"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Merriweather"
+
+  body
+    section#header
+      div.container
+        .row
+          .col-md-1
+          .col-md-10
+            h2 Clearhaus Transaction API
+            p Welcome to Clearhaus's Transaction API. You can use our API to process payment card transactions.
+              The API is organized around REST and designed to have predictable and resource-oriented URLs. This diagram basically sums up what you can do with our API:
+            div.transaction-flow
+          .col-md-1
+    section#home-content
+      div.container.quick-jump
+        .row
+          .col-md-4
+            i.fa.fa-5x.fa-rocket
+            h1 Getting Started
+            p Sign up for an API key and read all about getting started using our API.
+          .col-md-4
+            i.fa.fa-5x.fa-code
+            h1 Examples
+            p Have a look at some examples and see how simple and powerful our API is.
+          .col-md-4
+            i.fa.fa-5x.fa-wrench
+            h1 API Reference
+            p Read our complete API reference and learn all about our different resources.
+    section#doc-content
+      div.container
+        .row
+          .col-md-2
+          .col-md-8
+            = yield
+          .col-md-2
+          footer
+    script src="/javascripts/all.js"
