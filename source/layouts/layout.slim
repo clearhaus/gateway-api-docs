@@ -11,6 +11,7 @@ html
 
     = stylesheet_link_tag "all", media: "all"
     = stylesheet_link_tag "syntax"
+    = stylesheet_link_tag "jquery.tocify.css"
     = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Merriweather"
@@ -21,30 +22,51 @@ html
         .row
           .col-md-1
           .col-md-10
-            h2 Clearhaus Transaction API
-            p Welcome to Clearhaus's Transaction API. You can use our API to process payment card transactions.
-              The API is organized around REST and designed to have predictable and resource-oriented URLs. This diagram basically sums up what you can do with our API:
-            div.transaction-flow
+            h1 Clearhaus Transaction API
+            p Welcome to Clearhaus Transaction API. You can use our API to process payment card transactions.
+              The API is organized around REST and designed to have predictable and resource-oriented URLs.
+              The table below basically sums up what you can do:
+            div.features
+              dl.dl-horizontal
+                dt Reserve money on a cardholder's bank account:
+                dd
+                  code POST https://gateway.clearhaus.com/authorizations
+                dt Withdraw money from a cardholder's bank account:
+                dd
+                  code POST https://gateway.clearhaus.com/authorizations/:id/captures
+                dt Refund money to a cardholder:
+                dd
+                  code POST https://gateway.clearhaus.com/captures/:id/refunds
+                dt Payout money to a cardholder:
+                dd
+                  code POST https://gateway.clearhaus.com/cards/:id/credits
+                dt Tokenize a card
+                dd
+                  code POST https://gateway.clearhaus.com/cards
           .col-md-1
     section#home-content
-      div.container.quick-jump
+      div.container
         .row
           .col-md-4
-            i.fa.fa-5x.fa-rocket
-            h1 Getting Started
-            p Sign up for an API key and read all about getting started using our API.
+            a href="#getting-started"
+              i.fa.fa-5x.fa-rocket
+              h1 Getting Started
+              p Sign up for an API key and read all about getting started using our API.
           .col-md-4
-            i.fa.fa-5x.fa-code
-            h1 Examples
-            p Have a look at some examples and see how simple and powerful our API is.
+            a href="#examples"
+              i.fa.fa-5x.fa-code
+              h1 Examples
+              p Have a look at some examples and see how simple and powerful our API is.
           .col-md-4
-            i.fa.fa-5x.fa-wrench
-            h1 API Reference
-            p Read our complete API reference and learn all about our different resources.
+            a href="#api-reference"
+              i.fa.fa-5x.fa-wrench
+              h1 API Reference
+              p Read our complete API reference and learn all about our different resources.
     section#doc-content
       div.container
         .row
           .col-md-2
+            div#toc.affix-top data-spy="affix" data-offset-top="650"
           .col-md-8
             = yield
           .col-md-2

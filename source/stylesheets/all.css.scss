@@ -1,7 +1,6 @@
 @import "bootstrap";
 
 body {
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;
   color: #444;
 }
 
@@ -47,10 +46,23 @@ section#home-content {
   line-height: 1.7;
 }
 
+#home-content a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 section#header {
   background-color: #3e4549;
   color: #DBDBDB;
-  padding: 80px 0px;
+  padding: 60px 0px;
+}
+
+#header code {
+  background-color: #656A6D;
+  border-radius: 3px;
+  font-size: 11px;
+  padding: 6px;
+  color: #fff;
 }
 
 section#doc-content {
@@ -62,14 +74,43 @@ section#doc-content {
 }
 
 #doc-content h2 {
-  margin-top: 40px;
+  margin-top: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px #ddd solid;
 }
 
-div.transaction-flow {
-  position: float;
-  width: 100%;
-  height: 300px;
-  margin-top: 40px;
-  background-image: url("../images/transaction-flow.svg");
-  background-repeat: no-repeat;
+#doc-content h3 {
+  margin-top: 50px;
+  font-size: 22px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px #ddd solid;
+}
+
+#doc-content h4 {
+  margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+#doc-content dl {
+  font-size: 13px;
+  padding-top: 10px;
+}
+
+#doc-content dd {
+  margin-bottom: 10px;
+}
+
+.features {
+  margin-top: 20px;
+}
+
+.features dt {
+  font-weight: normal;
+  padding-right: 10px;
+  width: 400px;
+}
+
+.features dt, dd {
+  line-height: 2;
 }

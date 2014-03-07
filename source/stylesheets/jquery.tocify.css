@@ -1,0 +1,52 @@
+#toc {
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+#toc.affix {
+  top: 30px;
+}
+
+#toc a:hover {
+  color: #428bca;
+  background-color: transparent;
+}
+
+#toc.affix-top {
+  margin-top: 80px;
+}
+
+.tocify-header {
+  text-indent: 10px;
+}
+
+.tocify-subheader {
+  text-indent: 20px;
+  display: none;
+}
+
+.tocify-subheader li {
+  font-size: 12px;
+}
+
+.nav-list > li > a, .nav-list .nav-header {
+  margin: 0px;
+}
+
+.nav-list > li > a {
+  padding: 5px;
+}
+
+.nav-list > li {
+  border: 0 #fff solid;
+  border-left-width: 4px;
+}
+
+.nav-list > li.active {
+  border: 0 #eee solid;
+  border-left-width:4px;
+}
+
+.nav-list > li:hover {
+  border: 0 #eee solid;
+  border-left-width: 4px;
+}
