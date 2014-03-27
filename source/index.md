@@ -28,15 +28,6 @@ You will get this response when you provide an invalid API key:
 HTTP/1.1 401 Not Authorized
 ````
 
-````json
-{
-    "status" : {
-        "code": 40000,
-        "message": "invalid API key"
-    }
-}
-````
-
 
 ## Resource discovery
 
@@ -55,7 +46,8 @@ curl https://gateway.clearhaus.com \
         "captures":       { "href": "/captures" },
         "refunds":        { "href": "/refunds" },
         "voids":          { "href": "/voids" },
-        "credits":        { "href": "/credits" }
+        "credits":        { "href": "/credits" },
+        "cards":          { "href": "/cards" }
     }
 }
 ```
@@ -377,7 +369,7 @@ Declined   |  40000 |  General input error
 
 ### Status message
 
-A status message is includes in every response when you make a new transaction.
+A status message is included in every response when you make a new transaction.
 The status message can be used for debugging and may include a more specific
 error message.
 
