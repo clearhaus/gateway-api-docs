@@ -285,7 +285,7 @@ POST https://gateway.clearhaus.com/captures/:id/refunds
 
 To release reserved money on a cardholder's bank account you make a new void
 resource. A reservation normally last for 7 days depending on issuing bank and
-then automatically released.
+is then automatically released.
 
 #### Parameters
 
@@ -396,6 +396,7 @@ Example response:
 
 ````json
 {
+    "count": 876,
     "_embedded": {
         "refunds": [ .... ]
     },
