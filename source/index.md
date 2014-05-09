@@ -212,7 +212,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> ISO 4217 3-letter currency code.</dd>
   <dt>ip</dt>
-  <dd>[0-9\.a-fA-F:]{3,39} <br /> Cardholder's IP address (v4 or v6).</dd>
+  <dd>[0-9\.a-fA-F:]{3,39} <br /> <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).</dd>
   <dt>recurring</dt>
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
   <dt>text_on_statement</dt>
@@ -354,7 +354,6 @@ you make a new transaction.
 Status     | `code` |  Meaning
 ---------- | ------ | --------
 Approved   |  20000 |  Approved
-Challenged |  20200 |  Approved but be suspicious
 Declined   |  40000 |  General input error
            |  40101 |  Problem with card number
            |  40102 |  Problem with CSC
@@ -401,12 +400,14 @@ Example response:
         "refunds": [ .... ]
     },
     "_links": {
-        "self": { "href": "https://gateway.clearhaus.com/refunds?page=2&per_page=10" },
-        "next": { "href": "https://gateway.clearhaus.com/refunds?page=3&per_page=10" },
-        "prev": { "href": "https://gateway.clearhaus.com/refunds?page=1&per_page=10" }
+        "self": { "href": "/refunds?page=2&per_page=10" },
+        "next": { "href": "/refunds?page=3&per_page=10" },
+        "prev": { "href": "/refunds?page=1&per_page=10" }
     }
 }
 ````
+
+The `per_page` parameter is automatically set to 10 when undefined and can maximum be 100.
 
 
 ## Endpoint summary
