@@ -4,7 +4,9 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
-sprockets.append_path File.join "#{root}", "bower_components"
+after_configuration do
+  sprockets.append_path File.join "#{root}", "bower_components"
+end
 
 activate :livereload
 
