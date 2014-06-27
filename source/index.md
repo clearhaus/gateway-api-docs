@@ -10,6 +10,13 @@ You need an API key before you can interact with our API.
 API keys comes with many privileges so keep them secret.
 </p>
 
+## Service URL
+
+````
+https://gateway.clearhaus.com      # live acounts
+https://test.gateway.clearhaus.com # test acounts
+````
+
 
 ## Authentication
 
