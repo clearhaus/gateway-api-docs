@@ -10,7 +10,7 @@ You need an API key before you can interact with our API.
 API keys comes with many privileges so keep them secret.
 </p>
 
-## Service URL
+## API endpoint
 
 ````
 https://gateway.clearhaus.com      # live acounts
@@ -25,7 +25,7 @@ name and a blank string as password. Remember colon `:` after user name when
 using cURL to specify an empty password.
 
 ````shell
-curl https://gateway.clearhaus.com \
+curl https://test.gateway.clearhaus.com \
      -u <your-api-key>:
 ````
 
@@ -42,7 +42,7 @@ The API follows [HATEOAS][HATEOAS] principle of REST which means all resources a
 discoverable.
 
 ```shell
-curl https://gateway.clearhaus.com \
+curl https://test.gateway.clearhaus.com \
      -u <your-api-key>:
 ```
 
@@ -92,7 +92,7 @@ bank account.
 The following will reserve EUR 20.50 on cardholder's bank account:
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/authorizations \
+curl -X POST https://test.gateway.clearhaus.com/authorizations \
      -u <your-api-key>: \
      -d "amount=2050"   \
      -d "currency=EUR"  \
@@ -112,14 +112,14 @@ The following will make a capture transaction and withdraw what you have
 reserved on cardholder's bank account.
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://test.gateway.clearhaus.com/authorizations/:id/captures \
      -u <your-api-key>:
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://test.gateway.clearhaus.com/authorizations/:id/captures \
      -u <your-api-key>: \
      -d "amount=1000"
 ````
@@ -131,7 +131,7 @@ You can refund all money or a partial amount of what you have withdrawn from
 cardholder's bank account:
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/captures/:id/refunds \
+curl -X POST https://test.gateway.clearhaus.com/captures/:id/refunds \
      -u <your-api-key>: \
      -d "amount=1000"
 ````
@@ -162,7 +162,7 @@ The following will transfer EUR 20.50 to cardholder's bank account from your
 merchant bank account:
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/cards/:id/credits \
+curl -X POST https://test.gateway.clearhaus.com/cards/:id/credits \
      -u <your-api-key>: \
      -d "amount=2050"   \
      -d "currency=EUR"
@@ -179,7 +179,7 @@ and you send us card details. You can also make a card token directly by
 creating a new `card` resource:
 
 ````shell
-curl -X POST https://gateway.clearhaus.com/cards \
+curl -X POST https://test.gateway.clearhaus.com/cards \
      -u <your-api-key>: \
      -d "card[number]=4111111111111111" \
      -d "card[expire_month]=06"         \
