@@ -187,6 +187,46 @@ curl -X POST https://test.gateway.clearhaus.com/cards \
      -d "card[csc]=123"
 ````
 
+## Recurring payments
+
+Recurring payments enables you to repeatedly charge cardholders without having
+them to provide card information for subsequent payments.
+
+### Initial payment
+
+To make an initial payment you  make an ordinary authorization and set
+`recurring` parameter to `true`:
+
+````shell
+curl -X POST https://test.gateway.clearhaus.com/authorizations \
+     -u <your-api-key>:  \
+     -d "amount=2050"    \
+     -d "currency=EUR"   \
+     -d "ip=1.1.1.1"     \
+     -d "recurring=true" \
+     -d "card[number]=4111111111111111" \
+     -d "card[expire_month]=06"         \
+     -d "card[expire_year]=2018"        \
+     -d "card[csc]=123"
+````
+
+
+### Subsequent payments
+
+A subsequent payment is also made by making an authorization but based on a
+card resource (obtainable from initial payment):
+
+````shell
+curl -X POST \
+  https://test.gateway.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
+     -u <your-api-key>:  \
+     -d "amount=2050"    \
+     -d "currency=EUR"   \
+     -d "ip=1.1.1.1"     \
+     -d "recurring=true"
+````
+
+Setting `recurring` parameter to `true` is also required for subsequent authorizations.
 
 # API Reference
 
