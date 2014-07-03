@@ -20,9 +20,9 @@ https://test.gateway.clearhaus.com # test acounts
 
 ## Authentication
 
-Authentication is done via HTTP Basic Auth. Simply provide your API key as user
-name and a blank string as password. Remember colon `:` after user name when
-using cURL to specify an empty password.
+Authentication is done via HTTP Basic Auth. Simply provide your API key as
+username and a blank string as password. Remember a colon `:` after username
+when using cURL to specify an empty password.
 
 ````shell
 curl https://test.gateway.clearhaus.com \
@@ -38,8 +38,8 @@ HTTP/1.1 401 Not Authorized
 
 ## Resource discovery
 
-The API follows [HATEOAS][HATEOAS] principle of REST which means all resources are
-discoverable.
+The API follows [HATEOAS][HATEOAS] principle of REST which means all resources
+are discoverable.
 
 ```shell
 curl https://test.gateway.clearhaus.com \
@@ -66,7 +66,7 @@ All responses will be delivered in JSON format (see [JSON-HAL][JSON-HAL]).
 Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.1.0; charset=utf-8
 ````
 
-We use HTTP response codes to indicate API errors:
+We use HTTP response codes to indicate API response status:
 
 ````
 Number  Text                 
@@ -84,12 +84,12 @@ Number  Text
 ## Charge a cardholder
 
 To charge a cardholder you first have to reserve money on his bank account.
-Next you can transfer money from cardholder's bank account to your merchant
-bank account.
+Next you can transfer money from his bank account to your merchant bank
+account.
 
 ### Reserve money
 
-The following will reserve EUR 20.50 on cardholder's bank account:
+The following will reserve EUR 20.50 (2050 cents) on cardholder's bank account:
 
 ````shell
 curl -X POST https://test.gateway.clearhaus.com/authorizations \
@@ -174,9 +174,9 @@ A card token is a value that references sensitive card data (see
 ["Tokenization"][Tokenization]). You can use a card token to make authorization
 and credit transactions.
 
-A card token is automatically made when you make an authorization transaction
-and you send us card details. You can also make a card token directly by
-creating a new `card` resource:
+A card token (`card` resource id) is automatically created when you make an
+authorization transaction and you send us card details. You can also make a
+card token directly by creating a new `card` resource:
 
 ````shell
 curl -X POST https://test.gateway.clearhaus.com/cards \
