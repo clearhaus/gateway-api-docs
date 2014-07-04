@@ -13,8 +13,8 @@ API keys comes with many privileges so keep them secret.
 ## API endpoint
 
 ````
-https://gateway.clearhaus.com      # live acounts
-https://test.gateway.clearhaus.com # test acounts
+https://gateway.clearhaus.com      # live accounts
+https://gateway.test.clearhaus.com # test accounts
 ````
 
 
