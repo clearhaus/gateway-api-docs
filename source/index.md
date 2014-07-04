@@ -428,6 +428,21 @@ error message.
 }
 ````
 
+## Test card numbers
+
+The following test card numbers can be used to perform test transactions:
+
+Card scheme | Card number      | Note     |
+------------| ---------------- | -------- |
+Visa        | 4111111111111111 | Approved |
+Visa        | 4200000000000000 | Declined |
+MasterCard  | 5500000000000004 | Approved |
+MasterCard  | 5555555555554444 | Declined |
+
+You can specify a status `code` as transaction amount to trigger a specific
+error for declined test card numbers.
+
+
 ## Pagination
 
 Resource collections are automatically paginated with most recent resource appearing first.
