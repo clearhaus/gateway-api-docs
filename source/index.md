@@ -25,7 +25,7 @@ username and a blank string as password. Remember a colon `:` after username
 when using cURL to specify an empty password.
 
 ````shell
-curl https://test.gateway.clearhaus.com \
+curl https://gateway.test.clearhaus.com \
      -u <your-api-key>:
 ````
 
@@ -42,7 +42,7 @@ The API follows [HATEOAS][HATEOAS] principle of REST which means all resources
 are discoverable.
 
 ```shell
-curl https://test.gateway.clearhaus.com \
+curl https://gateway.test.clearhaus.com \
      -u <your-api-key>:
 ```
 
@@ -92,7 +92,7 @@ account.
 The following will reserve EUR 20.50 (2050 cents) on cardholder's bank account:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/authorizations \
+curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -u <your-api-key>: \
      -d "amount=2050"   \
      -d "currency=EUR"  \
@@ -112,14 +112,14 @@ The following will make a capture transaction and withdraw what you have
 reserved on cardholder's bank account.
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://gateway.test.clearhaus.com/authorizations/:id/captures \
      -u <your-api-key>:
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://gateway.test.clearhaus.com/authorizations/:id/captures \
      -u <your-api-key>: \
      -d "amount=1000"
 ````
@@ -131,7 +131,7 @@ You can refund all money or a partial amount of what you have withdrawn from
 cardholder's bank account:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/captures/:id/refunds \
+curl -X POST https://gateway.test.clearhaus.com/captures/:id/refunds \
      -u <your-api-key>: \
      -d "amount=1000"
 ````
@@ -162,7 +162,7 @@ The following will transfer EUR 20.50 to cardholder's bank account from your
 merchant bank account:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/cards/:id/credits \
+curl -X POST https://gateway.test.clearhaus.com/cards/:id/credits \
      -u <your-api-key>: \
      -d "amount=2050"   \
      -d "currency=EUR"
@@ -179,7 +179,7 @@ authorization transaction and you send us card details. You can also make a
 card token directly by creating a new `card` resource:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/cards \
+curl -X POST https://gateway.test.clearhaus.com/cards \
      -u <your-api-key>: \
      -d "card[number]=4111111111111111" \
      -d "card[expire_month]=06"         \
@@ -198,7 +198,7 @@ To make an initial payment you  make an ordinary authorization and set
 `recurring` parameter to `true`:
 
 ````shell
-curl -X POST https://test.gateway.clearhaus.com/authorizations \
+curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
      -d "currency=EUR"   \
@@ -218,7 +218,7 @@ card resource (obtainable from initial payment):
 
 ````shell
 curl -X POST \
-  https://test.gateway.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
+  https://gateway.test.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
      -d "currency=EUR"   \
