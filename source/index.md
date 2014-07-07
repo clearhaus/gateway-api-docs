@@ -4,7 +4,7 @@ title: Clearhaus Transaction API Documentation
 
 # Getting Started
 
-You need an API key before you can interact with our API.
+You need an API key before you can interact with our API. Send an E-mail to <a href="mailto:support@clearhaus.com">support@clearhaus.com</a> to request an API key.
 
 <p class="alert alert-danger">
 API keys comes with many privileges so keep them secret.
@@ -440,7 +440,7 @@ MasterCard  | 5500000000000004 | Approved |
 MasterCard  | 5555555555554444 | Declined |
 
 You can specify a status `code` as transaction amount to trigger a specific
-error for declined test card numbers.
+error when using declined test card numbers.
 
 
 ## Pagination
