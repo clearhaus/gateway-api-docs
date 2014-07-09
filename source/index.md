@@ -87,6 +87,7 @@ To charge a cardholder you first have to reserve money on his bank account.
 Next you can transfer money from his bank account to your merchant bank
 account.
 
+
 ### Reserve money
 
 The following will reserve EUR 20.50 (2050 cents) on cardholder's bank account:
@@ -103,8 +104,24 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[csc]=123"
 ````
 
+Example response (snippet):
+
+````json
+{
+    "id": "84412a34-fa29-4369-a098-0165a80e8fda",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T09:53:41+00:00",
+    "_links": {
+        "captures": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures" }
+    }
+}
+````
+
 In order to actually transfer money from cardholder's bank account to your
 merchant bank account you will have to make a capture transaction.
+
 
 ### Withdraw money
 
@@ -112,16 +129,37 @@ The following will make a capture transaction and withdraw what you have
 reserved on cardholder's bank account.
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
      -u <your-api-key>:
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations/:id/captures \
+curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
      -u <your-api-key>: \
      -d "amount=1000"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "d8e92a70-3030-4d4d-8ad2-684b230c1bed",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T11:47:28+00:00",
+    "amount": 1000,
+    "_links": {
+        "authorization": {
+            "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda"
+        },
+        "refunds": {
+            "href": "/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed/refunds"
+        }
+    }
+}
 ````
 
 
@@ -131,22 +169,61 @@ You can refund all money or a partial amount of what you have withdrawn from
 cardholder's bank account:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/captures/:id/refunds \
+curl -X POST https://gateway.test.clearhaus.com/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed/refunds \
      -u <your-api-key>: \
-     -d "amount=1000"
+     -d "amount=500"
 ````
 
-Example response:
+Example response (snippet):
 
 ````json
 {
-    "id": "6898688b-b026-4121-a815-323a1a70cf5e",
+    "id": "f04c0872-47ce-4683-8d8c-e154221bba14",
     "status": {
         "code": 20000
     },
+    "processed_at": "2014-07-09T11:57:58+00:00",
+    "amount": 500,
     "_links": {
-        "self":     { "href": "/refunds/6898688b-b026-4121-a815-323a1a70cf5e" },
-        "capture":  { "href": "/capture/3b6b0ed6-cbe0-4b60-9e7d-9560cfc98d59" }
+        "capture": { "href": "/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed" }
+    }
+}
+````
+
+
+## Tokenize a card
+
+A card token is a value that references card details (see
+[Tokenization][Tokenization]). You can use a card token (card resource) to make
+authorization and credit transactions.
+
+A card resource is automatically made when you make an authorization
+transaction and supply card details. You can also make a card resource
+directly:
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/cards \
+     -u <your-api-key>: \
+     -d "card[number]=5500000000000004" \
+     -d "card[expire_month]=06"         \
+     -d "card[expire_year]=2018"        \
+     -d "card[csc]=123"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T12:14:31+00:00",
+    "last4": "0004",
+    "scheme": "mastercard",
+    "_links": {
+        "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
+        "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
     }
 }
 ````
@@ -158,34 +235,30 @@ Sometimes cardholders should receive money, e.g. if you will pay out some
 winnings. Before you can make a payout you need to [tokenize](#tokenize-a-card)
 a card.
 
-The following will transfer EUR 20.50 to cardholder's bank account from your
+The following will transfer EUR 500.00 to cardholder's bank account from your
 merchant bank account:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/:id/credits \
+curl -X POST https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits \
      -u <your-api-key>: \
-     -d "amount=2050"   \
+     -d "amount=50000"  \
      -d "currency=EUR"
 ````
 
-## Tokenize a card
+Example response (snippet):
 
-A card token is a value that references sensitive card data (see
-["Tokenization"][Tokenization]). You can use a card token to make authorization
-and credit transactions.
-
-A card token (`card` resource id) is automatically created when you make an
-authorization transaction and you send us card details. You can also make a
-card token directly by creating a new `card` resource:
-
-````shell
-curl -X POST https://gateway.test.clearhaus.com/cards \
-     -u <your-api-key>: \
-     -d "card[number]=4111111111111111" \
-     -d "card[expire_month]=06"         \
-     -d "card[expire_year]=2018"        \
-     -d "card[csc]=123"
+````json
+{
+    "id": "1b377999-bafb-42b0-a24f-106b312b0b40",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T12:58:56+00:00",
+    "amount": 50000,
+    "currency": "EUR"
+}
 ````
+
 
 ## Recurring payments
 
@@ -210,6 +283,28 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[csc]=123"
 ````
 
+Example response (snippet):
+
+````json
+{
+   "id": "0cc74a9e-f340-4667-a4fa-09b8eda8ec2c",
+   "status": {
+       "code": 20000
+   },
+   "processed_at": "2014-07-09T13:18:13+00:00",
+   "recurring": "first",
+   "_embedded": {
+      "card": {
+         "id": "befa0546-c553-45df-9e7d-9c88f581b480",
+         "_links": {
+             "authorizations": { "href": "/cards/befa0546-c553-45df-9e7d-9c88f581b480/authorizations" },
+             "credits": { "href": "/cards/befa0546-c553-45df-9e7d-9c88f581b480/credits" }
+         }
+      }
+   }
+}
+````
+
 
 ### Subsequent payments
 
@@ -217,8 +312,7 @@ A subsequent payment is also made by making an authorization but based on a
 card resource (obtainable from initial payment):
 
 ````shell
-curl -X POST \
-  https://gateway.test.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
+curl -X POST https://gateway.test.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
      -d "currency=EUR"   \
@@ -226,9 +320,24 @@ curl -X POST \
      -d "recurring=true"
 ````
 
+Example response (snippet):
+
+````json
+{
+   "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
+   "status": {
+       "code": 20000
+   },
+   "processed_at": "2014-07-09T13:33:44+00:00",
+   "recurring": "subsequent"
+}
+````
+
 Setting `recurring` parameter to `true` is also required for subsequent authorizations.
 
+
 # API Reference
+
 
 ## Resources
 
@@ -390,7 +499,7 @@ POST https://gateway.clearhaus.com/cards
 </dl>
 
 <p class="alert alert-info"> <b>Notice:</b> A card resource is automatically made
-when you make an authorization transaction and you send us card details. </p>
+when you make an authorization transaction and you supply card details. </p>
 
 
 ## Transaction status codes
