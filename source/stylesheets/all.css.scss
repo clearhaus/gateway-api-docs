@@ -114,3 +114,7 @@ section#doc-content {
 .features dt, dd {
   line-height: 2;
 }
+
+pre code.highlight {
+  background-color: transparent;
+}
