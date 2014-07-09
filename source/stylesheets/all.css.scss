@@ -118,3 +118,9 @@ section#doc-content {
 pre code.highlight {
   background-color: transparent;
 }
+
+@media (max-width: 992px) {
+  #toc {
+    display: none;
+  }
+}
