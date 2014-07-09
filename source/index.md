@@ -315,7 +315,7 @@ card resource (obtainable from initial payment):
 curl -X POST https://gateway.test.clearhaus.com/cards/befa0546-c553-45df-9e7d-9c88f581b480/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
-     -d "currency=EUR    \
+     -d "currency=EUR"   \
      -d "recurring=true"
 ````
 
