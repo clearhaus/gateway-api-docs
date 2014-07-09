@@ -312,11 +312,10 @@ A subsequent payment is also made by making an authorization but based on a
 card resource (obtainable from initial payment):
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/4b3b0ed1-cbe0-4b60-9e7d-9560cfc98d58/authorizations \
+curl -X POST https://gateway.test.clearhaus.com/cards/befa0546-c553-45df-9e7d-9c88f581b480/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
-     -d "currency=EUR"   \
-     -d "ip=1.1.1.1"     \
+     -d "currency=EUR    \
      -d "recurring=true"
 ````
 
