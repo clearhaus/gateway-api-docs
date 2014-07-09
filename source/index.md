@@ -63,7 +63,7 @@ curl https://gateway.test.clearhaus.com \
 All responses will be delivered in JSON format (see [JSON-HAL][JSON-HAL]).
 
 ````
-Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.1.0; charset=utf-8
+Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.9.0; charset=utf-8
 ````
 
 We use HTTP response codes to indicate API response status:
