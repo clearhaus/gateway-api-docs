@@ -510,16 +510,21 @@ Status     | `code` |  Meaning
 ---------- | ------ | --------
 Approved   |  20000 |  Approved
 Declined   |  40000 |  General input error
-           |  40101 |  Problem with card number
-           |  40102 |  Problem with CSC
-           |  40103 |  Card expired
-           |  40104 |  Invalid expiry date
-           |  40200 |  Declined by Firewall
-           |  40201 |  3D Secure is required
-           |  40300 |  Problem with 3D Secure
-           |  40400 |  Risk limit exceeded
+           |  40110 |  Invalid card number
+           |  40120 |  Invalid CSC
+           |  40130 |  Invalid expire date
+           |  40135 |  Card expired
+           |  40140 |  Invalid currency
+           |  40200 |  Clearhaus rule violation
+           |  40400 |  Backend problem
+           |  40410 |  Declined by issuer or card scheme
+           |  40411 |  Card restricted
+           |  40412 |  Card lost or stolen
+           |  40413 |  Insufficient funds
+           |  40414 |  Suspected fraud
+           |  40415 |  Amount limit exceeded
            |  50000 |  Clearhaus error
-           |  50100 |  General card problem
+
 
 ### Status message
 
