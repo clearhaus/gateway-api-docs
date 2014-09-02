@@ -292,7 +292,7 @@ Example response (snippet):
        "code": 20000
    },
    "processed_at": "2014-07-09T13:18:13+00:00",
-   "recurring": "first",
+   "recurring": true,
    "_embedded": {
       "card": {
          "id": "befa0546-c553-45df-9e7d-9c88f581b480",
@@ -328,7 +328,7 @@ Example response (snippet):
        "code": 20000
    },
    "processed_at": "2014-07-09T13:33:44+00:00",
-   "recurring": "subsequent"
+   "recurring": true
 }
 ````
 
