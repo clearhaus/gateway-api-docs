@@ -20,7 +20,11 @@ git clone https://github.com/acoustep/middleman-bootstrap3-sass-slim.git ~/.midd
 # Install NodeJS from your package manager; debian wheezy:
 curl -sL https://deb.nodesource.com/setup | sudo bash -
 apt-get install -y nodejs
+```
 
+Unless `bower_components` is present, continue:
+
+```
 curl -L https://npmjs.org/install.sh | sh
 
 npm install -g bower
