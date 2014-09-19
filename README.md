@@ -35,5 +35,5 @@ bower install
 ## Running the webserver
 
 ```
-middleman
+bundle exec middleman
 ```
