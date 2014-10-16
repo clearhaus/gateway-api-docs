@@ -156,7 +156,7 @@ Example response (snippet):
             "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda"
         },
         "refunds": {
-            "href": "/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed/refunds"
+            "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds"
         }
     }
 }
@@ -169,7 +169,7 @@ You can refund all money or a partial amount of what you have withdrawn from
 cardholder's bank account:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed/refunds \
+curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds \
      -u <your-api-key>: \
      -d "amount=500"
 ````
@@ -185,7 +185,7 @@ Example response (snippet):
     "processed_at": "2014-07-09T11:57:58+00:00",
     "amount": 500,
     "_links": {
-        "capture": { "href": "/captures/d8e92a70-3030-4d4d-8ad2-684b230c1bed" }
+        "authorization": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda" }
     }
 }
 ````
@@ -415,12 +415,12 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 ### Refunds
 
 To refund money to a cardholder's bank account you make a new refund resource.
-You can make multiple refunds for a capture transaction.
+You can make multiple refunds for an authorization transaction.
 
 #### Parameters
 
 ````
-POST https://gateway.clearhaus.com/captures/:id/refunds
+POST https://gateway.clearhaus.com/authorizations/:id/refunds
 ````
 
 <dl class="dl-horizontal">
@@ -607,7 +607,7 @@ https://gateway.clearhaus.com/authorizations/:id/voids
 # refunds
 https://gateway.clearhaus.com/refunds
 https://gateway.clearhaus.com/refunds/:id
-https://gateway.clearhaus.com/captures/:id/refunds
+https://gateway.clearhaus.com/authorizations/:id/refunds
 
 # credits
 https://gateway.clearhaus.com/credits
