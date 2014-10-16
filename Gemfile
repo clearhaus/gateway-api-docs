@@ -12,6 +12,8 @@ gem 'slim'
 gem 'sass'
 gem 'bootstrap-sass'
 
+gem 'execjs'
+
 # Heroku hosting
 gem 'puma'
 gem 'rake'

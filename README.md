@@ -17,11 +17,23 @@
 ```
 git clone https://github.com/acoustep/middleman-bootstrap3-sass-slim.git ~/.middleman/bootstrap3-sass-slim
 
-middleman init project_name --template=bootstrap3-sass-slim
+# Install NodeJS from your package manager; debian wheezy:
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+apt-get install -y nodejs
+```
 
-cd project_name
+Unless `bower_components` is present, continue:
+
+```
+curl -L https://npmjs.org/install.sh | sh
+
+npm install -g bower
 
 bower install
+```
 
-middleman
+## Running the webserver
+
+```
+bundle exec middleman
 ```

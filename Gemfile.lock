@@ -134,6 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  execjs
   middleman (>= 3.3.3)
   middleman-livereload
   middleman-sprockets (= 3.3.2)
