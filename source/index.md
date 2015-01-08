@@ -265,54 +265,22 @@ Example response (snippet):
 Recurring payments enables you to repeatedly charge cardholders without having
 them to provide card information for subsequent payments.
 
-### Initial payment
+### Subscription concept
 
-To make an initial payment you  make an ordinary authorization and set
-`recurring` parameter to `true`:
+Many payment gateways offer a subscription concept where a card can be
+subscribed for recurring payments. This is supported by our [card
+resource](#cards) concept.
 
-````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations \
-     -u <your-api-key>:  \
-     -d "amount=2050"    \
-     -d "currency=EUR"   \
-     -d "ip=1.1.1.1"     \
-     -d "recurring=true" \
-     -d "card[number]=4111111111111111" \
-     -d "card[expire_month]=06"         \
-     -d "card[expire_year]=2018"        \
-     -d "card[csc]=123"
-````
-
-Example response (snippet):
-
-````json
-{
-   "id": "0cc74a9e-f340-4667-a4fa-09b8eda8ec2c",
-   "status": {
-       "code": 20000
-   },
-   "processed_at": "2014-07-09T13:18:13+00:00",
-   "recurring": true,
-   "_embedded": {
-      "card": {
-         "id": "befa0546-c553-45df-9e7d-9c88f581b480",
-         "_links": {
-             "authorizations": { "href": "/cards/befa0546-c553-45df-9e7d-9c88f581b480/authorizations" },
-             "credits": { "href": "/cards/befa0546-c553-45df-9e7d-9c88f581b480/credits" }
-         }
-      }
-   }
-}
-````
+A payment card is subscribed simply by [making a card resource](#tokenize-a-card).
 
 
-### Subsequent payments
+### Repeatedly reserve money
 
-A subsequent payment is also made by making an authorization but based on a
-card resource (obtainable from initial payment):
+A recurring payment is made by making an authorization based on a card
+resource and setting `recurring` parameter to `true`:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/befa0546-c553-45df-9e7d-9c88f581b480/authorizations \
+curl -X POST https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations \
      -u <your-api-key>:  \
      -d "amount=2050"    \
      -d "currency=EUR"   \
@@ -332,7 +300,8 @@ Example response (snippet):
 }
 ````
 
-Setting `recurring` parameter to `true` is also required for subsequent authorizations.
+Above can be repeated whenever you need to reserve money and must be followed
+by a capture transaction.
 
 
 # API Reference
