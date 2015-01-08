@@ -1,3 +1,4 @@
+# Gateway API documentation
 
 ## Installation
 
@@ -17,6 +18,7 @@ bower install
 
 ## Development
 
+Update gateway documentation in source/index.md.
 
 Run middleman webserver:
 
