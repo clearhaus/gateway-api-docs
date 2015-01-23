@@ -304,6 +304,45 @@ Above can be repeated whenever you need to reserve money and must be followed
 by a capture transaction.
 
 
+## 3-D Secure
+
+3-D Secure is a protocol designed to improve security for online transactions.
+Before you continue please read more about this protocol and sign up for an
+account at [3Dsecure.io](http://docs.3dsecure.io)
+
+This gateway will perform validation of `pares` values according this [3-D secure workflow](http://docs.3dsecure.io/#protocol).
+
+### Secure transactions
+
+To perform a 3-D Secure transaction you make an ordinary authorization including
+a `pares` value:
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/authorizations \
+     -u <your-api-key>: \
+     -d "amount=2050"   \
+     -d "currency=EUR"  \
+     -d "ip=1.1.1.1"    \
+     -d "card[number]=4111111111111111" \
+     -d "card[expire_month]=06"         \
+     -d "card[expire_year]=2018"        \
+     -d "card[csc]=123"                 \
+     -d "threed_secure[pares]=<some-pares-value>"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "84412a34-fa29-4369-a098-0165a80e8fda",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T09:53:41+00:00",
+    "threed_secured": true
+}
+````
+
 # API Reference
 
 
@@ -341,6 +380,8 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
   <dt>text_on_statement</dt>
   <dd>[:print:]{1,22} <br /> <i>Optional</i> <br /> Text that will be placed on cardholder's bank statement.</dd>
+  <dt>pares</dt>
+  <dd>[a-zA-Z0-9+/]+={0,2} <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
   <dt>card[number]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>card[expire_month]</dt>
@@ -490,6 +531,8 @@ Declined   |  40000 |  General input error
            |  40135 |  Card expired
            |  40140 |  Invalid currency
            |  40200 |  Clearhaus rule violation
+           |  40300 |  3-D Secure problem
+           |  40310 |  3-D Secure authentication failure
            |  40400 |  Backend problem
            |  40410 |  Declined by issuer or card scheme
            |  40411 |  Card restricted
@@ -597,3 +640,4 @@ https://gateway.clearhaus.com/cards/:id
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
+[3D-Secure]: http://www.3dsecure.io
