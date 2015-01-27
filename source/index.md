@@ -339,7 +339,7 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2014-07-09T09:53:41+00:00",
-    "threed_secured": true
+    "threed_secure": true
 }
 ````
 
