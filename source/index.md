@@ -310,7 +310,7 @@ by a capture transaction.
 Before you continue please read more about this protocol and sign up for an
 account at [3Dsecure.io](http://docs.3dsecure.io)
 
-This gateway will perform validation of `pares` values according this [3-D secure workflow](http://docs.3dsecure.io/#protocol).
+This gateway will perform validation of `pares` values according to this [3-D secure workflow](http://docs.3dsecure.io/#protocol).
 
 ### Secure transactions
 
@@ -327,7 +327,7 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[expire_month]=06"         \
      -d "card[expire_year]=2018"        \
      -d "card[csc]=123"                 \
-     -d "threed_secure[pares]=<some-pares-value>"
+     --data-urlencode "threed_secure[pares]=<some-pares-value>"
 ````
 
 Example response (snippet):
@@ -380,7 +380,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
   <dt>text_on_statement</dt>
   <dd>[:print:]{1,22} <br /> <i>Optional</i> <br /> Text that will be placed on cardholder's bank statement.</dd>
-  <dt>pares</dt>
+  <dt>threed_secure[pares]</dt>
   <dd>[a-zA-Z0-9+/]+={0,2} <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
   <dt>card[number]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
