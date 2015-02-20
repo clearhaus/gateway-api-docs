@@ -378,7 +378,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>text_on_statement</dt>
   <dd>[:print:]{1,22} <br /> <i>Optional</i> <br /> Text that will be placed on cardholder's bank statement.</dd>
   <dt>threed_secure[pares]</dt>
-  <dd>[a-zA-Z0-9+/]+={0,2} <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
   <dt>card[number]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>card[expire_month]</dt>
