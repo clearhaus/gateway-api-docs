@@ -307,10 +307,7 @@ by a capture transaction.
 ## 3-D Secure
 
 3-D Secure is a protocol designed to improve security for online transactions.
-Before you continue please read more about this protocol and sign up for an
-account at [3Dsecure.io](http://docs.3dsecure.io)
-
-This gateway will perform validation of `pares` values according to this [3-D secure workflow](http://docs.3dsecure.io/#protocol).
+Before you continue please read more about this protocol at [3Dsecure.io](http://docs.3dsecure.io)
 
 ### Secure transactions
 
