@@ -376,7 +376,12 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>recurring</dt>
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
   <dt>text_on_statement</dt>
-  <dd>[:print:]{1,22} <br /> <i>Optional</i> <br /> Text that will be placed on cardholder's bank statement.</dd>
+  <dd>
+    [\x20-\x7E]{0,22}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
+    Text that will be placed on cardholder's bank statement.
+  </dd>
   <dt>threed_secure[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
   <dt>card[number]</dt>
@@ -413,7 +418,10 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
     The full or remaining amount will be withdrawn if no amount is given.
   </dd>
   <dt>text_on_statement</dt>
-  <dd>[:print:]{1,22} <br /> <i>Optional</i> <br />
+  <dd>
+    [\x20-\x7E]{0,22} 
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
@@ -437,7 +445,10 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
     The full or remaining amount will be refunded if no amount is given.
   </dd>
   <dt>text_on_statement</dt>
-  <dd>[:print:]{1,22} <br /> <i>Optional</i> <br />
+  <dd>
+    [\x20-\x7E]{0,22}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
 </dl>
@@ -476,7 +487,12 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> ISO 4217 3-letter currency code.</dd>
   <dt>text_on_statement</dt>
-  <dd>[:print:]{1,22} <br /> <i>Optional</i> <br /> Text that will be placed on cardholder's bank statement.</dd>
+  <dd>
+    [\x20-\x7E]{0,22}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
+    Text that will be placed on cardholder's bank statement.
+  </dd>
 </dl>
 
 
