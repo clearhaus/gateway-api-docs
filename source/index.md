@@ -368,7 +368,7 @@ POST https://gateway.clearhaus.com/authorizations
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>(0|[1-9][0-9]{1,10}) <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
+  <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> ISO 4217 3-letter currency code.</dd>
   <dt>ip</dt>
@@ -413,7 +413,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,10} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be withdrawn if no amount is given.
   </dd>
@@ -440,7 +440,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,10} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be refunded if no amount is given.
   </dd>
@@ -483,7 +483,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{1,10} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
+  <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> ISO 4217 3-letter currency code.</dd>
   <dt>text_on_statement</dt>
