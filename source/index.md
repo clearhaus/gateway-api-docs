@@ -520,11 +520,10 @@ POST https://gateway.clearhaus.com/cards
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
 </dl>
 
-<p class="alert alert-info"><b>Notice:</b> A request to this endpoint is
-idempotent. The exact same card details can be sent multiple times but will
-give you a unique card resource (card token).<br/> <b>Notice:</b> A card
-resource is automatically made when you make an authorization transaction and
-you supply card details.</p>
+<p class="alert alert-info"><b>Notice:</b> The exact same card details can be
+sent multiple times but will give you a unique card resource (card token).<br/>
+<b>Notice:</b> A card resource is automatically made when you make an
+authorization transaction and you supply card details.</p>
 
 <p class="alert alert-warning"> <b>Notice:</b> A "zero amount"
 authorization is made when POSTing to this endpoint.</p>
