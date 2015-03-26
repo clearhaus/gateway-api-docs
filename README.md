@@ -4,16 +4,8 @@
 
 ```bash
 git clone https://github.com/clearhaus/gateway-api-docs.git
-```
 
-Unless `bower_components` is present:
-
-```bash
-apt-get install -y nodejs npm
-
-npm install -g bower
-
-bower install
+docker build -t gateway-api-docs .
 ```
 
 ## Development
@@ -23,5 +15,7 @@ Update gateway documentation in source/index.md.
 Run middleman webserver:
 
 ```bash
-bundle exec middleman
+docker run --rm -it -p 4567:4567 gateway-api-docs
 ```
+
+Browse http://localhost:4567
