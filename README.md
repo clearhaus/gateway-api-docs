@@ -15,7 +15,7 @@ Update gateway documentation in source/index.md.
 Run middleman webserver:
 
 ```bash
-docker run --rm -it -p 4567:4567 gateway-api-docs
+docker run --rm -it -p 4567:4567 -v /path/to/gateway-api-docs.git:/web gateway-api-docs
 ```
 
 Browse http://localhost:4567
