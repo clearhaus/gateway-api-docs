@@ -431,7 +431,6 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 To refund money to a cardholder's bank account you make a new refund resource.
 You can make multiple refunds for an authorization transaction.
-
 #### Parameters
 
 ````
@@ -452,6 +451,12 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
     Text that will be placed on cardholder's bank statement.
   </dd>
 </dl>
+
+<p class="alert alert-info">
+<b>Notice:</b> A refund does not "free up" what is captured from the
+authorization; that is, after authorizing 10, capturing 5 and refunding 5, you
+can still only capture 5.
+</p>
 
 
 ### Voids
