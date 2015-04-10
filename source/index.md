@@ -382,6 +382,13 @@ POST https://gateway.clearhaus.com/authorizations
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
+  <dt>reference</dt>
+  <dd>
+    [\x20-\x7E]{0,30}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
+    A reference to an external object, such as an order number.
+  </dd>
   <dt>threed_secure[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
   <dt>card[number]</dt>
@@ -497,6 +504,13 @@ POST https://gateway.clearhaus.com/cards/:id/credits
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
+  </dd>
+  <dt>reference</dt>
+  <dd>
+    [\x20-\x7E]{0,30}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>Optional</i> <br />
+    A reference to an external object, such as an order number.
   </dd>
 </dl>
 
