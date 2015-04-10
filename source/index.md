@@ -340,6 +340,20 @@ Example response (snippet):
 }
 ````
 
+<p class="alert alert-info">
+<b>Notice:</b> To get the PARes you need acquirer's 3-D Secure bank
+identification number and an ID for the merchant. In mpi.3dsecure.io, these two
+values are <code class="prettyprint">merchant[acquirer_bin]</code> and <code
+class="prettyprint">merchant[id]</code>, respectively; see  <a
+href="http://docs.3dsecure.io">docs.3dsecure.io</a>.
+<br />
+Clearhaus BIN for MasterCard: <code class="prettyprint">merchant[acquirer_bin] = 526571</code>.
+<br />
+Clearhaus BIN for Visa: Not available yet. Verified by Visa is not yet possible.
+<br />
+Merchant ID: FIXME refer to <code class="prettyprint">/me</code>-ish endpoint.
+</p>
+
 # API Reference
 
 
