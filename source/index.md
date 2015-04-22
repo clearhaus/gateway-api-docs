@@ -37,16 +37,15 @@ HTTP/1.1 401 Not Authorized
 
 ### Signing a request
 
-Introduction... HMAC-SHA2...
+Requests can optionally be signed by a
+[HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code).
+Contact us to know what advantages you get for signing requests.
 
-Signing a request is optionally but requires you to send request as JSON.
+If you sign requests you need to send the request parameters in the `POST` body
+as JSON. The signature is a HMAC of the body and should be provided as a `POST`
+parameter dictionary.
 
-
-```
-signature[sha256] = ...
-signature[signee] = ...
-```
-
+#### Parameters
 
 <dl class="dl-horizontal">
   <dt>signature[sha256]</dt>
@@ -54,6 +53,30 @@ signature[signee] = ...
   <dt>signature[signee]</dt>
   <dd>API key refering to secret used to generate signature.</dd>
 </dl>
+
+You can include one or more request parameters as both `POST` parameters and in
+the `POST` body. If so, they must match.
+
+The JSON for an authorization should look as follows.
+
+```json
+{
+    "url": "https://gateway.clearhaus.com/authorizations",
+    "method": "POST",
+    "auth": {
+        "username": "API-key used for basic auth"
+    },
+    "amount": 2050,
+    "currency": "EUR",
+    "card": {
+        "number": 4111111111111111,
+        "expire_month": 6,
+        "expire_year": 2018,
+        "csc": "012"
+    },
+    "text_on_statement": "This was signed."
+}
+```
 
 ## Resource discovery
 
