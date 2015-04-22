@@ -41,41 +41,26 @@ Requests can optionally be signed by a
 [HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code).
 Contact us to know what advantages you get for signing requests.
 
-If you sign requests you need to send the request parameters in the `POST` body
-as JSON. The signature is a HMAC of the body and should be provided as a `POST`
-parameter dictionary.
+The signature is a HMAC (represented in Hex) of the body. The signee must be
+identified. Both should be provided as headers:
 
-#### Parameters
+```
+X-Clearhaus-Signature: sha256-hex <the signature>
+X-Clearhaus-Signee: api-key <your api-key>
+```
 
-<dl class="dl-horizontal">
-  <dt>signature[sha256]</dt>
-  <dd>HMAC-SHA2 signature for a request.</dd>
-  <dt>signature[signee]</dt>
-  <dd>API key refering to secret used to generate signature.</dd>
-</dl>
+If the API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, signing key is
+`939c2b44-45e6-4387-b8ff-91be296798ab` and the body is
 
-You can include one or more request parameters as both `POST` parameters and in
-the `POST` body. If so, they must match.
+```
+amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+```
 
-The JSON for an authorization should look as follows.
+then the headers should be
 
-```json
-{
-    "url": "https://gateway.clearhaus.com/authorizations",
-    "method": "POST",
-    "auth": {
-        "username": "API-key used for basic auth"
-    },
-    "amount": 2050,
-    "currency": "EUR",
-    "card": {
-        "number": 4111111111111111,
-        "expire_month": 6,
-        "expire_year": 2018,
-        "csc": "012"
-    },
-    "text_on_statement": "This was signed."
-}
+```
+X-Clearhaus-Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
+X-Clearhaus-Signature: sha256-hex fb7cdbfb90c369185b5baaaac73f2c95d085b4e1c844db758512079042e6160d
 ```
 
 ## Resource discovery
