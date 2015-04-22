@@ -35,6 +35,25 @@ You will get this response when you provide an invalid API key:
 HTTP/1.1 401 Not Authorized
 ````
 
+### Signing a request
+
+Introduction... HMAC-SHA2...
+
+Signing a request is optionally but requires you to send request as JSON.
+
+
+```
+signature[sha256] = ...
+signature[signee] = ...
+```
+
+
+<dl class="dl-horizontal">
+  <dt>signature[sha256]</dt>
+  <dd>HMAC-SHA2 signature for a request.</dd>
+  <dt>signature[signee]</dt>
+  <dd>API key refering to secret used to generate signature.</dd>
+</dl>
 
 ## Resource discovery
 
