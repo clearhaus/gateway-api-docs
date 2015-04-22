@@ -45,8 +45,8 @@ The signature is a HMAC (represented in Hex) of the body. The signee must be
 identified. Both should be provided as headers:
 
 ```
-X-Clearhaus-Signature: sha256-hex <the signature>
-X-Clearhaus-Signee: api-key <your api-key>
+Clearhaus-Signature: sha256-hex <the signature>
+Clearhaus-Signee: api-key <your api-key>
 ```
 
 If the API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, signing key is
@@ -59,8 +59,8 @@ amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_mo
 then the headers should be
 
 ```
-X-Clearhaus-Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
-X-Clearhaus-Signature: sha256-hex fb7cdbfb90c369185b5baaaac73f2c95d085b4e1c844db758512079042e6160d
+Clearhaus-Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
+Clearhaus-Signature: sha256-hex fb7cdbfb90c369185b5baaaac73f2c95d085b4e1c844db758512079042e6160d
 ```
 
 ## Resource discovery
