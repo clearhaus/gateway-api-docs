@@ -35,34 +35,6 @@ You will get this response when you provide an invalid API key:
 HTTP/1.1 401 Not Authorized
 ````
 
-### Signing a request
-
-Requests can optionally be signed by a
-[HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code).
-Contact us to know what advantages you get for signing requests.
-
-The signature is a HMAC (represented in Hex) of the body. The signee must be
-identified. Both should be provided as headers:
-
-```
-Clearhaus-Signature: sha256-hex <the signature>
-Clearhaus-Signee: api-key <your api-key>
-```
-
-If the API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, signing key is
-`939c2b44-45e6-4387-b8ff-91be296798ab` and the body is
-
-```
-amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
-```
-
-then the headers should be
-
-```
-Clearhaus-Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
-Clearhaus-Signature: sha256-hex fb7cdbfb90c369185b5baaaac73f2c95d085b4e1c844db758512079042e6160d
-```
-
 ## Resource discovery
 
 The API follows [HATEOAS][HATEOAS] principle of REST which means all resources
@@ -104,6 +76,40 @@ Number  Text
 404     Not Found            
 5xx     Server Error
 ````
+
+## Signing requests
+
+Requests can optionally be signed by a
+[HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code).
+
+The signature is a HMAC of the body and it is represented in Hex. The signee
+must be identified. Both should be provided as headers:
+
+```
+Signee: api-key <your api-key>
+Signature: sha256-hex <the signature>
+```
+
+If the API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing secret is
+`YmMiNHY5cCpzwfchS3hR6IQc74wKhZ` and the body is
+
+```
+amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+```
+
+then the headers should be
+
+```
+Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
+Signature: sha256-hex 846f88620bea531ed813da4c30bd2c5a9aded414d1b59c9f1de6f25e049f1c05
+```
+
+In Ruby, you can calculate the HMAC-SHA-256 Hex digest using
+
+```
+OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), secret, data)
+```
+
 
 
 # Examples
