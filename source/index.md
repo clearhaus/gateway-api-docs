@@ -83,14 +83,13 @@ Requests can optionally be signed by a
 [HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code).
 
 The signature is a HMAC of the body and it is represented in Hex. The signee
-must be identified. Both should be provided as headers:
+must be identified by the signing API-key. Both should be provided as headers:
 
 ```
-Signee: api-key <your api-key>
-Signature: sha256-hex <the signature>
+Signature: <the signing api-key> sha256-hex <the signature>
 ```
 
-If the API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing secret is
+If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing secret is
 `YmMiNHY5cCpzwfchS3hR6IQc74wKhZ` and the body is
 
 ```
@@ -100,8 +99,7 @@ amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_mo
 then the headers should be
 
 ```
-Signee: api-key 4390aec7-f76a-4c2f-8597-c87c2d06cb4f
-Signature: sha256-hex 846f88620bea531ed813da4c30bd2c5a9aded414d1b59c9f1de6f25e049f1c05
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f sha256-hex 846f88620bea531ed813da4c30bd2c5a9aded414d1b59c9f1de6f25e049f1c05
 ```
 
 In Ruby, you can calculate the HMAC-SHA-256 Hex digest using
