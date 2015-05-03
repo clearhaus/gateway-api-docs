@@ -117,6 +117,10 @@ then the `Signature` header should be
 Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex af30dfbca8ae965accde234e49f93ced184feb612faf440d12a3993bcce747b729069241dd1b6e68420607301d737c6828289b9889c38727a6cc853dbfcae103
 ```
 
+<p class="alert alert-info">
+<b>Notice:</b> If the signature header is included, it should hold a correct signature, otherwise the transaction will fail.
+</p>
+
 In Ruby, you can calculate the RS256 Hex signature using
 
 ```
