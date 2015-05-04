@@ -35,7 +35,6 @@ You will get this response when you provide an invalid API key:
 HTTP/1.1 401 Not Authorized
 ````
 
-
 ## Resource discovery
 
 The API follows [HATEOAS][HATEOAS] principle of REST which means all resources
@@ -77,6 +76,57 @@ Number  Text
 404     Not Found            
 5xx     Server Error
 ````
+
+## Signing requests
+
+Requests can optionally be signed.
+
+The signature is an RSASSA-PKCS1-v1_5 signature of the body represented in Hex.
+The signee must be identified by the signing API-key. Both should be provided
+in a `Signature` header together with `RS256-hex` identifying the signing
+algorithm:
+
+```
+Signature: <the signing api-key> RS256-hex <the signature>
+```
+
+If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
+private key (in PEM format) is
+
+```
+-----BEGIN RSA PRIVATE KEY-----
+MIIBOwIBAAJBALYK0zmwuYkH3YWcFNLLddx5cwDxEY7Gi1xITuQqRrU4yD3uSw+J
+WYKknb4Tbndb6iEHY+e6gIGD+49TojnNeIUCAwEAAQJARyuYRRe4kcBHdPL+mSL+
+Y0IAGkAlUyKAXYXPghidKD/v/oLrFaZWALGM2clv6UoYYpPnInSgbcud4sTcfeUm
+QQIhAN2JZ2qv0WGcbIopBpwpQ5jDxMGVkmkVVUEWWABGF8+pAiEA0lySxTELZm8b
+Gx9UEDRghN+Qv/OuIKFldu1Ba4f8W30CIQCaQFIBtunTTVdF28r+cLzgYW9eWwbW
+pEP4TdZ4WlW6AQIhAMDCTUdeUpjxlH/87BXROORozAXocBW8bvJUI486U5ctAiAd
+InviQqJd1KTGRDmWIGrE5YACVmW2JSszD9t5VKxkAA==
+-----END RSA PRIVATE KEY-----
+```
+
+and the body is
+
+```
+amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+```
+
+then the `Signature` header should be
+
+```
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex af30dfbca8ae965accde234e49f93ced184feb612faf440d12a3993bcce747b729069241dd1b6e68420607301d737c6828289b9889c38727a6cc853dbfcae103
+```
+
+<p class="alert alert-info">
+<b>Notice:</b> If the signature header is included, it should hold a correct signature, otherwise the transaction will fail.
+</p>
+
+In Ruby, you can calculate the RS256 Hex signature using
+
+```
+key = OpenSSL::PKey::RSA.new(key_in_pem_string)
+key.sign(OpenSSL::Digest.new('sha256'), body).unpack('H*').first
+```
 
 
 # Examples
