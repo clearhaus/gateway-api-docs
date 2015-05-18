@@ -81,14 +81,48 @@ Number  Text
 
 Requests can optionally be signed.
 
-The signature is an RSASSA-PKCS1-v1_5 signature of the body represented in Hex.
-The signee must be identified by the signing API-key. Both should be provided
-in a `Signature` header together with `RS256-hex` identifying the signing
-algorithm:
+The signature is an RSA or HMAC signature represented in Hex of the HTTP body.
+The signee must be identified by the signing API-key. Both should be provided in
+a `Signature` header together with either `RS256-hex` or `HS256-hex` identifying
+the signing algorithm:
 
 ```
-Signature: <the signing api-key> RS256-hex <the signature>
+Signature: <signing api-key> (RS256-hex|HS256-hex) <signature>
 ```
+
+<p class="alert alert-info">
+<b>Notice:</b> If the signature header is included, it should hold a correct
+signature, otherwise the transaction will fail.
+</p>
+
+### HMAC signature
+
+The HMAC is a HMAC SHA256 of the body. It is represented in Hex.
+
+If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the HMAC
+secret is `IcOkgY2gKuAjbHpsWRNyUmobkwcpN9` and the body is
+
+```
+amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+```
+
+then the `Signature` header should be
+
+```
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f HS256-hex 6e14bb095a033f4405065cee4b3fcdd464214e03c4016a7020c3fef6d74a1a1b
+```
+
+In Ruby, you can calculate the HS256 Hex signature using
+
+```
+OpenSSL::HMAC.hexdigest('sha256', hmac_secret, body)
+```
+
+
+### RSA signature
+
+The RSA signature is an RSASSA-PKCS1-v1_5 signature of the body. It is
+represented in Hex.
 
 If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
 private key (in PEM format) is
@@ -116,10 +150,6 @@ then the `Signature` header should be
 ```
 Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex af30dfbca8ae965accde234e49f93ced184feb612faf440d12a3993bcce747b729069241dd1b6e68420607301d737c6828289b9889c38727a6cc853dbfcae103
 ```
-
-<p class="alert alert-info">
-<b>Notice:</b> If the signature header is included, it should hold a correct signature, otherwise the transaction will fail.
-</p>
 
 In Ruby, you can calculate the RS256 Hex signature using
 
