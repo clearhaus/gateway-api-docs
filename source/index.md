@@ -81,7 +81,8 @@ Number  Text
 
 Requests can optionally be signed.
 
-The signature is an RSA or HMAC signature represented in Hex of the HTTP body.
+The signature is an RSA signature or HMAC of the HTTP body; it is represented in
+Hex.
 The signee must be identified by the signing API-key. Both should be provided in
 a `Signature` header together with either `RS256-hex` or `HS256-hex` identifying
 the signing algorithm:
