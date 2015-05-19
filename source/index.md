@@ -110,7 +110,7 @@ amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_mo
 then the `Signature` header should be
 
 ```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f HS256-hex 6e14bb095a033f4405065cee4b3fcdd464214e03c4016a7020c3fef6d74a1a1b
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f HS256-hex 8e82349cd529ac4a1de03d9439506a439b20e734588ac3788e0c49f40a2a29c1
 ```
 
 In Ruby, you can calculate the HS256 Hex signature using
