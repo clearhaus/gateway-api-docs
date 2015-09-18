@@ -7,7 +7,7 @@ title: Clearhaus Transaction API Documentation
 You need an API key before you can interact with our API. Send an E-mail to <a href="mailto:support@clearhaus.com">support@clearhaus.com</a> to request an API key.
 
 <p class="alert alert-danger">
-API keys comes with many privileges so keep them secret.
+API keys come with many privileges so keep them secret.
 </p>
 
 ## API endpoint
@@ -343,7 +343,7 @@ Example response (snippet):
 
 ## Recurring payments
 
-Recurring payments enables you to repeatedly charge cardholders without having
+Recurring payments enable you to repeatedly charge cardholders without having
 them to provide card information for subsequent payments.
 
 ### Subscription concept
@@ -388,7 +388,7 @@ by a capture transaction.
 ## 3-D Secure
 
 3-D Secure is a protocol designed to improve security for online transactions.
-Before you continue please read more about this protocol at [3Dsecure.io](http://docs.3dsecure.io)
+Before you continue please read more about this protocol at [3Dsecure.io](http://docs.3dsecure.io).
 
 ### Secure transactions
 
