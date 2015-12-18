@@ -647,8 +647,7 @@ and will respond with details for the account, including
   <dt>acquirer</dt>
   <dd>Used for 3-D Secure.</dd>
   <dt>text_on_statement</dt>
-  <dd>The default text_on_statement when nothing is sent for neither the
-  authorization nor the capture.</dd>
+  <dd>The default text_on_statement.</dd>
 </dl>
 
 
