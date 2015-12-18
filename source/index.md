@@ -434,6 +434,7 @@ Our API offers six different resources:
 - [Voids](#voids)
 - [Credits](#credits)
 - [Cards](#cards)
+- [Account](#account)
 
 
 ### Authorizations
@@ -627,6 +628,28 @@ authorization transaction and you supply card details.</p>
 
 <p class="alert alert-warning"> <b>Notice:</b> A "zero amount"
 authorization is made when POSTing to this endpoint.</p>
+
+### Account
+
+The account resource is called only as
+
+````
+GET https://gateway.clearhaus.com/account
+````
+
+and will respond with details for the account, including
+
+<dl class="dl-horizontal">
+  <dt>merchant_id</dt>
+  <dd>Used for 3-D Secure and also for reference when talking to our support
+  staff. For 3-D Secure it is important to represent the number with the leading
+  zeros.</dd>
+  <dt>acquirer</dt>
+  <dd>Used for 3-D Secure.</dd>
+  <dt>text_on_statement</dt>
+  <dd>The default text_on_statement.</dd>
+</dl>
+
 
 ## Transaction status codes
 
