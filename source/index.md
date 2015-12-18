@@ -81,44 +81,18 @@ Number  Text
 
 Requests can optionally be signed.
 
-The signature is an RSA signature or HMAC of the HTTP body; it is represented in
-Hex.
+The signature is an RSA signature of the HTTP body; it is represented in Hex.
 The signee must be identified by the signing API-key. Both should be provided in
-a `Signature` header together with either `RS256-hex` or `HS256-hex` identifying
-the signing algorithm:
+a `Signature` header together with `RS256-hex`:
 
 ```
-Signature: <signing api-key> (RS256-hex|HS256-hex) <signature>
+Signature: <signing api-key> RS256-hex <signature>
 ```
 
 <p class="alert alert-info">
 <b>Notice:</b> If the signature header is included, it should hold a correct
 signature, otherwise the transaction will fail.
 </p>
-
-### HMAC signature
-
-The HMAC is a HMAC SHA256 of the body. It is represented in Hex.
-
-If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the HMAC
-secret is `IcOkgY2gKuAjbHpsWRNyUmobkwcpN9` and the body is
-
-```
-amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
-```
-
-then the `Signature` header should be
-
-```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f HS256-hex 8e82349cd529ac4a1de03d9439506a439b20e734588ac3788e0c49f40a2a29c1
-```
-
-In Ruby, you can calculate the HS256 Hex signature using
-
-```
-OpenSSL::HMAC.hexdigest('sha256', hmac_secret, body)
-```
-
 
 ### RSA signature
 
