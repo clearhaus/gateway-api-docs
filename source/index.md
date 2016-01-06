@@ -395,6 +395,31 @@ Example response (snippet):
 }
 ````
 
+
+## Fetch account information
+
+Some basic account information can be fetched:
+
+````shell
+curl https://gateway.test.clearhaus.com/account \
+     -u <your-api-key>:
+````
+
+Example response (snippet):
+
+````json
+{
+    "merchant_id": "000000003000001",
+    "name": "Merchant Ltd.",
+    "text_on_statement": "merchant.com",
+    "country": "GBR",
+    "mcc": "1111"
+}
+````
+
+See [account resource](#account) documentation for further details.
+
+
 # API Reference
 
 
@@ -605,23 +630,39 @@ authorization is made when POSTing to this endpoint.</p>
 
 ### Account
 
-The account resource is called only as
+The account resource holds basic merchant account information. Only `HTTP GET`
+is supported for this endpoint.
 
 ````
-GET https://gateway.clearhaus.com/account
+https://gateway.clearhaus.com/account
 ````
 
-and will respond with details for the account, including
+
+#### Response parameters
 
 <dl class="dl-horizontal">
   <dt>merchant_id</dt>
-  <dd>Used for 3-D Secure and also for reference when talking to our support
-  staff. For 3-D Secure it is important to represent the number with the leading
-  zeros.</dd>
+  <dd>[0-9]{15} <br />Used for 3-D Secure and also for reference when talking
+  to our support staff. For 3-D Secure it is important to represent this number
+  with leading zeros.</dd>
+  <dt>text_on_statement</dt>
+  <dd>
+    [\x20-\x7E]{0,22} 
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    The default text_on_statement.
+  </dd>
+  <dt>name</dt>
+  <dd>
+    [\x20-\x7E]{0,20} 
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    Merchant company name.
+  </dd>
+  <dt>country</dt>
+  <dd>[A-Z]{2} <br /> ISO 3166-1 3-letter country code for merchant company.</dd>
+  <dt>mcc</dt>
+  <dd>[0-9]{4} <br /> Merchant category code.</dd>
   <dt>acquirer</dt>
   <dd>Used for 3-D Secure.</dd>
-  <dt>text_on_statement</dt>
-  <dd>The default text_on_statement.</dd>
 </dl>
 
 
@@ -743,6 +784,9 @@ https://gateway.clearhaus.com/cards/:id/credits
 # cards
 https://gateway.clearhaus.com/cards
 https://gateway.clearhaus.com/cards/:id
+
+# account
+https://gateway.clearhaus.com/account
 ````
 
 
