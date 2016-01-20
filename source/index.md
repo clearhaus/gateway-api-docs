@@ -676,6 +676,7 @@ Status     | `code` |  Meaning
 Approved   |  20000 |  Approved
 Declined   |  40000 |  General input error
            |  40110 |  Invalid card number
+           |  40111 |  Unsupported card scheme
            |  40120 |  Invalid CSC
            |  40130 |  Invalid expire date
            |  40135 |  Card expired
