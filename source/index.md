@@ -724,35 +724,6 @@ You can specify a status `code` as transaction amount to trigger a specific
 error when using declined test card numbers.
 
 
-## Pagination
-
-Resource collections are automatically paginated with most recent resource appearing first.
-
-Example:
-
-````
-GET https://gateway.clearhaus.com/authorizations/:id/captures?page=2&per_page=10
-````
-
-Example response:
-
-````json
-{
-    "count": 23,
-    "_embedded": {
-        "captures": [ .... ]
-    },
-    "_links": {
-        "self": { "href": "/authorizations/:id/captures?page=2&per_page=10" },
-        "next": { "href": "/authorizations/:id/captures?page=3&per_page=10" },
-        "prev": { "href": "/authorizations/:id/captures?page=1&per_page=10" }
-    }
-}
-````
-
-The `per_page` parameter is automatically set to 10 when undefined and can maximum be 100.
-
-
 ## Endpoint summary
 
 
