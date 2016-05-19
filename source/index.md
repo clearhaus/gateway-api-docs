@@ -731,21 +731,21 @@ Resource collections are automatically paginated with most recent resource appea
 Example:
 
 ````
-GET https://gateway.clearhaus.com/refunds?page=2&per_page=10
+GET https://gateway.clearhaus.com/authorizations/:id/captures?page=2&per_page=10
 ````
 
 Example response:
 
 ````json
 {
-    "count": 876,
+    "count": 23,
     "_embedded": {
-        "refunds": [ .... ]
+        "captures": [ .... ]
     },
     "_links": {
-        "self": { "href": "/refunds?page=2&per_page=10" },
-        "next": { "href": "/refunds?page=3&per_page=10" },
-        "prev": { "href": "/refunds?page=1&per_page=10" }
+        "self": { "href": "/authorizations/:id/captures?page=2&per_page=10" },
+        "next": { "href": "/authorizations/:id/captures?page=3&per_page=10" },
+        "prev": { "href": "/authorizations/:id/captures?page=1&per_page=10" }
     }
 }
 ````
