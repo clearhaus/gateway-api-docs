@@ -49,10 +49,6 @@ curl https://gateway.test.clearhaus.com \
 {
     "_links": {
         "authorizations": { "href": "/authorizations" },
-        "captures":       { "href": "/captures" },
-        "refunds":        { "href": "/refunds" },
-        "voids":          { "href": "/voids" },
-        "credits":        { "href": "/credits" },
         "cards":          { "href": "/cards" }
     }
 }
@@ -734,22 +730,18 @@ https://gateway.clearhaus.com/authorizations/:id
 https://gateway.clearhaus.com/cards/:id/authorizations
 
 # captures
-https://gateway.clearhaus.com/captures
-https://gateway.clearhaus.com/captures/:id/
+https://gateway.clearhaus.com/captures/:id
 https://gateway.clearhaus.com/authorizations/:id/captures
 
 # voids
-https://gateway.clearhaus.com/voids
 https://gateway.clearhaus.com/voids/:id
 https://gateway.clearhaus.com/authorizations/:id/voids
 
 # refunds
-https://gateway.clearhaus.com/refunds
 https://gateway.clearhaus.com/refunds/:id
 https://gateway.clearhaus.com/authorizations/:id/refunds
 
 # credits
-https://gateway.clearhaus.com/credits
 https://gateway.clearhaus.com/credits/:id
 https://gateway.clearhaus.com/cards/:id/credits
 
