@@ -49,11 +49,8 @@ curl https://gateway.test.clearhaus.com \
 {
     "_links": {
         "authorizations": { "href": "/authorizations" },
-        "captures":       { "href": "/captures" },
-        "refunds":        { "href": "/refunds" },
-        "voids":          { "href": "/voids" },
-        "credits":        { "href": "/credits" },
-        "cards":          { "href": "/cards" }
+        "cards":          { "href": "/cards" },
+        "account":        { "href": "/account" }
     }
 }
 ```
@@ -724,35 +721,6 @@ You can specify a status `code` as transaction amount to trigger a specific
 error when using declined test card numbers.
 
 
-## Pagination
-
-Resource collections are automatically paginated with most recent resource appearing first.
-
-Example:
-
-````
-GET https://gateway.clearhaus.com/refunds?page=2&per_page=10
-````
-
-Example response:
-
-````json
-{
-    "count": 876,
-    "_embedded": {
-        "refunds": [ .... ]
-    },
-    "_links": {
-        "self": { "href": "/refunds?page=2&per_page=10" },
-        "next": { "href": "/refunds?page=3&per_page=10" },
-        "prev": { "href": "/refunds?page=1&per_page=10" }
-    }
-}
-````
-
-The `per_page` parameter is automatically set to 10 when undefined and can maximum be 100.
-
-
 ## Endpoint summary
 
 
@@ -763,22 +731,18 @@ https://gateway.clearhaus.com/authorizations/:id
 https://gateway.clearhaus.com/cards/:id/authorizations
 
 # captures
-https://gateway.clearhaus.com/captures
-https://gateway.clearhaus.com/captures/:id/
+https://gateway.clearhaus.com/captures/:id
 https://gateway.clearhaus.com/authorizations/:id/captures
 
 # voids
-https://gateway.clearhaus.com/voids
 https://gateway.clearhaus.com/voids/:id
 https://gateway.clearhaus.com/authorizations/:id/voids
 
 # refunds
-https://gateway.clearhaus.com/refunds
 https://gateway.clearhaus.com/refunds/:id
 https://gateway.clearhaus.com/authorizations/:id/refunds
 
 # credits
-https://gateway.clearhaus.com/credits
 https://gateway.clearhaus.com/credits/:id
 https://gateway.clearhaus.com/cards/:id/credits
 
