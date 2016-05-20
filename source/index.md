@@ -49,7 +49,8 @@ curl https://gateway.test.clearhaus.com \
 {
     "_links": {
         "authorizations": { "href": "/authorizations" },
-        "cards":          { "href": "/cards" }
+        "cards":          { "href": "/cards" },
+        "account":        { "href": "/account" }
     }
 }
 ```
