@@ -459,7 +459,7 @@ POST https://gateway.clearhaus.com/authorizations
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. <br />
-    An empty string is allowed but will not be used.
+    An empty string is allowed but not used.
   </dd>
   <dt>reference</dt>
   <dd>
