@@ -708,7 +708,8 @@ error message.
 
 ## Test card numbers
 
-The following test card numbers can be used to perform test transactions:
+The following test card numbers can be used to perform test transactions on
+`gateway.test.clearhaus.com`:
 
 Card scheme | Card number      | Note     |
 ------------| ---------------- | -------- |
