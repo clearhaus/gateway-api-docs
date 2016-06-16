@@ -511,6 +511,9 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
 </dl>
 
+<p class="alert alert-info">
+<b>Notice:</b> A capture cannot be made if the authorization is 180 days old.
+</p>
 
 ### Refunds
 
@@ -543,6 +546,10 @@ authorization; that is, after authorizing 10, capturing 5 and refunding 5, you
 can still only capture 5.
 </p>
 
+<p class="alert alert-info">
+<b>Notice:</b> A refund cannot be made if the last capture is 180 days old.
+</p>
+
 
 ### Voids
 
@@ -557,6 +564,10 @@ POST https://gateway.clearhaus.com/authorizations/:id/voids
 ````
 
 No parameters are needed to make a new void transaction.
+
+<p class="alert alert-info">
+<b>Notice:</b> A void cannot be made if the authorization is 30 days old.
+</p>
 
 
 ### Credits
