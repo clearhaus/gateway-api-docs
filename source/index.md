@@ -719,18 +719,24 @@ error message.
 
 ## Test card numbers
 
-The following test card numbers can be used to perform test transactions on
-`gateway.test.clearhaus.com`:
+Any card number within the following
+[BIN ranges](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29)
+can be used to perform test transactions on `gateway.test.clearhaus.com`:
 
-Card scheme | Card number      | Note     |
-------------| ---------------- | -------- |
-Visa        | 4111111111111111 | Approved |
-Visa        | 4200000000000000 | Declined |
-MasterCard  | 5500000000000004 | Approved |
-MasterCard  | 5555555555554444 | Declined |
+Range           | Card scheme |
+--------------- | ----------- |
+222100 - 272099 | MasterCard  |
+400000 - 499999 | Visa        |
+500000 - 699999 | MasterCard  |
+
+<p class="alert alert-danger">
+Please use PANs that are **not**
+[LUHN compliant](https://en.wikipedia.org/wiki/Luhn_algorithm) or one of the
+following special PANs: 2221000000000009, 4111111111111111, 5500000000000004.
+</p>
 
 You can specify a status `code` as transaction amount to trigger a specific
-error when using declined test card numbers.
+error.
 
 
 ## Endpoint summary
