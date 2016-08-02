@@ -732,6 +732,11 @@ MasterCard  | 5555555555554444 | Declined |
 You can specify a status `code` as transaction amount to trigger a specific
 error when using declined test card numbers.
 
+Some status codes can be accompanied by different status `message`s. By the test
+system, these may be sent randomly by the "base" status code (e.g. 40200) or
+(some) may be triggered deterministically by incrementing the amount (e.g.
+40201, 40202, etc.).
+
 
 ## Endpoint summary
 
