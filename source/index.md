@@ -271,8 +271,11 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2014-07-09T12:14:31+00:00",
+    "bin": "550000",
     "last4": "0004",
+    "country": "US",
     "scheme": "mastercard",
+    "type": "credit",
     "_links": {
         "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
         "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
@@ -635,6 +638,21 @@ authorization transaction and you supply card details.</p>
 
 <p class="alert alert-warning"> <b>Notice:</b> A "zero amount"
 authorization is made when POSTing to this endpoint.</p>
+
+#### Response parameters
+
+<dl class="dl-horizontal">
+  <dt>card[bin]</dt>
+  <dd>[0-9]{6} <br /> First 6 digits of card number.</dd>
+  <dt>card[last4]</dt>
+  <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
+  <dt>card[scheme]</dt>
+  <dd><code>visa</code> or <code>mastercard</code></dd>
+  <dt>card[type]</dt>
+  <dd><code>debit</code> or <code>credit</code></dd>
+  <dt>card[country]</dt>
+  <dd>[A-Z]{2} <br /> ISO 3166-1 2-letter country code for issuing bank.</dd>
+</dl>
 
 ### Account
 
