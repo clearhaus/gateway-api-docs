@@ -484,8 +484,8 @@ POST https://gateway.clearhaus.com/authorizations
 
 <p class="alert alert-info">
 <b>Notice:</b> The card dictionary is not required when making an authorization
-based on a card resource. However, `card[csc]` should be populated when CSC is
-available.
+based on a card resource. However, <code>card[csc]</code> should be populated
+when CSC is available.
 </p>
 
 
