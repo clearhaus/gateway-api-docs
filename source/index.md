@@ -649,11 +649,14 @@ authorization is made when POSTing to this endpoint.</p>
   <dt>card[last4]</dt>
   <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
   <dt>card[scheme]</dt>
-  <dd><code>visa</code> or <code>mastercard</code></dd>
+  <dd><code>visa</code>, <code>mastercard</code> or <code>unknown</code></dd>
   <dt>card[type]</dt>
-  <dd><code>debit</code> or <code>credit</code></dd>
+  <dd><code>debit</code> or <code>credit</code>
+  <br /><i>Omittable</i></dd>
   <dt>card[country]</dt>
-  <dd>[A-Z]{2} <br /> ISO 3166-1 2-letter country code for issuing bank.</dd>
+  <dd>[A-Z]{2}
+  <br /><i>Omittable</i>
+  <br /> ISO 3166-1 2-letter country code for issuing bank.</dd>
 </dl>
 
 ### Account
