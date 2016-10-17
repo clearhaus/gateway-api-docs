@@ -731,11 +731,27 @@ A status message is included in every response when you make a new transaction.
 The status message can be used for debugging and may include a more specific
 error message.
 
+Examples:
+
 ````json
 {
-    "status" : {
+    "status": {
         "code": 40000,
         "message": "parameter 'amount' is required"
+    }
+}
+
+{
+    "status": {
+        "code": 40200,
+        "message": "amount > 100 EUR"
+    }
+}
+
+{
+    "status": {
+        "code": 40200,
+        "message": "not (fully 3dsecure or subsequent recurring)"
     }
 }
 ````
