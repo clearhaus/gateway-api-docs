@@ -182,8 +182,8 @@ merchant bank account you will have to make a capture transaction.
 <b>Notice:</b> Some issuers will approve authorizations although the CSC did not
 match; in this case the <code>status</code> <code>code</code> will be
 <code>20000</code> but <code>csc</code> <code>matches</code> will be
-<code>false</code>. Please be aware that (per merchant) rules to disallow
-captures for such authorizations may be in place.
+<code>false</code>. Please be aware that rules to disallow captures for such
+authorizations may be in place for a merchant.
 </p>
 
 
