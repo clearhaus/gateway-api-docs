@@ -271,7 +271,6 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2014-07-09T12:14:31+00:00",
-    "bin": "550000",
     "last4": "0004",
     "country": "US",
     "scheme": "mastercard",
