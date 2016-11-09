@@ -288,6 +288,10 @@ Example response (snippet):
     "country": "US",
     "scheme": "mastercard",
     "type": "credit",
+    "csc": {
+        "present": true,
+        "matches": true
+    },
     "_links": {
         "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
         "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
