@@ -323,9 +323,9 @@ them to provide card information for subsequent payments.
 ### Subscription concept
 
 Many payment gateways offer a subscription concept where a card can be
-subscribed for recurring payments. This is support in our API using card tokens.
-Card tokens can be created [explicitly](#tokenize-a-card) or implicitly when the
-first [authorization is created](#reserve-money).
+subscribed for recurring payments. This is supported in our API using card
+tokens. Card tokens can be created [explicitly](#tokenize-a-card) or implicitly
+when the first [authorization is created](#reserve-money).
 
 Actual recurring transactions must be made by
 [creating an authorization](#authorizations).
