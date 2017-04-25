@@ -716,7 +716,7 @@ Declined   |  40000 |  General input error
            |  40130 |  Invalid expire date
            |  40135 |  Card expired
            |  40140 |  Invalid currency
-           |  40145 |  Invalid text on statement
+           |  40150 |  Invalid text on statement
            |  40200 |  Clearhaus rule violation
            |  40300 |  3-D Secure problem
            |  40310 |  3-D Secure authentication failure
