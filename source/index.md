@@ -544,7 +544,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
-    Text that will be placed on cardholder's bank statement.
+    Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
 
