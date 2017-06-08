@@ -315,30 +315,76 @@ Example response (snippet):
 ````
 
 
-## Recurring payments
+##  Subscription concept
 
-Recurring payments enable you to repeatedly charge cardholders without having
+Subscription payments enable you to repeatedly charge cardholders without having
 them to provide card information for subsequent payments.
 
-### Subscription concept
+Subscription paymests also has an `update` capability, that allows the subsequent
+paymenst to continue eventhough the cardholder changes card information.
+Since card information can change on a subscription, card details are only
+required on at initialization. From then on the subscription resource will
+manage card data and update it appropiately, if an `update` is issues. See 
+ [Enqueue subscription updates](#enqueue-subscription-update) for more details.
 
-Many payment gateways offer a subscription concept where a card can be
-subscribed for recurring payments. This is supported by our [card
-resource](#cards) concept.
+### Creating a subscription
 
-A payment card is subscribed simply by [making a card resource](#tokenize-a-card).
+Subscriptions require aditional parameters compared to authurization, but
+these information will be stored and reused for next subsequent payment.
 
+Creating a subscription does not initiate any authurization or
+capture in itself, that is a seperate step.
 
-### Repeatedly reserve money
-
-A recurring payment is made by making an authorization based on a card
-resource and setting `recurring` parameter to `true`:
+A subsciption requires setting an `interval` and `ss_id` in addition to the
+parameters of an authorization.
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations \
-     -u <your-api-key>:  \
-     -d "amount=2050"    \
-     -d "currency=EUR"   \
+curl -X POST https://gateway.test.clearhaus.com/subscriptions
+     -u <your-api-key>: \
+     -d "amount=2050"   \
+     -d "currency=EUR"  \
+     -d "card[number]=4111111111111111" \
+     -d "card[expire_month]=06"         \
+     -d "card[expire_year]=2018"        \
+     -d "card[csc]=123"                 \
+     -d "interval=weekly"               \ 
+     -d "ss_id=<our-own-subscription-id>"
+````
+
+Example response (snippet):
+
+````json
+{
+   "id": "0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4",
+   "status": {
+       "code": 20100
+   },
+   "processed_at": "2014-07-09T09:53:41+00:00",
+   "_links": {
+       "subscriptions": { "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4" }
+   }
+}
+````
+
+A subscription with the above `id` has been created. To reserve money on the
+above cardholders bank account, make a authorization on this subscription.
+
+`interval` denotes how often the cardholder can expect this subscription to
+change the supplied `amount`.
+`ss_id` is a subscription id you pick to identify this subscription toward the
+cardholder.
+
+
+### Reserve money on subscription
+
+The following will reserve EUR 20.50 (2050 cents) on a pre-existing
+subscription:
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations \
+     -u <your-api-key>: \
+     -d "amount=2050"   \
+     -d "currency=EUR"  \
      -d "recurring=true"
 ````
 
@@ -346,18 +392,146 @@ Example response (snippet):
 
 ````json
 {
-   "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
-   "status": {
-       "code": 20000
-   },
-   "processed_at": "2014-07-09T13:33:44+00:00",
-   "recurring": true
+    "id": "29503c33-837b-4626-9feb-df4769b3ac6c",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T09:53:41+00:00",
+    "_links": {
+        "captures": { "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c/captures" 
+    }
 }
 ````
 
-Above can be repeated whenever you need to reserve money and must be followed
-by a capture transaction.
 
+Note that `card` parameters are not needed, because they are stored on the
+subscription object.
+
+The parameters `amount` and `currency` are optinal, and will fall-back on the
+`amount` and `currency` set on the subscription if not supplied.
+
+Subsequent payments on a subscription can vary from time to time or the initial
+payment can be different due to setup-fee or sign-up special offer.
+But in general the amount and currency charged on a subscription should reflex
+the `amount`/`currency` supplied when the subscription was created.
+
+The actual withdraw of money is done through a subscription capture.
+
+### Withdraw money on subscription
+
+The following will make a capture transaction and withdraw what you have reserved on a subscription.
+
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c/capture \
+     -u <your-api-key>:
+````
+Example response (snippet):
+
+````json
+{
+    "id": "0ce9c953-a680-47fe-9693-da944f7a4d09",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T11:47:28+00:00",
+    "amount": 1000,
+    "_links": {
+        "authorization": {
+            "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c"
+        },
+        "refunds": {
+            "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c/refunds" 
+        }
+    }
+}
+````
+
+### Refund to cardholder on subscription
+
+Like a regular refund, you can refund all money or a partial amount of what
+you have withdrawn from cardholder's bank account:
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c/refunds \
+     -u <your-api-key>: \
+     -d "amount=500"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "5a32b771-6066-4fe9-97db-fe83def91fe4",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2014-07-09T11:57:58+00:00",
+    "amount": 500,
+    "_links": {
+        "authorization": { "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/authorizations/29503c33-837b-4626-9feb-df4769b3ac6c" }
+    }
+}
+````
+
+### Enqueue subscription update
+
+Subscription resources can fetch the newest card information of the customer to
+ensure the subscription transactions will continue even if the physical card
+gets replaced. 
+
+Update can be called on any subscription
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/updates
+     -u <your-api-key>:
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "9927f53b-8a7a-408e-a771-cf9fa9c7a313",
+    "status": {
+        "code": 20100
+    },
+    "processed_at": "2014-07-09T11:57:58+00:00",
+    "update_complete_at": "2014-07-10T06:00:00+00:00",
+    "_links": {
+        "updates": { "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/updates/9927f53b-8a7a-408e-a771-cf9fa9c7a313" }
+    }
+}
+````
+
+### Get subscription update result
+
+Updates can take up to 24 hours to complete. The above resource will contain
+the update result after the mentioned time in `update_completed_at`.
+The response will be removed after 30 days.
+
+````shell
+curl https://gateway.test.clearhaus.com/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/updates/9927f53b-8a7a-408e-a771-cf9fa9c7a313
+     -u <your-api-key>:
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "9927f53b-8a7a-408e-a771-cf9fa9c7a313",
+    "status": {
+        "code": 20000
+    },
+    "completed_at": "2014-07-10T06:00:00+00:00",
+    "update_status": "card information updated",
+    "_links": {
+        "updates": { "href": "/subscriptions/0bc7cf8e-d4e8-47e5-9f89-726f65e17ef4/" }
+    }
+}
+````
+
+On next subsequent transaction on this subscription the new card infomation
+will be used.
 
 ## 3-D Secure
 
