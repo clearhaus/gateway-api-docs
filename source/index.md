@@ -451,7 +451,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>amount</dt>
   <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
+  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217; <a href="#clp-and-ugx-exponent-change">CLP and UGX changes on 2017-10-13</a>.)</dd>
   <dt>ip</dt>
   <dd>[0-9\.a-fA-F:]{3,39} <br /> <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).</dd>
   <dt>recurring</dt>
@@ -591,7 +591,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dt>amount</dt>
   <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
+  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217; <a href="#clp-and-ugx-exponent-change">CLP and UGX changes on 2017-10-13</a>.)</dd>
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
@@ -804,6 +804,17 @@ https://gateway.clearhaus.com/cards/:id
 # account
 https://gateway.clearhaus.com/account
 ````
+
+## Changes
+
+### CLP and UGX exponent change
+
+CLP and UGX changes from exponent 2 to exponent 2.
+
+Between 2017-10-12T19:00:00+00:00 and 2017-10-15T19:00:00+00:00 (both inclusive)
+it will not be possible to process transactions in neither CLP nor UGX; before
+this timespan, the exponent is 2, after the timespan, the exponent is 0.
+
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
