@@ -807,13 +807,13 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
-### CLP and UGX exponent change
+### CLP and UGX exponent changes
 
-CLP and UGX changes from exponent 2 to exponent 2.
+CLP and UGX changes from exponent 2 to exponent 0.
 
-Between 2017-10-12T19:00:00+00:00 and 2017-10-15T19:00:00+00:00 (both inclusive)
-it will not be possible to process transactions in neither CLP nor UGX; before
-this timespan, the exponent is 2, after the timespan, the exponent is 0.
+Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
+and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
+exponent is 2; after the timespan, the exponent is 0.
 
 
 
