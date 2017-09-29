@@ -643,8 +643,6 @@ authorization is made when POSTing to this endpoint.</p>
 #### Response parameters
 
 <dl class="dl-horizontal">
-  <dt>card[bin]</dt>
-  <dd>[0-9]{6} <br /> First 6 digits of card number.</dd>
   <dt>card[last4]</dt>
   <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
   <dt>card[scheme]</dt>
