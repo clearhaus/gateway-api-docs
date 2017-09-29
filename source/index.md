@@ -458,14 +458,14 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22}
+    [\x20-\x7E]{2,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
   <dt>reference</dt>
   <dd>
-    [\x20-\x7E]{0,30}
+    [\x20-\x7E]{1,30}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
@@ -509,7 +509,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{2,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
@@ -538,7 +538,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   </dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22}
+    [\x20-\x7E]{2,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
@@ -594,14 +594,14 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22}
+    [\x20-\x7E]{2,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
   <dt>reference</dt>
   <dd>
-    [\x20-\x7E]{0,30}
+    [\x20-\x7E]{1,30}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
@@ -678,7 +678,7 @@ https://gateway.clearhaus.com/account
   with leading zeros.</dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{2,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
     The default text_on_statement.
   </dd>
