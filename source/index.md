@@ -428,7 +428,7 @@ Example response (snippet):
 {
     "merchant_id": "000000003000001",
     "name": "Merchant Ltd.",
-    "text_on_statement": "merchant.com",
+    "descriptor": "merchant.com",
     "country": "GBR",
     "mcc": "1111"
 }
@@ -699,11 +699,11 @@ https://gateway.clearhaus.com/account
   <dd>[0-9]{15} <br />Used for 3-D Secure and also for reference when talking
   to our support staff. For 3-D Secure it is important to represent this number
   with leading zeros.</dd>
-  <dt>text_on_statement</dt>
+  <dt>descriptor</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    The default text_on_statement.
+    The default <code>text_on_statement</code>.
   </dd>
   <dt>name</dt>
   <dd>
