@@ -283,7 +283,6 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2014-07-09T12:14:31+00:00",
-    "bin": "550000",
     "last4": "0004",
     "country": "US",
     "scheme": "mastercard",
@@ -664,8 +663,6 @@ authorization is made when POSTing to this endpoint.</p>
 #### Response parameters
 
 <dl class="dl-horizontal">
-  <dt>card[bin]</dt>
-  <dd>[0-9]{6} <br /> First 6 digits of card number.</dd>
   <dt>card[last4]</dt>
   <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
   <dt>card[scheme]</dt>
