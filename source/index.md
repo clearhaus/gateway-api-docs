@@ -164,6 +164,10 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
+    "csc": {
+        "present": true,
+        "matches": true
+    },
     "processed_at": "2014-07-09T09:53:41+00:00",
     "_links": {
         "captures": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures" }
@@ -173,6 +177,14 @@ Example response (snippet):
 
 In order to actually transfer money from cardholder's bank account to your
 merchant bank account you will have to make a capture transaction.
+
+<p class="alert alert-info">
+<b>Notice:</b> Some issuers will approve authorizations although the CSC did not
+match; in this case the <code>status</code> <code>code</code> will be
+<code>20000</code> but <code>csc</code> <code>matches</code> will be
+<code>false</code>. Please be aware that rules to disallow captures for such
+authorizations may be in place for a merchant.
+</p>
 
 
 ### Withdraw money
@@ -276,6 +288,10 @@ Example response (snippet):
     "country": "US",
     "scheme": "mastercard",
     "type": "credit",
+    "csc": {
+        "present": true,
+        "matches": true
+    },
     "_links": {
         "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
         "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
