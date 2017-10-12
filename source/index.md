@@ -477,6 +477,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
@@ -526,8 +527,9 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
@@ -557,8 +559,9 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
-    Text that will be placed on cardholder's bank statement.
+    Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
 
@@ -617,6 +620,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
@@ -731,6 +735,7 @@ Declined   |  40000 |  General input error
            |  40130 |  Invalid expire date
            |  40135 |  Card expired
            |  40140 |  Invalid currency
+           |  40150 |  Invalid text on statement
            |  40200 |  Clearhaus rule violation
            |  40300 |  3-D Secure problem
            |  40310 |  3-D Secure authentication failure
