@@ -164,6 +164,10 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
+    "csc": {
+        "present": true,
+        "matches": true
+    },
     "processed_at": "2014-07-09T09:53:41+00:00",
     "_links": {
         "captures": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures" }
@@ -173,6 +177,14 @@ Example response (snippet):
 
 In order to actually transfer money from cardholder's bank account to your
 merchant bank account you will have to make a capture transaction.
+
+<p class="alert alert-info">
+<b>Notice:</b> Some issuers will approve authorizations although the CSC did not
+match; in this case the <code>status</code> <code>code</code> will be
+<code>20000</code> but <code>csc</code> <code>matches</code> will be
+<code>false</code>. Please be aware that rules to disallow captures for such
+authorizations may be in place for a merchant.
+</p>
 
 
 ### Withdraw money
@@ -271,11 +283,14 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2014-07-09T12:14:31+00:00",
-    "bin": "550000",
     "last4": "0004",
     "country": "US",
     "scheme": "mastercard",
     "type": "credit",
+    "csc": {
+        "present": true,
+        "matches": true
+    },
     "_links": {
         "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
         "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
@@ -323,10 +338,12 @@ them to provide card information for subsequent payments.
 ### Subscription concept
 
 Many payment gateways offer a subscription concept where a card can be
-subscribed for recurring payments. This is supported by our [card
-resource](#cards) concept.
+subscribed for recurring payments. This is supported in our API using card
+tokens. Card tokens can be created [explicitly](#tokenize-a-card) or implicitly
+when the first [authorization is created](#reserve-money).
 
-A payment card is subscribed simply by [making a card resource](#tokenize-a-card).
+Actual recurring transactions must be made by
+[creating an authorization](#authorizations).
 
 
 ### Repeatedly reserve money
@@ -411,7 +428,7 @@ Example response (snippet):
 {
     "merchant_id": "000000003000001",
     "name": "Merchant Ltd.",
-    "text_on_statement": "merchant.com",
+    "descriptor": "merchant.com",
     "country": "GBR",
     "mcc": "1111"
 }
@@ -460,6 +477,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
@@ -509,8 +527,9 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
   <dt>text_on_statement</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
@@ -540,8 +559,9 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
-    Text that will be placed on cardholder's bank statement.
+    Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
 
@@ -589,13 +609,18 @@ POST https://gateway.clearhaus.com/cards/:id/credits
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
+  <dd>[1-9][0-9]{0,9} <br />
+    Amount in minor units of given currency (e.g. cents if in Euro). As for
+    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
+    Visa, the amount must not exceed the equivalent of 50,000 USD.
+  </dd>
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
@@ -644,8 +669,6 @@ authorization is made when POSTing to this endpoint.</p>
 #### Response parameters
 
 <dl class="dl-horizontal">
-  <dt>card[bin]</dt>
-  <dd>[0-9]{6} <br /> First 6 digits of card number.</dd>
   <dt>card[last4]</dt>
   <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
   <dt>card[scheme]</dt>
@@ -676,11 +699,11 @@ https://gateway.clearhaus.com/account
   <dd>[0-9]{15} <br />Used for 3-D Secure and also for reference when talking
   to our support staff. For 3-D Secure it is important to represent this number
   with leading zeros.</dd>
-  <dt>text_on_statement</dt>
+  <dt>descriptor</dt>
   <dd>
-    [\x20-\x7E]{0,22} 
+    [\x20-\x7E]{0,22}
     <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    The default text_on_statement.
+    The default <code>text_on_statement</code>.
   </dd>
   <dt>name</dt>
   <dd>
@@ -712,6 +735,7 @@ Declined   |  40000 |  General input error
            |  40130 |  Invalid expire date
            |  40135 |  Card expired
            |  40140 |  Invalid currency
+           |  40150 |  Invalid text on statement
            |  40190 |  Invalid transaction
            |  40200 |  Clearhaus rule violation
            |  40300 |  3-D Secure problem
@@ -759,18 +783,24 @@ Examples:
 
 ## Test card numbers
 
-The following test card numbers can be used to perform test transactions on
-`gateway.test.clearhaus.com`:
+Any card number within the following
+[BIN ranges](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29)
+can be used to perform test transactions on `gateway.test.clearhaus.com`:
 
-Card scheme | Card number      | Note     |
-------------| ---------------- | -------- |
-Visa        | 4111111111111111 | Approved |
-Visa        | 4200000000000000 | Declined |
-MasterCard  | 5500000000000004 | Approved |
-MasterCard  | 5555555555554444 | Declined |
+Range           | Card scheme |
+--------------- | ----------- |
+222100 - 272099 | MasterCard  |
+400000 - 499999 | Visa        |
+500000 - 699999 | MasterCard  |
+
+<p class="alert alert-danger">
+Please use PANs that are **not**
+[LUHN compliant](https://en.wikipedia.org/wiki/Luhn_algorithm) or one of the
+following special PANs: 2221000000000009, 4111111111111111, 5500000000000004.
+</p>
 
 You can specify a status `code` as transaction amount to trigger a specific
-error when using declined test card numbers.
+error.
 
 
 ## Endpoint summary
