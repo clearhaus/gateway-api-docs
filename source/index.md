@@ -495,7 +495,7 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>card[expire_month]</dt>
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
   <dt>card[expire_year]</dt>
-  <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
+  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
 </dl>
@@ -653,7 +653,7 @@ POST https://gateway.clearhaus.com/cards
   <dt>card[expire_month]</dt>
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
   <dt>card[expire_year]</dt>
-  <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
+  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
 </dl>
