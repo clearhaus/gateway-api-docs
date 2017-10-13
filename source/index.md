@@ -476,15 +476,15 @@ POST https://gateway.clearhaus.com/authorizations
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
   <dt>reference</dt>
   <dd>
     [\x20-\x7E]{0,30}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
@@ -528,8 +528,8 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
@@ -558,8 +558,8 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
@@ -619,15 +619,15 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{0,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i></br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
     <i>Optional</i> <br />
     Text that will be placed on cardholder's bank statement.
   </dd>
   <dt>reference</dt>
   <dd>
     [\x20-\x7E]{0,30}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <bp />
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
@@ -658,13 +658,20 @@ POST https://gateway.clearhaus.com/cards
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
 </dl>
 
-<p class="alert alert-info"><b>Notice:</b> The exact same card details can be
-sent multiple times but will give you a unique card resource (card token).<br/>
-<b>Notice:</b> A card resource is automatically made when you make an
-authorization transaction and you supply card details.</p>
+<p class="alert alert-info">
+    <b>Notice:</b> The exact same card details can be sent multiple times but
+    will give you a unique card resource (card token).
+    <br />
+    <b>Notice:</b> A card resource is automatically made when you make an
+    authorization transaction and you supply card details.
+</p>
 
-<p class="alert alert-warning"> <b>Notice:</b> A "zero amount"
-authorization is made when POSTing to this endpoint.</p>
+<p class="alert alert-warning">
+    <b>Notice:</b> A "zero amount" authorization is made when POSTing to this
+    endpoint.
+</p>
+
+
 
 #### Response parameters
 
@@ -702,13 +709,13 @@ https://gateway.clearhaus.com/account
   <dt>descriptor</dt>
   <dd>
     [\x20-\x7E]{0,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
     The default <code>text_on_statement</code>.
   </dd>
   <dt>name</dt>
   <dd>
     [\x20-\x7E]{0,20} 
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> </br>
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
     Merchant company name.
   </dd>
   <dt>country</dt>
