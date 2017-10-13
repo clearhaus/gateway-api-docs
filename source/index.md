@@ -193,16 +193,18 @@ The following will make a capture transaction and withdraw what you have
 reserved on cardholder's bank account.
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
-     -u <your-api-key>:
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
+  -u <your-api-key>:
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
-     -u <your-api-key>: \
-     -d "amount=1000"
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
+  -u <your-api-key>: \
+  -d "amount=1000"
 ````
 
 Example response (snippet):
@@ -233,9 +235,10 @@ You can refund all money or a partial amount of what you have withdrawn from
 cardholder's bank account:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds \
-     -u <your-api-key>: \
-     -d "amount=500"
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds \
+  -u <your-api-key>: \
+  -d "amount=500"
 ````
 
 Example response (snippet):
@@ -352,11 +355,12 @@ A recurring payment is made by making an authorization based on a card
 resource and setting `recurring` parameter to `true`:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations \
-     -u <your-api-key>:  \
-     -d "amount=2050"    \
-     -d "currency=EUR"   \
-     -d "recurring=true"
+curl -X POST \
+  https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations \
+  -u <your-api-key>:  \
+  -d "amount=2050"    \
+  -d "currency=EUR"   \
+  -d "recurring=true"
 ````
 
 Example response (snippet):
@@ -794,8 +798,8 @@ Range           | Card scheme |
 500000 - 699999 | MasterCard  |
 
 <p class="alert alert-danger">
-Please use PANs that are **not**
-[LUHN compliant](https://en.wikipedia.org/wiki/Luhn_algorithm) or one of the
+Please use PANs that are <b>not</b>
+<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a> or one of the
 following special PANs: 2221000000000009, 4111111111111111, 5500000000000004.
 </p>
 
