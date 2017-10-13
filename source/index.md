@@ -631,7 +631,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits
   <dt>reference</dt>
   <dd>
     [\x20-\x7E]{0,30}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <bp />
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
