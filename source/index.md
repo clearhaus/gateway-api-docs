@@ -59,8 +59,10 @@ curl https://gateway.test.clearhaus.com \
 All responses will be delivered in JSON format (see [JSON-HAL][JSON-HAL]).
 
 ````
-Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.9.0; charset=utf-8
+Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.10.0; charset=utf-8
 ````
+
+where the version follows [Semantic Versioning](http://semver.org).
 
 We use HTTP response codes to indicate API response status:
 
@@ -114,13 +116,13 @@ InviQqJd1KTGRDmWIGrE5YACVmW2JSszD9t5VKxkAA==
 and the body is
 
 ```
-amount=2050&currency=EUR&ip=1.1.1.1&card[number]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+amount=2050&currency=EUR&ip=1.1.1.1&card[pan]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
 ```
 
 then the `Signature` header should be
 
 ```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex af30dfbca8ae965accde234e49f93ced184feb612faf440d12a3993bcce747b729069241dd1b6e68420607301d737c6828289b9889c38727a6cc853dbfcae103
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex abb0ba6e7c84a7b92034c64740f6a424a2f06f29b302c71d624ca4a5ef85feb027347155dca720f5e856ae6fa307f0d08bd02e7a2d266c584501b15075b6a29a
 ```
 
 In Ruby, you can calculate the RS256 Hex signature using
@@ -150,9 +152,9 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "amount=2050"   \
      -d "currency=EUR"  \
      -d "ip=1.1.1.1"    \
-     -d "card[number]=4111111111111111" \
-     -d "card[expire_month]=06"         \
-     -d "card[expire_year]=2018"        \
+     -d "card[pan]=4111111111111111" \
+     -d "card[expire_month]=06"      \
+     -d "card[expire_year]=2018"     \
      -d "card[csc]=123"
 ````
 
@@ -271,9 +273,9 @@ directly:
 ````shell
 curl -X POST https://gateway.test.clearhaus.com/cards \
      -u <your-api-key>: \
-     -d "card[number]=5500000000000004" \
-     -d "card[expire_month]=06"         \
-     -d "card[expire_year]=2018"        \
+     -d "card[pan]=5500000000000004" \
+     -d "card[expire_month]=06"      \
+     -d "card[expire_year]=2018"     \
      -d "card[csc]=123"
 ````
 
@@ -342,8 +344,8 @@ them to provide card information for subsequent payments.
 
 Many payment gateways offer a subscription concept where a card can be
 subscribed for recurring payments. This is supported in our API using card
-tokens. Card tokens can be created [explicitly](#tokenize-a-card) or implicitly
-when the first [authorization is created](#reserve-money).
+tokens. Card tokens are created implicitly when the first [authorization is
+created](#reserve-money) no matter the payment method used.
 
 Actual recurring transactions must be made by
 [creating an authorization](#authorizations).
@@ -351,16 +353,22 @@ Actual recurring transactions must be made by
 
 ### Repeatedly reserve money
 
-A recurring payment is made by making an authorization based on a card
-resource and setting `recurring` parameter to `true`:
+A recurring payment is made by making an authorization and setting `recurring`
+parameter to `true`. The first recurring transaction for a given card could be
+made this way (notice that the amount may be zero):
 
 ````shell
 curl -X POST \
-  https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations \
+  https://gateway.test.clearhaus.com/authorizations \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "recurring=true"
+  -d "recurring=true" \
+  -d "card[pan]=4111111111111111" \
+  -d "card[expire_month]=06"      \
+  -d "card[expire_year]=2018"     \
+  -d "card[csc]=123"              \
+  --data-urlencode "card[pares]=<some-pares-value>"
 ````
 
 Example response (snippet):
@@ -372,18 +380,29 @@ Example response (snippet):
        "code": 20000
    },
    "processed_at": "2014-07-09T13:33:44+00:00",
-   "recurring": true
+   "recurring": true,
+   "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
 }
 ````
 
-Above can be repeated whenever you need to reserve money and must be followed
-by a capture transaction.
+This should (in case of non-zero amount) be followed by a capture.
+
+Subsequent authorizations are made similarly, but obviously cannot include
+neither CSC nor a PARes; either using the [cards](#cards) endpoint or by (when
+approved for CSC-less transactions) using the `card` payment method.
+
+When using the `applepay` payment method, the first recurring transaction is
+made using `applepay[*]` whereas subsequent recurring transactions are made using
+`card[]` with the details from the first transaction's `applepay[token]`.
 
 
 ## 3-D Secure
 
 3-D Secure is a protocol designed to improve security for online transactions.
-Before you continue please read more about this protocol at [3Dsecure.io](http://docs.3dsecure.io).
+Before you continue please read more about this protocol at
+[3Dsecure.io](http://docs.3dsecure.io).
+
+3-D Secure is the only way to achieve liability shift for fraud chargebacks.
 
 ### Secure transactions
 
@@ -396,11 +415,11 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "amount=2050"   \
      -d "currency=EUR"  \
      -d "ip=1.1.1.1"    \
-     -d "card[number]=4111111111111111" \
-     -d "card[expire_month]=06"         \
-     -d "card[expire_year]=2018"        \
-     -d "card[csc]=123"                 \
-     --data-urlencode "threed_secure[pares]=<some-pares-value>"
+     -d "card[pan]=4111111111111111" \
+     -d "card[expire_month]=06"      \
+     -d "card[expire_year]=2018"     \
+     -d "card[csc]=123"              \
+     --data-urlencode "card[pares]=<some-pares-value>"
 ````
 
 Example response (snippet):
@@ -432,9 +451,14 @@ Example response (snippet):
 {
     "merchant_id": "000000003000001",
     "name": "Merchant Ltd.",
+    "country": "GB",
+    "mcc": "1111",
     "descriptor": "merchant.com",
-    "country": "GBR",
-    "mcc": "1111"
+    "transaction_rules":"reject authorization if amount > 100 EUR and (not fully 3dsecure)",
+    "acquirer": {
+        "visa_bin": 438309,
+        "mastercard_bin": 526571
+    }
 }
 ````
 
@@ -462,15 +486,20 @@ Our API offers six different resources:
 To reserve money on a cardholder's bank account you make a new authorization resource.
 
 ````
-POST https://gateway.clearhaus.com/cards/:id/authorizations
 POST https://gateway.clearhaus.com/authorizations
+POST https://gateway.clearhaus.com/cards/:id/authorizations
 ````
+
+Authorizations can be created using different payment methods:
+`card`, `applepay`, `mobilepayonline`.
+When authorizations are made on a card, the payment method is omitted;
+otherwise, exactly one payment method must be used.
 
 #### Parameters
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
+  <dd>[0-9]{1,10} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217; <a href="#clp-and-ugx-exponent-changes">CLP and UGX changes on 2017-10-13</a>.)</dd>
   <dt>ip</dt>
@@ -492,9 +521,26 @@ POST https://gateway.clearhaus.com/authorizations
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
+
+  <!-- deprecated -->
   <dt>threed_secure[pares]</dt>
-  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dd>
+    Deprecated! Please use <code>card[pares]</code>. <br />
+    [:base64:] <br />
+    See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+  </dd>
   <dt>card[number]</dt>
+  <dd>
+    Deprecated! Please use <code>card[pan]</code>. <br />
+    [0-9]{12,19} <br />
+    Primary account number of card to charge.
+  </dd>
+</dl>
+
+##### Method: `card`
+
+<dl class="dl-horizontal">
+  <dt>card[pan]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>card[expire_month]</dt>
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
@@ -502,12 +548,53 @@ POST https://gateway.clearhaus.com/authorizations
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
+  <dt>card[pares]</dt>
+  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
 
 <p class="alert alert-info">
-<b>Notice:</b> The card dictionary is not required when making an authorization
-based on a card resource. However, <code>card[csc]</code> should be populated
-when CSC is available.
+  <b>Notice:</b> An authorization that include <code>card[pares]</code> is 3-D
+  Secured and is considered multi-factor authenticated.
+  <br />
+  <b>Notice:</b> An authorization that include <code>card[pares]</code> and/or
+  <code>card[csc]</code> cannot be a subsequent recurring authorization.
+</p>
+
+##### Method: `applepay`
+
+<dl class="dl-horizontal">
+  <dt>applepay[token]</dt>
+  <dd>[:base64:] <br /> Full, raw <code>PKPaymentToken</code> object.</dd>
+  <dt>applepay[key]</dt>
+  <dd>[:pem:] <br /> Key to decrypt the <code>paymentToken</code> in PEM format.</dd>
+  <dt>applepay[certificate]</dt>
+  <dd>[:pem:] <br /> Payment processing certificate in PEM format.</dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> An authorization made with <code>applepay</code> is 3-D Secured
+  and multi-factor authenticated.
+  <br />
+  <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
+  subsequent recurring authorization.
+</p>
+
+##### Method: `mobilepayonline`
+
+<dl class="dl-horizontal">
+  <dt>mobilepayonline[pan]</dt>
+  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
+  <dt>mobilepayonline[expire_month]</dt>
+  <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
+  <dt>mobilepayonline[expire_year]</dt>
+  <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
+  <dt>mobilepayonline[phonenumber]</dt>
+  <dd>[\x20-\x7E]{1,15} <br /> Phone number from where the PAN originates.</dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
+  multi-factor authenticated but <i>not</i> 3-D Secured.
 </p>
 
 
@@ -640,10 +727,11 @@ POST https://gateway.clearhaus.com/cards/:id/credits
 
 ### Cards
 
+This resource is now deprecated!
+
 A card resource (token) corresponds to a payment card and can be used to make a
 credit or authorization transaction without providing sensitive card data (see
-["Tokenization"][Tokenization]). A card resource must be used to make
-subsequent recurring authorization transactions.
+["Tokenization"][Tokenization]).
 
 #### Parameters
 
@@ -674,8 +762,6 @@ POST https://gateway.clearhaus.com/cards
     <b>Notice:</b> A "zero amount" authorization is made when POSTing to this
     endpoint.
 </p>
-
-
 
 #### Response parameters
 
@@ -728,6 +814,12 @@ https://gateway.clearhaus.com/account
   <dd>[0-9]{4} <br /> Merchant category code.</dd>
   <dt>acquirer</dt>
   <dd>Used for 3-D Secure.</dd>
+  <dt>transaction_rules</dt>
+  <dd>[\x20-\x7E]* <br /> The transaction processing rules that the merchant's transactions must adhere to.</dd>
+
+  <!-- deprecated -->
+  <dt>text_on_statement</dt>
+  <dd>Deprecated! Please refer to <code>descriptor</code>.</dd>
 </dl>
 
 
@@ -763,9 +855,12 @@ Declined   |  40000 |  General input error
 
 ### Status message
 
-A status message is included in every response when you make a new transaction.
+A status message may be included in every response when you create a new
+transaction.
 The status message can be used for debugging and may include a more specific
 error message.
+
+Status messages should be shown to the merchant.
 
 Examples:
 
@@ -780,7 +875,7 @@ Examples:
 {
     "status": {
         "code": 40200,
-        "message": "amount > 100 EUR"
+        "message": "amount > 100 EUR and (not fully 3dsecure)"
     }
 }
 
@@ -848,6 +943,17 @@ https://gateway.clearhaus.com/account
 ````
 
 ## Changes
+
+### Add payment methods and subscriptions
+
+Payment methods has been added to the authorization resource. Also, a few
+parameters and an endpoint has been deprecated. Refer to [the documentation
+source code changes](https://github.com/clearhaus/gateway-api-docs/pull/52/files)
+for the exact documentation change.
+
+Please notice that there is no major version number change, so we stay backwards
+compatible until the deprecations take effect. Expect the deprecations to happen
+within a month or so; it will be announced separately.
 
 ### CLP and UGX exponent changes
 
