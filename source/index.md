@@ -385,15 +385,16 @@ Example response (snippet):
 }
 ````
 
-This should (in case of non-zero amount) be followed by a capture.
+This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made similarly, but obviously cannot include
-neither CSC nor a PARes; either using the [cards](#cards) endpoint or by (when
-approved for CSC-less transactions) using the `card` payment method.
+Subsequent authorizations are made similarly, but obviously neither CSC nor
+PARes would be included. Use the [cards](#cards) endpoint or, when approved
+for CSC-less transactions, the `card` payment method.
 
 When using the `applepay` payment method, the first recurring transaction is
-made using `applepay[*]` whereas subsequent recurring transactions are made using
-`card[]` with the details from the first transaction's `applepay[token]`.
+made using `applepay[]` whereas subsequent recurring transactions are made using
+either the responded card token or, when approved for CSC-less transactions, the
+card details from the first transaction's `applepay[token]`.
 
 
 ## 3-D Secure
@@ -527,7 +528,7 @@ otherwise, exactly one payment method must be used.
   <dd>
     Deprecated! Please use <code>card[pares]</code>. <br />
     [:base64:] <br />
-    See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
   </dd>
   <dt>card[number]</dt>
   <dd>
@@ -549,14 +550,14 @@ otherwise, exactly one payment method must be used.
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> Card Security Code.</dd>
   <dt>card[pares]</dt>
-  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information on <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> An authorization that include <code>card[pares]</code> is 3-D
+  <b>Notice:</b> An authorization that includes <code>card[pares]</code> is 3-D
   Secured and is considered multi-factor authenticated.
   <br />
-  <b>Notice:</b> An authorization that include <code>card[pares]</code> and/or
+  <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
 </p>
 
@@ -815,7 +816,7 @@ https://gateway.clearhaus.com/account
   <dt>acquirer</dt>
   <dd>Used for 3-D Secure.</dd>
   <dt>transaction_rules</dt>
-  <dd>[\x20-\x7E]* <br /> The transaction processing rules that the merchant's transactions must adhere to.</dd>
+  <dd>[\x20-\x7E]* <br /> The processing rules that the merchant's transactions must adhere to.</dd>
 
   <!-- deprecated -->
   <dt>text_on_statement</dt>
@@ -855,7 +856,7 @@ Declined   |  40000 |  General input error
 
 ### Status message
 
-A status message may be included in every response when you create a new
+A status message may be included in the response when you create a new
 transaction.
 The status message can be used for debugging and may include a more specific
 error message.
