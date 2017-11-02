@@ -948,7 +948,7 @@ https://gateway.clearhaus.com/account
 
 Payment methods has been added to the authorization resource. Also, a few
 parameters and an endpoint has been deprecated. Refer to [the documentation
-source code changes](https://github.com/clearhaus/gateway-api-docs/pull/52/files)
+source code changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files)
 for the exact documentation change.
 
 Please notice that there is no major version number change, so we stay backwards
