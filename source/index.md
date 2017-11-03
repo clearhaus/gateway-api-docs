@@ -387,9 +387,9 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made similarly, but obviously neither CSC nor
-PARes would be included. Use the [cards](#cards) endpoint or, when approved
-for CSC-less transactions, the `card` payment method.
+Subsequent authorizations are made similarly, but neither CSC nor PARes (see
+[3-D Secure](#3-d-secure)) would be included. Use the [cards](#cards) endpoint
+or, when approved for CSC-less transactions, the `card` payment method.
 
 When using the `applepay` payment method, the first recurring transaction is
 made using `applepay[]` whereas subsequent recurring transactions are made using
