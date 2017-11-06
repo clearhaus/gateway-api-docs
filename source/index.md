@@ -548,7 +548,11 @@ otherwise, exactly one payment method must be used.
   <dt>card[expire_year]</dt>
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
-  <dd>[0-9]{3} <br /> Card Security Code.</dd>
+  <dd>
+    [0-9]{3} <br />
+    <i>Optional when transaction is signed and partner is trusted.</i> <br />
+    Card Security Code.
+  </dd>
   <dt>card[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
@@ -590,7 +594,11 @@ otherwise, exactly one payment method must be used.
   <dt>mobilepayonline[expire_year]</dt>
   <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
   <dt>mobilepayonline[phonenumber]</dt>
-  <dd>[\x20-\x7E]{1,15} <br /> Phone number from where the PAN originates.</dd>
+  <dd>
+    [\x20-\x7E]{1,15} <br />
+    <i>Optional when transaction is signed and partner is trusted.</i> <br />
+    Phone number from where the PAN originates.
+  </dd>
 </dl>
 
 <p class="alert alert-info">
@@ -748,7 +756,11 @@ POST https://gateway.clearhaus.com/cards
   <dt>card[expire_year]</dt>
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
-  <dd>[0-9]{3} <br /> Card Security Code.</dd>
+  <dd>
+    [0-9]{3} <br />
+    <i>Optional when transaction is signed and partner is trusted.</i> <br />
+    Card Security Code.
+  </dd>
 </dl>
 
 <p class="alert alert-info">
