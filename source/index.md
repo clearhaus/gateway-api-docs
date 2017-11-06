@@ -558,7 +558,8 @@ otherwise, exactly one payment method must be used.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> An authorization that includes <code>card[pares]</code> is 3-D
+  <b>Notice:</b> An approved authorization that includes
+  <code>card[pares]</code> is 3-D
   Secured and is considered multi-factor authenticated.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
@@ -957,10 +958,10 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
-### Add payment methods and subscriptions
+### Add payment methods
 
-Payment methods has been added to the authorization resource. Also, a few
-parameters and an endpoint has been deprecated. Refer to [the documentation
+Payment methods have been added to the authorization resource. Also, a few
+parameters and an endpoint have been deprecated. Refer to [the documentation
 source code changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files)
 for the exact documentation change.
 
