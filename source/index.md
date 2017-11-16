@@ -849,6 +849,8 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
+Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
+
 ### CLP and UGX exponent changes
 
 CLP and UGX changes from exponent 2 to exponent 0.
