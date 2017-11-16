@@ -570,7 +570,7 @@ otherwise, exactly one payment method must be used.
 
 <dl class="dl-horizontal">
   <dt>applepay[token]</dt>
-  <dd>[:base64:] <br /> Full, raw <code>PKPaymentToken</code> object.</dd>
+  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[key]</dt>
   <dd>[:pem:] <br /> Key to decrypt the <code>paymentToken</code> in PEM format.</dd>
   <dt>applepay[certificate]</dt>
