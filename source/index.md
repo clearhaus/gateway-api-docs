@@ -578,8 +578,12 @@ otherwise, exactly one payment method must be used.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> An authorization made with <code>applepay</code> is 3-D Secured
-  and multi-factor authenticated.
+  <b>Notice:</b> An authorization made with <code>applepay</code> is
+  multi-factor authenticated.
+  <br /_>
+  <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
+  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
+  the <code>eciIndicator</code> of the <code>applepay[token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
