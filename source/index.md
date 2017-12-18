@@ -758,6 +758,7 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
+           |  40416 |  Issuer not available
            |  50000 |  Clearhaus error
 
 
@@ -849,7 +850,7 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
-### CLP and UGX exponent changes
+### 2017-10-12: CLP and UGX exponent changes
 
 CLP and UGX changes from exponent 2 to exponent 0.
 
@@ -857,6 +858,10 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
+### 2018-01-xx: New transaction status code
+
+Transaction status code 40416, meaning "issuer not available", has been added.
+The code used to hide behind the more general 40400 (backend problem).
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
