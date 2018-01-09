@@ -570,7 +570,7 @@ otherwise, exactly one payment method must be used.
 
 <dl class="dl-horizontal">
   <dt>applepay[token]</dt>
-  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-7 encoded serialization of a JSON dictionary.</dd>
+  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[symmetric_key]</dt>
   <dd>[:hex:] <br /> EC symmetric AES key that can decrypt <code>data</code>
       from the <code>PKPaymentToken</code>; hex formatted as it is a SHA256.</dd>
