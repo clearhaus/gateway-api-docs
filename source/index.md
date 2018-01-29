@@ -558,7 +558,7 @@ method must be used.
 <p class="alert alert-info">
   <b>Notice:</b> An approved authorization that includes
   <code>card[pares]</code> is 3-D
-  Secured and is considered multi-factor authenticated.
+  Secured and is strongly authenticated.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
@@ -581,7 +581,7 @@ You can either
 
 <p class="alert alert-info">
   <b>Notice:</b> An authorization made with <code>applepay</code> is
-  multi-factor authenticated.
+  strongly authenticated.
   <br /_>
   <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
   3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
@@ -656,7 +656,7 @@ payment token data. This can be extracted from the merchant's certificate.
 
 <p class="alert alert-info">
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
-  multi-factor authenticated but <i>not</i> 3-D Secured.
+  strongly authenticated but <i>not</i> 3-D Secured.
 </p>
 
 
@@ -941,7 +941,7 @@ Examples:
 {
     "status": {
         "code": 40200,
-        "message": "amount > 100 EUR and (not fully 3dsecure)"
+        "message": "amount > 100 EUR and (not strongly authenticated)"
     }
 }
 
