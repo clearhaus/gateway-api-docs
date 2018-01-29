@@ -342,10 +342,10 @@ them to provide card information for subsequent payments.
 
 ### Subscription concept
 
-Many PSPs has a subscription concept for supporting recurring payments.
+Many PSPs have a subscription concept for supporting recurring payments.
 The first approved authorization is the initial recurring authorization (also
 known as "first in series"), all later authorizations are called subsequent
-authorizations. Clearhaus support subscriptions in the form of recurring
+authorizations. Clearhaus supports subscriptions in the form of recurring
 transactions.
 
 ### Repeatedly reserve money
