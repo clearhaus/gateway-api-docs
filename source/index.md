@@ -650,7 +650,7 @@ payment token data. This can be extracted from the merchant's certificate.
     [\x20-\x7E]{1,15} <br />
     <i>Optional when transaction is signed and partner is trusted.</i> <br />
     Phone number from where the PAN originates. <br />
-    Randomly transactions will be selected and the translation will be verified.
+    Transactions will be randomly selected and the translation will be verified.
   </dd>
 </dl>
 
@@ -744,7 +744,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/voids
 No parameters are needed to make a new void transaction.
 
 <p class="alert alert-info">
-<b>Notice:</b> A void cannot be made if the authorization is 30 days old.
+<b>Notice:</b> A void cannot be made if the authorization age is 30 days or more.
 </p>
 
 
@@ -851,7 +851,7 @@ The account resource holds basic merchant account information. Only `HTTP GET`
 is supported for this endpoint.
 
 ````
-https://gateway.clearhaus.com/account
+GET https://gateway.clearhaus.com/account
 ````
 
 
