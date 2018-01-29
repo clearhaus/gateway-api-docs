@@ -80,7 +80,7 @@ Number  Text
 
 Requests can optionally be signed.
 
-The signature is an RSA signature of the HTTP body; it is represented in Hex.
+The signature is an RSA signature of the HTTP body; it is represented in hex.
 The signee must be identified by the signing API-key. Both should be provided in
 a `Signature` header together with `RS256-hex`:
 
@@ -96,7 +96,7 @@ signature, otherwise the transaction will fail.
 ### RSA signature
 
 The RSA signature is an RSASSA-PKCS1-v1_5 signature of the body. It is
-represented in Hex.
+represented in hex.
 
 If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
 private key (in PEM format) is
@@ -125,7 +125,7 @@ then the `Signature` header should be
 Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex abb0ba6e7c84a7b92034c64740f6a424a2f06f29b302c71d624ca4a5ef85feb027347155dca720f5e856ae6fa307f0d08bd02e7a2d266c584501b15075b6a29a
 ```
 
-In Ruby, you can calculate the RS256 Hex signature using
+In Ruby, you can calculate the RS256 hex signature using
 
 ```
 key = OpenSSL::PKey::RSA.new(key_in_pem_string)
@@ -566,18 +566,21 @@ method must be used.
 
 ##### Method: `applepay`
 
-Apple Pay requires data of the payment token to be decrypted. For this, the
-merchant's private key is needed to derive a symmetric key which is then used to
-decrypt the PAN, expiry etc.
+Apple Pay requires the payment details (PAN, expiry, etc.) of the payment token
+to be decrypted. For this, the merchant's private key is needed to derive a
+symmetric key which is then used for decryption.
 
-You can either
+You can either send us
 
-* send us the private key and the merchant id (either directly or
-  indirectly by sending the merchant's certificate), then we will derive
-  the symmetric key and decrypt the payment details; or
+* the private key and the merchant ID (either directly in
+  `applepay[merchant_id]` or indirectly by sending us the merchant's certificate
+  in `applepay[certificate]`) or
+* the symmetric key.
 
-* derive the symmetric key from the payment token's ephemeral public key
-  together with the merchant's private key and merchant id/certificate.
+For the former option we derive the symmetric key and decrypt the payment
+details. For the latter option you need to derive the symmetric key, which is
+done using the payment token's ephemeral public key, the merchant's private key
+and the merchant ID.
 
 <p class="alert alert-info">
   <b>Notice:</b> An authorization made with <code>applepay</code> is
@@ -602,22 +605,22 @@ object](ApplePay-PaymentToken) for more information.
   <dt>applepay[payment_token]</dt>
   <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[symmetric_key]</dt>
-  <dd>[:hex:] <br /> EC symmetric AES key (unique per transaction) that can
-    decrypt <code>data</code> from the <code>PKPaymentToken</code>; hex
-    formatted as it is a SHA256.</dd>
+  <dd>[:hex:] <br /> symmetric AES key (unique per transaction) that can
+    decrypt <code>data</code> from the <code>PKPaymentToken</code>.</dd>
 </dl>
 
 ###### Using the EC private key
 
-When using the EC private key the merchant id is also necessary to decrypt the
-payment token data. This can be extracted from the merchant's certificate.
+When using the EC private key, the Apple Pay merchant ID is also necessary to
+decrypt the payment token data. This can be extracted from the merchant's
+certificate.
 
 <dl class="dl-horizontal">
   <dt>applepay[payment_token]</dt>
   <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[private_key]</dt>
   <dd>[:PEM:] <br />
-    PEM formatted merchant EC private key. <br />
+    PEM-formatted merchant EC private key. <br />
     We treat this like the CSC; it is never stored, and thus needs to be
     supplied for every transaction.
 </dd>
@@ -625,13 +628,13 @@ payment token data. This can be extracted from the merchant's certificate.
   <dd>
     [:PEM:] <br />
     <i>Required if and only if <code>applepay[merchant_id]</code> is not included.</i> <br />
-    PEM formatted merchant certificate.
+    PEM-formatted merchant certificate.
   </dd>
   <dt>applepay[merchant_id]</dt>
   <dd>
     [:hex:] <br />
     <i>Required if and only if <code>applepay[certificate]</code> is not included.</i> <br />
-    Hex encoded merchant id.
+    Hex-encoded merchant ID.
   </dd>
 </dl>
 
