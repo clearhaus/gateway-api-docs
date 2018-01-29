@@ -342,14 +342,11 @@ them to provide card information for subsequent payments.
 
 ### Subscription concept
 
-Many payment gateways offer a subscription concept where a card can be
-subscribed for recurring payments. This is supported in our API using card
-tokens. Card tokens are created implicitly when the first [authorization is
-created](#reserve-money) no matter the payment method used.
-
-Actual recurring transactions must be made by
-[creating an authorization](#authorizations).
-
+Many PSPs has a subscription concept for supporting recurring payments.
+The first approved authorization is the initial recurring authorization (also
+known as "first in series"), all later authorizations are called subsequent
+authorizations. Clearhaus support subscriptions in the form of recurring
+transactions.
 
 ### Repeatedly reserve money
 
@@ -391,7 +388,7 @@ Subsequent authorizations are made similarly, but neither CSC nor PARes (see
 [3-D Secure](#3-d-secure)) would be included. Use the [cards](#cards) endpoint
 or, when approved for CSC-less transactions, the `card` payment method.
 
-When using the `applepay` payment method, the first recurring transaction is
+When using the `applepay` payment method, the initial recurring transaction is
 made using `applepay[]` whereas subsequent recurring transactions are made using
 either the responded card token or, when approved for CSC-less transactions, the
 card details from the first transaction's `applepay[token]`.
@@ -488,13 +485,14 @@ To reserve money on a cardholder's bank account you make a new authorization res
 
 ````
 POST https://gateway.clearhaus.com/authorizations
-POST https://gateway.clearhaus.com/cards/:id/authorizations
+POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 ````
 
 Authorizations can be created using different payment methods:
 `card`, `applepay`, `mobilepayonline`.
-When authorizations are made on a card, the payment method is omitted;
-otherwise, exactly one payment method must be used.
+When authorizations are made on a card resource (`/cards/:id/authorizations`,
+deprecated), the payment method is omitted; otherwise, exactly one payment
+method must be used.
 
 #### Parameters
 
@@ -524,13 +522,13 @@ otherwise, exactly one payment method must be used.
   </dd>
 
   <!-- deprecated -->
-  <dt>threed_secure[pares]</dt>
+  <dt><strike>threed_secure[pares]</strike></dt>
   <dd>
     Deprecated! Please use <code>card[pares]</code>. <br />
     [:base64:] <br />
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
   </dd>
-  <dt>card[number]</dt>
+  <dt><strike>card[number]</strike></dt>
   <dd>
     Deprecated! Please use <code>card[pan]</code>. <br />
     [0-9]{12,19} <br />
@@ -568,13 +566,18 @@ otherwise, exactly one payment method must be used.
 
 ##### Method: `applepay`
 
-<dl class="dl-horizontal">
-  <dt>applepay[token]</dt>
-  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
-  <dt>applepay[symmetric_key]</dt>
-  <dd>[:hex:] <br /> EC symmetric AES key that can decrypt <code>data</code>
-      from the <code>PKPaymentToken</code>; hex formatted as it is a SHA256.</dd>
-</dl>
+Apple Pay requires data of the payment token to be decrypted. For this, the
+merchant's private key is needed to derive a symmetric key which is then used to
+decrypt the PAN, expiry etc.
+
+You can either
+
+* send us the private key and the merchant id (either directly or
+  indirectly by sending the merchant's certificate), then we will derive
+  the symmetric key and decrypt the payment details; or
+
+* derive the symmetric key from the payment token's ephemeral public key
+  together with the merchant's private key and merchant id/certificate.
 
 <p class="alert alert-info">
   <b>Notice:</b> An authorization made with <code>applepay</code> is
@@ -582,11 +585,56 @@ otherwise, exactly one payment method must be used.
   <br /_>
   <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
   3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
-  the <code>eciIndicator</code> of the <code>applepay[token]</code>.
+  the <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
 </p>
+
+###### Using the symmetric key
+
+Your systems must derive the symmetric key. For this, we refer to [our reference
+implementation](https://github.com/clearhaus/pedicel) written in Ruby; see
+[Apple's documentation for the <code>PaymentToken</code>
+object](ApplePay-PaymentToken) for more information.
+
+<dl class="dl-horizontal">
+  <dt>applepay[payment_token]</dt>
+  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
+  <dt>applepay[symmetric_key]</dt>
+  <dd>[:hex:] <br /> EC symmetric AES key (unique per transaction) that can
+    decrypt <code>data</code> from the <code>PKPaymentToken</code>; hex
+    formatted as it is a SHA256.</dd>
+</dl>
+
+###### Using the EC private key
+
+When using the EC private key the merchant id is also necessary to decrypt the
+payment token data. This can be extracted from the merchant's certificate.
+
+<dl class="dl-horizontal">
+  <dt>applepay[payment_token]</dt>
+  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
+  <dt>applepay[private_key]</dt>
+  <dd>[:PEM:] <br />
+    PEM formatted merchant EC private key. <br />
+    We treat this like the CSC; it is never stored, and thus needs to be
+    supplied for every transaction.
+</dd>
+  <dt>applepay[certificate]</dt>
+  <dd>
+    [:PEM:] <br />
+    <i>Required if and only if <code>applepay[merchant_id]</code> is not included.</i> <br />
+    PEM formatted merchant certificate.
+  </dd>
+  <dt>applepay[merchant_id]</dt>
+  <dd>
+    [:hex:] <br />
+    <i>Required if and only if <code>applepay[certificate]</code> is not included.</i> <br />
+    Hex encoded merchant id.
+  </dd>
+</dl>
+
 
 ##### Method: `mobilepayonline`
 
@@ -597,11 +645,12 @@ otherwise, exactly one payment method must be used.
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
   <dt>mobilepayonline[expire_year]</dt>
   <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
-  <dt>mobilepayonline[phonenumber]</dt>
+  <dt>mobilepayonline[phone_number]</dt>
   <dd>
     [\x20-\x7E]{1,15} <br />
     <i>Optional when transaction is signed and partner is trusted.</i> <br />
-    Phone number from where the PAN originates.
+    Phone number from where the PAN originates. <br />
+    Randomly transactions will be selected and the translation will be verified.
   </dd>
 </dl>
 
@@ -769,7 +818,7 @@ POST https://gateway.clearhaus.com/cards
 
 <p class="alert alert-info">
     <b>Notice:</b> The exact same card details can be sent multiple times but
-    will give you a unique card resource (card token).
+    will give you the same card resource (card token) every time.
     <br />
     <b>Notice:</b> A card resource is automatically made when you make an
     authorization transaction and you supply card details.
@@ -835,7 +884,7 @@ https://gateway.clearhaus.com/account
   <dd>[\x20-\x7E]* <br /> The processing rules that the merchant's transactions must adhere to.</dd>
 
   <!-- deprecated -->
-  <dt>text_on_statement</dt>
+  <dt><strike>text_on_statement</strike></dt>
   <dd>Deprecated! Please refer to <code>descriptor</code>.</dd>
 </dl>
 
@@ -986,3 +1035,4 @@ exponent is 2; after the timespan, the exponent is 0.
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
 [3D-Secure]: http://www.3dsecure.io
+[ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
