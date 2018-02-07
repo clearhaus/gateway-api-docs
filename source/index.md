@@ -599,13 +599,13 @@ and the merchant ID.
 Your systems must derive the symmetric key. For this, we refer to [our reference
 implementation](https://github.com/clearhaus/pedicel) written in Ruby; see
 [Apple's documentation for the <code>PaymentToken</code>
-object](ApplePay-PaymentToken) for more information.
+object][ApplePay-PaymentToken] for more information.
 
 <dl class="dl-horizontal">
   <dt>applepay[payment_token]</dt>
   <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[symmetric_key]</dt>
-  <dd>[:hex:] <br /> symmetric AES key (unique per transaction) that can
+  <dd>[:hex:] <br /> Symmetric AES key (unique per transaction) that can
     decrypt <code>data</code> from the <code>PKPaymentToken</code>.</dd>
 </dl>
 
