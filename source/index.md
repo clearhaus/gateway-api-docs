@@ -433,7 +433,7 @@ Example response (snippet):
     "merchant_id": "000000003000001",
     "name": "Merchant Ltd.",
     "descriptor": "merchant.com",
-    "country": "GBR",
+    "country": "GB",
     "mcc": "1111"
 }
 ````
