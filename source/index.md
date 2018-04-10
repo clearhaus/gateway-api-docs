@@ -723,7 +723,7 @@ https://gateway.clearhaus.com/account
     Merchant company name.
   </dd>
   <dt>country</dt>
-  <dd>[A-Z]{2} <br /> ISO 3166-1 3-letter country code for merchant company.</dd>
+  <dd>[A-Z]{2} <br /> ISO 3166-1 2-letter country code for merchant company.</dd>
   <dt>mcc</dt>
   <dd>[0-9]{4} <br /> Merchant category code.</dd>
   <dt>acquirer</dt>
