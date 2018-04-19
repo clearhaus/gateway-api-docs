@@ -857,6 +857,10 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
+### STN is replacing STD ###
+
+STN is running currently with STD until 2018-06-30T00:00:00+00:00 where STD
+will no longer be accepted.
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
