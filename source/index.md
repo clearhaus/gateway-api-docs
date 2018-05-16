@@ -857,10 +857,13 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
-### STN is replacing STD ###
+### MRU/929 and STN/930 support
 
-STN is running currently with STD until 2018-06-30T00:00:00+00:00 where STD
-will no longer be accepted.
+Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU/929 and STN/930.
+
+### STD/678 no longer accepted from July 2018
+
+Starting 2018-07-01T00:00:00+00:00 the currency STD/678 is no longer accepted.
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
