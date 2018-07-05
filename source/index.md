@@ -977,8 +977,9 @@ Range           | Card scheme |
 
 <p class="alert alert-danger">
 Please use PANs that are <b>not</b>
-<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a> or one of the
-following special PANs: 2221000000000009, 4111111111111111, 5500000000000004.
+<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, one of the
+following special PANs: 2221000000000009, 4111111111111111, 5500000000000004, or
+an Apple Pay test card.
 </p>
 
 You can specify a status `code` as transaction amount to trigger a specific
