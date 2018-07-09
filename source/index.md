@@ -766,6 +766,8 @@ POST https://gateway.clearhaus.com/cards
 <dl class="dl-horizontal">
   <dt>card[pan]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
+  <dt>card[number]</dt>
+  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>card[expire_month]</dt>
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
   <dt>card[expire_year]</dt>
@@ -775,13 +777,6 @@ POST https://gateway.clearhaus.com/cards
     [0-9]{3} <br />
     <i>Optional when transaction is signed and partner is trusted.</i> <br />
     Card Security Code.
-  </dd>
-  <!-- deprecated -->
-  <dt><strike>card[number]</strike></dt>
-  <dd>
-    Deprecated! Please use <code>card[pan]</code>. <br />
-    [0-9]{12,19} <br />
-    Primary account number of card to charge.
   </dd>
 </dl>
 
