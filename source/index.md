@@ -583,6 +583,9 @@ object][ApplePay-PaymentToken] for more information.
 </dl>
 
 <p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
+  method.
+  <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> is
   strongly authenticated.
   <br /_>
@@ -613,6 +616,9 @@ object][ApplePay-PaymentToken] for more information.
 </dl>
 
 <p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>mobilepayonline</code>
+  payment method.
+  <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated but <i>not</i> 3-D Secured.
 </p>
