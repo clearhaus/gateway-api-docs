@@ -588,7 +588,7 @@ object][ApplePay-PaymentToken] for more information.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> is
   strongly authenticated.
-  <br /_>
+  <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
   3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
   the <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
