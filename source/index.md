@@ -609,9 +609,8 @@ object][ApplePay-PaymentToken] for more information.
   <dt>mobilepayonline[phone_number]</dt>
   <dd>
     [\x20-\x7E]{1,15} <br />
-    <i>Optional when transaction is signed and partner is trusted.</i> <br />
-    Phone number from where the PAN originates. <br />
-    Transactions will be randomly selected and the translation will be verified.
+    <i>Optional</i> <br />
+    Phone number from where the PAN originates.
   </dd>
 </dl>
 
