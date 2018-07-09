@@ -567,20 +567,20 @@ method must be used.
 ##### Method: `applepay`
 
 Apple Pay requires the payment details (PAN, expiry, etc.) of the payment token
-to be decrypted. For this, the merchant's private key is needed to derive a
-symmetric key which is then used for decryption.
+to be decrypted by a symmetric key.
+Your systems must derive this symmetric key using the payment token's ephemeral
+public key, the merchant's private key and the merchant ID. For this, we refer
+to [our reference implementation](https://github.com/clearhaus/pedicel) written
+in Ruby; see [Apple's documentation for the <code>PaymentToken</code>
+object][ApplePay-PaymentToken] for more information.
 
-You can either send us
-
-* the private key and the merchant ID (either directly in
-  `applepay[merchant_id]` or indirectly by sending us the merchant's certificate
-  in `applepay[certificate]`) or
-* the symmetric key.
-
-For the former option we derive the symmetric key and decrypt the payment
-details. For the latter option you need to derive the symmetric key, which is
-done using the payment token's ephemeral public key, the merchant's private key
-and the merchant ID.
+<dl class="dl-horizontal">
+  <dt>applepay[payment_token]</dt>
+  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
+  <dt>applepay[symmetric_key]</dt>
+  <dd>[:hex:] <br /> Symmetric AES key (unique per transaction) that can
+    decrypt <code>data</code> from the <code>PKPaymentToken</code>.</dd>
+</dl>
 
 <p class="alert alert-info">
   <b>Notice:</b> An authorization made with <code>applepay</code> is
@@ -593,51 +593,6 @@ and the merchant ID.
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
 </p>
-
-###### Using the symmetric key
-
-Your systems must derive the symmetric key. For this, we refer to [our reference
-implementation](https://github.com/clearhaus/pedicel) written in Ruby; see
-[Apple's documentation for the <code>PaymentToken</code>
-object][ApplePay-PaymentToken] for more information.
-
-<dl class="dl-horizontal">
-  <dt>applepay[payment_token]</dt>
-  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
-  <dt>applepay[symmetric_key]</dt>
-  <dd>[:hex:] <br /> Symmetric AES key (unique per transaction) that can
-    decrypt <code>data</code> from the <code>PKPaymentToken</code>.</dd>
-</dl>
-
-###### Using the EC private key
-
-When using the EC private key, the Apple Pay merchant ID is also necessary to
-decrypt the payment token data. This can be extracted from the merchant's
-certificate.
-
-<dl class="dl-horizontal">
-  <dt>applepay[payment_token]</dt>
-  <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
-  <dt>applepay[private_key]</dt>
-  <dd>[:PEM:] <br />
-    PEM-formatted merchant EC private key. <br />
-    We treat this like the CSC; it is never stored, and thus needs to be
-    supplied for every transaction.
-</dd>
-  <dt>applepay[certificate]</dt>
-  <dd>
-    [:PEM:] <br />
-    <i>Required if and only if <code>applepay[merchant_id]</code> is not included.</i> <br />
-    PEM-formatted merchant certificate.
-  </dd>
-  <dt>applepay[merchant_id]</dt>
-  <dd>
-    [:hex:] <br />
-    <i>Required if and only if <code>applepay[certificate]</code> is not included.</i> <br />
-    Hex-encoded merchant ID.
-  </dd>
-</dl>
-
 
 ##### Method: `mobilepayonline`
 
