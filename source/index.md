@@ -385,13 +385,12 @@ Example response (snippet):
 This should be followed by a capture except when the amount is `0`.
 
 Subsequent authorizations are made similarly, but neither CSC nor PARes (see
-[3-D Secure](#3-d-secure)) would be included. Use the [cards](#cards) endpoint
-or, when approved for CSC-less transactions, the `card` payment method.
+[3-D Secure](#3-d-secure)) would be included.
 
-When using the `applepay` payment method, the initial recurring transaction is
-made using `applepay[]` whereas subsequent recurring transactions are made using
-either the responded card token or, when approved for CSC-less transactions, the
-card details from the first transaction's `applepay[token]`.
+An initial recurring authorization can be made using `applepay` or
+`mobilepayonline` payment method; subsequent recurring transactions are made
+using the `card` payment method using the card details of the initial recurring
+authorization.
 
 
 ## 3-D Secure
