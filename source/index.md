@@ -489,9 +489,9 @@ POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 
 Authorizations can be created using different payment methods:
 `card`, `applepay`, `mobilepayonline`.
-When authorizations are made on a card resource (`/cards/:id/authorizations`,
-deprecated), the payment method is omitted; otherwise, exactly one payment
-method must be used.
+Exactly one payment method must be used, unless the authorization is made on
+a card resource(`/cards/:id/authorizations`, deprecated), in which case the
+payment method must be omitted.
 
 #### Parameters
 
