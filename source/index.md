@@ -984,7 +984,7 @@ for the exact documentation change.
 
 Please notice that there is no major version number change, so we stay backwards
 compatible until the deprecations take effect. Expect the deprecations to happen
-within a month or so; it will be announced separately.
+within two months or so; it will be announced separately.
 
 ### CLP and UGX exponent changes
 
