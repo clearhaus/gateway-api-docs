@@ -346,13 +346,13 @@ Many PSPs have a subscription concept for supporting recurring payments.
 The first approved authorization is the initial recurring authorization (also
 known as "first in series"), all later authorizations are called subsequent
 authorizations. Clearhaus supports subscriptions in the form of recurring
-transactions.
+payments.
 
 ### Repeatedly reserve money
 
 A recurring payment is made by making an authorization and setting `recurring`
-parameter to `true`. The first recurring transaction for a given card could be
-made this way (notice that the amount may be zero):
+parameter to `true`. The first recurring payment for a given card could be made
+this way (notice that the amount may be zero):
 
 ````shell
 curl -X POST \
@@ -388,8 +388,8 @@ Subsequent authorizations are made similarly, but neither CSC nor PARes (see
 [3-D Secure](#3-d-secure)) would be included.
 
 An initial recurring authorization can be made using `applepay` or
-`mobilepayonline` payment method; subsequent recurring transactions are made
-using the `card` payment method using the card details of the initial recurring
+`mobilepayonline` payment method; subsequent recurring payments are made using
+the `card` payment method using the card details of the initial recurring
 authorization.
 
 
@@ -503,7 +503,7 @@ payment method must be omitted.
   <dt>ip</dt>
   <dd>[0-9\.a-fA-F:]{3,39} <br /> <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).</dd>
   <dt>recurring</dt>
-  <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring transactions.</dd>
+  <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring payments.</dd>
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{2,22}
