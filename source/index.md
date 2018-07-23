@@ -557,7 +557,7 @@ payment method must be omitted.
 <p class="alert alert-info">
   <b>Notice:</b> An approved authorization that includes
   <code>card[pares]</code> is 3-D
-  Secured and is strongly authenticated.
+  Secured and is strongly authenticated (SCA in PSD2).
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
@@ -586,7 +586,7 @@ object][ApplePay-PaymentToken] for more information.
   method.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> is
-  strongly authenticated.
+  strongly authenticated (SCA in PSD2).
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
   3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
@@ -618,7 +618,7 @@ object][ApplePay-PaymentToken] for more information.
   payment method.
   <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
-  strongly authenticated but <i>not</i> 3-D Secured.
+  strongly authenticated (SCA in PSD2) but <i>not</i> 3-D Secured.
 </p>
 
 
