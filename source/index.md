@@ -977,10 +977,11 @@ https://gateway.clearhaus.com/account
 
 ### Add payment methods
 
-Payment methods have been added to the authorizations resource. Also, a few
-parameters and an endpoint have been deprecated. Refer to [the documentation
-source code changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files)
-for the exact documentation change.
+Payment methods have been added to the authorizations resource on 2018-07-20.
+Also, a few parameters and an endpoint have been deprecated. Refer to [the
+documentation source code
+changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files) for the
+exact documentation change.
 
 Please notice that there is no major version number change, so we stay backwards
 compatible until the deprecations take effect. Expect the deprecations to happen
