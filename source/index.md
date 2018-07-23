@@ -387,10 +387,10 @@ This should be followed by a capture except when the amount is `0`.
 Subsequent authorizations are made similarly, but neither CSC nor PARes (see
 [3-D Secure](#3-d-secure)) would be included.
 
-An initial recurring authorization can be made using `applepay` or
-`mobilepayonline` payment method; subsequent recurring payments are made using
-the `card` payment method using the card details of the initial recurring
-authorization.
+An initial recurring authorization can also be made using the `applepay` and
+`mobilepayonline` payment methods; subsequent recurring payments, however, must
+be made using the `card` payment method using the card details of the initial
+recurring authorization.
 
 
 ## 3-D Secure
