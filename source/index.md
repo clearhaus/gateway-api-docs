@@ -499,7 +499,7 @@ payment method must be omitted.
   <dt>amount</dt>
   <dd>[0-9]{1,10} <br /> Amount in minor units of given currency (e.g. cents if in Euro).</dd>
   <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217; <a href="#clp-and-ugx-exponent-changes">CLP and UGX changes on 2017-10-13</a>.)</dd>
+  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>ip</dt>
   <dd>[0-9\.a-fA-F:]{3,39} <br /> <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).</dd>
   <dt>recurring</dt>
@@ -730,7 +730,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits
     Visa, the amount must not exceed the equivalent of 50,000 USD.
   </dd>
   <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217; <a href="#clp-and-ugx-exponent-changes">CLP and UGX changes on 2017-10-13</a>.)</dd>
+  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{2,22}
@@ -839,7 +839,7 @@ GET https://gateway.clearhaus.com/account
     Merchant company name.
   </dd>
   <dt>country</dt>
-  <dd>[A-Z]{2} <br /> ISO 3166-1 3-letter country code for merchant company.</dd>
+  <dd>[A-Z]{2} <br /> ISO 3166-1 2-letter country code for merchant company.</dd>
   <dt>mcc</dt>
   <dd>[0-9]{4} <br /> Merchant category code.</dd>
   <dt>acquirer</dt>
@@ -995,6 +995,13 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
+### MRU and STN support
+
+Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU and STN.
+
+### STD no longer accepted from July 2018
+
+Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
