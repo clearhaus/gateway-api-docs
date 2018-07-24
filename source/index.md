@@ -984,8 +984,8 @@ changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files) for the
 exact documentation change.
 
 Please notice that there is no major version number change, so we stay backwards
-compatible until the deprecations take effect. Expect the deprecations to happen
-within two months or so; it will be announced separately.
+compatible until the deprecations take effect. We expect the deprecations to
+happen on 2018-11-15; it will be announced separately.
 
 ### CLP and UGX exponent changes
 
