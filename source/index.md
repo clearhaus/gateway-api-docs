@@ -601,11 +601,11 @@ object][ApplePay-PaymentToken] for more information.
 <dl class="dl-horizontal">
   <dt>mobilepayonline[pan]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
-  <dt>mobilepayonline[expire_month]</dt>
+  <dt>mobilepayonline<br />[expire_month]</dt>
   <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
-  <dt>mobilepayonline[expire_year]</dt>
+  <dt>mobilepayonline<br />[expire_year]</dt>
   <dd>[0-9]{4} <br /> Expiry year of card to charge.</dd>
-  <dt>mobilepayonline[phone_number]</dt>
+  <dt>mobilepayonline<br />[phone_number]</dt>
   <dd>
     [\x20-\x7E]{1,15} <br />
     <i>Optional</i> <br />
