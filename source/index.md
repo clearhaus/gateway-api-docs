@@ -611,6 +611,8 @@ object][ApplePay-PaymentToken] for more information.
     <i>Optional</i> <br />
     Phone number from where the PAN originates.
   </dd>
+  <dt>mobilepayonline[pares]</dt>
+  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
 
 <p class="alert alert-info">
@@ -618,7 +620,7 @@ object][ApplePay-PaymentToken] for more information.
   payment method.
   <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
-  strongly authenticated (SCA in PSD2) but <i>not</i> 3-D Secured.
+  strongly authenticated (SCA in PSD2).
 </p>
 
 
