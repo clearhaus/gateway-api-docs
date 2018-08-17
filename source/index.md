@@ -713,13 +713,53 @@ No parameters are needed to make a new void transaction.
 ### Credits
 
 To payout (e.g. winnings and not refunds) money to a cardholder's bank account
-you make a new credit resource. You must have a card resource to make a credit
-transaction.
+you make a new credit resource.
 
 #### Parameters
 
 ````
-POST https://gateway.clearhaus.com/cards/:id/credits
+POST https://gateway.clearhaus.com/credits
+````
+
+<dl class="dl-horizontal">
+  <dt>amount</dt>
+  <dd>[1-9][0-9]{0,9} <br />
+    Amount in minor units of given currency (e.g. cents if in Euro). As for
+    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
+    Visa, the amount must not exceed the equivalent of 50,000 USD.
+  </dd>
+  <dt>currency</dt>
+  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
+  <dt>text_on_statement</dt>
+  <dd>
+    [\x20-\x7E]{2,22}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
+    <i>Optional</i> <br />
+    Text that will be placed on cardholder's bank statement.
+  </dd>
+  <dt>reference</dt>
+  <dd>
+    [\x20-\x7E]{1,30}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>Optional</i> <br />
+    A reference to an external object, such as an order number.
+  </dd>
+  <dt>card[pan]</dt>
+  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
+  <dt>card[expire_month]</dt>
+  <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
+  <dt>card[expire_year]</dt>
+  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
+  <dt>card[csc]</dt>
+  <dd>[0-9]{3} <br /> <i>Optional.</i> <br /> Card Security Code.</dd>
+</dl>
+
+
+#### Parameters (deprecated)
+
+````
+POST https://gateway.clearhaus.com/cards/:id/credits # deprecated
 ````
 
 <dl class="dl-horizontal">
