@@ -1019,7 +1019,8 @@ https://gateway.clearhaus.com/account
 
 Starting 2018-xx-xxTxx:xx:xx+00:00 the `/credits` resource has been added,
 enabling creation of credits without card tokenization. This is an essential
-addition, as card tokenization is deprecated.
+addition, as card tokenization, including the resource `/cards/:id/credits`, is
+deprecated and will be removed on November 15, 2018.
 
 ### Add payment methods
 
