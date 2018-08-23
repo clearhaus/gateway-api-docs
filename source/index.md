@@ -977,6 +977,11 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
+### Accept 3-D Secure PARes for MobilePay Online
+
+Starting 2018-xx-xxTxx:xx:xx+00:00 the parameter `mobilepayonline[pares]` is
+accepted.
+
 ### Add payment methods
 
 Payment methods have been added to the authorizations resource on 2018-07-20.
