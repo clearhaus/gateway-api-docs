@@ -849,6 +849,20 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
+Sorted by descending timestamp.
+
+### VES support
+
+Starting 2018-08-27T13:00:00+00:00 we support the currency VES.
+
+### STD no longer accepted from July 2018
+
+Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
+
+### MRU and STN support
+
+Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU and STN.
+
 ### CLP and UGX exponent changes
 
 CLP and UGX changes from exponent 2 to exponent 0.
@@ -856,18 +870,6 @@ CLP and UGX changes from exponent 2 to exponent 0.
 Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
-
-### MRU and STN support
-
-Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU and STN.
-
-### STD no longer accepted from July 2018
-
-Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
-
-### VES support
-
-Starting 2018-08-27T13:00:00+00:00 we support the currency VES.
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
