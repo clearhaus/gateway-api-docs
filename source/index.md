@@ -867,7 +867,7 @@ Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
 
 ### VES support
 
-Starting 2018-08-04T13:00:00+00:00 we support the currency VES.
+Starting 2018-08-27T13:00:00+00:00 we support the currency VES.
 
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
