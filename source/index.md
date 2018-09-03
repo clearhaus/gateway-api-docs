@@ -1008,6 +1008,7 @@ https://gateway.clearhaus.com/refunds/:id
 https://gateway.clearhaus.com/authorizations/:id/refunds
 
 # credits
+https://gateway.clearhaus.com/credits
 https://gateway.clearhaus.com/credits/:id
 https://gateway.clearhaus.com/cards/:id/credits
 
