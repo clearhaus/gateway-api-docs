@@ -1021,7 +1021,7 @@ Sorted by descending timestamp.
 
 ### Add credits resource
 
-Starting 2018-xx-xxTxx:xx:xx+00:00 the `/credits` resource has been added,
+Starting 2018-08-31T13:30:00+00:00 the `/credits` resource has been added,
 enabling creation of credits without card tokenization. This is an essential
 addition, as card tokenization, including the resource `/cards/:id/credits`, is
 deprecated and will be removed on November 15, 2018.
