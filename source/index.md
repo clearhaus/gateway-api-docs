@@ -116,13 +116,13 @@ InviQqJd1KTGRDmWIGrE5YACVmW2JSszD9t5VKxkAA==
 and the body is
 
 ```
-amount=2050&currency=EUR&ip=1.1.1.1&card[pan]=4111111111111111&card[expire_month]=06&card[expire_year]=2018&card[csc]=123
+amount=2050&currency=EUR&ip=1.1.1.1&card[pan]=4111111111111111&card[expire_month]=06&card[expire_year]=2022&card[csc]=123
 ```
 
 then the `Signature` header should be
 
 ```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex abb0ba6e7c84a7b92034c64740f6a424a2f06f29b302c71d624ca4a5ef85feb027347155dca720f5e856ae6fa307f0d08bd02e7a2d266c584501b15075b6a29a
+Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex 7ae0e14d35b2a15a7ff812a1899d7f0a5d28063f0c276081876a51fc3773f499459f944f8b57c6e0e76b47c218b20ebaad7c6250dcd1804dd19c87fb7f1216ba
 ```
 
 In Ruby, you can calculate the RS256 hex signature using
@@ -154,7 +154,7 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "ip=1.1.1.1"    \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2018"     \
+     -d "card[expire_year]=2022"     \
      -d "card[csc]=123"
 ````
 
@@ -170,7 +170,7 @@ Example response (snippet):
         "present": true,
         "matches": true
     },
-    "processed_at": "2014-07-09T09:53:41+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "_links": {
         "captures": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures" }
     }
@@ -217,7 +217,7 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2014-07-09T11:47:28+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 1000,
     "_links": {
         "authorization": {
@@ -251,7 +251,7 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2014-07-09T11:57:58+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 500,
     "_links": {
         "authorization": { "href": "/authorizations/84412a34-fa29-4369-a098-0165a80e8fda" }
@@ -275,7 +275,7 @@ curl -X POST https://gateway.test.clearhaus.com/cards \
      -u <your-api-key>: \
      -d "card[pan]=5500000000000004" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2018"     \
+     -d "card[expire_year]=2022"     \
      -d "card[csc]=123"
 ````
 
@@ -287,7 +287,7 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2014-07-09T12:14:31+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "last4": "0004",
     "country": "US",
     "scheme": "mastercard",
@@ -320,7 +320,7 @@ curl -X POST https://gateway.test.clearhaus.com/credits \
      -d "ip=1.1.1.1"    \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2018"
+     -d "card[expire_year]=2022"
 ````
 
 Example response (snippet):
@@ -367,7 +367,7 @@ curl -X POST \
   -d "recurring=true" \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
-  -d "card[expire_year]=2018"     \
+  -d "card[expire_year]=2022"     \
   -d "card[csc]=123"              \
   --data-urlencode "card[pares]=<some-pares-value>"
 ````
@@ -380,7 +380,7 @@ Example response (snippet):
    "status": {
        "code": 20000
    },
-   "processed_at": "2014-07-09T13:33:44+00:00",
+   "processed_at": "2018-07-09T12:58:56+00:00",
    "recurring": true,
    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
 }
@@ -418,7 +418,7 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "ip=1.1.1.1"    \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2018"     \
+     -d "card[expire_year]=2022"     \
      -d "card[csc]=123"              \
      --data-urlencode "card[pares]=<some-pares-value>"
 ````
@@ -431,7 +431,7 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2014-07-09T09:53:41+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "threed_secure": true
 }
 ````
