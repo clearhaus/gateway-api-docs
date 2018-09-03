@@ -307,17 +307,20 @@ Example response (snippet):
 ## Payout to cardholder
 
 Sometimes cardholders should receive money, e.g. if you will pay out some
-winnings. Before you can make a payout you need to [tokenize](#tokenize-a-card)
-a card.
+winnings.
 
 The following will transfer EUR 500.00 to cardholder's bank account from your
 merchant bank account:
 
 ````shell
-curl -X POST https://gateway.test.clearhaus.com/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits \
+curl -X POST https://gateway.test.clearhaus.com/credits \
      -u <your-api-key>: \
      -d "amount=50000"  \
-     -d "currency=EUR"
+     -d "currency=EUR"  \
+     -d "ip=1.1.1.1"    \
+     -d "card[pan]=4111111111111111" \
+     -d "card[expire_month]=06"      \
+     -d "card[expire_year]=2018"
 ````
 
 Example response (snippet):
@@ -328,9 +331,10 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2014-07-09T12:58:56+00:00",
+    "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 50000,
-    "currency": "EUR"
+    "currency": "EUR",
+    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
 }
 ````
 
