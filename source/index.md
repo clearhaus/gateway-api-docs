@@ -979,7 +979,7 @@ Sorted by descending timestamp.
 
 ### VES support
 
-Starting 2018-08-27T13:00:00+00:00 we support the currency VES.
+Starting 2018-08-31T13:30:00+00:00 we support the currency VES.
 
 ### Add payment methods
 
