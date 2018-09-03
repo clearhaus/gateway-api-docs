@@ -376,13 +376,13 @@ Example response (snippet):
 
 ````json
 {
-   "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
-   "status": {
-       "code": 20000
-   },
-   "processed_at": "2018-07-09T12:58:56+00:00",
-   "recurring": true,
-   "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2018-07-09T12:58:56+00:00",
+    "recurring": true,
+    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
 }
 ````
 
