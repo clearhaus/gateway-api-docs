@@ -965,25 +965,15 @@ Examples:
 
 ## Test card numbers
 
-Any card number within the following
-[BIN ranges](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29)
-can be used to perform test transactions on `gateway.test.clearhaus.com`:
+For testing towards the test endpoint `gateway.test.clearhaus.com` please use
+PANs that are either <b>not</b>
+<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, are
+one of the special test PANs 2221000000000009, 4111111111111111,
+5500000000000004, or are Apple Pay test cards.
 
-Range           | Card scheme |
---------------- | ----------- |
-222100 - 272099 | MasterCard  |
-400000 - 499999 | Visa        |
-500000 - 699999 | MasterCard  |
-
-<p class="alert alert-danger">
-Please use PANs that are <b>not</b>
-<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, one of the
-following special PANs: 2221000000000009, 4111111111111111, 5500000000000004, or
-an Apple Pay test card.
-</p>
-
-You can specify a status `code` as transaction amount to trigger a specific
-error.
+For PANs starting with 420000 and ending with 0000, and PANs starting with
+555555 and ending with 4444, you can specify a valid status `code` as
+transaction amount to trigger the status.
 
 
 ## Endpoint summary
