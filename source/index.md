@@ -492,7 +492,7 @@ POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`.
+`card`, `applepay`, `googlepay`, `mobilepayonline`.
 Exactly one payment method must be used, unless the authorization is made on
 a card resource (`/cards/:id/authorizations`, deprecated), in which case the
 payment method must be omitted.
@@ -602,6 +602,41 @@ object][ApplePay-PaymentToken] for more information.
   subsequent recurring authorization.
 </p>
 
+
+---
+##### **Method**: `googlepay`
+
+To accept a payment using Google Pay, apart from the complete payment method
+token and merchant ID, the derived shared secret is required. This must be
+derived according to the documentation.
+
+The cryptography involved is described [here][GooglePay-PaymentCryptography].
+
+<dl>
+  <dt>googlepay[token]</dt>
+  <dd>[:json:] <br /> Raw payment method token as received in response from Google. UTF-8
+    encoded serialization of a JSON dictionary.</dd>
+  <dt>googlepay[shared_secret]</dt>
+  <dd>
+    The shared secret derived from the ephemeral public key and your private key, Base64 encoded.
+  </dd>
+  <dt>googlepay[merchant_id]</dt>
+  <dd>
+    The ID of the merchant, string matching the format `merchant:<ID>`.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
+  method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> may be fully
+  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
+  the <code>eciIndicator</code> of the <code>paymentMethodDetails</code>.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
+  subsequent recurring authorization.
+</p>
 
 ---
 ##### **Method**: `mobilepayonline`
@@ -1068,3 +1103,4 @@ exponent is 2; after the timespan, the exponent is 0.
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
 [3D-Secure]: http://www.3dsecure.io
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
+[GooglePay-PaymentCryptography]: https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography
