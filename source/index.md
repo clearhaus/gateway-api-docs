@@ -615,13 +615,10 @@ Please refer to the [official documentation][GooglePay-PaymentCryptography].
   <dd>[:json:] <br /> Raw payment method token as received in response from Google. UTF-8
     encoded serialization of a JSON dictionary.</dd>
   <dt>googlepay[shared_secret]</dt>
-  <dd>
-    The shared secret derived from the ephemeral public key and your private key, Base64 encoded.
-  </dd>
+  <dd>The shared secret derived from the ephemeral public key and your private
+    key, Base64 encoded.</dd>
   <dt>googlepay[merchant_id]</dt>
-  <dd>
-    The ID of the merchant, string matching the format `merchant:<ID>`.
-  </dd>
+  <dd>The ID of the merchant, string matching the format `merchant:<ID>`.</dd>
 </dl>
 
 <p class="alert alert-info">
