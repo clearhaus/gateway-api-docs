@@ -617,8 +617,8 @@ Please refer to the [official documentation][GooglePay-PaymentCryptography].
   <dt>googlepay[shared_secret]</dt>
   <dd>[:base64:]<br />The shared secret derived from the ephemeral public key and
     your private key.</dd>
-  <dt>googlepay[merchant_id]</dt>
-  <dd>[:string:]<br />The ID of the merchant, string matching the format `merchant:<ID>`.</dd>
+  <dt>googlepay[recipient_id]</dt>
+  <dd>merchant:[:merchant_id:]<br />The ID of the merchant preprended with "merchant:".</dd>
 </dl>
 
 <p class="alert alert-info">
