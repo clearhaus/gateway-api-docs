@@ -612,13 +612,13 @@ Please refer to the [official documentation][GooglePay-PaymentCryptography].
 
 <dl>
   <dt>googlepay[token]</dt>
-  <dd>[:json:] <br /> Raw payment method token as received in response from Google. UTF-8
+  <dd>[:json:]<br />Raw payment method token as received in response from Google. UTF-8
     encoded serialization of a JSON dictionary.</dd>
   <dt>googlepay[shared_secret]</dt>
-  <dd>The shared secret derived from the ephemeral public key and your private
-    key, Base64 encoded.</dd>
+  <dd>[:base64:]<br />The shared secret derived from the ephemeral public key and
+    your private key.</dd>
   <dt>googlepay[merchant_id]</dt>
-  <dd>The ID of the merchant, string matching the format `merchant:<ID>`.</dd>
+  <dd>[:string:]<br />The ID of the merchant, string matching the format `merchant:<ID>`.</dd>
 </dl>
 
 <p class="alert alert-info">
