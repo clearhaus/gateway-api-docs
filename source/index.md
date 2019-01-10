@@ -607,10 +607,8 @@ object][ApplePay-PaymentToken] for more information.
 ##### **Method**: `googlepay`
 
 To accept a payment using Google Pay, apart from the complete payment method
-token and merchant ID, the derived shared secret is required. This must be
-derived according to the documentation.
-
-The cryptography involved is described [here][GooglePay-PaymentCryptography].
+token and merchant ID, the derived shared secret is required.
+Please refer to the [official documentation][GooglePay-PaymentCryptography].
 
 <dl>
   <dt>googlepay[token]</dt>
