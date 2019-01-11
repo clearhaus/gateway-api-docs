@@ -609,6 +609,7 @@ object][ApplePay-PaymentToken] for more information.
 To accept a payment using Google Pay, apart from the complete payment method
 token and merchant ID, the derived shared secret is required.
 Please refer to the [official documentation][GooglePay-PaymentCryptography].
+Supported protocol versions are `ECv1` and `ECv2`.
 
 <dl>
   <dt>googlepay[token]</dt>
@@ -617,8 +618,10 @@ Please refer to the [official documentation][GooglePay-PaymentCryptography].
   <dt>googlepay[shared_secret]</dt>
   <dd>[:base64:]<br />The shared secret derived from the ephemeral public key and
     your private key.</dd>
-  <dt>googlepay[recipient_id]</dt>
-  <dd>merchant:[:merchant_id:]<br />The ID of the merchant preprended with "merchant:".</dd>
+  <dt>googlepay[merchant_id]</dt>
+  <dd>[\x21-\x7E]+
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters exluding space</a></i>
+    <br />The Google Pay ID of the merchant.</dd>
 </dl>
 
 <p class="alert alert-info">
