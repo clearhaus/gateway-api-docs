@@ -1055,7 +1055,7 @@ Sorted by descending timestamp.
 
 ### Add a valid test CSC
 
-The CSC 987 has been added as a valid test CSC for all PANs.
+Starting 2019-01-xx the CSC 987 has been added as a valid test CSC for all PANs.
 
 ### Add credits resource
 
