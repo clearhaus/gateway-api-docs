@@ -975,6 +975,8 @@ For PANs starting with 420000 and ending with 0000, and PANs starting with
 555555 and ending with 4444, you can specify a valid status `code` as
 transaction amount to trigger the status.
 
+When testing towards the test endpoint, the CSC 987 -- and only 987 -- is
+considered a match for all PANs.
 
 ## Endpoint summary
 
