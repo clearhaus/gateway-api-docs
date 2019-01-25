@@ -492,7 +492,7 @@ POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `googlepay`, `mobilepayonline`.
+`card`, `applepay`, `mobilepayonline`.
 Exactly one payment method must be used, unless the authorization is made on
 a card resource (`/cards/:id/authorizations`, deprecated), in which case the
 payment method must be omitted.
@@ -539,10 +539,9 @@ payment method must be omitted.
   </dd>
 </dl>
 
----
-##### **Method**: `card`
+##### Method: `card`
 
-<dl>
+<dl class="dl-horizontal">
   <dt>card[pan]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>card[expire_month]</dt>
@@ -568,8 +567,7 @@ payment method must be omitted.
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
 </p>
 
----
-##### **Method**: `applepay`
+##### Method: `applepay`
 
 Apple Pay requires the payment details (PAN, expiry, etc.) of the payment token
 to be decrypted by a symmetric key.
@@ -579,7 +577,7 @@ to [our reference implementation](https://github.com/clearhaus/pedicel) written
 in Ruby; see [Apple's documentation for the <code>PaymentToken</code>
 object][ApplePay-PaymentToken] for more information.
 
-<dl>
+<dl class="dl-horizontal">
   <dt>applepay[payment_token]</dt>
   <dd>[:json:] <br /> Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.</dd>
   <dt>applepay[symmetric_key]</dt>
@@ -602,44 +600,9 @@ object][ApplePay-PaymentToken] for more information.
   subsequent recurring authorization.
 </p>
 
+##### Method: `mobilepayonline`
 
----
-##### **Method**: `googlepay`
-
-To accept a payment using Google Pay, apart from the complete payment method
-token and merchant ID, the derived shared secret is required.
-Please refer to the [official documentation][GooglePay-PaymentCryptography].
-Supported protocol versions are `ECv1` and `ECv2`.
-
-<dl>
-  <dt>googlepay[token]</dt>
-  <dd>[:json:]<br />Raw payment method token as received in response from Google. UTF-8
-    encoded serialization of a JSON dictionary.</dd>
-  <dt>googlepay[shared_secret]</dt>
-  <dd>[:base64:]<br />The shared secret derived from the ephemeral public key and
-    your private key.</dd>
-  <dt>googlepay[merchant_id]</dt>
-  <dd>[\x21-\x7E]+
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters exluding space</a></i>
-    <br />The Google Pay ID of the merchant.</dd>
-</dl>
-
-<p class="alert alert-info">
-  <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
-  method.
-  <br />
-  <b>Notice:</b> An authorization made with <code>googlepay</code> may be fully
-  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
-  the <code>eciIndicator</code> of the <code>paymentMethodDetails</code>.
-  <br />
-  <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
-  subsequent recurring authorization.
-</p>
-
----
-##### **Method**: `mobilepayonline`
-
-<dl>
+<dl class="dl-horizontal">
   <dt>mobilepayonline[pan]</dt>
   <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
   <dt>mobilepayonline<br />[expire_month]</dt>
@@ -1107,4 +1070,3 @@ exponent is 2; after the timespan, the exponent is 0.
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
 [3D-Secure]: http://www.3dsecure.io
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
-[GooglePay-PaymentCryptography]: https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography
