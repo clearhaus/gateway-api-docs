@@ -1018,7 +1018,7 @@ Sorted by descending timestamp.
 
 ### Add a valid test CSC
 
-Starting 2019-01-xx the CSC 987 has been added as a valid CSC for all PANs when
+Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
 testing against `gateway.test.clearhaus.com`.
 
 ### Add credits resource
