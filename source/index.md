@@ -975,6 +975,8 @@ For PANs starting with 420000 and ending with 0000, and PANs starting with
 555555 and ending with 4444, you can specify a valid status `code` as
 transaction amount to trigger the status.
 
+When testing towards the test endpoint, the CSC 987&mdash;and only 987&mdash;is
+considered a match for all PANs.
 
 ## Endpoint summary
 
@@ -1015,6 +1017,11 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Add a valid test CSC
+
+Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
+testing against `gateway.test.clearhaus.com`.
 
 ### Add credits resource
 
