@@ -1012,6 +1012,8 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
+Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
+
 Sorted by descending timestamp.
 
 ### Add credits resource
