@@ -1070,6 +1070,13 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
+### Add status codes for scheme stop request
+
+Starting 2019-03-xx 3 new status codes are avaliable - reflecting scheme 'stop
+requests' response codes.
+
+Please be adviced that appropriate action should be taken to adequatly handle
+these responses.
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
