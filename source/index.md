@@ -926,6 +926,9 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
+           |  40420 |  R0 Stop request. Stop this subscription on this merchant
+           |  40421 |  R1 Stop request. Stop all subscription on this merchant
+           |  40422 |  R3 Stop request. Stop all subscription on this card
            |  50000 |  Clearhaus error
 
 
