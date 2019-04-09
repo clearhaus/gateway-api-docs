@@ -926,9 +926,7 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
-           |  40420 |  R0 Stop request. Stop this subscription on this merchant
-           |  40421 |  R1 Stop request. Stop all subscription on this merchant
-           |  40422 |  R3 Stop request. Stop all subscription on this card
+           |  40420 |  Stop recurring
            |  50000 |  Clearhaus error
 
 
@@ -965,6 +963,24 @@ Examples:
     }
 }
 ````
+
+### Stop recurring response
+
+On any recurring transaction issures have the ability to issue a <i>stop
+recurring</i>, canceling the concent of the card holder, towards a merchant, to
+initiate transactions on their behalf.
+
+A <i>stop recurring</i> response is both a decline of the current authorization, but
+also a notice to halt all future recurring transactions towards this card from
+this merchant.
+
+Are <i>stop recurring</i> not heated and recurring transactions towards this
+card continues, a fee pr. transaction is incurred onto the merchant by card
+scheme.
+
+Merchants should contanct the customer who issued the <i>stop recurring</i>
+and resolve this issue. Only after the <i>stop recurring</i> has been lifted
+can recurring transactions be resumed.
 
 ## Test card numbers
 
@@ -1072,11 +1088,9 @@ exponent is 2; after the timespan, the exponent is 0.
 
 ### Add status codes for scheme stop request
 
-Starting 2019-03-xx 3 new status codes are avaliable - reflecting scheme 'stop
-requests' response codes.
-
-Please be adviced that appropriate action should be taken to adequatly handle
-these responses.
+Starting 2019-04-xx a new status code `40420 - Stop recurring` is avaliable.
+Please be adviced that appropriate action must be taken to adequately handle
+this response, see [Stop recurring response](#stop-recurring-response)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
