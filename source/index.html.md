@@ -964,13 +964,13 @@ Examples:
 }
 ````
 
-### Stop recurring response
+### Stop recurring status
 
 On any recurring transaction issures have the ability to issue a <i>stop
 recurring</i>, canceling the concent of the card holder, towards a merchant, to
 initiate transactions on their behalf.
 
-A <i>stop recurring</i> response is both a decline of the current authorization, but
+A <i>stop recurring</i> status is both a decline of the current authorization, but
 also a notice to halt all future recurring transactions towards this card from
 this merchant.
 
@@ -1090,7 +1090,7 @@ exponent is 2; after the timespan, the exponent is 0.
 
 Starting 2019-04-xx a new status code `40420 - Stop recurring` is avaliable.
 Please be adviced that appropriate action must be taken to adequately handle
-this response, see [Stop recurring response](#stop-recurring-response)
+this status code, see [Stop recurring status](#stop-recurring-status)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
