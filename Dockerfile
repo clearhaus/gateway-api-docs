@@ -1,7 +1,7 @@
-FROM ruby:2.1
+FROM node:stretch
 
 RUN apt-get update \
-    && apt-get install -y nodejs npm \
+    && apt-get install -y ruby2.3 bundler \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./Gemfile /tmp/Gemfile
