@@ -966,21 +966,20 @@ Examples:
 
 ### Stop recurring status
 
-On any recurring transaction issures have the ability to issue a <i>stop
-recurring</i>, canceling the concent of the card holder, towards a merchant, to
-initiate transactions on their behalf.
+On any recurring transaction, issuers can respond with <i>stop recurring</i>,
+withdrawing the consent from the cardholder for a merchant to initiate
+transactions on their behalf.
 
-A <i>stop recurring</i> status is both a decline of the current authorization, but
-also a notice to halt all future recurring transactions towards this card from
+A <i>stop recurring</i> status is both a decline of the current authorization,
+but also a notice to halt all future recurring transactions on this card from
 this merchant.
 
-Are <i>stop recurring</i> not heated and recurring transactions towards this
-card continues, a fee pr. transaction is incurred onto the merchant by card
-scheme.
+If <i>stop recurring</i> responses are not adhered to and recurring
+transactions on this card continues, a fee pr. transaction is incurred by
+the merchant from the card scheme.
 
-Merchants should contanct the customer who issued the <i>stop recurring</i>
-and resolve this issue. Only after the <i>stop recurring</i> has been lifted
-can recurring transactions be resumed.
+Merchants should contact the cardholder to resolve this issue. Only after the
+withdrawal of consent has been lifted, can recurring transactions be resumed.
 
 ## Test card numbers
 
