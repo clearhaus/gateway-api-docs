@@ -964,23 +964,6 @@ Examples:
 }
 ````
 
-### Stop recurring status
-
-On any recurring transaction, issuers can respond with <i>stop recurring</i>,
-withdrawing the consent from the cardholder for a merchant to initiate
-transactions on their behalf.
-
-A <i>stop recurring</i> status is both a decline of the current authorization,
-but also a notice to halt all future recurring transactions on this card from
-this merchant.
-
-If <i>stop recurring</i> responses are not adhered to and recurring
-transactions on this card continues, a fee pr. transaction is incurred by
-the merchant from the card scheme.
-
-Merchants should contact the cardholder to resolve this issue. Only after the
-withdrawal of consent has been lifted, can recurring transactions be resumed.
-
 ## Test card numbers
 
 For testing towards the test endpoint `gateway.test.clearhaus.com` please use
@@ -1085,11 +1068,9 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
-### Add status codes for scheme stop request
+### Add stop recurring status code
 
 Starting 2019-04-xx a new status code `40420 - Stop recurring` is avaliable.
-Please be adviced that appropriate action must be taken to adequately handle
-this status code, see [Stop recurring status](#stop-recurring-status)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
