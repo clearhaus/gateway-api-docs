@@ -963,6 +963,7 @@ Examples:
     }
 }
 ````
+
 ### Stop recurring status
 
 On any recurring transaction, issuers can respond with _stop recurring_,
@@ -975,7 +976,6 @@ this merchant.
 
 Only after the withdrawal of consent has been lifted, by actions from
 cardholder or issuer, may recurring transactions be resumed.
-
 
 ## Test card numbers
 
