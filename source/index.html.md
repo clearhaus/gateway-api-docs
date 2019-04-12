@@ -963,6 +963,19 @@ Examples:
     }
 }
 ````
+### Stop recurring status
+
+On any recurring transaction, issuers can respond with _stop recurring_,
+withdrawing the consent from the cardholder for a merchant to initiate
+transactions on their behalf.
+
+A _stop recurring_ status is both a decline of the current authorization,
+but also a notice to halt all future recurring transactions on this card from
+this merchant.
+
+Only after the withdrawal of consent has been lifted, by actions taken by
+cardholder or issuer, may recurring transactions be resumed.
+
 
 ## Test card numbers
 
@@ -1071,6 +1084,8 @@ exponent is 2; after the timespan, the exponent is 0.
 ### Add stop recurring status code
 
 Starting 2019-04-xx a new status code `40420 - Stop recurring` is avaliable.
+Please be adviced that appropriate action must be taken to adequately handle
+this status code, see [Stop recurring status](#stop-recurring-status)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
