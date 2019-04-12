@@ -973,7 +973,7 @@ A _stop recurring_ status is both a decline of the current authorization,
 but also a notice to halt all future recurring transactions on this card from
 this merchant.
 
-Only after the withdrawal of consent has been lifted, by actions taken by
+Only after the withdrawal of consent has been lifted, by actions from
 cardholder or issuer, may recurring transactions be resumed.
 
 
