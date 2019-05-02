@@ -926,7 +926,7 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
-           |  40420 |  Stop payment
+           |  40420 |  Consent withdrawn
            |  50000 |  Clearhaus error
 
 
@@ -964,15 +964,15 @@ Examples:
 }
 ````
 
-### Stop payment status
+### Consent withdrawn status
 
-To any authorization issuers can respond with _stop payment_, thereby
-withdrawing the consent from the cardholder for a merchant to initiate
-transactions on their behalf.
+Issuers can withdraw the consent for a merchant to initiate credentials-on-file
+transactions on a cardholders behalf.
 
-A _stop payment_ status code is both a decline of the current authorization, but
-also a notice to halt all future authorizations on this card from this
-merchant.
+A _consent withdrawn_ status code is both a decline of the current
+authorization, but also a notice to **halt all future credentials-on-file
+authorizations** on this card from this merchant. This includes, but is not
+limited to, recurring transactions.
 
 Only after the withdrawal of consent has been lifted, by actions from the
 cardholder or issuer, may transactions be resumed.
@@ -1081,11 +1081,11 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
-### Add stop payment status code
+### Add consent withdrawn status
 
-Starting 2019-04-12 a new status code `40420 - Stop payment` is avaliable.
+Starting 2019-04-12 a new status code `40420 - Consent withdrawn` is avaliable.
 Please be adviced that appropriate action must be taken to adequately handle
-this status code, see [Stop payment status](#stop-payment-status)
+this status code, see [Consent withdrawn status](#consent-withdrawn-status)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
