@@ -560,8 +560,8 @@ payment method must be omitted.
 
 <p class="alert alert-info">
   <b>Notice:</b> An approved authorization that includes
-  <code>card[pares]</code> is 3-D
-  Secured and is strongly authenticated (SCA in PSD2).
+  <code>card[pares]</code> is attempted 3-D Secure or fully 3-D Secure; if fully
+  3-D Secure, then therefore strongly authenticated (SCA in PSD2).
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
