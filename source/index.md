@@ -632,6 +632,9 @@ Supported protocol versions are `ECv1` and `ECv2`.
   3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
   the <code>eciIndicator</code> of the <code>paymentMethodDetails</code>.
   <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> is
+  strongly authenticated (SCA in PSD2) if fully 3-D Secure.
+  <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
   subsequent recurring authorization.
   <b>Notice:</b> The merchant ID for the <code>googlepay</code> test
