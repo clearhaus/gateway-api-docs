@@ -559,10 +559,10 @@ payment method must be omitted.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> A valid PARes included in <code>card[pares]</card> can indicate
+  <b>Notice:</b> A valid PARes included in <code>card[pares]</code> can indicate
   3 different levels: non-authenticated, attempted 3-D Secure, fully 3-D Secure.
   <br />
-  <b>Notice:</b> An authorization made with <code>card[]</card> is strongly
+  <b>Notice:</b> An authorization made with <code>card[]</code> is strongly
   authenticated if it is fully 3-D Secure.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
