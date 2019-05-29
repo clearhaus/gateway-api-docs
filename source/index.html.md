@@ -966,17 +966,11 @@ Examples:
 
 ### Merchant blocked by cardholder status
 
-Merchants can use credentials-on-file to initiate transactions without the
-cardholder being present to facilitate payment flow. This includes, but is not
-limited to, recurring transactions.
-
-To ensure that money is not withdrawn without the cardholders consent,
-a cardholder can block merchants from using credentials-on-file transactions
-on their card.
-
 A _merchant blocked by cardholder_ status code is both a decline of the current
-authorization, but also a notice to **halt all future credentials-on-file
-authorizations** on this card from this merchant.
+authorization, but also a notice to **halt all future
+merchant-initiated-transactions** on this card from this merchant. This
+includes, but is not limited to, recurring transactions.
+
 Only after the blockade has been lifted, by actions taken by the cardholder,
 may transactions be resumed.
 
