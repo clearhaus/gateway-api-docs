@@ -926,7 +926,7 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
-           |  40420 |  Consent withdrawn
+           |  40420 |  Merchant blocked by cardholder
            |  50000 |  Clearhaus error
 
 
@@ -964,18 +964,21 @@ Examples:
 }
 ````
 
-### Consent withdrawn status
+### Merchant blocked by cardholder status
 
-Issuers can withdraw the consent for a merchant to initiate credentials-on-file
-transactions on a cardholders behalf.
-
-A _consent withdrawn_ status code is both a decline of the current
-authorization, but also a notice to **halt all future credentials-on-file
-authorizations** on this card from this merchant. This includes, but is not
+Merchants can use credentials-on-file to initiate transactions without the
+cardholder being present to facilitate payment flow. This includes, but is not
 limited to, recurring transactions.
 
-Only after the withdrawal of consent has been lifted, by actions from the
-cardholder or issuer, may transactions be resumed.
+To ensure that money is not withdrawn without the cardholders consent,
+a cardholder can block merchants from using credentials-on-file transactions
+on their card.
+
+A _merchant blocked by cardholder_ status code is both a decline of the current
+authorization, but also a notice to **halt all future credentials-on-file
+authorizations** on this card from this merchant.
+Only after the blockade has been lifted, by actions taken by the cardholder,
+may transactions be resumed.
 
 ## Test card numbers
 
@@ -1081,11 +1084,12 @@ Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
 and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
 exponent is 2; after the timespan, the exponent is 0.
 
-### Add consent withdrawn status
+### Add merchant blocked by cardholder status
 
-Starting 2019-04-12 a new status code `40420 - Consent withdrawn` is avaliable.
-Please be adviced that appropriate action must be taken to adequately handle
-this status code, see [Consent withdrawn status](#consent-withdrawn-status)
+Starting 2019-xx-xx a new status code `40420 - Merchant blocked by cardholder`
+is avaliable. Please be adviced that appropriate action must be taken to
+adequately handle this status code, see [Merchant blocked by cardholder
+status](#merchant-blocked-by-cardholder-status)
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
