@@ -262,6 +262,8 @@ Example response (snippet):
 
 ## Tokenize a card
 
+This is now deprecated!
+
 A card token is a value that references card details (see
 [Tokenization][Tokenization]). You can use a card token (card resource) to make
 authorization and credit transactions.
