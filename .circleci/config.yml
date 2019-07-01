@@ -14,7 +14,7 @@ jobs:
       - run:
           name: install AWS CLI (first install pip, the Python package manager)
           command: |
-            apt-get install awscli
+            sudo apt-get install awscli
       - run:
           name: Build Docker image
           command: |
