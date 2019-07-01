@@ -1080,7 +1080,7 @@ exponent is 2; after the timespan, the exponent is 0.
 
 ### Add merchant blocked by cardholder status
 
-Starting 2019-xx-xx a new status code `40420 - Merchant blocked by cardholder`
+Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
 is avaliable. Please be advised that appropriate action must be taken to
 adequately handle this status code, see [Merchant blocked by cardholder
 status](#merchant-blocked-by-cardholder-status)
