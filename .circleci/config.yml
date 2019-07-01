@@ -9,6 +9,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
       AWS_REGION: eu-west-1
       BUILD_DIR: /build
+      DOKCER_IMAGE: r.clrhs.dk/gateway-api-docs
     steps:
       - checkout
       - run:
