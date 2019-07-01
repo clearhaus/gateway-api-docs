@@ -1,0 +1,37 @@
+version: 2
+
+jobs:
+  build:
+    machine:
+      image: circleci/classic:latest
+    environment:
+      AWS_REGION: eu-west-1
+      BUILD_DIR: /build
+      DOCKER_IMAGE: r.clrhs.dk/gateway-api-docs
+    steps:
+      - checkout
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get install awscli
+      - run:
+          name: Build Docker image
+          command: |
+            echo "LABEL compare=$CIRCLE_COMPARE_URL" >> Dockerfile
+            docker build -t $DOCKER_IMAGE .
+            docker tag $DOCKER_IMAGE $DOCKER_IMAGE:$CIRCLE_SHA1
+      - run:
+          name: Build static site
+          command: docker run -v $BUILD_DIR:/web/build $DOCKER_IMAGE bundle exec middleman build
+      - deploy:
+          name: Deploy to AWS
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              echo "On master branch, syncing to s3"
+              aws s3 sync $BUILD_DIR \
+              s3://clrhs-prod-nonpci-docs-gateway/ --delete
+            else
+              echo "Not master branch, dry run only"
+              aws s3 sync $BUILD_DIR \
+              s3://clrhs-prod-nonpci-docs-gateway/ --dryrun --delete
+            fi
