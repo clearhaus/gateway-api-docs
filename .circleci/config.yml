@@ -20,7 +20,7 @@ jobs:
           name: Build Docker image
           command: |
             echo "LABEL compare=$CIRCLE_COMPARE_URL" >> Dockerfile
-            docker build -t gateway-api-docs .
+            docker build -t $DOCKER_IMAGE .
             env | grep -v AWS
             docker tag $DOCKER_IMAGE $DOCKER_IMAGE:$CIRCLE_SHA1
       - run:
