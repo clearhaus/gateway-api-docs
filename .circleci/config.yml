@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install AWS CLI (first install pip, the Python package manager)
+          name: Install AWS CLI
           command: |
             sudo apt-get install awscli
       - run:
@@ -23,14 +23,17 @@ jobs:
             docker build -t $DOCKER_IMAGE .
             docker tag $DOCKER_IMAGE $DOCKER_IMAGE:$CIRCLE_SHA1
       - run:
-          name: Run tests
+          name: Build static site
           command: docker run -v $BUILD_DIR:/web/build $DOCKER_IMAGE bundle exec middleman build
       - deploy:
-          name: deploy to AWS
+          name: Deploy to AWS
           command: |
             if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              echo "On master branch, syncing to s3"
               aws s3 sync $BUILD_DIR \
               s3://clrhs-prod-nonpci-docs-gateway/ --delete
             else
               echo "Not master branch, dry run only"
+              aws s3 sync $BUILD_DIR \
+              s3://clrhs-prod-nonpci-docs-gateway/ --dryrun --delete
             fi
