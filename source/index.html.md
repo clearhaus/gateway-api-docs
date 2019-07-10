@@ -629,6 +629,28 @@ object][ApplePay-PaymentToken] for more information.
   strongly authenticated (SCA in PSD2).
 </p>
 
+##### Method: `storedcredential`
+
+<dl class="dl-horizontal">
+  <dt>storedcredential[initiator]</dt>
+  <dd>(merchant|cardholder) <br /> The party that initiates the transaction.</dd>
+  <dt>storedcredential[pan]</dt>
+  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
+  <dt>storedcredential[expire_month]</dt>
+  <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
+  <dt>storedcredential[expire_year]</dt>
+  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
+  <dt>storedcredential[csc]</dt>
+  <dd>
+    [0-9]{3} <br />
+    <i>Optional</i> <br />
+    Card Security Code.
+    Can be present only for cardholder initiated transactions.
+  </dd>
+  <dt>storedcredential[pares]</dt>
+  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+</dl>
+
 
 ### Captures
 
