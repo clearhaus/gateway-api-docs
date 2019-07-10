@@ -555,7 +555,15 @@ payment method must be omitted.
     Card Security Code.
   </dd>
   <dt>card[pares]</dt>
-  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dd>[:base64:] <br />
+    <i>Optional</i> <br />
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+  </dd>
+  <dt>card[rreq]</dt>
+  <dd>[:json:] <br />
+    <i>Optional</i> <br />
+    The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+  </dd>
 </dl>
 
 <p class="alert alert-info">
