@@ -583,10 +583,10 @@ payment method must be omitted.
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
   <br />
-  <b>Notice:</b> An authorization made with <code>card[3dsv2]</code> is not a
-  <code>signed 3dsecure</code> transaction; only transactions made with
-  <code>card[pares]</code> is <code>signed 3dsecure</code> due to the digital
-  signature included in the PARes.
+  <b>Notice:</b> An authorization made with <code>card[pares]</code> has the 3-D
+  Secure values cryptographically signed due to the digital signature included
+  in the PARes. This is not the case when an authorization is made with
+  <code>card[3dsv2]</code>.
 </p>
 
 ##### Method: `applepay`
