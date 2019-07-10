@@ -555,7 +555,22 @@ payment method must be omitted.
     Card Security Code.
   </dd>
   <dt>card[pares]</dt>
-  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dd>[:base64:] <br />
+    <i>Optional. Cannot be present if <code>card[3dsv2]</code> is present.</i> <br />
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+  </dd>
+  <dt>card[3dsv2]</dt>
+  <dd>
+    Dictionary <br />
+    <i>Optional. Cannot be present if <code>card[pares]</code> is present.</i> <br />
+    <dl class="dl-horizontal">
+    <dt>[av]</dt>
+    <dd>[:base64:] <br /> Authentication Value</dd>
+    <dt>[dstid]</dt>
+    <dd>[\x20-\x7E]{1,36} <br /> Directory Server Transaction ID</dd>
+    <dt>[eci]</dt>
+    <dd>[567] <br /> Electronic Commerce Indicator</dd>
+  </dd>
 </dl>
 
 <p class="alert alert-info">
@@ -567,6 +582,11 @@ payment method must be omitted.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  <br />
+  <b>Notice:</b> An authorization made with <code>card[3dsv2]</code> is not a
+  <code>signed 3dsecure</code> transaction; only transactions made with
+  <code>card[pares]</code> is <code>signed 3dsecure</code> due to the digital
+  signature included in the PARes.
 </p>
 
 ##### Method: `applepay`
