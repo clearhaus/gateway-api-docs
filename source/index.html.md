@@ -578,8 +578,9 @@ payment method must be omitted.
   <b>Notice:</b> An authorization made with <code>card[]</code> is strongly
   authenticated if it is fully 3-D Secure.
   <br />
-  <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
-  <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  <b>Notice:</b> An authorization that includes <code>card[pares]</code>,
+  <code>card[3dsv2]</code> and/or <code>card[csc]</code> cannot be a subsequent
+  recurring authorization.
 </p>
 
 ##### Method: `applepay`
