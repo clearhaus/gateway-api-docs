@@ -559,10 +559,15 @@ payment method must be omitted.
     <i>Optional</i> <br />
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
   </dd>
-  <dt>card[rreq]</dt>
+  <dt>card[3dsv2][rreq]</dt>
   <dd>[:json:] <br />
-    <i>Optional</i> <br />
+    <i>Optional. Cannot be present if <code>card[3dsv2][ares]</code> is present.</i> <br />
     The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+  </dd>
+  <dt>card[3dsv2][ares]</dt>
+  <dd>[:json:] <br />
+    <i>Optional. Cannot be present if <code>card[3dsv2][rreq]</code> is present.</i> <br />
+    The 3-D Secure version 2 ARes containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
   </dd>
 </dl>
 
