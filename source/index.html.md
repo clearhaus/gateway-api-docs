@@ -625,7 +625,7 @@ object][ApplePay-PaymentToken] for more information.
     <i>Optional</i> <br />
     Phone number from where the PAN originates.
   </dd>
-  <dt>mobilepayonline[3dsecure]</dt>
+  <dt>mobilepayonline<br />[3dsecure]</dt>
   <dd>dictionary <br />
     <i>Optional</i> <br />
     See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
@@ -653,11 +653,11 @@ object][ApplePay-PaymentToken] for more information.
 Only one 3-D Secure version can be used for a given authorization.
 
 <dl class="dl-horizontal">
-  <dt>v1</dt>
+  <dt>[3dsecure][v1]</dt>
   <dd><i>Optional. Cannot be present if <code>v2</code> is present.</i> <br />
     3-D Secure version 1.
   </dd>
-  <dt>v2</dt>
+  <dt>[3dsecure][v2]</dt>
   <dd><i>Optional. Cannot be present if <code>v1</code> is present.</i> <br />
     3-D Secure version 2, also known as EMV 3-D Secure.
   </dd>
@@ -667,7 +667,7 @@ Only one 3-D Secure version can be used for a given authorization.
 
 
 <dl class="dl-horizontal">
-  <dt>pares</dt>
+  <dt>[3dsecure][v1][pares]</dt>
   <dd>[:base64:] <br />
     <i>Optional</i> <br />
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
@@ -682,12 +682,12 @@ Only one 3-D Secure version can be used for a given authorization.
 ##### Authentication: `[3dsecure][v2]`
 
 <dl class="dl-horizontal">
-  <dt>ares</dt>
+  <dt>[3dsecure][v2][ares]</dt>
   <dd>[:json:] <br />
     <i>Optional. Cannot be present if <code>rreq</code> is present.</i> <br />
     The 3-D Secure version 2 ARes containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
   </dd>
-  <dt>rreq</dt>
+  <dt>[3dsecure][v2][rreq]</dt>
   <dd>[:json:] <br />
     <i>Optional. Cannot be present if <code>ares</code> is present.</i> <br />
     The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
