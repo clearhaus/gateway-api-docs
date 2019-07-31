@@ -554,20 +554,28 @@ payment method must be omitted.
     <i>Optional when transaction is signed and partner is trusted.</i> <br />
     Card Security Code.
   </dd>
-  <dt>card[pares]</dt>
-  <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
+  <dt>card[3dsecure]</dt>
+  <dd>dictionary <br />
+    <i>Optional</i> <br />
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+  </dd>
+
+  <!-- deprecated -->
+  <dt><strike>card[pares]</strike></dt>
+  <dd>
+    Deprecated! Please use <code>card[3dsecure][v1][pares]</code>. <br />
+    [:base64:] <br />
+    <i>Optional</i> <br />
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+  </dd>
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> A valid PARes included in <code>card[pares]</code> can indicate
-  3 different levels: non-authenticated, attempted 3-D Secure, fully 3-D Secure.
-  <br />
-  <b>Notice:</b> An authorization made with <code>card[]</code> is strongly
-  authenticated if it is fully 3-D Secure.
-  <br />
-  <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
-  <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  <b>Notice:</b> An authorization that includes
+  <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
+  and/or <code>card[csc]</code> cannot be a subsequent recurring authorization.
 </p>
+
 
 ##### Method: `applepay`
 
@@ -628,6 +636,52 @@ object][ApplePay-PaymentToken] for more information.
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated (SCA in PSD2).
 </p>
+
+##### Authentication: `[3dsecure]`
+
+Only one 3-D Secure version can be used for a given authorization.
+
+<dl class="dl-horizontal">
+  <dt>v1</dt>
+  <dd><i>Optional. Cannot be present if <code>v2</code> is present.</i> <br />
+    3-D Secure version 1.
+  </dd>
+  <dt>v2</dt>
+  <dd><i>Optional. Cannot be present if <code>v1</code> is present.</i> <br />
+    3-D Secure version 2, also known as EMV 3-D Secure.
+  </dd>
+</dl>
+
+##### Authentication: `[3dsecure][v1]`
+
+
+<dl class="dl-horizontal">
+  <dt>pares</dt>
+  <dd>[:base64:] <br />
+    <i>Optional</i> <br />
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> A valid PARes can indicate 3 different levels:
+  non-authenticated, attempted 3-D Secure, fully 3-D Secure.
+</p>
+
+##### Authentication: `[3dsecure][v2]`
+
+<dl class="dl-horizontal">
+  <dt>ares</dt>
+  <dd>[:json:] <br />
+    <i>Optional. Cannot be present if <code>rreq</code> is present.</i> <br />
+    The 3-D Secure version 2 ARes containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+  </dd>
+  <dt>rreq</dt>
+  <dd>[:json:] <br />
+    <i>Optional. Cannot be present if <code>ares</code> is present.</i> <br />
+    The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+  </dd>
+</dl>
 
 
 ### Captures
