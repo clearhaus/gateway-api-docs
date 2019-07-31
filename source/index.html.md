@@ -625,7 +625,14 @@ object][ApplePay-PaymentToken] for more information.
     <i>Optional</i> <br />
     Phone number from where the PAN originates.
   </dd>
-  <dt>mobilepayonline[pares]</dt>
+  <dt>mobilepayonline[3dsecure]</dt>
+  <dd>dictionary <br />
+    <i>Optional</i> <br />
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+  </dd>
+
+  <!-- deprecated -->
+  <dt><strike>mobilepayonline[pares]</strike></dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
 
