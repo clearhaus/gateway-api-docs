@@ -333,30 +333,45 @@ Example response (snippet):
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 50000,
-    "currency": "EUR",
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "currency": "EUR"
 }
 ````
 
 
-## Recurring payments
+## Series of transactions
 
-Recurring payments enable you to repeatedly charge cardholders without having
-them to provide card information for subsequent payments.
+Subscriptions are supported using `series[]`. There are 3 types of
+subscriptions: `installment`, `recurring`, and `unscheduled`
+(merchant-initiated) credential on file.
 
-### Subscription concept
+A `recurring` series consist of transactions with the same amount being charged
+at regular intervals.
 
-Many PSPs have a subscription concept for supporting recurring payments.
-The first approved authorization is the initial recurring authorization (also
-known as "first in series"), all later authorizations are called subsequent
-authorizations. Clearhaus supports subscriptions in the form of recurring
-payments.
+An `installment` series is a special case of recurring where, additionally, the
+goods/services delivered by the merchant is delivered at the time of the
+first in series transactions, and the agreement ends at an agreed date or after
+an agreed number of withdrawals.
 
-### Repeatedly reserve money
+An `unscheduled` credential on file is a series of merchant-initiated
+transactions just like a `recurring` series, but with the exception that the
+intervals between withdrawals are irregular; instead, transactions are made
+ad-hoc.
 
-A recurring payment is made by making an authorization and setting `recurring`
-parameter to `true`. The first recurring payment for a given card could be made
-this way (notice that the amount may be zero):
+For subscriptions, the first in series transaction is cardholder-initiated
+transaction whereas all subsequent transactions er merchant-initiated.
+
+PSPs and merchants may store the cardholder's payment credentials to allow a
+returning cardholder to conveniently pay without entering the payment
+credentials again. (Explicit agreement with Clearhaus is required.)
+To store cardholder's payment credentials and use these stored payment
+credentials, `series[]` must be used also. All transactions in such a series are
+cardholder-initiated.
+
+### Example
+
+As an example, a `recurring` payment is made by making an authorization and
+signaling `series[type]=recurring`. The first recurring payment for a given card
+is made this way (notice that the amount may be zero):
 
 ````shell
 curl -X POST \
@@ -364,7 +379,7 @@ curl -X POST \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "recurring=true" \
+  -d "series[type]=recurring" \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
   -d "card[expire_year]=2022"     \
@@ -380,21 +395,58 @@ Example response (snippet):
     "status": {
         "code": 20000
     },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "recurring": true,
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "processed_at": "2019-08-14T12:58:56+00:00",
+    "series": {
+        "type": "recurring",
+        "initiator": "cardholder"
+    },
+    "_embedded": {
+        "self": { "href": "/authorizations/04dce6bf-ca17-42c5-a61e-5fdb4b87310a" }
+    }
 }
 ````
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made similarly, but neither CSC nor PARes (see
-[3-D Secure](#3-d-secure)) would be included.
+Subsequent authorizations are made by using `series[previous]` which point to
+the previous authorization in the series; for `installment`, `recurring`, and
+`unscheduled` where subsequent transactions are merchant-initiated, neither CSC
+nor 3-D Secure values (see [3-D Secure](#3-d-secure)) would be included.
 
-An initial recurring authorization can also be made using the `applepay` and
-`mobilepayonline` payment methods; subsequent recurring payments, however, must
-be made using the `card` payment method using the card details of the initial
-recurring authorization.
+````shell
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations \
+  -u <your-api-key>:  \
+  -d "amount=2050"    \
+  -d "currency=EUR"   \
+  -d "series[previous]=/authorizations/04dce6bf-ca17-42c5-a61e-5fdb4b87310a" \
+  -d "card[pan]=4111111111111111" \
+  -d "card[expire_month]=06"      \
+  -d "card[expire_year]=2022"     \
+  -d "card[csc]=123"              \
+  --data-urlencode "card[pares]=<some-pares-value>"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2019-08-14T12:58:56+00:00",
+    "series": {
+        "type": "recurring",
+        "initiator": "merchant"
+    }
+}
+````
+
+First in series transactions can also be made using the `applepay` and
+`mobilepayonline` payment methods; subsequent in series merchant-initiated
+payments, however, must be made using the `card` payment method using the card
+details of the initial recurring authorization.
 
 
 ## 3-D Secure
@@ -506,8 +558,6 @@ payment method must be omitted.
   <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>ip</dt>
   <dd>[0-9\.a-fA-F:]{3,39} <br /> <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).</dd>
-  <dt>recurring</dt>
-  <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring payments.</dd>
   <dt>text_on_statement</dt>
   <dd>
     [\x20-\x7E]{2,22}
@@ -523,8 +573,41 @@ payment method must be omitted.
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
+  <dt>series[type]</dt>
+  <dd>
+    (installment|recurring|unscheduled|cardholder) <br />
+    <i>Optional. Cannot be present if <code>series[previous]</code> is present.</i><br />
+    Indicate if the series of transactions is <code>installment</code>,
+    <code>recurring</code>, <code>unscheduled</code> credential on file
+    (where subsequent transactions are initiated by the merchant), or
+    <code>cardholder</code>-initiated credential on file (where all transactions
+    in series is cardholder-initiated).
+    <br />
+    If provided, it indicates that the transaction is first in series of the
+    given type initiated by the cardholder.
+  </dd>
+  <dt>series[previous]</dt>
+  <dd>
+    reference
+    <br />
+    <i>Optional. Cannot be present if <code>series[type]</code> is present.</i>
+    <br />
+    A reference to the previous approved authorization in the series (use
+    <code>_embedded.self</code> from the response to the previous
+    authorization).
+    <br />
+    If provided, it indicates that the transaction is a subsequent transaction
+    in series of referenced authorization.
+  </dd>
 
   <!-- deprecated -->
+  <dt><strike>recurring</strike></dt>
+  <dd>
+    Deprecated! Please use <code>series[type]=recurring</code>. <br />
+    (true|false) <br />
+    <i>Optional</i> <br />
+    Must be <code>true</code> for recurring payments.
+  </dd>
   <dt><strike>threed_secure[pares]</strike></dt>
   <dd>
     Deprecated! Please use <code>card[pares]</code>. <br />
@@ -969,9 +1052,8 @@ Examples:
 ### Merchant blocked by cardholder status
 
 A _merchant blocked by cardholder_ status code is both a decline of the current
-authorization, but also a notice to **halt all future
-merchant-initiated-transactions** on this card from this merchant. This
-includes, but is not limited to, recurring transactions.
+authorization, and also a notice to **halt all future merchant-initiated
+transactions in the series**.
 
 Only after the blockade has been lifted, by actions taken by the cardholder,
 may transactions be resumed.
