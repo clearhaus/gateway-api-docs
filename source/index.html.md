@@ -49,7 +49,6 @@ curl https://gateway.test.clearhaus.com \
 {
     "_links": {
         "authorizations": { "href": "/authorizations" },
-        "cards":          { "href": "/cards" },
         "account":        { "href": "/account" }
     }
 }
@@ -260,50 +259,6 @@ Example response (snippet):
 ````
 
 
-## Tokenize a card
-
-A card token is a value that references card details (see
-[Tokenization][Tokenization]). You can use a card token (card resource) to make
-authorization and credit transactions.
-
-A card resource is automatically made when you make an authorization
-transaction and supply card details. You can also make a card resource
-directly:
-
-````shell
-curl -X POST https://gateway.test.clearhaus.com/cards \
-     -u <your-api-key>: \
-     -d "card[pan]=5500000000000004" \
-     -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2022"     \
-     -d "card[csc]=123"
-````
-
-Example response (snippet):
-
-````json
-{
-    "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "last4": "0004",
-    "country": "US",
-    "scheme": "mastercard",
-    "type": "credit",
-    "csc": {
-        "present": true,
-        "matches": true
-    },
-    "_links": {
-        "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
-        "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
-    }
-}
-````
-
-
 ## Payout to cardholder
 
 Sometimes cardholders should receive money, e.g. if you will pay out some
@@ -333,8 +288,7 @@ Example response (snippet):
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 50000,
-    "currency": "EUR",
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "currency": "EUR"
 }
 ````
 
@@ -478,7 +432,6 @@ Our API offers six different resources:
 - [Refunds](#refunds)
 - [Voids](#voids)
 - [Credits](#credits)
-- [Cards](#cards)
 - [Account](#account)
 
 
@@ -488,14 +441,11 @@ To reserve money on a cardholder's bank account you make a new authorization res
 
 ````
 POST https://gateway.clearhaus.com/authorizations
-POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 ````
 
 Authorizations can be created using different payment methods:
 `card`, `applepay`, `mobilepayonline`.
-Exactly one payment method must be used, unless the authorization is made on
-a card resource (`/cards/:id/authorizations`, deprecated), in which case the
-payment method must be omitted.
+Exactly one payment method must be used.
 
 #### Parameters
 
@@ -764,99 +714,6 @@ POST https://gateway.clearhaus.com/credits
 </dl>
 
 
-#### Parameters (deprecated)
-
-````
-POST https://gateway.clearhaus.com/cards/:id/credits # deprecated
-````
-
-<dl class="dl-horizontal">
-  <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br />
-    Amount in minor units of given currency (e.g. cents if in Euro). As for
-    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
-    Visa, the amount must not exceed the equivalent of 50,000 USD.
-  </dd>
-  <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
-  <dt>text_on_statement</dt>
-  <dd>
-    [\x20-\x7E]{2,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
-    <i>Optional</i> <br />
-    Text that will be placed on cardholder's bank statement.
-  </dd>
-  <dt>reference</dt>
-  <dd>
-    [\x20-\x7E]{1,30}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
-    <i>Optional</i> <br />
-    A reference to an external object, such as an order number.
-  </dd>
-</dl>
-
-
-### Cards
-
-This resource is now deprecated!
-
-A card resource (token) corresponds to a payment card and can be used to make a
-credit or authorization transaction without providing sensitive card data (see
-["Tokenization"][Tokenization]).
-
-#### Parameters
-
-````
-POST https://gateway.clearhaus.com/cards
-````
-
-<dl class="dl-horizontal">
-  <dt>card[pan]</dt>
-  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
-  <dt>card[number]</dt>
-  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
-  <dt>card[expire_month]</dt>
-  <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
-  <dt>card[expire_year]</dt>
-  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
-  <dt>card[csc]</dt>
-  <dd>
-    [0-9]{3} <br />
-    <i>Optional when transaction is signed and partner is trusted.</i> <br />
-    Card Security Code.
-  </dd>
-</dl>
-
-<p class="alert alert-info">
-    <b>Notice:</b> The exact same card details can be sent multiple times but
-    will give you the same card resource (card token) every time.
-    <br />
-    <b>Notice:</b> A card resource is automatically made when you make an
-    authorization transaction and you supply card details.
-</p>
-
-<p class="alert alert-warning">
-    <b>Notice:</b> A "zero amount" authorization is made when POSTing to this
-    endpoint.
-</p>
-
-#### Response parameters
-
-<dl class="dl-horizontal">
-  <dt>card[last4]</dt>
-  <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
-  <dt>card[scheme]</dt>
-  <dd><code>visa</code>, <code>mastercard</code> or <code>unknown</code></dd>
-  <dt>card[type]</dt>
-  <dd><code>debit</code> or <code>credit</code>
-  <br /><i>Omittable</i></dd>
-  <dt>card[country]</dt>
-  <dd>[A-Z]{2}
-  <br /><i>Omittable</i>
-  <br /> ISO 3166-1 2-letter country code for issuing bank.</dd>
-</dl>
-
 ### Account
 
 The account resource holds basic merchant account information. Only `HTTP GET`
@@ -998,7 +855,6 @@ considered a match for all PANs.
 # authorizations
 https://gateway.clearhaus.com/authorizations
 https://gateway.clearhaus.com/authorizations/:id
-https://gateway.clearhaus.com/cards/:id/authorizations
 
 # captures
 https://gateway.clearhaus.com/captures/:id
@@ -1015,11 +871,6 @@ https://gateway.clearhaus.com/authorizations/:id/refunds
 # credits
 https://gateway.clearhaus.com/credits
 https://gateway.clearhaus.com/credits/:id
-https://gateway.clearhaus.com/cards/:id/credits
-
-# cards
-https://gateway.clearhaus.com/cards
-https://gateway.clearhaus.com/cards/:id
 
 # account
 https://gateway.clearhaus.com/account
@@ -1030,6 +881,15 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Remove deprecated `/cards`, `threed_secure` and `card[number]`
+
+The deprecations announced in 2018 will be executed. Partners must expect
+`/cards` endpoints, the `threed_secure` and the `card[number]` parameters to be
+unavailable at any point in time after 2019-08-16.
+Refer to [the documentation source code
+changes](https://github.com/clearhaus/gateway-api-docs/pull/82/files) for the
+exact documentation change.
 
 ### Add a valid test CSC
 
