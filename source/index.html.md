@@ -341,7 +341,7 @@ Example response (snippet):
 ## Credential on file
 
 Subscriptions are supported using `credential_on_file[]`. There are 2 types of
-subscriptions: `recurring`, and `unscheduled` (merchant-initiated) credential on
+subscriptions: `recurring` and `unscheduled` (merchant-initiated) credential on
 file (UCOF).
 
 A `recurring` series consists of transactions with the same amount being charged
@@ -435,8 +435,8 @@ Example response (snippet):
 ````
 
 First in series transactions can also be made using the `applepay` and
-`mobilepayonline` payment methods; subsequent in series merchant-initiated
-payments, however, must be made using the `card` payment method using the card
+`mobilepayonline` payment methods; however, subsequent merchant-initiated
+transactions must be made using the `card` payment method using the card
 details of the initial recurring authorization.
 
 
@@ -577,11 +577,11 @@ payment method must be omitted.
     If provided, it indicates that the transaction is first in series of the
     given type initiated by the cardholder.
   </dd>
-  <dt>credential_on_file[previous]</dt>
+  <dt>credential_on_file<br />[previous]</dt>
   <dd>
     reference
     <br />
-    <i>Optional. Cannot be present if <code>series[type]</code> is present.</i>
+    <i>Optional. Cannot be present if <code>credential_on_file[type]</code> is present.</i>
     <br />
     A reference to the latest approved authorization in the series (use
     <code>_embedded.self</code> from the response to the previous
