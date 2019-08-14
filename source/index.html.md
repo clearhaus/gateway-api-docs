@@ -338,9 +338,9 @@ Example response (snippet):
 ````
 
 
-## Series of transactions
+## Credential on file
 
-Subscriptions are supported using `series[]`. There are 3 types of
+Subscriptions are supported using `credential_on_file[]`. There are 3 types of
 subscriptions: `installment`, `recurring`, and `unscheduled`
 (merchant-initiated) credential on file (UCOF).
 
@@ -364,14 +364,14 @@ PSPs and merchants may store the cardholder's payment credentials to allow a
 returning cardholder to conveniently pay without entering the payment
 credentials again. (Explicit agreement with Clearhaus is required.)
 To store payment credentials and use these stored payment credentials,
-`series[]` must be used. All transactions in such a series are
+`credential_on_file[]` must be used. All transactions in such a series are
 cardholder-initiated.
 
 ### Example
 
 As an example, a `recurring` payment is made by making an authorization and
-signaling `series[type]=recurring`. The first recurring payment for a given card
-is made this way (notice that the amount may be zero):
+signaling `credential_on_file[type]=recurring`. The first recurring payment for
+a given card is made this way (notice that the amount may be zero):
 
 ````shell
 curl -X POST \
@@ -379,7 +379,7 @@ curl -X POST \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "series[type]=recurring" \
+  -d "credential_on_file[type]=recurring" \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
   -d "card[expire_year]=2022"     \
@@ -396,9 +396,8 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2019-08-14T12:58:56+00:00",
-    "series": {
-        "type": "recurring",
-        "initiator": "cardholder"
+    "credential_on_file": {
+        "type": "recurring"
     },
     "_embedded": {
         "self": { "href": "/authorizations/04dce6bf-ca17-42c5-a61e-5fdb4b87310a" }
@@ -408,10 +407,11 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made by using `series[previous]` which points to
-the previous authorization in the series; for `installment`, `recurring`, and
-`unscheduled`, where subsequent transactions are merchant-initiated, neither CSC
-nor 3-D Secure values (see [3-D Secure](#3-d-secure)) would be included.
+Subsequent authorizations are made by using `credential_on_file[previous]` which
+points to the previous authorization in the series; for `installment`,
+`recurring`, and `unscheduled`, where subsequent transactions are
+merchant-initiated, neither CSC nor 3-D Secure values (see
+[3-D Secure](#3-d-secure)) would be included.
 
 ````shell
 curl -X POST \
@@ -419,12 +419,10 @@ curl -X POST \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "series[previous]=/authorizations/04dce6bf-ca17-42c5-a61e-5fdb4b87310a" \
+  -d "credential_on_file[previous]=/authorizations/04dce6bf-ca17-42c5-a61e-5fdb4b87310a" \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
-  -d "card[expire_year]=2022"     \
-  -d "card[csc]=123"              \
-  --data-urlencode "card[pares]=<some-pares-value>"
+  -d "card[expire_year]=2022"
 ````
 
 Example response (snippet):
@@ -436,9 +434,8 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2019-08-14T12:58:56+00:00",
-    "series": {
-        "type": "recurring",
-        "initiator": "merchant"
+    "credential_on_file": {
+        "type": "recurring"
     }
 }
 ````
@@ -573,10 +570,10 @@ payment method must be omitted.
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
-  <dt>series[type]</dt>
+  <dt>credential_on_file[type]</dt>
   <dd>
     (installment|recurring|unscheduled|cardholder) <br />
-    <i>Optional. Cannot be present if <code>series[previous]</code> is present.</i><br />
+    <i>Optional. Cannot be present if <code>credential_on_file[previous]</code> is present.</i><br />
     Indicate if the series of transactions is <code>installment</code>,
     <code>recurring</code>, <code>unscheduled</code> credential on file
     (where subsequent transactions are initiated by the merchant), or
@@ -586,7 +583,7 @@ payment method must be omitted.
     If provided, it indicates that the transaction is first in series of the
     given type initiated by the cardholder.
   </dd>
-  <dt>series[previous]</dt>
+  <dt>credential_on_file[previous]</dt>
   <dd>
     reference
     <br />
@@ -603,7 +600,7 @@ payment method must be omitted.
   <!-- deprecated -->
   <dt><strike>recurring</strike></dt>
   <dd>
-    Deprecated! Please use <code>series[type]=recurring</code>. <br />
+    Deprecated! Please use <code>credential_on_file[type]=recurring</code>. <br />
     (true|false) <br />
     <i>Optional</i> <br />
     Must be <code>true</code> for recurring payments.
