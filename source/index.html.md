@@ -342,29 +342,29 @@ Example response (snippet):
 
 Subscriptions are supported using `series[]`. There are 3 types of
 subscriptions: `installment`, `recurring`, and `unscheduled`
-(merchant-initiated) credential on file.
+(merchant-initiated) credential on file (UCOF).
 
-A `recurring` series consist of transactions with the same amount being charged
+A `recurring` series consists of transactions with the same amount being charged
 at regular intervals.
 
 An `installment` series is a special case of recurring where, additionally, the
 goods/services delivered by the merchant is delivered at the time of the
-first in series transactions, and the agreement ends at an agreed date or after
+first in series transaction, and the agreement ends at an agreed date or after
 an agreed number of withdrawals.
 
 An `unscheduled` credential on file is a series of merchant-initiated
-transactions just like a `recurring` series, but with the exception that the
-intervals between withdrawals are irregular; instead, transactions are made
+transactions (MIT) just like a `recurring` series, but with the exception that
+the intervals between withdrawals are irregular; instead, transactions are made
 ad-hoc.
 
-For subscriptions, the first in series transaction is cardholder-initiated
-transaction whereas all subsequent transactions er merchant-initiated.
+For subscriptions, the first in series transaction is a cardholder-initiated
+transaction (CIT) whereas all subsequent transactions are merchant-initiated.
 
 PSPs and merchants may store the cardholder's payment credentials to allow a
 returning cardholder to conveniently pay without entering the payment
 credentials again. (Explicit agreement with Clearhaus is required.)
-To store cardholder's payment credentials and use these stored payment
-credentials, `series[]` must be used also. All transactions in such a series are
+To store payment credentials and use these stored payment credentials,
+`series[]` must be used. All transactions in such a series are
 cardholder-initiated.
 
 ### Example
@@ -408,9 +408,9 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made by using `series[previous]` which point to
+Subsequent authorizations are made by using `series[previous]` which points to
 the previous authorization in the series; for `installment`, `recurring`, and
-`unscheduled` where subsequent transactions are merchant-initiated, neither CSC
+`unscheduled`, where subsequent transactions are merchant-initiated, neither CSC
 nor 3-D Secure values (see [3-D Secure](#3-d-secure)) would be included.
 
 ````shell
@@ -581,7 +581,7 @@ payment method must be omitted.
     <code>recurring</code>, <code>unscheduled</code> credential on file
     (where subsequent transactions are initiated by the merchant), or
     <code>cardholder</code>-initiated credential on file (where all transactions
-    in series is cardholder-initiated).
+    in series are cardholder-initiated).
     <br />
     If provided, it indicates that the transaction is first in series of the
     given type initiated by the cardholder.
@@ -592,12 +592,12 @@ payment method must be omitted.
     <br />
     <i>Optional. Cannot be present if <code>series[type]</code> is present.</i>
     <br />
-    A reference to the previous approved authorization in the series (use
+    A reference to the latest approved authorization in the series (use
     <code>_embedded.self</code> from the response to the previous
     authorization).
     <br />
     If provided, it indicates that the transaction is a subsequent transaction
-    in series of referenced authorization.
+    in series of the referenced authorization.
   </dd>
 
   <!-- deprecated -->
