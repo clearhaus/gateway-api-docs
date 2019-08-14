@@ -340,17 +340,12 @@ Example response (snippet):
 
 ## Credential on file
 
-Subscriptions are supported using `credential_on_file[]`. There are 3 types of
-subscriptions: `installment`, `recurring`, and `unscheduled`
-(merchant-initiated) credential on file (UCOF).
+Subscriptions are supported using `credential_on_file[]`. There are 2 types of
+subscriptions: `recurring`, and `unscheduled` (merchant-initiated) credential on
+file (UCOF).
 
 A `recurring` series consists of transactions with the same amount being charged
 at regular intervals.
-
-An `installment` series is a special case of recurring where, additionally, the
-goods/services delivered by the merchant is delivered at the time of the
-first in series transaction, and the agreement ends at an agreed date or after
-an agreed number of withdrawals.
 
 An `unscheduled` credential on file is a series of merchant-initiated
 transactions (MIT) just like a `recurring` series, but with the exception that
@@ -408,10 +403,9 @@ Example response (snippet):
 This should be followed by a capture except when the amount is `0`.
 
 Subsequent authorizations are made by using `credential_on_file[previous]` which
-points to the previous authorization in the series; for `installment`,
-`recurring`, and `unscheduled`, where subsequent transactions are
-merchant-initiated, neither CSC nor 3-D Secure values (see
-[3-D Secure](#3-d-secure)) would be included.
+points to the previous authorization in the series; for `recurring` and
+`unscheduled`, where subsequent transactions are merchant-initiated, neither CSC
+nor 3-D Secure values (see [3-D Secure](#3-d-secure)) would be included.
 
 ````shell
 curl -X POST \
@@ -572,13 +566,13 @@ payment method must be omitted.
   </dd>
   <dt>credential_on_file[type]</dt>
   <dd>
-    (installment|recurring|unscheduled|cardholder) <br />
+    (recurring|unscheduled|cardholder) <br />
     <i>Optional. Cannot be present if <code>credential_on_file[previous]</code> is present.</i><br />
-    Indicate if the series of transactions is <code>installment</code>,
-    <code>recurring</code>, <code>unscheduled</code> credential on file
-    (where subsequent transactions are initiated by the merchant), or
-    <code>cardholder</code>-initiated credential on file (where all transactions
-    in series are cardholder-initiated).
+    Indicate if the series of transactions is <code>recurring</code>,
+    <code>unscheduled</code> credential on file (where subsequent transactions
+    are initiated by the merchant), or <code>cardholder</code>-initiated
+    credential on file (where all transactions in series are
+    cardholder-initiated).
     <br />
     If provided, it indicates that the transaction is first in series of the
     given type initiated by the cardholder.
