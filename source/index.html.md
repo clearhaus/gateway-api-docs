@@ -1050,7 +1050,7 @@ Examples:
 
 A _merchant blocked by cardholder_ status code is both a decline of the current
 authorization, and also a notice to **halt all future merchant-initiated
-transactions in the series**.
+transactions from this merchant towards this cardholder**.
 
 Only after the blockade has been lifted, by actions taken by the cardholder,
 may transactions be resumed.
