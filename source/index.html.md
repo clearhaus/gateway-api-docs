@@ -340,7 +340,7 @@ Example response (snippet):
 
 ## Credential on file
 
-This indicates that the cardholders payment information is being stored by the
+This indicates that the cardholder's payment information is being stored by the
 PSP or merchant.
 
 PSPs and merchants may store the cardholder's payment
@@ -349,10 +349,10 @@ entering the payment credentials again. (Explicit agreement with Clearhaus is
 required.)
 
 To store and use these stored payment credentials, the transactions that stores
-the card must be marked with `credential_on_file[type]=cardholder`. All
+the credentials must be marked with `credential_on_file[type]=cardholder`. All
 transactions in such a series are cardholder-initiated.
 
-Refer to [Subsequent Credential on file](#subsequent-credential-on-file) for
+Refer to [Subsequent credential on file](#subsequent-credential-on-file) for
 details about handling subsequent.
 
 ### Subscriptions and merchant-initiated intent
@@ -372,12 +372,12 @@ ad-hoc.
 For subscriptions, the first in series transaction is a cardholder-initiated
 transaction (CIT) whereas all subsequent transactions are merchant-initiated.
 
-### Subsequent Credential on file
+### Subsequent credential on file
 
 First in series transactions can also be made using the `applepay` and
-`mobilepayonline` payment methods; however, subsequent merchant-initiated
+`mobilepayonline` payment methods, however, subsequent merchant-initiated
 transactions must be made using the `card` payment method using the card
-details of the initial recurring authorization.
+details of the initial (first in series) authorization.
 
 Subsequent authorizations are made by using
 `credential_on_file[previous]=<ID>`, where `<ID>` is the `id` of the previous
