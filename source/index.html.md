@@ -736,10 +736,6 @@ GET https://gateway.clearhaus.com/account
   <dd>Used for 3-D Secure.</dd>
   <dt>transaction_rules</dt>
   <dd>[\x20-\x7E]* <br /> The processing rules that the merchant's transactions must adhere to.</dd>
-
-  <!-- deprecated -->
-  <dt><strike>text_on_statement</strike></dt>
-  <dd>Deprecated! Please refer to <code>descriptor</code>.</dd>
 </dl>
 
 
