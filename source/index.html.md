@@ -340,6 +340,23 @@ Example response (snippet):
 
 ## Credential on file
 
+This indicates that the cardholders payment information is being stored by the
+PSP or merchant.
+
+PSPs and merchants may store the cardholder's payment
+credentials to allow a returning cardholder to conveniently pay without
+entering the payment credentials again. (Explicit agreement with Clearhaus is
+required.)
+
+To store and use these stored payment credentials, the transactions that stores
+the card must be marked with `credential_on_file[type]=cardholder`. All
+transactions in such a series are cardholder-initiated.
+
+Refer to [Subsequent Credential on file](#subsequent-credential-on-file) for
+details about handling subsequent.
+
+### Subscriptions and merchant-initiated intent
+
 Subscriptions are supported using `credential_on_file[]`. There are 2 types of
 subscriptions: `recurring` and `unscheduled` (merchant-initiated) credential on
 file (UCOF).
@@ -355,12 +372,20 @@ ad-hoc.
 For subscriptions, the first in series transaction is a cardholder-initiated
 transaction (CIT) whereas all subsequent transactions are merchant-initiated.
 
-PSPs and merchants may store the cardholder's payment credentials to allow a
-returning cardholder to conveniently pay without entering the payment
-credentials again. (Explicit agreement with Clearhaus is required.)
-To store payment credentials and use these stored payment credentials,
-`credential_on_file[]` must be used. All transactions in such a series are
-cardholder-initiated.
+### Subsequent Credential on file
+
+First in series transactions can also be made using the `applepay` and
+`mobilepayonline` payment methods; however, subsequent merchant-initiated
+transactions must be made using the `card` payment method using the card
+details of the initial recurring authorization.
+
+Subsequent authorizations are made by using
+`credential_on_file[previous]=<ID>`, where `<ID>` is the `id` of the previous
+transaction in the series.
+
+For `recurring` and `unscheduled`, where subsequent transactions are
+merchant-initiated, neither CSC nor 3-D Secure values (see [3-D
+Secure](#3-d-secure)) would be included.
 
 ### Example
 
@@ -402,10 +427,6 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made by using `credential_on_file[previous]` which
-points to the previous authorization in the series; for `recurring` and
-`unscheduled`, where subsequent transactions are merchant-initiated, neither CSC
-nor 3-D Secure values (see [3-D Secure](#3-d-secure)) would be included.
 
 ````shell
 curl -X POST \
@@ -433,11 +454,6 @@ Example response (snippet):
     }
 }
 ````
-
-First in series transactions can also be made using the `applepay` and
-`mobilepayonline` payment methods; however, subsequent merchant-initiated
-transactions must be made using the `card` payment method using the card
-details of the initial recurring authorization.
 
 
 ## 3-D Secure
