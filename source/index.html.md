@@ -335,8 +335,7 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
-    "recurring": true,
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "recurring": true
 }
 ````
 
