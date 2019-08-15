@@ -472,20 +472,6 @@ Exactly one payment method must be used.
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
-
-  <!-- deprecated -->
-  <dt><strike>threed_secure[pares]</strike></dt>
-  <dd>
-    Deprecated! Please use <code>card[pares]</code>. <br />
-    [:base64:] <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
-  </dd>
-  <dt><strike>card[number]</strike></dt>
-  <dd>
-    Deprecated! Please use <code>card[pan]</code>. <br />
-    [0-9]{12,19} <br />
-    Primary account number of card to charge.
-  </dd>
 </dl>
 
 ##### Method: `card`
