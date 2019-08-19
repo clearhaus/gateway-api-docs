@@ -579,7 +579,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{1,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be withdrawn if no amount is given.
   </dd>
@@ -609,7 +609,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{1,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be refunded if no amount is given.
   </dd>
@@ -666,7 +666,7 @@ POST https://gateway.clearhaus.com/credits
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br />
+  <dd>[1-9][0-9]{1,9} <br />
     Amount in minor units of given currency (e.g. cents if in Euro). As for
     Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
     Visa, the amount must not exceed the equivalent of 50,000 USD.
