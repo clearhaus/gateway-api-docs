@@ -928,7 +928,7 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
-           |  40416 |  Inadequately authenticated
+           |  40416 |  Additional authentication required
            |  40420 |  Merchant blocked by cardholder
            |  50000 |  Clearhaus error
 
