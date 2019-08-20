@@ -1031,61 +1031,17 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-### Add a valid test CSC
-
-Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
-testing against `gateway.test.clearhaus.com`.
-
-### Add credits resource
-
-Starting 2018-08-31T13:30:00+00:00 the `/credits` resource has been added,
-enabling creation of credits without card tokenization. This is an essential
-addition, as card tokenization, including the resource `/cards/:id/credits`, is
-deprecated and will be removed on November 15, 2018.
-
-### Accept 3-D Secure PARes for MobilePay Online
-
-Starting 2018-08-31T13:30:00+00:00 the parameter `mobilepayonline[pares]` is
-accepted.
-
-### VES support
-
-Starting 2018-08-31T13:30:00+00:00 we support the currency VES.
-
-### Add payment methods
-
-Payment methods have been added to the authorizations resource on 2018-07-20.
-Also, a few parameters and an endpoint have been deprecated. Refer to [the
-documentation source code
-changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files) for the
-exact documentation change.
-
-Please notice that there is no major version number change, so we stay backwards
-compatible until the deprecations take effect. We expect the deprecations to
-happen on 2018-11-15; it will be announced separately.
-
-### STD no longer accepted from July 2018
-
-Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
-
-### MRU and STN support
-
-Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU and STN.
-
-### CLP and UGX exponent changes
-
-CLP and UGX changes from exponent 2 to exponent 0.
-
-Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
-and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
-exponent is 2; after the timespan, the exponent is 0.
-
 ### Add merchant blocked by cardholder status
 
 Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
 is avaliable. Please be advised that appropriate action must be taken to
 adequately handle this status code, see [Merchant blocked by cardholder
 status](#merchant-blocked-by-cardholder-status)
+
+### Add a valid test CSC
+
+Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
+testing against `gateway.test.clearhaus.com`.
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
