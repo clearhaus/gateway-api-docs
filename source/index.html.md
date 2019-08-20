@@ -1031,17 +1031,17 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-### Add a valid test CSC
-
-Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
-testing against `gateway.test.clearhaus.com`.
-
 ### Add merchant blocked by cardholder status
 
 Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
 is avaliable. Please be advised that appropriate action must be taken to
 adequately handle this status code, see [Merchant blocked by cardholder
 status](#merchant-blocked-by-cardholder-status)
+
+### Add a valid test CSC
+
+Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
+testing against `gateway.test.clearhaus.com`.
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
