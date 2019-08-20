@@ -49,7 +49,6 @@ curl https://gateway.test.clearhaus.com \
 {
     "_links": {
         "authorizations": { "href": "/authorizations" },
-        "cards":          { "href": "/cards" },
         "account":        { "href": "/account" }
     }
 }
@@ -260,50 +259,6 @@ Example response (snippet):
 ````
 
 
-## Tokenize a card
-
-A card token is a value that references card details (see
-[Tokenization][Tokenization]). You can use a card token (card resource) to make
-authorization and credit transactions.
-
-A card resource is automatically made when you make an authorization
-transaction and supply card details. You can also make a card resource
-directly:
-
-````shell
-curl -X POST https://gateway.test.clearhaus.com/cards \
-     -u <your-api-key>: \
-     -d "card[pan]=5500000000000004" \
-     -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2022"     \
-     -d "card[csc]=123"
-````
-
-Example response (snippet):
-
-````json
-{
-    "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "last4": "0004",
-    "country": "US",
-    "scheme": "mastercard",
-    "type": "credit",
-    "csc": {
-        "present": true,
-        "matches": true
-    },
-    "_links": {
-        "authorizations": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/authorizations" },
-        "credits": { "href": "/cards/58dabba0-e9ea-4133-8c38-bfa1028c1ed2/credits" }
-    }
-}
-````
-
-
 ## Payout to cardholder
 
 Sometimes cardholders should receive money, e.g. if you will pay out some
@@ -333,8 +288,7 @@ Example response (snippet):
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
     "amount": 50000,
-    "currency": "EUR",
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "currency": "EUR"
 }
 ````
 
@@ -381,8 +335,7 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
-    "recurring": true,
-    "_embedded": { "card": { "id": "58dabba0-e9ea-4133-8c38-bfa1028c1ed2" } }
+    "recurring": true
 }
 ````
 
@@ -478,7 +431,6 @@ Our API offers six different resources:
 - [Refunds](#refunds)
 - [Voids](#voids)
 - [Credits](#credits)
-- [Cards](#cards)
 - [Account](#account)
 
 
@@ -488,14 +440,11 @@ To reserve money on a cardholder's bank account you make a new authorization res
 
 ````
 POST https://gateway.clearhaus.com/authorizations
-POST https://gateway.clearhaus.com/cards/:id/authorizations # deprecated
 ````
 
 Authorizations can be created using different payment methods:
 `card`, `applepay`, `mobilepayonline`.
-Exactly one payment method must be used, unless the authorization is made on
-a card resource (`/cards/:id/authorizations`, deprecated), in which case the
-payment method must be omitted.
+Exactly one payment method must be used.
 
 #### Parameters
 
@@ -523,20 +472,6 @@ payment method must be omitted.
     <i>Optional</i> <br />
     A reference to an external object, such as an order number.
   </dd>
-
-  <!-- deprecated -->
-  <dt><strike>threed_secure[pares]</strike></dt>
-  <dd>
-    Deprecated! Please use <code>card[pares]</code>. <br />
-    [:base64:] <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
-  </dd>
-  <dt><strike>card[number]</strike></dt>
-  <dd>
-    Deprecated! Please use <code>card[pan]</code>. <br />
-    [0-9]{12,19} <br />
-    Primary account number of card to charge.
-  </dd>
 </dl>
 
 ##### Method: `card`
@@ -559,9 +494,11 @@ payment method must be omitted.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> An approved authorization that includes
-  <code>card[pares]</code> is 3-D
-  Secured and is strongly authenticated (SCA in PSD2).
+  <b>Notice:</b> A valid PARes included in <code>card[pares]</code> can indicate
+  3 different levels: non-authenticated, attempted 3-D Secure, fully 3-D Secure.
+  <br />
+  <b>Notice:</b> An authorization made with <code>card[]</code> is strongly
+  authenticated if it is fully 3-D Secure.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
@@ -645,7 +582,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{1,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be withdrawn if no amount is given.
   </dd>
@@ -675,7 +612,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br /> <i>Optional</i> <br />
+  <dd>[1-9][0-9]{1,9} <br /> <i>Optional</i> <br />
     Amount in minor units of given currency (e.g. cents if in Euro).
     The full or remaining amount will be refunded if no amount is given.
   </dd>
@@ -732,7 +669,7 @@ POST https://gateway.clearhaus.com/credits
 
 <dl class="dl-horizontal">
   <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br />
+  <dd>[1-9][0-9]{1,9} <br />
     Amount in minor units of given currency (e.g. cents if in Euro). As for
     Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
     Visa, the amount must not exceed the equivalent of 50,000 USD.
@@ -764,99 +701,6 @@ POST https://gateway.clearhaus.com/credits
   <dd>[0-9]{3} <br /> <i>Optional.</i> <br /> Card Security Code.</dd>
 </dl>
 
-
-#### Parameters (deprecated)
-
-````
-POST https://gateway.clearhaus.com/cards/:id/credits # deprecated
-````
-
-<dl class="dl-horizontal">
-  <dt>amount</dt>
-  <dd>[1-9][0-9]{0,9} <br />
-    Amount in minor units of given currency (e.g. cents if in Euro). As for
-    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
-    Visa, the amount must not exceed the equivalent of 50,000 USD.
-  </dd>
-  <dt>currency</dt>
-  <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
-  <dt>text_on_statement</dt>
-  <dd>
-    [\x20-\x7E]{2,22}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
-    <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br />
-    <i>Optional</i> <br />
-    Text that will be placed on cardholder's bank statement.
-  </dd>
-  <dt>reference</dt>
-  <dd>
-    [\x20-\x7E]{1,30}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
-    <i>Optional</i> <br />
-    A reference to an external object, such as an order number.
-  </dd>
-</dl>
-
-
-### Cards
-
-This resource is now deprecated!
-
-A card resource (token) corresponds to a payment card and can be used to make a
-credit or authorization transaction without providing sensitive card data (see
-["Tokenization"][Tokenization]).
-
-#### Parameters
-
-````
-POST https://gateway.clearhaus.com/cards
-````
-
-<dl class="dl-horizontal">
-  <dt>card[pan]</dt>
-  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
-  <dt>card[number]</dt>
-  <dd>[0-9]{12,19} <br /> Primary account number of card to charge.</dd>
-  <dt>card[expire_month]</dt>
-  <dd>[0-9]{2} <br /> Expiry month of card to charge.</dd>
-  <dt>card[expire_year]</dt>
-  <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
-  <dt>card[csc]</dt>
-  <dd>
-    [0-9]{3} <br />
-    <i>Optional when transaction is signed and partner is trusted.</i> <br />
-    Card Security Code.
-  </dd>
-</dl>
-
-<p class="alert alert-info">
-    <b>Notice:</b> The exact same card details can be sent multiple times but
-    will give you the same card resource (card token) every time.
-    <br />
-    <b>Notice:</b> A card resource is automatically made when you make an
-    authorization transaction and you supply card details.
-</p>
-
-<p class="alert alert-warning">
-    <b>Notice:</b> A "zero amount" authorization is made when POSTing to this
-    endpoint.
-</p>
-
-#### Response parameters
-
-<dl class="dl-horizontal">
-  <dt>card[last4]</dt>
-  <dd>[0-9]{4} <br /> Last 4 digits of card number.</dd>
-  <dt>card[scheme]</dt>
-  <dd><code>visa</code>, <code>mastercard</code> or <code>unknown</code></dd>
-  <dt>card[type]</dt>
-  <dd><code>debit</code> or <code>credit</code>
-  <br /><i>Omittable</i></dd>
-  <dt>card[country]</dt>
-  <dd>[A-Z]{2}
-  <br /><i>Omittable</i>
-  <br /> ISO 3166-1 2-letter country code for issuing bank.</dd>
-</dl>
 
 ### Account
 
@@ -895,10 +739,6 @@ GET https://gateway.clearhaus.com/account
   <dd>Used for 3-D Secure.</dd>
   <dt>transaction_rules</dt>
   <dd>[\x20-\x7E]* <br /> The processing rules that the merchant's transactions must adhere to.</dd>
-
-  <!-- deprecated -->
-  <dt><strike>text_on_statement</strike></dt>
-  <dd>Deprecated! Please refer to <code>descriptor</code>.</dd>
 </dl>
 
 
@@ -929,6 +769,8 @@ Declined   |  40000 |  General input error
            |  40413 |  Insufficient funds
            |  40414 |  Suspected fraud
            |  40415 |  Amount limit exceeded
+           |  40416 |  Additional authentication required
+           |  40420 |  Merchant blocked by cardholder
            |  50000 |  Clearhaus error
 
 
@@ -966,28 +808,30 @@ Examples:
 }
 ````
 
+### Merchant blocked by cardholder status
+
+A _merchant blocked by cardholder_ status code is both a decline of the current
+authorization, but also a notice to **halt all future
+merchant-initiated-transactions** on this card from this merchant. This
+includes, but is not limited to, recurring transactions.
+
+Only after the blockade has been lifted, by actions taken by the cardholder,
+may transactions be resumed.
+
 ## Test card numbers
 
-Any card number within the following
-[BIN ranges](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29)
-can be used to perform test transactions on `gateway.test.clearhaus.com`:
+For testing towards the test endpoint `gateway.test.clearhaus.com` please use
+PANs that are either <b>not</b>
+<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, are
+one of the special test PANs 2221000000000009, 4111111111111111,
+5500000000000004, or are Apple Pay test cards.
 
-Range           | Card scheme |
---------------- | ----------- |
-222100 - 272099 | MasterCard  |
-400000 - 499999 | Visa        |
-500000 - 699999 | MasterCard  |
+For PANs starting with 420000 and ending with 0000, and PANs starting with
+555555 and ending with 4444, you can specify a valid status `code` as
+transaction amount to trigger the status.
 
-<p class="alert alert-danger">
-Please use PANs that are <b>not</b>
-<a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, one of the
-following special PANs: 2221000000000009, 4111111111111111, 5500000000000004, or
-an Apple Pay test card.
-</p>
-
-You can specify a status `code` as transaction amount to trigger a specific
-error.
-
+When testing towards the test endpoint, the CSC 987&mdash;and only 987&mdash;is
+considered a match for all PANs.
 
 ## Endpoint summary
 
@@ -996,7 +840,6 @@ error.
 # authorizations
 https://gateway.clearhaus.com/authorizations
 https://gateway.clearhaus.com/authorizations/:id
-https://gateway.clearhaus.com/cards/:id/authorizations
 
 # captures
 https://gateway.clearhaus.com/captures/:id
@@ -1013,11 +856,6 @@ https://gateway.clearhaus.com/authorizations/:id/refunds
 # credits
 https://gateway.clearhaus.com/credits
 https://gateway.clearhaus.com/credits/:id
-https://gateway.clearhaus.com/cards/:id/credits
-
-# cards
-https://gateway.clearhaus.com/cards
-https://gateway.clearhaus.com/cards/:id
 
 # account
 https://gateway.clearhaus.com/account
@@ -1025,52 +863,30 @@ https://gateway.clearhaus.com/account
 
 ## Changes
 
+Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
+
 Sorted by descending timestamp.
 
-### Add credits resource
+### Remove deprecated `/cards`, `threed_secure` and `card[number]`
 
-Starting 2018-08-31T13:30:00+00:00 the `/credits` resource has been added,
-enabling creation of credits without card tokenization. This is an essential
-addition, as card tokenization, including the resource `/cards/:id/credits`, is
-deprecated and will be removed on November 15, 2018.
-
-### Accept 3-D Secure PARes for MobilePay Online
-
-Starting 2018-08-31T13:30:00+00:00 the parameter `mobilepayonline[pares]` is
-accepted.
-
-### VES support
-
-Starting 2018-08-31T13:30:00+00:00 we support the currency VES.
-
-### Add payment methods
-
-Payment methods have been added to the authorizations resource on 2018-07-20.
-Also, a few parameters and an endpoint have been deprecated. Refer to [the
-documentation source code
-changes](https://github.com/clearhaus/gateway-api-docs/pull/53/files) for the
+The deprecations announced in 2018 will be executed. Partners must expect
+`/cards` endpoints, the `threed_secure` and the `card[number]` parameters to be
+unavailable at any point in time after 2019-08-20.
+Refer to [the documentation source code
+changes](https://github.com/clearhaus/gateway-api-docs/pull/82/files) for the
 exact documentation change.
 
-Please notice that there is no major version number change, so we stay backwards
-compatible until the deprecations take effect. We expect the deprecations to
-happen on 2018-11-15; it will be announced separately.
+### Add merchant blocked by cardholder status
 
-### STD no longer accepted from July 2018
+Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
+is avaliable. Please be advised that appropriate action must be taken to
+adequately handle this status code, see [Merchant blocked by cardholder
+status](#merchant-blocked-by-cardholder-status)
 
-Starting 2018-07-01T00:00:00+00:00 the currency STD is no longer accepted.
+### Add a valid test CSC
 
-### MRU and STN support
-
-Starting 2018-05-15T13:00:00+00:00 we support the currencies MRU and STN.
-
-### CLP and UGX exponent changes
-
-CLP and UGX changes from exponent 2 to exponent 0.
-
-Transactions in CLP or UGX will be declined between 2017-10-12T19:00:00+00:00
-and 2017-10-15T19:00:00+00:00 (both inclusive); before this timespan, the
-exponent is 2; after the timespan, the exponent is 0.
-
+Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
+testing against `gateway.test.clearhaus.com`.
 
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
