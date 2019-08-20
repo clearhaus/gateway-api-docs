@@ -867,7 +867,7 @@ Sorted by descending timestamp.
 
 The deprecations announced in 2018 will be executed. Partners must expect
 `/cards` endpoints, the `threed_secure` and the `card[number]` parameters to be
-unavailable at any point in time after 2019-08-16.
+unavailable at any point in time after 2019-08-20.
 Refer to [the documentation source code
 changes](https://github.com/clearhaus/gateway-api-docs/pull/82/files) for the
 exact documentation change.
