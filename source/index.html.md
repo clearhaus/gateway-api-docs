@@ -519,7 +519,7 @@ object][ApplePay-PaymentToken] for more information.
   <dd>[:json:] <br />
     Full <code>PKPaymentToken</code> serialized as JSON, supplied as a string.
     <br />
-    Example: `{"paymentData":{"version":"EC_v1","data":"<Base64>",...},"paymentMethod":{...},...}`
+    Example: <code>{"paymentData":{"version":"EC_v1","data":"<Base64>",...},"paymentMethod":{...},...}</code>
   </dd>
   <dt>applepay[symmetric_key]</dt>
   <dd>[:hex:] <br /> Symmetric AES key (unique per transaction) that can
