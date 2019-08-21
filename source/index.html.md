@@ -77,7 +77,7 @@ Number  Text
 
 ## Signing requests
 
-Requests can optionally be signed.
+Requests must be signed.
 
 The signature is an RSA signature of the HTTP body; it is represented in hex.
 The signee must be identified by the signing API-key. Both should be provided in
@@ -486,7 +486,7 @@ Exactly one payment method must be used.
   <dt>card[csc]</dt>
   <dd>
     [0-9]{3} <br />
-    <i>Optional when transaction is signed and partner is trusted.</i> <br />
+    <i>Optional when partner is trusted.</i> <br />
     Card Security Code.
   </dd>
   <dt>card[pares]</dt>
@@ -527,9 +527,6 @@ object][ApplePay-PaymentToken] for more information.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
-  method.
-  <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> is
   strongly authenticated (SCA in PSD2).
   <br />
@@ -561,9 +558,6 @@ object][ApplePay-PaymentToken] for more information.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> Signing is required to use the <code>mobilepayonline</code>
-  payment method.
-  <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated (SCA in PSD2).
 </p>
