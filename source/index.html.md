@@ -385,7 +385,10 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
-    "threed_secure": true
+    "3dsecure": {
+        "version": "v1",
+        "status": "full"
+    }
 }
 ````
 
