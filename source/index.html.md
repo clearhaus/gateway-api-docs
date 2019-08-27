@@ -840,23 +840,18 @@ considered a match for all PANs.
 ````shell
 # authorizations
 https://gateway.clearhaus.com/authorizations
-https://gateway.clearhaus.com/authorizations/:id
 
 # captures
-https://gateway.clearhaus.com/captures/:id
 https://gateway.clearhaus.com/authorizations/:id/captures
 
 # voids
-https://gateway.clearhaus.com/voids/:id
 https://gateway.clearhaus.com/authorizations/:id/voids
 
 # refunds
-https://gateway.clearhaus.com/refunds/:id
 https://gateway.clearhaus.com/authorizations/:id/refunds
 
 # credits
 https://gateway.clearhaus.com/credits
-https://gateway.clearhaus.com/credits/:id
 
 # account
 https://gateway.clearhaus.com/account
