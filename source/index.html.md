@@ -80,7 +80,7 @@ Number  Text
 POST requests must be signed.
 
 The signature is an RSA signature of the HTTP body; it is represented in hex.
-The signee must be identified by the signing API-key. Both should be provided in
+The signee must be identified by the signing API key. Both should be provided in
 a `Signature` header together with `RS256-hex`:
 
 ```
@@ -97,7 +97,7 @@ signature, otherwise the transaction will fail.
 The RSA signature is an RSASSA-PKCS1-v1_5 signature of the body. It is
 represented in hex.
 
-If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
+If the signing API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
 private key (in PEM format) is
 
 ```
