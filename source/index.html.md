@@ -392,6 +392,10 @@ Example response (snippet):
 }
 ````
 
+<p class="alert alert-info">
+  <b>Notice:</b> The response element <code>threed_secure</code> is deprecated,
+  please use <code>3dsecure</code>.
+</p>
 
 ## Fetch account information
 
@@ -930,6 +934,11 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Deprecate response `threed_secure` boolean
+
+The response element `threed_secure` is now deprecated; it will be available at
+least until 2021-02-15.
 
 ### Remove deprecated `/cards`, `threed_secure` and `card[number]`
 
