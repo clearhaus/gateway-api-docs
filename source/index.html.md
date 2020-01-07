@@ -84,7 +84,7 @@ The signee must be identified by the signing API key. Both should be provided in
 a `Signature` header together with `RS256-hex`:
 
 ```
-Signature: <signing api-key> RS256-hex <signature>
+Signature: <signing-api-key> RS256-hex <signature>
 ```
 
 <p class="alert alert-info">
@@ -154,7 +154,8 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
      -d "card[expire_year]=2022"     \
-     -d "card[csc]=123"
+     -d "card[csc]=123"              \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -196,7 +197,8 @@ reserved on cardholder's bank account.
 ````shell
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
-  -u <your-api-key>:
+  -u <your-api-key>: \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
@@ -205,7 +207,8 @@ You can withdraw a partial amount by providing an `amount` parameter:
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
   -u <your-api-key>: \
-  -d "amount=1000"
+  -d "amount=1000"   \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -239,7 +242,8 @@ cardholder's bank account:
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds \
   -u <your-api-key>: \
-  -d "amount=500"
+  -d "amount=500"    \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -275,7 +279,8 @@ curl -X POST https://gateway.test.clearhaus.com/credits \
      -d "ip=1.1.1.1"    \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2022"
+     -d "card[expire_year]=2022"     \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -323,7 +328,8 @@ curl -X POST \
   -d "card[expire_month]=06"      \
   -d "card[expire_year]=2022"     \
   -d "card[csc]=123"              \
-  --data-urlencode "card[pares]=<some-pares-value>"
+  --data-urlencode "card[pares]=<some-pares-value>" \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -373,7 +379,8 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[expire_month]=06"      \
      -d "card[expire_year]=2022"     \
      -d "card[csc]=123"              \
-     --data-urlencode "card[pares]=<some-pares-value>"
+     --data-urlencode "card[pares]=<some-pares-value>" \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
