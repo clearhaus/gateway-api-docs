@@ -94,7 +94,7 @@ signature, otherwise the transaction will fail.
 
 ### RSA signature
 
-The RSA signature is an RSASSA-PKCS1-v1_5 signature of the body. It is
+The RSA signature is an `RSASSA-PKCS1-v1_5` signature of the body. It is
 represented in hex.
 
 If the signing API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
