@@ -77,7 +77,7 @@ Number  Text
 
 ## Signing requests
 
-Requests can optionally be signed.
+POST requests must be signed.
 
 The signature is an RSA signature of the HTTP body; it is represented in hex.
 The signee must be identified by the signing API-key. Both should be provided in
@@ -862,6 +862,10 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Request signing becomes mandatory
+
+In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
 
 ### Remove deprecated `/cards`, `threed_secure` and `card[number]`
 
