@@ -77,27 +77,29 @@ Number  Text
 
 ## Signing requests
 
-Requests can optionally be signed.
+POST requests must be signed. Other requests can optionally be signed.
 
 The signature is an RSA signature of the HTTP body; it is represented in hex.
-The signee must be identified by the signing API-key. Both should be provided in
+The signee must be identified by the signing API key. Both must be provided in
 a `Signature` header together with `RS256-hex`:
 
 ```
-Signature: <signing api-key> RS256-hex <signature>
+Signature: <signing-api-key> RS256-hex <signature>
 ```
 
 <p class="alert alert-info">
-<b>Notice:</b> If the signature header is included, it should hold a correct
+<b>Notice:</b> If the signature header is included, it must hold a correct
 signature, otherwise the transaction will fail.
 </p>
 
+Signing API keys are only assigned to partners, not merchants.
+
 ### RSA signature
 
-The RSA signature is an RSASSA-PKCS1-v1_5 signature of the body. It is
+The RSA signature is an `RSASSA-PKCS1-v1_5` signature of the body. It is
 represented in hex.
 
-If the signing API-key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
+If the signing API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
 private key (in PEM format) is
 
 ```
@@ -154,7 +156,8 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
      -d "card[expire_year]=2022"     \
-     -d "card[csc]=123"
+     -d "card[csc]=123"              \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -196,7 +199,8 @@ reserved on cardholder's bank account.
 ````shell
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
-  -u <your-api-key>:
+  -u <your-api-key>: \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 You can withdraw a partial amount by providing an `amount` parameter:
@@ -205,7 +209,8 @@ You can withdraw a partial amount by providing an `amount` parameter:
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/captures \
   -u <your-api-key>: \
-  -d "amount=1000"
+  -d "amount=1000"   \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -239,7 +244,8 @@ cardholder's bank account:
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations/84412a34-fa29-4369-a098-0165a80e8fda/refunds \
   -u <your-api-key>: \
-  -d "amount=500"
+  -d "amount=500"    \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -275,7 +281,8 @@ curl -X POST https://gateway.test.clearhaus.com/credits \
      -d "ip=1.1.1.1"    \
      -d "card[pan]=4111111111111111" \
      -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2022"
+     -d "card[expire_year]=2022"     \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -323,7 +330,8 @@ curl -X POST \
   -d "card[expire_month]=06"      \
   -d "card[expire_year]=2022"     \
   -d "card[csc]=123"              \
-  --data-urlencode "card[pares]=<some-pares-value>"
+  --data-urlencode "card[pares]=<some-pares-value>" \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -373,7 +381,8 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[expire_month]=06"      \
      -d "card[expire_year]=2022"     \
      -d "card[csc]=123"              \
-     --data-urlencode "card[pares]=<some-pares-value>"
+     --data-urlencode "card[pares]=<some-pares-value>" \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
 Example response (snippet):
@@ -484,11 +493,7 @@ Exactly one payment method must be used.
   <dt>card[expire_year]</dt>
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
-  <dd>
-    [0-9]{3} <br />
-    <i>Optional when transaction is signed and partner is trusted.</i> <br />
-    Card Security Code.
-  </dd>
+  <dd>[0-9]{3} <br /> <i>Optional</i> <br /> Card Security Code.</dd>
   <dt>card[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
@@ -862,6 +867,10 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Request signing becomes mandatory
+
+In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
 
 ### Remove deprecated `/cards`, `threed_secure` and `card[number]`
 
