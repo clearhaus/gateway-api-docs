@@ -92,6 +92,8 @@ Signature: <signing-api-key> RS256-hex <signature>
 signature, otherwise the transaction will fail.
 </p>
 
+Signing API keys are only assigned to partners, not merchants.
+
 ### RSA signature
 
 The RSA signature is an `RSASSA-PKCS1-v1_5` signature of the body. It is
