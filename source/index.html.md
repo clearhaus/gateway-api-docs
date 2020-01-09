@@ -493,7 +493,7 @@ Exactly one payment method must be used.
   <dt>card[expire_year]</dt>
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
-  <dd>[0-9]{3} <br /> <i>Optional</i> <br /> Card Security Code.</dd>
+  <dd>[0-9]{3} <br /> <i>Optional when partner is trusted.</i> <br /> Card Security Code.</dd>
   <dt>card[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
