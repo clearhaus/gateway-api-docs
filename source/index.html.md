@@ -497,13 +497,6 @@ Exactly one payment method must be used.
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> <i>Optional when partner is trusted.</i> <br /> Card Security Code.</dd>
-  <dt>card[name]</dt>
-  <dd>
-    [\x20-\x7E]{1,35}
-    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
-    <i>Optional</i> <br />
-    Name on card.
-  </dd>
   <dt>card[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
@@ -715,6 +708,13 @@ POST https://gateway.clearhaus.com/credits
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> <i>Optional.</i> <br /> Card Security Code.</dd>
+  <dt>card[name]</dt>
+  <dd>
+    [\x20-\x7E]{1,35}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>Optional</i> <br />
+    Name on card.
+  </dd>
 </dl>
 
 
