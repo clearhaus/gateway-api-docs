@@ -882,7 +882,7 @@ Sorted by descending timestamp.
 
 Starting 2020-xx-xx the optional parameter `card[name]` may be used to provide
 name on card. Depending on card scheme and merchant category, name on card
-might be necessary for approval of payouts.
+might be necessary for approval of credits.
 
 ### Request signing becomes mandatory
 
