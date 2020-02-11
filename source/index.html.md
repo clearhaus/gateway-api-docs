@@ -299,6 +299,9 @@ Example response (snippet):
 }
 ````
 
+Depending on card scheme and merchant category, name on card might be necessary
+for approval of payouts. It may be provided through the optional parameter
+`card[name]`.
 
 ## Recurring payments
 
@@ -494,6 +497,13 @@ Exactly one payment method must be used.
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> <i>Optional when partner is trusted.</i> <br /> Card Security Code.</dd>
+  <dt>card[name]</dt>
+  <dd>
+    [\x20-\x7E]{1,35}
+    <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br />
+    <i>Optional</i> <br />
+    Name on card.
+  </dd>
   <dt>card[pares]</dt>
   <dd>[:base64:] <br /> <i>Optional</i> <br /> See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a></dd>
 </dl>
@@ -867,6 +877,12 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Optional name on card parameter added
+
+Starting 2020-xx-xx the optional parameter `card[name]` may be used to provide
+name on card. Depending on card scheme and merchant category, name on card
+might be necessary for approval of payouts.
 
 ### Request signing becomes mandatory
 
