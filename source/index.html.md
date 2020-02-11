@@ -299,9 +299,9 @@ Example response (snippet):
 }
 ````
 
-Depending on card scheme and merchant category, name on card might be necessary
-for approval of credits. It may be provided through the optional parameter
-`card[name]`.
+Depending on card scheme and merchant category, the name on the card might be
+necessary for approval of credits. It may be provided through the optional
+parameter `card[name]`.
 
 ## Recurring payments
 
@@ -881,8 +881,8 @@ Sorted by descending timestamp.
 ### Optional name on card parameter added
 
 Starting 2020-xx-xx the optional parameter `card[name]` may be used to provide
-name on card. Depending on card scheme and merchant category, name on card
-might be necessary for approval of credits.
+the name on the card for credits. Depending on card scheme and merchant
+category, the name might be necessary for approval.
 
 ### Request signing becomes mandatory
 
