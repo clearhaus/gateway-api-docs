@@ -267,7 +267,7 @@ Example response (snippet):
 
 ## Payout to cardholder
 
-Sometimes cardholders should receive money, e.g. if you will pay out some
+Sometimes cardholders should receive money, e.g. if you wish to pay out some
 winnings.
 
 The following will transfer EUR 500.00 to cardholder's bank account from your
