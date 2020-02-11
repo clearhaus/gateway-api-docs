@@ -300,7 +300,7 @@ Example response (snippet):
 ````
 
 Depending on card scheme and merchant category, name on card might be necessary
-for approval of payouts. It may be provided through the optional parameter
+for approval of credits. It may be provided through the optional parameter
 `card[name]`.
 
 ## Recurring payments
