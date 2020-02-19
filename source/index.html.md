@@ -190,6 +190,12 @@ match; in this case the <code>status</code> <code>code</code> will be
 authorizations may be in place for a merchant.
 </p>
 
+<p class="alert alert-info">
+<b>Notice:</b> <code>csc</code> <code>matches</code> may be <code>null</code>
+if the card scheme or the issuer decided not to check the CSC or if the card
+scheme failed checking the CSC on behalf of the issuer.
+</p>
+
 
 ### Withdraw money
 
@@ -867,6 +873,13 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Attribute `csc matches` in a response may be `null`
+
+Starting 2020-xx-xx, `csc matches` in a response to a `POST /authorizations`
+request may be `null`. The value covers the case where the card scheme or the
+issuer decided not to check the CSC and the case where the card scheme failed
+checking the CSC on behalf of the issuer.
 
 ### Request signing becomes mandatory
 
