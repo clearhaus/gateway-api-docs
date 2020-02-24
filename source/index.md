@@ -615,7 +615,7 @@ Supported protocol versions are `ECv1` and `ECv2`.
   <dt>googlepay[token]</dt>
   <dd>[:json:]<br />Raw payment method token as received in response from Google. UTF-8
     encoded serialization of a JSON dictionary.</dd>
-  <dt>googlepay[shared_secret]</dt>
+  <dt>googlepay[shared_key]</dt>
   <dd>[:base64:]<br />The shared secret derived from the ephemeral public key and
     your private key.</dd>
   <dt>googlepay[merchant_id]</dt>
