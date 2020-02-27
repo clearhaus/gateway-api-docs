@@ -875,7 +875,7 @@ Sorted by descending timestamp.
 
 ### Optional name on card parameter added
 
-Starting 2020-xx-xx the optional parameter `card[name]` may be used to provide
+Starting 2020-02-28 the optional parameter `card[name]` may be used to provide
 the name on the card for credits. Depending on card scheme and merchant
 category, the name might be necessary for approval.
 
