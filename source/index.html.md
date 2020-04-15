@@ -267,7 +267,7 @@ Example response (snippet):
 
 ## Payout to cardholder
 
-Sometimes cardholders should receive money, e.g. if you will pay out some
+Sometimes cardholders should receive money, e.g. if you wish to pay out some
 winnings.
 
 The following will transfer EUR 500.00 to cardholder's bank account from your
@@ -299,6 +299,9 @@ Example response (snippet):
 }
 ````
 
+Depending on card scheme and merchant category, the name on the card might be
+necessary for approval of credits. It may be provided through the optional
+parameter `card[name]`.
 
 ## Recurring payments
 
@@ -705,6 +708,8 @@ POST https://gateway.clearhaus.com/credits
   <dd>20[0-9]{2} <br /> Expiry year of card to charge.</dd>
   <dt>card[csc]</dt>
   <dd>[0-9]{3} <br /> <i>Optional.</i> <br /> Card Security Code.</dd>
+  <dt>card[name]</dt>
+  <dd>[A-Za-z0-9 ]{1,30} <br /> <i>Optional</i> <br /> Name on card.</dd>
 </dl>
 
 
@@ -867,6 +872,12 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Optional name on card parameter added
+
+Starting 2020-03-03 the optional parameter `card[name]` may be used to provide
+the name on the card for credits. Depending on card scheme and merchant
+category, the name might be necessary for approval.
 
 ### Request signing becomes mandatory
 
