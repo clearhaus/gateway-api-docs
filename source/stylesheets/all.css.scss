@@ -124,3 +124,12 @@ pre code.highlight {
     display: none;
   }
 }
+
+dl.dl-vertical {
+  margin-left: 10px;
+}
+
+/* On vertial description list, indent the description slightly to enhance */
+dl.dl-vertical > dd {
+  margin-left: 20px;
+}
