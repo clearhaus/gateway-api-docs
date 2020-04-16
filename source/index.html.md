@@ -632,25 +632,20 @@ object][ApplePay-PaymentToken] for more information.
 
 ##### Method: `samsungpay`
 
-Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects. Currenlty we only
-accept the JWE.
-Your system must extract the content encryption key (<code>cek</code>) used to encrypt the JWE
-payload and Base64-encode it, along with the entire JWE.
+Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
+Currently we only accept the JWE.  Your system must extract the JWE content
+encryption key (CEK) used to encrypt the JWE payload and Base64 encode it.
 
 <dl class="dl-vertical">
-  <dt>samsungpay[jwe]</dt>
+  <dt>samsungpay[jwt]</dt>
   <dd>
-    Type: <a href="https://tools.ietf.org/html/rfc7516#section-3.1">JWE Compact serialization</a>
-    <br>
-    <i>Required</i>
+    <a href="https://tools.ietf.org/html/rfc7516#section-3.1"><span class="type">JWE Compact serialization</span></a>
     <br>
     Complete payment token as received from Samsung Pay.
   </dd>
-  <dt>samsungpay[symmetric_key]</dt>
+  <dt>samsungpay[cek]</dt>
   <dd>
-    Type: Base-64 encoded string
-    <br/>
-    <i>Required</i>
+    <span class="type">[:base64:]</span>
     <br/>
     16 byte symmetric AES key used to encrypt the payment token, Base64 encoded.
 </dl>

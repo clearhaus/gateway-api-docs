@@ -129,7 +129,13 @@ dl.dl-vertical {
   margin-left: 10px;
 }
 
-/* On vertial description list, indent the description slightly to enhance */
+/* On vertical description list, indent the description slightly to emphasize context */
 dl.dl-vertical > dd {
   margin-left: 20px;
+}
+
+span.type {
+  font-weight: lighter;
+  font-size: 10px;
+  font-family: "Courier New", monospace;
 }
