@@ -547,6 +547,7 @@ payment method must be omitted.
   <dd>
     <div class="type">
       May not be all digits, all same character, or all sequential characters (e.g. "abc").
+      <br>
       Optional
     </div>
     Text that will be placed on cardholder's bank statement.
