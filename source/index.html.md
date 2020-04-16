@@ -638,7 +638,7 @@ Currently only the JWE is accepted.
 <dl class="dl-vertical">
   <dt>samsungpay[jwt]</dt>
   <dd>
-    <a href="https://tools.ietf.org/html/rfc7516#section-3.1"><span class="type">JWE Compact serialization</span></a>
+    <a href="https://tools.ietf.org/html/rfc7516#section-3.1"><span class="type">Compact serialized JWE token</span></a>
     <br>
     Complete JWE token as received from Samsung Pay.
   </dd>
