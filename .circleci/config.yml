@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     machine:
-      image: circleci/classic:latest
+      image: cimg/base:2020.01
     environment:
       AWS_REGION: eu-west-1
       BUILD_DIR: /build
