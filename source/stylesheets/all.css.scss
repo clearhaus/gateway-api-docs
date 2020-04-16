@@ -135,8 +135,10 @@ dl.dl-vertical > dd {
 }
 
 /* Make the type of objects stand out */
-span.type {
+div.type {
+  line-height: 2;
   font-weight: lighter;
   font-size: 10px;
   font-family: "Courier New", monospace;
+  display: inline-block;
 }
