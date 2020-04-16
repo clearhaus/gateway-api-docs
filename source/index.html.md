@@ -500,74 +500,93 @@ payment method must be omitted.
 #### Parameters
 
 <dl class="dl-vertical">
-  <dt>amount</dt>
+  <dt>amount <span class="type"> [0-9]{1,10} </span></dt>
   <dd>
-    <div class="type">
-      [0-9]{1,10}
-    </div>
-    <br>
     Amount in minor units of given currency (e.g. cents if in Euro).
   </dd>
-  <dt>currency</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    currency
+    <span class="type">
       [A-Z]{3}
-    </div>
-    <br>
+    </span>
+  </dt>
+  <dd>
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
-  <dt>ip</dt>
+  <dt>
+    ip
+    <span class="type">
+      [0-9\.a-fA-F:]{3,39}
+    </span>
+  </dt>
   <dd>
    <div class="type">
-      [0-9\.a-fA-F:]{3,39}
-    </div>
-    <br>
-    <i>Optional</i> <br /> Cardholder's IP address (v4 or v6).
+    Optional
+  </div>
+
+    Cardholder's IP address (v4 or v6).
   </dd>
-  <dt>recurring</dt>
+  <dt>
+    recurring
+    <span class="type">
+      (true|false)
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      (true|false) <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     Must be <code>true</code> for recurring payments.
   </dd>
-  <dt>text_on_statement</dt>
+  <dt>
+    text_on_statement
+    <span class="type">
+      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
-      <br>
-      <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i>
-      <br>
-      <i>Optional</i>
+      May not be all digits, all same character, or all sequential characters (e.g. "abc").
+      Optional
     </div>
-  <br>
     Text that will be placed on cardholder's bank statement.
   </dd>
-  <dt>reference</dt>
+  <dt>
+    reference
+    <span class="type">
+      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     A reference to an external object, such as an order number.
   </dd>
 
   <!-- deprecated -->
-  <dt><strike>threed_secure[pares]</strike></dt>
+  <dt><strike>
+    threed_secure[pares]
+    <span class="type">
+      [:base64:]
+    </span>
+  </strike></dt>
   <dd>
     <div class="type">
-      Deprecated! Please use <code>card[pares]</code>. <br /> [:base64:]
+      Deprecated! Please use <code>card[pares]</code>.
     </div>
-  <br>
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
   </dd>
-  <dt><strike>card[number]</strike></dt>
+  <dt><strike>
+    card[number]
+    <span class="type">
+      [0-9]{12,19}
+    </span>
+  </strike></dt>
   <dd>
     <div class="type">
-      Deprecated! Please use <code>card[pan]</code>. <br /> [0-9]{12,19}
+      Deprecated! Please use <code>card[pan]</code>.
     </div>
-  <br>
     Primary account number of card to charge.
   </dd>
 </dl>
@@ -575,44 +594,55 @@ payment method must be omitted.
 ##### Method: `card`
 
 <dl class="dl-vertical">
-  <dt>card[pan]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[pan]
+    <span class="type">
       [0-9]{12,19}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Primary account number of card to charge.
   </dd>
-  <dt>card[expire_month]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_month]
+    <span class="type">
       [0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry month of card to charge.
   </dd>
-  <dt>card[expire_year]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_year]
+    <span class="type">
       20[0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry year of card to charge.
   </dd>
-  <dt>card[csc]</dt>
+  <dt>
+    card[csc]
+    <span class="type">
+      [0-9]{3}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [0-9]{3} <br /> <i>Optional when transaction is signed and partner is trusted.</i>
+      Optional when transaction is signed and partner is trusted.
     </div>
-  <br>
     Card Security Code.
   </dd>
-  <dt>card[pares]</dt>
+  <dt>
+    card[pares]
+    <span class="type">
+      [:base64:]
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [:base64:] <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
   </dd>
 </dl>
@@ -639,20 +669,22 @@ in Ruby; see [Apple's documentation for the <code>PaymentToken</code>
 object][ApplePay-PaymentToken] for more information.
 
 <dl class="dl-vertical">
-  <dt>applepay[payment_token]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    applepay[payment_token]
+    <span class="type">
       [:json:]
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Full, raw <code>PKPaymentToken</code> object, UTF-8 encoded serialization of a JSON dictionary.
   </dd>
-  <dt>applepay[symmetric_key]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    applepay[symmetric_key]
+    <span class="type">
       [:hex:]
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Symmetric AES key (unique per transaction) that can decrypt <code>data</code> from the <code>PKPaymentToken</code>.
   </dd>
 </dl>
@@ -675,44 +707,55 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `mobilepayonline`
 
 <dl class="dl-vertical">
-  <dt>mobilepayonline[pan]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    mobilepayonline[pan]
+    <span class="type">
       [0-9]{12,19}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Primary account number of card to charge.
   </dd>
-  <dt>mobilepayonline[expire_month]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    mobilepayonline[expire_month]
+    <span class="type">
       [0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry month of card to charge.
   </dd>
-  <dt>mobilepayonline[expire_year]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    mobilepayonline[expire_year]
+    <span class="type">
       [0-9]{4}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry year of card to charge.
   </dd>
-  <dt>mobilepayonline[phone_number]</dt>
+  <dt>
+    mobilepayonline[phone_number]
+    <span class="type">
+      [\x20-\x7E]{1,15}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{1,15} <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     Phone number from where the PAN originates.
   </dd>
-  <dt>mobilepayonline[pares]</dt>
+  <dt>
+    mobilepayonline[pares]
+    <span class="type">
+      [:base64:]
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [:base64:] <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
   </dd>
 </dl>
@@ -732,17 +775,25 @@ Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
 Currently only the JWE is accepted.
 
 <dl class="dl-vertical">
-  <dt>samsungpay[jwt]</dt>
+  <dt>
+    samsungpay[jwt]
+    <span class="type">
+      <a href="https://tools.ietf.org/html/rfc7516#section-3.1">
+        Compact serialized JWE token
+      </a>
+    </span>
+  </dt>
   <dd>
-    <div class="type"><a href="https://tools.ietf.org/html/rfc7516#section-3.1">Compact serialized JWE token</a></div>
-    <br>
     Complete JWE token as received from Samsung Pay.
   </dd>
-  <dt>samsungpay[cek]</dt>
+  <dt>
+    samsungpay[cek]
+    <span class="type">
+      [:base64:]{24}
+    </span>
+  </dt>
   <dd>
-    <div class="type">[:base64:]{24}</div>
-    <br/>
-    16 byte symmetric AES content encryption key (CEK) used to encrypt the
+    The 128 bit symmetric AES content encryption key (CEK) used to encrypt the
     payment token, Base64 encoded. This CEK must be extracted from the JWE
     token.
 </dl>
@@ -760,20 +811,30 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 #### Parameters
 
 <dl class="dl-vertical">
-  <dt>amount</dt>
+  <dt>
+    amount
+    <span class="type">
+      [1-9][0-9]{0,9}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [1-9][0-9]{0,9} <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     Amount in minor units of given currency (e.g. cents if in Euro).  The full or remaining amount will be withdrawn if no amount is given.
   </dd>
-  <dt>text_on_statement</dt>
+  <dt>
+    text_on_statement
+    <span class="type">
+      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br /> <i>Optional</i>
+      May not be all digits, all same character, or all sequential characters (e.g. "abc").
+      <br>
+      Optional
     </div>
-  <br>
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
@@ -793,20 +854,30 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 ````
 
 <dl class="dl-vertical">
-  <dt>amount</dt>
+  <dt>
+    amount
+    <span class="type">
+      [1-9][0-9]{0,9}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [1-9][0-9]{0,9} <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     Amount in minor units of given currency (e.g. cents if in Euro).  The full or remaining amount will be refunded if no amount is given.
   </dd>
-  <dt>text_on_statement</dt>
+  <dt>
+    text_on_statement
+    <span class="type">
+      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br /> <i>Optional</i>
+      May not be all digits, all same character, or all sequential characters (e.g. "abc").
+      <br>
+      Optional
     </div>
-  <br>
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
   </dd>
 </dl>
@@ -853,68 +924,87 @@ POST https://gateway.clearhaus.com/credits
 ````
 
 <dl class="dl-vertical">
-  <dt>amount</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    amount
+    <span class="type">
       [1-9][0-9]{0,9}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Amount in minor units of given currency (e.g. cents if in Euro). As for Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for Visa, the amount must not exceed the equivalent of 50,000 USD.
   </dd>
-  <dt>currency</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    currency
+    <span class="type">
       [A-Z]{3}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
-  <dt>text_on_statement</dt>
+  <dt>
+    text_on_statement
+    <span class="type">
+      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br /> <i>Optional</i>
+      May not be all digits, all same character, or all sequential characters (e.g. "abc").
+     <br>
+     Optional
     </div>
-  <br>
     Text that will be placed on cardholder's bank statement.
   </dd>
-  <dt>reference</dt>
+  <dt>
+    reference
+    <span class="type">
+      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     A reference to an external object, such as an order number.
   </dd>
-  <dt>card[pan]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[pan]
+    <span class="type">
       [0-9]{12,19}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Primary account number of card to charge.
   </dd>
-  <dt>card[expire_month]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_month]
+    <span class="type">
       [0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry month of card to charge.
   </dd>
-  <dt>card[expire_year]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_year]
+    <span class="type">
       20[0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry year of card to charge.
   </dd>
-  <dt>card[csc]</dt>
+  <dt>
+    card[csc]
+    <span class="type">
+      [0-9]{3}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [0-9]{3} <br /> <i>Optional.</i>
+      Optional.
     </div>
-  <br>
     Card Security Code.
   </dd>
 </dl>
@@ -927,36 +1017,48 @@ POST https://gateway.clearhaus.com/cards/:id/credits # deprecated
 ````
 
 <dl class="dl-vertical">
-  <dt>amount</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    amount
+    <span class="type">
       [1-9][0-9]{0,9}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Amount in minor units of given currency (e.g. cents if in Euro). As for Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for Visa, the amount must not exceed the equivalent of 50,000 USD.
   </dd>
-  <dt>currency</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    currency
+    <span class="type">
       [A-Z]{3}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
-  <dt>text_on_statement</dt>
+  <dt>
+    text_on_statement
+    <span class="type">
+      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{2,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>May not be all digits, all same character, or all sequential characters (e.g. "abc").</i><br /> <i>Optional</i>
+      May not be all digits, all same character, or all sequential characters (e.g. "abc").
+      <br>
+      Optional
     </div>
-  <br>
     Text that will be placed on cardholder's bank statement.
   </dd>
-  <dt>reference</dt>
+  <dt>
+    reference
+    <span class="type">
+      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [\x20-\x7E]{1,30} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i> <br /> <i>Optional</i>
+      Optional
     </div>
-  <br>
     A reference to an external object, such as an order number.
   </dd>
 </dl>
@@ -977,44 +1079,52 @@ POST https://gateway.clearhaus.com/cards
 ````
 
 <dl class="dl-vertical">
-  <dt>card[pan]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[pan]
+    <span class="type">
       [0-9]{12,19}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Primary account number of card to charge.
   </dd>
-  <dt>card[number]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[number]
+    <span class="type">
       [0-9]{12,19}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Primary account number of card to charge.
   </dd>
-  <dt>card[expire_month]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_month]
+    <span class="type">
       [0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry month of card to charge.
   </dd>
-  <dt>card[expire_year]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[expire_year]
+    <span class="type">
       20[0-9]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Expiry year of card to charge.
   </dd>
-  <dt>card[csc]</dt>
+  <dt>
+    card[csc]
+    <span class="type">
+      [0-9]{3}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [0-9]{3} <br /> <i>Optional when transaction is signed and partner is trusted.</i>
+      Optional when transaction is signed and partner is trusted.
     </div>
-  <br>
     Card Security Code.
   </dd>
 </dl>
@@ -1035,25 +1145,38 @@ POST https://gateway.clearhaus.com/cards
 #### Response parameters
 
 <dl class="dl-vertical">
-  <dt>card[last4]</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    card[last4]
+    <span class="type">
       [0-9]{4}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Last 4 digits of card number.
   </dd>
-  <dt>card[scheme]</dt>
-  <dd><code>visa</code>, <code>mastercard</code> or <code>unknown</code></dd>
+  <dt>
+    card[scheme]
+  </dt>
+  <dd>
+    <code>visa</code>, <code>mastercard</code> or <code>unknown</code>
+  </dd>
   <dt>card[type]</dt>
-  <dd><code>debit</code> or <code>credit</code>
-  <br /><i>Omittable</i></dd>
-  <dt>card[country]</dt>
+  <dd>
+  <div class="type">
+    Omittable
+  </div>
+  <code>debit</code> or <code>credit</code>
+  </dd>
+  <dt>
+    card[country]
+    <span class="type">
+      [A-Z]{2}
+    </span>
+  </dt>
   <dd>
     <div class="type">
-      [A-Z]{2} <br /><i>Omittable</i>
+      Omittable
     </div>
-  <br>
     ISO 3166-1 2-letter country code for issuing bank.
   </dd>
 </dl>
@@ -1071,54 +1194,60 @@ GET https://gateway.clearhaus.com/account
 #### Response parameters
 
 <dl class="dl-vertical">
-  <dt>merchant_id</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    merchant_id
+    <span class="type">
       [0-9]{15}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Used for 3-D Secure and also for reference when talking to our support staff. For 3-D Secure it is important to represent this number with leading zeros.
   </dd>
-  <dt>descriptor</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    descriptor
+    <span class="type">
       [\x20-\x7E]{0,22} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     The default <code>text_on_statement</code>.
   </dd>
-  <dt>name</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    name
+    <span class="type">
       [\x20-\x7E]{0,20} <i><a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></i>
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Merchant company name.
   </dd>
-  <dt>country</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    country
+    <span class="type">
       [A-Z]{2}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     ISO 3166-1 2-letter country code for merchant company.
   </dd>
-  <dt>mcc</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    mcc
+    <span class="type">
       [0-9]{4}
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     Merchant category code.
   </dd>
   <dt>acquirer</dt>
   <dd>Used for 3-D Secure.</dd>
-  <dt>transaction_rules</dt>
-  <dd>
-    <div class="type">
+  <dt>
+    transaction_rules
+    <span class="type">
       [\x20-\x7E]*
-    </div>
-  <br>
+    </span>
+  </dt>
+  <dd>
     The processing rules that the merchant's transactions must adhere to.
   </dd>
 

@@ -136,14 +136,30 @@ dl.dl-vertical {
 
 /* On vertical description list, indent the description slightly to emphasize context */
 dl.dl-vertical > dd {
+  margin-top: 3px;
   margin-left: 20px;
 }
 
-/* Make the type of objects stand out */
-div.type {
-  line-height: 2;
+dt {
+  background-color: #F7F7F7;
+  padding: 2px 4px 2px 4px;
+  border-radius: 3px;
+
+  /* Pull the span with the type right */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Make the type/constraints of objects stand out */
+.type {
   font-weight: lighter;
   font-size: 10px;
   font-family: "Courier New", monospace;
-  display: inline-block;
+}
+
+div.type {
+  font-style: italic;
+  line-height: 2;
+  margin-top: 3px;
 }
