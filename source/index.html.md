@@ -466,7 +466,7 @@ Exactly one payment method must be used.
   <dt>currency</dt>
   <dd>[A-Z]{3} <br /> <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)</dd>
   <dt>ip</dt>
-  <dd>[0-9\.a-fA-F:]{3,45} <br /> <i>Optional</i> <br /> Cardholder's IP address. It must be a valid v4 or v6 address.</dd>
+  <dd>[0-9.a-fA-F:]{3,45} <br /> <i>Optional</i> <br /> Cardholder's IP address. It must be a valid v4 or v6 address.</dd>
   <dt>recurring</dt>
   <dd>(true|false) <br /> <i>Optional</i> <br /> Must be <code>true</code> for recurring payments.</dd>
   <dt>text_on_statement</dt>
