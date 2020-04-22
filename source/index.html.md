@@ -797,6 +797,7 @@ Currently only the JWE is accepted.
     The 128 bit symmetric AES content encryption key (CEK) used to encrypt the
     payment token, Base64 encoded. This CEK must be extracted from the JWE
     token.
+  </dd>
 </dl>
 
 ### Captures
