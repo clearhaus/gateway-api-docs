@@ -616,7 +616,7 @@ key, cannot be used for recurring transactions!
 
 <dl class="dl-vertical">
   <dt>
-    samsungpay[jwt]
+    samsungpay[jws]
     <span class="type">
       <a href="https://tools.ietf.org/html/rfc7515#page-7">
         Compact serialized JWS token
