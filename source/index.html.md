@@ -773,19 +773,45 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `samsungpay`
 
 Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
-Currently only the JWE is accepted.
+Only the JWS is accepted.
+
+The JWE can either be encrypted to a Clearhaus RSA private key, or a Content
+Encryption Key can be provided directly.
+
+If encrypted to our private key, then the authorization cannot be recurring.
+Our RSA public key for Samsung Pay can be provided upon request.
 
 <dl class="dl-vertical">
   <dt>
     samsungpay[jwt]
     <span class="type">
-      <a href="https://tools.ietf.org/html/rfc7516#section-3.1">
-        Compact serialized JWE token
+      <a href="https://tools.ietf.org/html/rfc7515#page-7">
+        Compact serialized JWS token
       </a>
     </span>
   </dt>
   <dd>
     Complete JWE token as received from Samsung Pay.
+  </dd>
+  <dt>
+    samsungpay[ca_cert]
+    <span class="type">
+      PEM X509 certificate
+    </span>
+  </dt>
+  <dd>
+    Device CA certificate signed by Samsung root certificate. Included in
+    payment information as <code>certificates.CA</code>.
+  </dd>
+  <dt>
+    samsungpay[verification_cert]
+    <span class="type">
+      PEM X509 certificate
+    </span>
+  </dt>
+  <dd>
+    Device verification certificate signed by <code>ca_cert</code>.
+    Included in payment information as <code>certificates.VER</code>.
   </dd>
   <dt>
     samsungpay[cek]
@@ -794,11 +820,19 @@ Currently only the JWE is accepted.
     </span>
   </dt>
   <dd>
+    <div class="type">
+      Only if integrator is responsible for decrypting the payload
+    </div>
     The 128 bit symmetric AES content encryption key (CEK) used to encrypt the
     payment token, Base64 encoded. This CEK must be extracted from the JWE
     token.
   </dd>
 </dl>
+
+<p class="alert alert-info">
+<b>Notice:</b> A Samsung Pay authorization encrypted to our RSA private key,
+cannot be used for recurring transactions.
+</p>
 
 ### Captures
 
