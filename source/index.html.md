@@ -602,13 +602,17 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `samsungpay`
 
 Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
-Only the JWS is accepted.
+Only JWE/JWS is accepted.
 
-The JWE can either be encrypted to a Clearhaus RSA private key, or a Content
-Encryption Key can be provided directly.
+The JWE part of JWE/JWS should preferably be encrypted to an RSA key owned
+by the PSP, and then a Content Encryption Key is provided in the request.
+Alternatively, it can be encrypted using
+<a href="clearhaus-samsungpay-public-key.pem">Clearhaus' RSA public key</a>.
 
-If encrypted to our private key, then the authorization cannot be recurring.
-Our RSA public key for Samsung Pay can be provided upon request.
+<p class="alert alert-info">
+<b>Notice:</b> A Samsung Pay authorization encrypted to Clearhaus' RSA private
+key, cannot be used for recurring transactions!
+</p>
 
 <dl class="dl-vertical">
   <dt>
@@ -657,11 +661,6 @@ Our RSA public key for Samsung Pay can be provided upon request.
     token.
   </dd>
 </dl>
-
-<p class="alert alert-info">
-<b>Notice:</b> A Samsung Pay authorization encrypted to our RSA private key,
-cannot be used for recurring transactions.
-</p>
 
 
 ### Captures
