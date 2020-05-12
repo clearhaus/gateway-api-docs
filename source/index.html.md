@@ -1038,7 +1038,7 @@ POST https://gateway.clearhaus.com/cards/:id/credits # deprecated
 
 ### Cards
 
-This resource is now deprecated!
+<i>This resource is now deprecated!</i>
 
 A card resource (token) corresponds to a payment card and can be used to make a
 credit or authorization transaction without providing sensitive card data (see
