@@ -401,7 +401,7 @@ recurring authorization.
 
 3-D Secure is a protocol designed to improve security for online transactions.
 Before you continue please read more about this protocol at
-[3Dsecure.io](http://docs.3dsecure.io).
+[3dsecure.io](http://docs.3dsecure.io).
 
 3-D Secure is the only way to achieve liability shift for fraud chargebacks.
 
@@ -576,7 +576,7 @@ payment method must be omitted.
     <div class="type">
       Deprecated! Please use <code>card[pares]</code>.
     </div>
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>.
   </dd>
   <dt><strike>
     card[number]
@@ -644,7 +644,7 @@ payment method must be omitted.
     <div class="type">
       Optional
     </div>
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
   </dd>
 </dl>
 
@@ -757,7 +757,7 @@ object][ApplePay-PaymentToken] for more information.
     <div class="type">
       Optional
     </div>
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
   </dd>
 </dl>
 
@@ -1418,5 +1418,4 @@ status](#merchant-blocked-by-cardholder-status)
 [JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
-[3D-Secure]: http://www.3dsecure.io
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
