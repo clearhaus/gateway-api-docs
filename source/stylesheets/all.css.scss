@@ -97,13 +97,13 @@ section#doc-content {
   padding-bottom: 10px;
 }
 
-#doc-content dl {
+#doc-content dl.dl-horizontal {
   font-size: 13px;
   padding-top: 10px;
 }
 
 #doc-content dd {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .features {
@@ -131,40 +131,33 @@ pre code.highlight {
 }
 
 dl.dl-vertical {
-  margin-left: 10px;
+  /* Highlight the parameters with a slight border */
+  margin-left: 2px;
+  padding-left: 8px;
+  border-left: 2px solid #F0F0F0F0;
 }
 
-/* On vertical description list, indent the description slightly to emphasize context */
+/* On vertical description list, indent the description slightly to emphasize
+ * context */
 dl.dl-vertical > dd {
-  background-color: #F9F9F9;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 5px;
-  border-radius: 0px 0px 3px 3px;
+  padding-left: 10px;
 }
 
-dl.dl-vertical> dt {
-  background-color: #F7F7F7;
-  padding: 2px 4px 2px 4px;
-  border: 1px solid #DDD;
-  border-radius: 3px 3px 0px 0px;
-
-  /* Pull the span with the type right */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+dl.dl-vertical > dt, .type {
+  vertical-align: middle;
+  font-family: "Courier New", monospace;
 }
 
 /* Make the type/constraints of objects stand out */
 .type {
   font-weight: lighter;
   font-size: 10px;
-  font-family: "Courier New", monospace;
+  color: #888;
 }
 
-div.type {
-  font-style: italic;
-  line-height: 2;
-  margin-top: 3px;
+dt > .type {
+  /* The type right of the parameter name needs to be pulled slightly away from
+   * the name */
+  padding-left: 10px;
+  height: 100%;
 }
