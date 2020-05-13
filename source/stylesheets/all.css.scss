@@ -116,8 +116,12 @@ section#doc-content {
   width: 400px;
 }
 
+dl.dl-vertical > dt::before {
+  content: '•';
+}
+
 .features dt, dd {
-  line-height: 2;
+  line-height: 1.7;
 }
 
 pre code.highlight {
@@ -132,15 +136,7 @@ pre code.highlight {
 
 dl.dl-vertical {
   /* Highlight the parameters with a slight border */
-  margin-left: 2px;
-  padding-left: 8px;
-  border-left: 2px solid #F0F0F0F0;
-}
-
-/* On vertical description list, indent the description slightly to emphasize
- * context */
-dl.dl-vertical > dd {
-  padding-left: 10px;
+  margin-left: 10px;
 }
 
 dl.dl-vertical > dt, .type {
