@@ -13,8 +13,7 @@ jobs:
       - run:
           name: Install AWS CLI
           command: |
-            sudo apt-get -y -qq update
-            sudo apt-get install awscli
+            sudo pip install awscli
       - run:
           name: Build Docker image
           command: |
@@ -31,6 +30,7 @@ jobs:
               echo "On master branch, syncing to s3"
               aws s3 sync $BUILD_DIR \
               s3://clrhs-prod-nonpci-docs-gateway/ --delete
+              aws cloudfront create-invalidation --distribution-id E78MG8DOLYAEP --paths "/*"
             else
               echo "Not master branch, dry run only"
               aws s3 sync $BUILD_DIR \
