@@ -478,7 +478,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`.
+`card`, `applepay`, `mobilepayonline`, `samsungpay`.
 Exactly one payment method must be used.
 
 #### Parameters
