@@ -15,5 +15,5 @@ gem 'bootstrap-sass'
 gem 'execjs'
 
 # Heroku hosting
-gem 'puma'
-gem 'rake'
+gem 'puma', '~> 4'
+gem 'rake', '~> 13'

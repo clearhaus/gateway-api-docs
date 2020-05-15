@@ -2,6 +2,7 @@
 
 body {
   color: #444;
+  text-align: justify;
 }
 
 pre {
@@ -15,6 +16,11 @@ hr {
 
 p {
   line-height: 1.7;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 section#home-content {
@@ -92,18 +98,26 @@ section#doc-content {
   padding-bottom: 10px;
 }
 
-#doc-content dl {
+#doc-content dl.dl-horizontal {
   font-size: 13px;
   padding-top: 10px;
 }
 
 #doc-content dd {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .features {
   margin-top: 20px;
 }
+
+/*
+dl.dl-vertical > dt::before {
+  content: '·';
+}
+*/
 
 .features dt {
   font-weight: normal;
@@ -112,7 +126,7 @@ section#doc-content {
 }
 
 .features dt, dd {
-  line-height: 2;
+  line-height: 1.8;
 }
 
 pre code.highlight {
@@ -123,4 +137,29 @@ pre code.highlight {
   #toc {
     display: none;
   }
+}
+
+dl.dl-vertical {
+  /* Highlight the parameters with a slight border */
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+dl.dl-vertical > dt, .type {
+  vertical-align: middle;
+  font-family: "Courier New", monospace;
+}
+
+/* Make the type/constraints of objects stand out */
+.type {
+  font-weight: lighter;
+  font-size: 10px;
+  color: #888;
+}
+
+dt > .type {
+  /* The type right of the parameter name needs to be pulled slightly away from
+   * the name */
+  padding-left: 10px;
+  height: 100%;
 }
