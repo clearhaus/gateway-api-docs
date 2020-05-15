@@ -667,6 +667,69 @@ object][ApplePay-PaymentToken] for more information.
   strongly authenticated (SCA in PSD2).
 </p>
 
+##### Method: `samsungpay`
+
+Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
+Only JWE/JWS is accepted.
+
+The JWE part of JWE/JWS should preferably be encrypted to an RSA key owned
+by the PSP, and then a Content Encryption Key is provided in the request.
+Alternatively, it can be encrypted using
+<a href="clearhaus-samsungpay-public-key.pem">Clearhaus' RSA public key</a>.
+
+<p class="alert alert-info">
+<b>Notice:</b> A Samsung Pay authorization encrypted to Clearhaus' RSA private
+key, cannot be used for recurring transactions!
+</p>
+
+<dl class="dl-vertical">
+  <dt>
+    samsungpay[jws]
+    <span class="type">
+      <a href="https://tools.ietf.org/html/rfc7515#page-7">
+        Compact serialized JWS token
+      </a>
+    </span>
+  </dt>
+  <dd>
+    Complete JWE token as received from Samsung Pay.
+  </dd>
+  <dt>
+    samsungpay[ca_cert]
+    <span class="type">
+      PEM X509 certificate
+    </span>
+  </dt>
+  <dd>
+    Device CA certificate signed by Samsung root certificate. Included in
+    payment information as <code>certificates.CA</code>.
+  </dd>
+  <dt>
+    samsungpay[verification_cert]
+    <span class="type">
+      PEM X509 certificate
+    </span>
+  </dt>
+  <dd>
+    Device verification certificate signed by <code>ca_cert</code>.
+    Included in payment information as <code>certificates.VER</code>.
+  </dd>
+  <dt>
+    samsungpay[cek]
+    <span class="type">
+      [:base64:]{24}
+    </span>
+  </dt>
+  <dd>
+    <div class="type">
+      Only if integrator is responsible for decrypting the payload
+    </div>
+    The 128 bit symmetric AES content encryption key (CEK) used to encrypt the
+    payment token, Base64 encoded. This CEK must be extracted from the JWE
+    token.
+  </dd>
+</dl>
+
 
 ### Captures
 
