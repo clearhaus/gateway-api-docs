@@ -670,14 +670,14 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `samsungpay`
 
 Samsung Pay provides the payment details as either JWE or JWE/JWS JOSE objects.
-Only JWE/JWS is accepted.
+Only the latter is accepted.
 
-The signed JWE must currently be encrypted by Samsung using Clearhaus' RSA
-public key.  This must be provided with Samsung Pay in a CSR. Contact Clearhaus
-to exchange a CSR.
+The signed JWE must be encrypted by Samsung using Clearhaus' RSA public key.
+This must be provided with Samsung Pay in a CSR. Contact Clearhaus to exchange
+a CSR.
 
 <p class="alert alert-info">
-<b>Notice:</b> Samsung pay can currently not be used for recurring transactions.
+<b>Notice:</b> Samsung Pay can currently not be used for recurring transactions.
 </p>
 
 <dl class="dl-vertical">
