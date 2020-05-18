@@ -213,6 +213,12 @@ match; in this case the <code>status</code> <code>code</code> will be
 authorizations may be in place for a merchant.
 </p>
 
+<p class="alert alert-info">
+<b>Notice:</b> <code>csc</code> <code>matches</code> is <code>true</code> if
+issuer or card scheme confirmed CSC to match; it is <code>false</code> if issuer
+or card scheme did not perform validation or if validation failed.
+</p>
+
 
 ### Withdraw money
 
