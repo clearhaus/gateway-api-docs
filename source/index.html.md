@@ -709,25 +709,36 @@ object][ApplePay-PaymentToken] for more information.
 
 Only one 3-D Secure version can be used for a given authorization.
 
-<dl class="dl-horizontal">
-  <dt>[3dsecure][v1]</dt>
-  <dd><i>Optional. Cannot be present if <code>v2</code> is present.</i> <br />
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v1]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
     3-D Secure version 1.
+    <div class="type">Optional. Cannot be present if <code>v2</code> is present.</div>
   </dd>
-  <dt>[3dsecure][v2]</dt>
-  <dd><i>Optional. Cannot be present if <code>v1</code> is present.</i> <br />
+  <dt>
+    [3dsecure][v2]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
     3-D Secure version 2, also known as EMV 3-D Secure.
+    <div class="type">Optional. Cannot be present if <code>v1</code> is present.</div>
   </dd>
 </dl>
 
 ##### Authentication: `[3dsecure][v1]`
 
 
-<dl class="dl-horizontal">
-  <dt>[3dsecure][v1][pares]</dt>
-  <dd>[:base64:] <br />
-    <i>Optional</i> <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v1][pares]
+    <span class="type">[:base64:]</span>
+  </dt>
+  <dd>
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    <div class="type">Optional</div>
   </dd>
 </dl>
 
@@ -738,16 +749,22 @@ Only one 3-D Secure version can be used for a given authorization.
 
 ##### Authentication: `[3dsecure][v2]`
 
-<dl class="dl-horizontal">
-  <dt>[3dsecure][v2][ares]</dt>
-  <dd>[:json:] <br />
-    <i>Optional. Cannot be present if <code>rreq</code> is present.</i> <br />
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v2][ares]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
     The 3-D Secure version 2 ARes containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+    <div class="type">Optional. Cannot be present if <code>rreq</code> is present.</div>
   </dd>
-  <dt>[3dsecure][v2][rreq]</dt>
-  <dd>[:json:] <br />
-    <i>Optional. Cannot be present if <code>ares</code> is present.</i> <br />
+  <dt>
+    [3dsecure][v2][rreq]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
     The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+    <div class="type">Optional. Cannot be present if <code>ares</code> is present.</div>
   </dd>
 </dl>
 
