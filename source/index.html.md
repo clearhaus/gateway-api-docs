@@ -334,8 +334,8 @@ parameter `card[name]`.
 
 ## Recurring payments
 
-Recurring payments enable you to repeatedly charge cardholders without having
-them to provide card information for subsequent payments.
+Recurring payments enable you to repeatedly charge cardholders without providing
+CSC or other means of cardholder authentication for subsequent payments.
 
 ### Subscription concept
 
