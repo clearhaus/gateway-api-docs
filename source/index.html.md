@@ -384,10 +384,10 @@ This should be followed by a capture except when the amount is `0`.
 Subsequent authorizations are made similarly, but neither CSC nor PARes (see
 [3-D Secure](#3-d-secure)) would be included.
 
-An initial recurring authorization can also be made using the `applepay` and
-`mobilepayonline` payment methods; subsequent recurring payments, however, must
-be made using the `card` payment method using the card details of the initial
-recurring authorization.
+An initial recurring authorization can also be made using the `applepay`,
+`mobilepayonline` and `token` payment methods; subsequent recurring payments,
+however, must be made using the `card` payment method using the card details of
+the initial recurring authorization.
 
 
 ## 3-D Secure
@@ -484,7 +484,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`.
+`card`, `applepay`, `mobilepayonline`, `token`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -673,6 +673,38 @@ object][ApplePay-PaymentToken] for more information.
   strongly authenticated (SCA in PSD2).
 </p>
 
+##### Method: `token`
+
+<dl class="dl-vertical">
+  <dt>token[tpan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>token[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>Expiry month of card to charge.</dd>
+  <dt>token[expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>Expiry year of card to charge.</dd>
+  <dt>token[tav]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>Token Authentication Value</dd>
+  <dt>token[payment_method_indication]
+    <span class="type">[\x20-\x7E]{7,15}
+      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+        ASCII printable characters
+      </a>
+    </span>
+  </dt>
+  <dd>
+    Indicate payment method used. Either: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>, <code>unknown</code>
+  </dd>
+</dl>
 
 ### Captures
 
