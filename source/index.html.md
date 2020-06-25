@@ -565,6 +565,13 @@ Exactly one payment method must be used.
     Card Security Code.
     <div class="type">Optional when partner is trusted</div>
   </dd>
+  <dt>card[tav]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>
+    Token Authentication Value
+    <div class="type">Required when using token payments</div>
+  </dd>
   <dt>card[pares]
     <span class="type">[:base64:]</span>
   </dt>
@@ -611,6 +618,26 @@ object][ApplePay-PaymentToken] for more information.
     Symmetric AES key (unique per transaction) that can decrypt
     <code>data</code> from the <code>PKPaymentToken</code>.
   </dd>
+  <dt>applepay[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>applepay[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>Expiry month of card to charge.</dd>
+  <dt>apple[expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>applepay[tav]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>Token Authentication Value</dd>
 </dl>
 
 <p class="alert alert-info">
@@ -648,6 +675,12 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Expiry year of card to charge.
+  </dd>
+  <dt>mobilepayonline[tav]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>
+    Token Authentication Value
   </dd>
   <dt>mobilepayonline[phone_number]
     <span class="type">[\x20-\x7E]{1,15}</span>
