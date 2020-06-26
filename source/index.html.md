@@ -676,7 +676,7 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `token`
 
 <dl class="dl-vertical">
-  <dt>token[tpan]
+  <dt>token[pan]
     <span class="type">[0-9]{12,19}</span>
   </dt>
   <dd>
@@ -690,7 +690,7 @@ object][ApplePay-PaymentToken] for more information.
     <span class="type">20[0-9]{2}</span>
   </dt>
   <dd>Expiry year of card to charge.</dd>
-  <dt>token[tav]
+  <dt>token[av]
     <span class="type">[:base64:]{19,21}</span>
   </dt>
   <dd>Token Authentication Value</dd>
@@ -702,9 +702,16 @@ object][ApplePay-PaymentToken] for more information.
     </span>
   </dt>
   <dd>
-    Indicate payment method used. Either: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>, <code>unknown</code>
+    Indicate payment method used. Either: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>
+    <div class="type">Optional</div>
   </dd>
 </dl>
+<p class="alert alert-info">
+  <b>Notice:</b> The <code>payment_method_indication</code> is used for payment
+  method categorization which influences how the transactions is processed by
+  Clearhaus. This includes determening if the authentication is strongly
+  authenticated (SCA in PSD2) and has liability shift.
+</p>
 
 ### Captures
 
