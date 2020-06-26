@@ -702,7 +702,7 @@ object][ApplePay-PaymentToken] for more information.
     </span>
   </dt>
   <dd>
-    Indicate payment method used. Either: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>
+    Indicate payment method used. We currently support: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>
     <div class="type">Optional</div>
   </dd>
 </dl>
