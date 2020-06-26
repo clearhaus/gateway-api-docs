@@ -605,7 +605,7 @@ Exactly one payment method must be used.
   <b>Notice:</b> If the payment was made through a token based payment method, the token authentication value must be included
   <br />
   <b>Notice:</b> The <code>token_payment_method_indication</code> is used for
-  payment method categorization which influences how the transactions is
+  payment method categorization which influences how the transaction is
   processed by Clearhaus. This includes determening if the authentication is
   strongly authenticated (SCA in PSD2) and has liability shift.
 </p>
