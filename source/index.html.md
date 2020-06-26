@@ -708,7 +708,7 @@ object][ApplePay-PaymentToken] for more information.
 </dl>
 <p class="alert alert-info">
   <b>Notice:</b> The <code>payment_method_indication</code> is used for payment
-  method categorization which influences how the transactions is processed by
+  method categorization which influences how the transaction is processed by
   Clearhaus. This includes determening if the authentication is strongly
   authenticated (SCA in PSD2) and has liability shift.
 </p>
