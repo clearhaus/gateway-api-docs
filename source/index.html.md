@@ -565,6 +565,24 @@ Exactly one payment method must be used.
     Card Security Code.
     <div class="type">Optional when partner is trusted</div>
   </dd>
+  <dt>card[tav]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>
+    Token Authentication Value
+    <div class="type">Must only be set on token payments</div>
+  </dd>
+  <dt>card[token_payment_method_indication]
+    <span class="type">[\x20-\x7E]{7,15}
+    <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      ASCII printable characters
+     </a>
+    </span>
+  </dt>
+  <dd>
+    Indicate which token payment method used. Either: <code>applepay</code>, <code>samsungpay</code>, <code>mobilepayonline</code>
+    <div class="type">Can only be set on token payments</div>
+  </dd>
   <dt>card[pares]
     <span class="type">[:base64:]</span>
   </dt>
@@ -583,6 +601,13 @@ Exactly one payment method must be used.
   <br />
   <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
   <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  <br />
+  <b>Notice:</b> If the payment was made through a token based payment method, the token authentication value must be included
+  <br />
+  <b>Notice:</b> The <code>token_payment_method_indication</code> is used for
+  payment method categorization which influences how the transactions is
+  processed by Clearhaus. This includes determening if the authentication is
+  strongly authenticated (SCA in PSD2) and has liability shift.
 </p>
 
 ##### Method: `applepay`
