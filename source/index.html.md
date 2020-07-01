@@ -1071,7 +1071,7 @@ status](#merchant-blocked-by-cardholder-status)
 Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
 testing against `gateway.test.clearhaus.com`.
 
-[JSON-HAL]: http://tools.ietf.org/html/draft-kelly-json-hal "IETF HAL draft"
+[JSON-HAL]: https://tools.ietf.org/html/draft-kelly-json-hal-08 "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
