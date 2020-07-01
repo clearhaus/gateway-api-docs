@@ -4,7 +4,8 @@ title: Clearhaus Transaction API Documentation
 
 # Getting Started
 
-You need an API key before you can interact with our API. Send an E-mail to <a href="mailto:support@clearhaus.com">support@clearhaus.com</a> to request an API key.
+To use this transaction API you must [be a
+partner](https://www.clearhaus.com/partners) (and partners must be PCI DSS L1).
 
 <p class="alert alert-danger">
 API keys come with many privileges so keep them secret.
