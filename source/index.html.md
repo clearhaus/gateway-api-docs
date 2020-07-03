@@ -381,8 +381,10 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made similarly, but neither CSC nor PARes (see
-[3-D Secure](#3-d-secure)) would be included.
+Subsequent authorizations are made similarly, however, CSC would not be
+included. For 3-D Secure version 1 (see [3-D Secure](#3-d-secure)), PARes would
+not be included. 3-D Secure version 2 has some support for subsequent
+authorizations.
 
 An initial recurring authorization can also be made using the `applepay` and
 `mobilepayonline` payment methods; subsequent recurring payments, however, must
