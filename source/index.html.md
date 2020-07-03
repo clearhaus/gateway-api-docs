@@ -429,7 +429,7 @@ Example response (snippet):
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
     "3dsecure": {
-        "version": "1",
+        "version": "1.0.2",
         "status": "full"
     }
 }
