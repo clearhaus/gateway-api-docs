@@ -779,7 +779,7 @@ Only one 3-D Secure version can be used for a given authorization.
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> A valid PARes can indicate 3 different levels:
+  <b>Notice:</b> A valid PARes can indicate three different levels:
   non-authenticated, attempted 3-D Secure, fully 3-D Secure.
 </p>
 
@@ -892,8 +892,8 @@ can still only capture 5.
 ### Voids
 
 To release reserved money on a cardholder's bank account you make a new void
-resource. A reservation normally last for 7 days depending on issuing bank and
-is then automatically released.
+resource. A reservation normally last for seven days depending on issuing bank
+and is then automatically released.
 
 #### Parameters
 
