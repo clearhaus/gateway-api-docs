@@ -1170,6 +1170,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### 3-D Secure version 2 supported
+
+Starting 2020-07-08 support for 3-D Secure version 2 has been added. See [3-D
+Secure](#3-d-secure) and [Authentication:
+[3dsecure]](#authentication-3dsecure).
+
 ### Deprecate response `threed_secure` boolean
 
 The response element `threed_secure` is now deprecated; it will be available at
