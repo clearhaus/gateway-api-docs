@@ -427,8 +427,8 @@ Example response (snippet):
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
     "3dsecure": {
-        "version": "v1",
-        "status": "full"
+        "version": "2.1.0",
+        "status": "Y"
     }
 }
 ````
