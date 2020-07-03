@@ -670,9 +670,9 @@ object][ApplePay-PaymentToken] for more information.
   <b>Notice:</b> An authorization made with <code>applepay</code> is
   strongly authenticated (SCA in PSD2).
   <br />
-  <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
-  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
-  the <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
+  <b>Notice:</b> An authorization made with <code>applepay</code> may be 3-D
+  Secured to some degree or not at all; this is indicated by the
+  <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
