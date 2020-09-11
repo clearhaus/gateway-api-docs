@@ -382,8 +382,10 @@ Example response (snippet):
 
 This should be followed by a capture except when the amount is `0`.
 
-Subsequent authorizations are made similarly, but neither CSC nor PARes (see
-[3-D Secure](#3-d-secure)) would be included.
+Subsequent authorizations are made similarly, however, CSC would not be
+included. For 3-D Secure version 1 (see [3-D Secure](#3-d-secure)), PARes would
+not be included. 3-D Secure version 2 has some support for subsequent
+authorizations.
 
 An initial recurring authorization can also be made using the `applepay` and
 `mobilepayonline` payment methods; subsequent recurring payments, however, must
@@ -401,8 +403,8 @@ Before you continue please read more about this protocol at
 
 ### Secure transactions
 
-To perform a 3-D Secure transaction you make an ordinary authorization including
-a `pares` value:
+To perform a 3-D Secure version 1 transaction you make an ordinary
+authorization including a `pares` value:
 
 ````shell
 curl -X POST https://gateway.test.clearhaus.com/authorizations \
@@ -414,7 +416,7 @@ curl -X POST https://gateway.test.clearhaus.com/authorizations \
      -d "card[expire_month]=06"      \
      -d "card[expire_year]=2022"     \
      -d "card[csc]=123"              \
-     --data-urlencode "card[pares]=<some-pares-value>" \
+     --data-urlencode "card[3dsecure][v1][pares]=<some-pares-value>" \
      -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
@@ -427,10 +429,51 @@ Example response (snippet):
         "code": 20000
     },
     "processed_at": "2018-07-09T12:58:56+00:00",
-    "threed_secure": true
+    "3dsecure": {
+        "version": "1.0.2",
+        "status": "Y"
+    }
 }
 ````
 
+To perform a 3-D Secure version 2 transaction you make an ordinary
+authorization including an `ares` or an `rreq` value. The former is used in the
+following example:
+
+````shell
+curl -X POST https://gateway.test.clearhaus.com/authorizations \
+     -u <your-api-key>: \
+     -d "amount=2050"   \
+     -d "currency=EUR"  \
+     -d "ip=1.1.1.1"    \
+     -d "card[pan]=4111111111111111" \
+     -d "card[expire_month]=06"      \
+     -d "card[expire_year]=2022"     \
+     -d "card[csc]=123"              \
+     --data-urlencode "card[3dsecure][v2][ares]=<some-ares-value>" \
+     -H "Signature: <signing-api-key> RS256-hex <signature>"
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "d0949241-1ee8-47da-a77c-d251fd9e1e88",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2020-07-03T11:06:58+00:00",
+    "3dsecure": {
+        "version": "2.1.0",
+        "status": "Y"
+    }
+}
+````
+
+<p class="alert alert-info">
+  <b>Notice:</b> The response element <code>threed_secure</code> is deprecated,
+  please use <code>3dsecure</code>.
+</p>
 
 ## Fetch account information
 
@@ -566,25 +609,32 @@ Exactly one payment method must be used.
     Card Security Code.
     <div class="type">Optional when partner is trusted</div>
   </dd>
-  <dt>card[pares]
+  <dt>
+    card[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+
+  <!-- deprecated -->
+  <dt><strike>card[pares]</strike>
     <span class="type">[:base64:]</span>
   </dt>
   <dd>
+    Deprecated! Please use <code>card[3dsecure][v1][pares]</code>. <br />
     See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
 
 <p class="alert alert-info">
-  <b>Notice:</b> A valid PARes included in <code>card[pares]</code> can indicate
-  3 different levels: non-authenticated, attempted 3-D Secure, fully 3-D Secure.
-  <br />
-  <b>Notice:</b> An authorization made with <code>card[]</code> is strongly
-  authenticated if it is fully 3-D Secure.
-  <br />
-  <b>Notice:</b> An authorization that includes <code>card[pares]</code> and/or
-  <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  <b>Notice:</b> An authorization that includes
+  <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
+  and/or <code>card[csc]</code> cannot be a subsequent recurring authorization.
 </p>
+
 
 ##### Method: `applepay`
 
@@ -621,9 +671,9 @@ object][ApplePay-PaymentToken] for more information.
   <b>Notice:</b> An authorization made with <code>applepay</code> is
   strongly authenticated (SCA in PSD2).
   <br />
-  <b>Notice:</b> An authorization made with <code>applepay</code> may be fully
-  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
-  the <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
+  <b>Notice:</b> An authorization made with <code>applepay</code> may be 3-D
+  Secured to some degree or not at all; this is indicated by the
+  <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
@@ -657,11 +707,22 @@ object][ApplePay-PaymentToken] for more information.
     Phone number from where the PAN originates.
     <div class="type">Optional</div>
   </dd>
-  <dt>mobilepayonline[pares]
+  <dt>
+    mobilepayonline[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+
+  <!-- deprecated -->
+  <dt><strike>mobilepayonline[pares]</strike>
     <span class="type">[:base64:]</span>
   </dt>
   <dd>
-    See more information at <a target="_blank" href= "http://docs.3dsecure.io">3dsecure.io</a>
+    Deprecated! Please use <code>mobilepayonline[3dsecure][v1][pares]</code>. <br />
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -673,6 +734,69 @@ object][ApplePay-PaymentToken] for more information.
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated (SCA in PSD2).
 </p>
+
+##### Authentication: `[3dsecure]`
+
+Only one 3-D Secure version can be used for a given authorization.
+
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v1]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    3-D Secure version 1.
+    <div class="type">Optional. Cannot be present if <code>v2</code> is present.</div>
+  </dd>
+  <dt>
+    [3dsecure][v2]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    3-D Secure version 2, also known as EMV 3-D Secure.
+    <div class="type">Optional. Cannot be present if <code>v1</code> is present.</div>
+  </dd>
+</dl>
+
+##### Authentication: `[3dsecure][v1]`
+
+
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v1][pares]
+    <span class="type">[:base64:]</span>
+  </dt>
+  <dd>
+    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> A valid PARes can indicate three different levels:
+  non-authenticated, attempted 3-D Secure, fully 3-D Secure.
+</p>
+
+##### Authentication: `[3dsecure][v2]`
+
+<dl class="dl-vertical">
+  <dt>
+    [3dsecure][v2][ares]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    The 3-D Secure version 2 ARes containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+    <div class="type">Optional. Cannot be present if <code>rreq</code> is present.</div>
+  </dd>
+  <dt>
+    [3dsecure][v2][rreq]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
+    <div class="type">Optional. Cannot be present if <code>ares</code> is present.</div>
+  </dd>
+</dl>
 
 
 ### Captures
@@ -762,8 +886,8 @@ can still only capture 5.
 ### Voids
 
 To release reserved money on a cardholder's bank account you make a new void
-resource. A reservation normally last for 7 days depending on issuing bank and
-is then automatically released.
+resource. A reservation usually lasts for at least seven days depending on
+the issuing bank and is then automatically released.
 
 #### Parameters
 
@@ -1039,6 +1163,17 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### 3-D Secure version 2 supported
+
+Starting 2020-07-08 support for 3-D Secure version 2 has been added. See [3-D
+Secure](#3-d-secure) and [Authentication:
+[3dsecure]](#authentication-3dsecure).
+
+### Deprecate `threed_secure` response element
+
+The response element `threed_secure` is now deprecated; it will be available at
+least until 2021-02-15.
 
 ### Optional name on card parameter added
 
