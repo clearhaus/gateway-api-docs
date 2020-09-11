@@ -706,13 +706,6 @@ object][ApplePay-PaymentToken] for more information.
     Phone number from where the PAN originates.
     <div class="type">Optional</div>
   </dd>
-  <dt>mobilepayonline[pares]
-    <span class="type">[:base64:]</span>
-  </dt>
-  <dd>
-    See more information at <a target="_blank" href= "http://docs.3dsecure.io">3dsecure.io</a>
-    <div class="type">Optional</div>
-  </dd>
   <dt>
     mobilepayonline[3dsecure]
     <span class="type">dictionary</span>
