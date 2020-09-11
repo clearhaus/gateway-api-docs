@@ -1169,7 +1169,7 @@ Starting 2020-07-08 support for 3-D Secure version 2 has been added. See [3-D
 Secure](#3-d-secure) and [Authentication:
 [3dsecure]](#authentication-3dsecure).
 
-### Deprecate response `threed_secure` boolean
+### Deprecate `threed_secure` response element
 
 The response element `threed_secure` is now deprecated; it will be available at
 least until 2021-02-15.
