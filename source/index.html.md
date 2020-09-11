@@ -885,8 +885,8 @@ can still only capture 5.
 ### Voids
 
 To release reserved money on a cardholder's bank account you make a new void
-resource. A reservation normally last for seven days depending on issuing bank
-and is then automatically released.
+resource. A reservation usually lasts for at least seven days depending on
+the issuing bank and is then automatically released.
 
 #### Parameters
 
