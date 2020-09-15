@@ -680,19 +680,7 @@ Exactly one payment method must be used.
   </dd>
 </dl>
 
-<p class="alert alert-info">
-  <b>Notice:</b> When <code>recurring</code> is used, Clearhaus automatically
-  identifies if there was a previous-in-series and if that is the case uses the
-  level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is
-  a first-in-in-series or a subsequent-in-series recurring.
-</p>
-
-<p class="alert alert-info">
-  <b>Notice:</b> Since <code>series[type]</code> cannot be supplied together
-  with <code>series[previous]</code>, the type of a series cannot change.
-</p>
-
-
+---
 ##### Method: `card`
 
 <dl class="dl-vertical">
@@ -743,7 +731,6 @@ Exactly one payment method must be used.
   and/or <code>card[csc]</code> cannot be a subsequent-in-series authorization.
 </p>
 
-
 ##### Method: `applepay`
 
 Apple Pay requires the payment details (PAN, expiry, etc.) of the payment token
@@ -788,7 +775,7 @@ object][ApplePay-PaymentToken] for more information.
 </p>
 
 
-##### **Method**: `googlepay`
+##### Method: `googlepay`
 
 To accept a payment using Google Pay, the complete payment token, recipient ID
 and derived shared secret, are required. Please refer to the [official
@@ -838,7 +825,7 @@ supported.
   environment is <code>12345678901234567890</code>.
 </p>
 
-##### **Method**: `mobilepayonline`
+##### Method: `mobilepayonline`
 
 <dl class="dl-vertical">
   <dt>mobilepayonline[pan]
