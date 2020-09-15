@@ -790,10 +790,10 @@ object][ApplePay-PaymentToken] for more information.
 
 ##### **Method**: `googlepay`
 
-To accept a payment using Google Pay, apart from the complete payment method
-token and merchant ID, the derived shared secret is required.
-Please refer to the [official documentation][GooglePay-PaymentCryptography].
-Supported protocol versions are `ECv1` and `ECv2`.
+To accept a payment using Google Pay, the complete payment token, recipient ID
+and derived shared secret, are required. Please refer to the [official
+documentation][GooglePay-PaymentCryptography]. Only protocol version `ECv2` is
+supported.
 
 <dl class="dl-vertical">
   <dt>googlepay[token]
