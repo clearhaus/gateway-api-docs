@@ -787,7 +787,58 @@ object][ApplePay-PaymentToken] for more information.
   subsequent recurring authorization.
 </p>
 
-##### Method: `mobilepayonline`
+
+##### **Method**: `googlepay`
+
+To accept a payment using Google Pay, apart from the complete payment method
+token and merchant ID, the derived shared secret is required.
+Please refer to the [official documentation][GooglePay-PaymentCryptography].
+Supported protocol versions are `ECv1` and `ECv2`.
+
+<dl class="dl-vertical">
+  <dt>googlepay[token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Raw payment method token as received in response from Google. UTF-8 encoded
+    serialization of a JSON dictionary.
+  </dd>
+  <dt>googlepay[shared_key]
+    <span class="type">[:base64:]</span>
+  </dt>
+  <dd>
+    The shared secret derived from the ephemeral public key and your private
+    key.
+  </dd>
+  <dt>googlepay[recipient_id]
+    <span class="type">[\x20-\x7E]+
+      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters excluding space</a>
+    </span>
+  </dt>
+  <dd>
+    The Google Pay recipient of the payload, e.g. <code>merchant:0123456789</code>.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
+  method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> may be fully
+  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
+  the <code>eciIndicator</code> of the <code>paymentMethodDetails</code>.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> is
+  strongly authenticated (SCA in PSD2) if fully 3-D Secure.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
+  subsequent recurring authorization.
+  <br />
+  <b>Notice:</b> The merchant ID for the <code>googlepay</code> test
+  environment is <code>12345678901234567890</code>.
+</p>
+
+##### **Method**: `mobilepayonline`
 
 <dl class="dl-vertical">
   <dt>mobilepayonline[pan]
