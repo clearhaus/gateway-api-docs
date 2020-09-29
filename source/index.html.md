@@ -591,11 +591,13 @@ Exactly one payment method must be used.
     cardholder if the cardholder decided the transaction should be created.
     This is regardless of whether stored payment credential is being used.
     <br />
-    For compliance reasons there should be a previous approved transaction
-    marked with <code>storing</code> before <code>initiator</code> may be
-    <code>merchant</code>.
-    For subsequent-in-series authorizations, <code>merchant</code> is assumed;
-    otherwise, <code>cardholder</code> is assumed.
+    For compliance reasons there should be a previous approved transaction (for
+    the cardholder and the merchant) marked with <code>storing</code> before
+    <code>initiator</code> may be <code>merchant</code>.
+
+    For subsequent-in-series authorizations, <code>cardholder</code> is invalid
+    and <code>merchant</code> is assumed; otherwise, <code>cardholder</code> is
+    assumed.
 
     <div class="type">Optional</div>
   </dd>
@@ -617,7 +619,7 @@ Exactly one payment method must be used.
     <br />
     <code>recurring</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant will repeatedly charge the cardholder at
-    regular, predetermined intervals.
+    regular, predetermined intervals that may not exceed 1 year.
     <br />
     <code>unscheduled</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant will repeatedly charge the cardholder at
