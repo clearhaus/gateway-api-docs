@@ -333,24 +333,27 @@ Depending on card scheme and merchant category, the name on the card might be
 necessary for approval of credits. It may be provided through the optional
 parameter `card[name]`.
 
-## Recurring payments
+## Series of transactions
 
-Recurring payments enable you to repeatedly charge cardholders without providing
-CSC or other means of cardholder authentication for subsequent payments.
+A cardholder must explicitly agree when subscribing to something, and will
+thereby give the merchant permission to subsequently withdraw money. Clearhaus
+support two type of subscription billing:
 
-### Subscription concept
+* Recurring: Transactions processed at predetermined, regular intervals not
+    exceeding 1 year; e.g. a monthly subscription for a magazine.
+* UCOF (Unscheduled Credential on File): Transactions that does not occur on
+    predetermined, regular intervals; e.g. a car sharing subscription billed
+    weekly but only for weeks when the service is used.
 
-Many PSPs have a subscription concept for supporting recurring payments.
-The first approved authorization is the initial recurring authorization (also
-known as "first in series"), all later authorizations are called subsequent
-authorizations. Clearhaus supports subscriptions in the form of recurring
-payments.
+The amount may vary among transactions in a series, but may not exceed the
+authentication amount of the first-in-series authorization.
+There may be an agreed end of the series.
 
 ### Repeatedly reserve money
 
-A recurring payment is made by making an authorization and setting `recurring`
-parameter to `true`. The first recurring payment for a given card could be made
-this way (notice that the amount may be zero):
+A first-in-series payment is made by making an authorization and marking it as a
+`recurring` or `unscheduled` series. For instance, a first-in-series recurring
+payment could be made this way:
 
 ````shell
 curl -X POST \
@@ -358,26 +361,50 @@ curl -X POST \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "recurring=true" \
+  -d "series[type]=recurring"     \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
-  -d "card[expire_year]=2022"     \
+  -d "card[expire_year]=2026"     \
   -d "card[csc]=123"              \
-  --data-urlencode "card[pares]=<some-pares-value>" \
+  --data-urlencode "card[3dsecure][v2][rreq]=<some-rreq-value>" \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
-This should be followed by a capture except when the amount is `0`.
+Example response (snippet):
 
-Subsequent authorizations are made similarly, however, CSC would not be
-included. For 3-D Secure version 1 (see [3-D Secure](#3-d-secure)), PARes would
-not be included. 3-D Secure version 2 has some support for subsequent
-authorizations.
+````json
+{
+    "id": "1b722683-92ad-4c6b-85da-e119d550670d",
+    "status": { "code": 20000 }
+}
+````
 
-An initial recurring authorization can also be made using the `applepay` and
-`mobilepayonline` payment methods; subsequent recurring payments, however, must
-be made using the `card` payment method using the card details of the initial
-recurring authorization.
+This should be followed by a capture.
+
+Subsequent recurring authorizations initiated by the merchant are made
+similarly, however, CSC would not be included, and the previous-in-series is
+referenced, e.g.:
+
+````shell
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations \
+  -u <your-api-key>:  \
+  -d "amount=2050"    \
+  -d "currency=EUR"   \
+  -d "series[previous][id]=1b722683-92ad-4c6b-85da-e119d550670d" \
+  -d "card[pan]=4111111111111111" \
+  -d "card[expire_month]=06"      \
+  -d "card[expire_year]=2026"     \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
+````
+
+A first-in-series authorization can also be made using the `applepay` or
+`mobilepayonline` payment methods; subsequent-in-series authorizations, however,
+must be made using the `card` payment method using the card details of the
+previous-in-series authorization referenced.
+
+Any first-in-series authorization must be made with strong customer
+authentication (SCA) regardless of the authorization amount.
 
 
 ## 3-D Secure
