@@ -367,19 +367,6 @@ curl -X POST \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
-Example response (snippet):
-
-````json
-{
-    "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "recurring": true
-}
-````
-
 This should be followed by a capture except when the amount is `0`.
 
 Subsequent authorizations are made similarly, however, CSC would not be
@@ -540,12 +527,52 @@ Exactly one payment method must be used.
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
   </dd>
+
   <dt>currency
     <span class="type">[A-Z]{3}</span>
   </dt>
   <dd>
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
+
+  <dt>credential
+    <span class="type">(<code>storing</code>|<code>using</code>)</span>
+  </dt>
+  <dd>
+    Indicate if the payment credential (e.g. PAN and expiry) will be stored for
+    a later transaction where the payment credential is not provided by the
+    cardholder but collected from (encrypted) storage.
+    <br />
+    <code>storing</code>: The payment credential will be stored; may only be
+    stored if the authorization is approved.
+    <br />
+    <code>using</code>: The payment credential was already stored and are now
+    being used.
+    <br />
+    If <code>initiator</code> is <code>merchant</code> then
+    <code>storing</code> is invalid and <code>using</code> is assumed.
+    For a first-in-series authorization, <code>storing</code> is assumed.
+
+    <div class="type">Optional</code>
+  </dd>
+
+  <dt>initiator
+    <span class="type">(<code>cardholder</code>|<code>merchant</code>)</span>
+  </dt>
+  <dd>
+    The initiator of the authorization. An authorization is initiated by the
+    cardholder if the cardholder decided the transaction should be created.
+    This is regardless of whether stored payment credential is being used.
+    <br />
+    For compliance reasons there should be a previous approved transaction
+    marked with <code>storing</code> before <code>initiator</code> may be
+    <code>merchant</code>.
+    For subsequent-in-series authorizations, <code>merchant</code> is assumed;
+    otherwise, <code>cardholder</code> is assumed.
+
+    <div class="type">Optional</div>
+  </dd>
+
   <dt>ip
     <span class="type">[0-9.a-fA-F:]{3,45}</span>
   </dt>
@@ -553,13 +580,50 @@ Exactly one payment method must be used.
     Cardholder's IP address. It must be a valid v4 or v6 address.
     <div class="type">Optional<br></div>
   </dd>
-  <dt>recurring
-    <span class="type">(true|false)</span>
+
+  <dt>
+    series[type]
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
   </dt>
   <dd>
-    Must be <code>true</code> for recurring payments.
-    <div class="type">Optional</div>
+    Indicate the type of series.
+    <br />
+    <code>recurring</code>: A series of transactions where the cardholder has
+    explicitly agreed that the merchant will repeatedly charge the cardholder at
+    regular, predetermined intervals.
+    <br />
+    <code>unscheduled</code>: A series of transactions where the cardholder has
+    explicitly agreed that the merchant will repeatedly charge the cardholder at
+    unknown times, e.g. based on cardholder usage.
+    <br />
+    Although the amount may vary among transactions in any series, the amount
+    of any subsequent-in-series transaction can not exceed the amount of the
+    authentication of the first-in-series authorization.
+
+    <div class="type">Conditional. Cannot be present if <code>series[previous][id]</code> is present.</div>
   </dd>
+
+  <dt>
+    series[previous][id]
+    <span class="type">[:UUIDv4:]</span>
+  </dt>
+  <dd>
+    The Clearhaus authorization ID as a reference to the latest approved
+    authorization in the series. The authorization is processed as a
+    first-in-series if not populated while <code>series[type]</code> is
+    populated.
+    <br />
+    Can be used only with payment method <code>card</code>.
+    <br />
+    If the latest approved authorization in the series was not processed via
+    Clearhaus, after obtaining explicit approval from Clearhaus, you can
+    provide raw scheme values; see
+    <a href="#scheme-reference-to-series">Scheme reference to series</a>.
+
+    <div class="type">Conditional. Cannot be present if <code>series[type]</code> is present.</div>
+  </dd>
+
+
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
       <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
@@ -572,6 +636,7 @@ Exactly one payment method must be used.
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
     <div class="type">Optional</div>
   </dd>
+
   <dt>reference
     <span class="type">[\x20-\x7E]{1,30}
       <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
@@ -582,6 +647,14 @@ Exactly one payment method must be used.
   <dd>
     A reference to an external object, such as an order number.
     <div class="type">Optional</div>
+  </dd>
+
+  <!-- deprecated -->
+  <dt><strike>recurring</strike>
+    <span class="type">(true|false)</span>
+  </dt>
+  <dd>
+    Deprecated! Please use <code>series</code>.
   </dd>
 </dl>
 
@@ -795,6 +868,58 @@ Only one 3-D Secure version can be used for a given authorization.
   <dd>
     The 3-D Secure version 2 RReq containing <code>authenticationValue</code>, <code>dsTransID</code>, etc.
     <div class="type">Optional. Cannot be present if <code>ares</code> is present.</div>
+  </dd>
+</dl>
+
+##### Scheme reference to series
+
+If the previous-in-series authorization was made via this API, you should use
+`series[previous][id]` to reference the previous-in-series authorization.
+Otherwise, you must obtain explicit approval from Clearhaus to use these raw
+scheme values grouped in <code>series[previous][mastercard]</code> and
+<code>series[previous][visa]</code>.
+
+The Mastercard specific reference to the series contains the following parts.
+
+<dl class="dl-vertical">
+  <dt>
+    series[previous][mastercard][tid]
+    <span class="type">[A-z0-9]{3}[A-z0-9]{6}[0-9]{4}[ ]{2}</span>
+  </dt>
+  <dd>
+    Trace ID being the concatenation of values
+    Data element 63 subfield 1 (Financial Network Code) (position 1-3),
+    Data element 63 subfield 2 (Banknet Reference Number) (position 4-9),
+    Data element 15 (Date, Settlement) (position 10-13), and
+    two spaces;
+    to be used in Data Element 48, Subfield 63.
+
+    <div class="type">Optional. Cannot be present if <code>series[previous][id]</code> or <code>series[previous][visa]</code> is present.</div>
+  </dd>
+
+  <dt>
+    series[previous][mastercard][tokenized]
+    <span class="type">(true|false)</span>
+  </dt>
+  <dd>
+    Indicate if the series was initiated with a tokenized payment method.
+
+    <div class="type">Conditional. Required if <code>series[previous][mastercard][tid]</code> is present.</div>
+  </dd>
+</dl>
+
+The Visa specific reference to the series has only one part.
+
+<dl class="dl-vertical">
+  <dt>
+    series[previous][visa][tid]
+    <span class="type">[0-9]{15}</span>
+  </dt>
+  <dd>
+    Transaction ID from Field 62.2 of the first (or previous) in series
+    authorization; to be used in Field 125, Usage 2, Dataset ID 03.
+
+    <div class="type">Optional. Cannot be present if <code>series[previous][id]</code> or <code>series[previous][mastercard]</code> is present.</div>
   </dd>
 </dl>
 
