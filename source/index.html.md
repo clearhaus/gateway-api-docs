@@ -1141,6 +1141,11 @@ POST https://gateway.clearhaus.com/credits
   </dd>
 </dl>
 
+<p class="alert alert-info">
+<b>Notice:</b> Implicitly, <code>initiator</code> is <code>merchant</code> and
+<code>credential</code> is <code>used</code>.
+</p>
+
 ### Account
 
 The account resource holds basic merchant account information. Only `HTTP GET`
