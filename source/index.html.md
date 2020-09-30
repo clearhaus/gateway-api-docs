@@ -576,9 +576,12 @@ Exactly one payment method must be used.
     <code>using</code>: The payment credential has already been stored and is now
     being used.
     <br />
-    If <code>initiator</code> is <code>merchant</code> then
-    <code>storing</code> is invalid and <code>using</code> is assumed.
-    For a first-in-series authorization, <code>storing</code> is assumed.
+    Default:
+    <ul>
+      <li><code>using</code>, if <code>initiator</code> is <code>merchant</code>
+      (<code>storing</code> is invalid),</li>
+      <li><code>storing</code>, if the authorization is first-in-series.</li>
+    </ul>
 
     <div class="type">Optional</code>
   </dd>
@@ -594,10 +597,13 @@ Exactly one payment method must be used.
     For compliance reasons there should be a previous approved transaction (for
     the cardholder and the merchant) marked with <code>storing</code> before
     <code>initiator</code> may be <code>merchant</code>.
-
-    For subsequent-in-series authorizations, <code>cardholder</code> is invalid
-    and <code>merchant</code> is assumed; otherwise, <code>cardholder</code> is
-    assumed.
+    <br />
+    Default:
+    <ul>
+      <li><code>merchant</code>, if the authorization is
+      subsequent-in-subsequent (<code>cardholder</code> is invalid),</li>
+      <li><code>cardholder</code>, otherwise.</li>
+    </ul>
 
     <div class="type">Optional</div>
   </dd>
@@ -638,9 +644,10 @@ Exactly one payment method must be used.
   </dt>
   <dd>
     The Clearhaus authorization ID as a reference to the latest approved
-    authorization in the series. The authorization is processed as a
-    first-in-series if not populated while <code>series[type]</code> is
-    populated.
+    authorization in the series.
+    <br />
+    If omitted and <code>series[type]</code> is populated, then the
+    authorization will be a first-in-series.
     <br />
     Can be used only with payment method <code>card</code>.
     <br />
