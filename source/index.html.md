@@ -567,13 +567,13 @@ Exactly one payment method must be used.
   </dt>
   <dd>
     Indicate if the payment credential (e.g. PAN and expiry) will be stored for
-    a later transaction where the payment credential is not provided by the
+    future use where the payment credential is not provided by the
     cardholder but collected from (encrypted) storage.
     <br />
     <code>storing</code>: The payment credential will be stored; may only be
     stored if the authorization is approved.
     <br />
-    <code>using</code>: The payment credential was already stored and are now
+    <code>using</code>: The payment credential has already been stored and is now
     being used.
     <br />
     If <code>initiator</code> is <code>merchant</code> then
@@ -651,8 +651,6 @@ Exactly one payment method must be used.
 
     <div class="type">Conditional. Cannot be present if <code>series[type]</code> is present.</div>
   </dd>
-
-
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
       <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
@@ -904,7 +902,7 @@ Only one 3-D Secure version can be used for a given authorization.
 
 If the previous-in-series authorization was made via this API, you should use
 `series[previous][id]` to reference the previous-in-series authorization.
-Otherwise, you must obtain explicit approval from Clearhaus to use these raw
+Otherwise, you must obtain explicit approval from Clearhaus to use the raw
 scheme values grouped in <code>series[previous][mastercard]</code> and
 <code>series[previous][visa]</code>.
 
