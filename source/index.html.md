@@ -937,7 +937,7 @@ The Mastercard specific reference to the series contains the following parts.
     <span class="type">(true|false)</span>
   </dt>
   <dd>
-    Indicate if the series was initiated with a tokenized payment method.
+    Indicate if the series was initiated with a tokenized payment.
 
     <div class="type">Conditional. Required if <code>series[previous][mastercard][tid]</code> is present.</div>
   </dd>
