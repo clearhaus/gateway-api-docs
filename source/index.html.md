@@ -616,6 +616,18 @@ Exactly one payment method must be used.
     <div class="type">Optional<br></div>
   </dd>
 
+  <dt>reference
+    <span class="type">[\x20-\x7E]{1,30}
+      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+        ASCII printable characters
+      </a>
+    </span>
+  </dt>
+  <dd>
+    A reference to an external object, such as an order number.
+    <div class="type">Optional</div>
+  </dd>
+
   <dt>
     series[type]
     <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
@@ -658,6 +670,7 @@ Exactly one payment method must be used.
 
     <div class="type">Conditional. Cannot be present if <code>series[type]</code> is present.</div>
   </dd>
+
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
       <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
@@ -668,18 +681,6 @@ Exactly one payment method must be used.
   <dd>
     Text that will be placed on cardholder's bank statement.
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
-    <div class="type">Optional</div>
-  </dd>
-
-  <dt>reference
-    <span class="type">[\x20-\x7E]{1,30}
-      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
-        ASCII printable characters
-      </a>
-    </span>
-  </dt>
-  <dd>
-    A reference to an external object, such as an order number.
     <div class="type">Optional</div>
   </dd>
 
