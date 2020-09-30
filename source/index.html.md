@@ -592,7 +592,7 @@ Exactly one payment method must be used.
   <dd>
     The initiator of the authorization. An authorization is initiated by the
     cardholder if the cardholder decided the transaction should be created.
-    This is regardless of whether stored payment credential is being used.
+    This is regardless of whether a stored payment credential is being used.
     <br />
     For compliance reasons there should be a previous approved transaction (for
     the cardholder and the merchant) marked with <code>storing</code> before
