@@ -919,7 +919,7 @@ The Mastercard specific reference to the series contains the following parts.
 <dl class="dl-vertical">
   <dt>
     series[previous][mastercard][tid]
-    <span class="type">[A-z0-9]{3}[A-z0-9]{6}[0-9]{4}[ ]{2}</span>
+    <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4}[ ]{2}</span>
   </dt>
   <dd>
     Trace ID being the concatenation of values
