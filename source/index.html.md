@@ -647,7 +647,7 @@ Exactly one payment method must be used.
     of any subsequent-in-series transaction can not exceed the amount of the
     authentication of the first-in-series authorization.
 
-    <div class="type">Conditional. Cannot be present if <code>series[previous][id]</code> is present.</div>
+    <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
 
   <dt>
