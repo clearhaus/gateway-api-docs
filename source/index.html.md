@@ -1164,6 +1164,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Support for multiple signatures removed
+
+Support for multiple signatures w.r.t. request signing will be removed on 2020-xx-yy.
+
 ### 3-D Secure version 2 supported
 
 Starting 2020-07-08 support for 3-D Secure version 2 has been added. See [3-D
