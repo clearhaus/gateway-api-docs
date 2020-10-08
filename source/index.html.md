@@ -1166,7 +1166,7 @@ Sorted by descending timestamp.
 
 ### Support for multiple signatures removed
 
-Support for multiple signatures w.r.t. request signing will be removed on 2020-xx-yy.
+Support for multiple signatures for request signing will be removed any time after 2020-10-31.
 
 ### 3-D Secure version 2 supported
 
