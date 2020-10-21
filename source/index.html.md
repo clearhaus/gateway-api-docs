@@ -706,7 +706,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Cryptogram extracted from from MobilePay Online token data. Required on
-    token based authentication
+    token-based authentication.
     <div class="type">Optional</div>
   </dd>
   </dd>
