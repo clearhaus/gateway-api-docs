@@ -715,7 +715,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Electronic Commerce Indicator (ECI) extracted from the MobilePay Online token.
-    Data. Only allowed on token based authentication.
+    data. Only allowed on token-based authentication.
     <div class="type">Optional</div>
   </dd>
   <dt>mobilepayonline[phone_number]
