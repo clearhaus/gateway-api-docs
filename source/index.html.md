@@ -705,7 +705,7 @@ object][ApplePay-PaymentToken] for more information.
     <span class="type">[:base64:]{19,21}</span>
   </dt>
   <dd>
-    Cryptogram extracted from from MobilePay Online Token Data. Required on
+    Cryptogram extracted from from MobilePay Online token data. Required on
     token based authentication
     <div class="type">Optional</div>
   </dd>
