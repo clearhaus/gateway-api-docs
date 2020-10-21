@@ -686,7 +686,8 @@ object][ApplePay-PaymentToken] for more information.
     <span class="type">[0-9]{12,19}</span>
   </dt>
   <dd>
-    Primary account number of card to charge.
+    Primary account number of card to charge.<br />
+    If <code>cryptogram</code> parameter is included, the <code>pan</code> must be a Token PAN.
   </dd>
   <dt>mobilepayonline[expire_month]
     <span class="type">[0-9]{2}</span>
@@ -699,6 +700,23 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Expiry year of card to charge.
+  </dd>
+    <dt>mobilepayonline[cryptogram]
+    <span class="type">[:base64:]{19,21}</span>
+  </dt>
+  <dd>
+    Cryptogram extracted from from MobilePay Online Token Data. Required on
+    token based authentication
+    <div class="type">Optional</div>
+  </dd>
+  </dd>
+    <dt>mobilepayonline[eci]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Eci (Electronic Commerce Indicator) extracted from MobilePay Online Token
+    Data. Only allowed on token based authentication.
+    <div class="type">Optional</div>
   </dd>
   <dt>mobilepayonline[phone_number]
     <span class="type">[\x20-\x7E]{1,15}</span>
