@@ -687,7 +687,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Primary account number of card to charge.<br />
-    If <code>cryptogram</code> parameter is included, the <code>pan</code> must be a Token PAN.
+    If <code>token_callback</code> parameter is included, the <code>pan</code> must be a Token PAN.
   </dd>
   <dt>mobilepayonline[expire_month]
     <span class="type">[0-9]{2}</span>
@@ -701,21 +701,14 @@ object][ApplePay-PaymentToken] for more information.
   <dd>
     Expiry year of card to charge.
   </dd>
-    <dt>mobilepayonline[cryptogram]
-    <span class="type">[:base64:]{19,21}</span>
+  <dt>mobilepayonline[token_callback]
+    <span class="type">[:json:]</span>
   </dt>
   <dd>
-    Cryptogram extracted from from MobilePay Online Token Data. Required on
-    token based authentication
-    <div class="type">Optional</div>
-  </dd>
-  </dd>
-    <dt>mobilepayonline[eci]
-    <span class="type">[0-9]{2}</span>
-  </dt>
-  <dd>
-    Eci (Electronic Commerce Indicator) extracted from MobilePay Online Token
-    Data. Only allowed on token based authentication.
+    Full tokenCallback response serialized as JSON, supplied as a string.
+    Required on token based authentication.
+    <br>
+    Example: <code>{"paymentId":"string","tokenData":{"cryptogramInfo":{...},...},...}</code>
     <div class="type">Optional</div>
   </dd>
   <dt>mobilepayonline[phone_number]
