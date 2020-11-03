@@ -363,7 +363,7 @@ curl -X POST \
   -d "card[expire_month]=06"      \
   -d "card[expire_year]=2022"     \
   -d "card[csc]=123"              \
-  --data-urlencode "card[pares]=<some-pares-value>" \
+  --data-urlencode "card[3dsecure][v1][pares]=<some-pares-value>" \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
