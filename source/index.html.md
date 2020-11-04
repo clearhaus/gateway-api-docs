@@ -93,12 +93,10 @@ easy rolling of API keys. A merchant account usually uses one API key.
 API keys can have an expire date. API keys can be enabled or disabled. For
 merchant accounts, these details can be observed in the Clearhaus Dashboard.
 
-An API key points to an account. An account can have multiple API keys. For
-merchant accounts, the use of one active (enabled and unexpired) API key is
+For merchant accounts, the use of one active (enabled and unexpired) API key is
 indistinguishable from the use of another active API key. An authorization made
 with one API key can be captured using any active API key for that same merchant
 account.
-
 This is in contrast to accounts which are independent; an authorization made on
 one merchant account cannot be captured on another account.
 
