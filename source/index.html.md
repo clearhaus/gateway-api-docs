@@ -642,10 +642,6 @@ Exactly one payment method must be used.
     <code>unscheduled</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant will repeatedly charge the cardholder at
     unknown times, e.g. based on cardholder usage.
-    <br />
-    Although the amount may vary among transactions in any series, the amount
-    of any subsequent-in-series transaction can not exceed the amount of the
-    authentication of the first-in-series authorization.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
