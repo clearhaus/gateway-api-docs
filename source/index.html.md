@@ -743,7 +743,7 @@ Exactly one payment method must be used.
 <p class="alert alert-info">
   <b>Notice:</b> An authorization that includes
   <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
-  and/or <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  and/or <code>card[csc]</code> cannot be a subsequent-in-series authorization.
 </p>
 
 
