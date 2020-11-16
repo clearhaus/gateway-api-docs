@@ -335,9 +335,7 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-A cardholder must explicitly agree when subscribing to something, and will
-thereby give the merchant permission to subsequently withdraw money. Clearhaus
-support two type of subscription billing:
+Clearhaus support two type of subscription billing:
 
 * Recurring: Transactions processed at predetermined, regular intervals not
     exceeding 1 year; e.g. a monthly subscription for a magazine.
@@ -345,8 +343,6 @@ support two type of subscription billing:
     predetermined, regular intervals; e.g. a car sharing subscription billed
     weekly but only for weeks when the service is used.
 
-The amount may vary among transactions in a series, but may not exceed the
-authentication amount of the first-in-series authorization.
 There may be an agreed end of the series.
 
 ### Repeatedly reserve money
