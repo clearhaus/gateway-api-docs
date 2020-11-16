@@ -682,8 +682,19 @@ Exactly one payment method must be used.
   </dt>
   <dd>
     Deprecated! Please use <code>series</code>.
+    <br />
+    <div class="type">Optional. Cannot be used with <code>series</code> or
+    <code>initiator</code>.</div>
   </dd>
 </dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> When <code>recurring</code> is used, Clearhaus automatically
+  identify if there was a previous-in-series and together with the level of
+  authentication (CSC, 3-D Secure, etc.) conclude if the payment is a first
+  recurring or a subsequent recurring.
+</p>
+
 
 ##### Method: `card`
 
