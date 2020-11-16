@@ -1146,7 +1146,7 @@ POST https://gateway.clearhaus.com/credits
 
 <p class="alert alert-info">
 <b>Notice:</b> Implicitly, <code>initiator</code> is <code>merchant</code> and
-<code>credential</code> is <code>used</code>.
+<code>credential_on_file</code> is <code>use</code>.
 </p>
 
 ### Account
