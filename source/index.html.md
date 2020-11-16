@@ -566,7 +566,7 @@ Exactly one payment method must be used.
     future use where the payment credential is not provided by the
     cardholder but collected from (encrypted) storage.
     <br />
-    <code>store</code>: The payment credential will be stored; may only be
+    <code>store</code>: The payment credential will be stored; it may only be
     stored if the authorization is approved.
     <br />
     <code>use</code>: The payment credential has already been stored and is now
