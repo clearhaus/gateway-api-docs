@@ -378,7 +378,7 @@ Example response (snippet):
 This should be followed by a capture.
 
 Subsequent recurring authorizations initiated by the merchant are made
-similarly, however, CSC would not be included, and the previous-in-series is
+similarly, however, CSC is not included, and the previous-in-series is
 referenced, e.g.:
 
 ````shell
