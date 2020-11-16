@@ -394,8 +394,8 @@ curl -X POST \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
-A first-in-series authorization can also be made using the `applepay` or
-`mobilepayonline` payment methods; subsequent-in-series authorizations, however,
+A first-in-series authorization can also be made using the `applepay`
+payment method; subsequent-in-series authorizations, however,
 must be made using the `card` payment method using the card details of the
 previous-in-series authorization referenced.
 
