@@ -562,25 +562,25 @@ Exactly one payment method must be used.
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
 
-  <dt>credential
-    <span class="type">(<code>storing</code>|<code>using</code>)</span>
+  <dt>credential_on_file
+    <span class="type">(<code>store</code>|<code>use</code>)</span>
   </dt>
   <dd>
     Indicate if the payment credential (e.g. PAN and expiry) will be stored for
     future use where the payment credential is not provided by the
     cardholder but collected from (encrypted) storage.
     <br />
-    <code>storing</code>: The payment credential will be stored; may only be
+    <code>store</code>: The payment credential will be stored; may only be
     stored if the authorization is approved.
     <br />
-    <code>using</code>: The payment credential has already been stored and is now
+    <code>use</code>: The payment credential has already been stored and is now
     being used.
     <br />
     Default:
     <ul>
-      <li><code>using</code>, if <code>initiator</code> is <code>merchant</code>
-      (<code>storing</code> is invalid),</li>
-      <li><code>storing</code>, if the authorization is first-in-series.</li>
+      <li><code>use</code>, if <code>initiator</code> is <code>merchant</code>
+      (<code>store</code> is invalid),</li>
+      <li><code>store</code>, if the authorization is first-in-series.</li>
     </ul>
 
     <div class="type">Optional</code>
