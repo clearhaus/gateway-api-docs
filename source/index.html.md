@@ -706,7 +706,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Full tokenCallback response serialized as JSON, supplied as a string.
-    Required on token based authentication.
+    Required for token-based authentication.
     <br>
     Example: <code>{"paymentId":"string","tokenData":{"cryptogramInfo":{...},...},...}</code>
     <div class="type">Optional</div>
