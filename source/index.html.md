@@ -687,7 +687,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Primary account number of card to charge.<br />
-    If <code>token_callback</code> parameter is included, the <code>pan</code> must be a Token PAN.
+    If <code>payment_token</code> parameter is included, the <code>pan</code> must be a Token PAN.
   </dd>
   <dt>mobilepayonline[expire_month]
     <span class="type">[0-9]{2}</span>
@@ -701,7 +701,7 @@ object][ApplePay-PaymentToken] for more information.
   <dd>
     Expiry year of card to charge.
   </dd>
-  <dt>mobilepayonline[token_callback]
+  <dt>mobilepayonline[payment_token]
     <span class="type">[:json:]</span>
   </dt>
   <dd>
