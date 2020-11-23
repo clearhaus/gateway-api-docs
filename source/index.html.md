@@ -558,28 +558,28 @@ Exactly one payment method must be used.
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
 
-  <dt>credential_on_file
-    <span class="type">(<code>store</code>|<code>use</code>)</span>
+  <dt>store_payment_credential
+    <span class="type">(<code>true</code>|<code>false</code>)</span>
   </dt>
   <dd>
     Indicate if the payment credential (e.g. PAN and expiry) will be stored for
     future use where the payment credential is not provided by the
     cardholder but collected from (encrypted) storage.
     <br />
-    <code>store</code>: The payment credential will be stored; it may only be
+    <code>true</code>: The payment credential will be stored; it may only be
     stored if the authorization is approved.
+    (Invalid for payment method <code>credential_on_file</code>.)
     <br />
-    <code>use</code>: The payment credential has already been stored and is now
-    being used.
+    <code>false</code>: The payment credential will not be stored.
     <br />
     Default:
     <ul>
-      <li><code>use</code>, if <code>initiator</code> is <code>merchant</code>
-      (<code>store</code> is invalid),</li>
-      <li><code>store</code>, if the authorization is first-in-series.</li>
+      <li><code>true</code>, if the authorization is first-in-series.</li>
+      <li><code>false</code>, otherwise.
     </ul>
 
-    <div class="type">Optional</code>
+    <div class="type">Optional. Invalid for payment method
+    <code>credential_on_file</code>.</div>
   </dd>
 
   <dt>initiator
@@ -745,6 +745,42 @@ Exactly one payment method must be used.
   <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
   and/or <code>card[csc]</code> cannot be a subsequent-in-series authorization.
 </p>
+
+
+##### Method: `credential_on_file`
+
+The payment credential has already been stored and is now being used.
+
+<dl class="dl-vertical">
+  <dt>credential_on_file[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>credential_on_file[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>Expiry month of card to charge.</dd>
+  <dt>credential_on_file[expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dt>credential_on_file[csc]
+    <span class="type">[0-9]{3}</span>
+  </dt>
+  <dd>
+    Card Security Code.
+    <div class="type">Optional when partner is trusted</div>
+  </dd>
+  <dt>
+    credential_on_file[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
 
 
 ##### Method: `applepay`
