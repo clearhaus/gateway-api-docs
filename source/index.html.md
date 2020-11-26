@@ -335,20 +335,17 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-Clearhaus support two type of subscription billing:
+Clearhaus currently support only one type of subscription billing:
 
 * Recurring: Transactions processed at predetermined, regular intervals not
     exceeding 1 year; e.g. a monthly subscription for a magazine.
-* UCOF (Unscheduled Credential on File): Transactions that does not occur on
-    predetermined, regular intervals; e.g. a car sharing subscription billed
-    weekly but only for weeks when the service is used.
 
 There may be an agreed end of the series.
 
 ### Repeatedly reserve money
 
-A first-in-series payment is made by making an authorization and marking it as a
-`recurring` or `unscheduled` series. For instance, a first-in-series recurring
+A first-in-series recurring payment is made by making an authorization and
+marking it as a `recurring` series. As an example, a first-in-series recurring
 payment could be made this way:
 
 ````shell
@@ -626,7 +623,7 @@ Exactly one payment method must be used.
 
   <dt>
     series[type]
-    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
+    <span class="type"><code>recurring</code></span>
   </dt>
   <dd>
     Indicate the type of series.
@@ -634,10 +631,6 @@ Exactly one payment method must be used.
     <code>recurring</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant will repeatedly charge the cardholder at
     regular, predetermined intervals that may not exceed 1 year.
-    <br />
-    <code>unscheduled</code>: A series of transactions where the cardholder has
-    explicitly agreed that the merchant will repeatedly charge the cardholder at
-    unknown times, e.g. based on cardholder usage.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
