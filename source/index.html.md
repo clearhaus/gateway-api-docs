@@ -965,19 +965,6 @@ The Mastercard specific reference to the series contains the following parts.
     Cannot be present if <code>series[previous][id]</code> or
     <code>series[previous][visa]</code> is present.</div>
   </dd>
-
-  <dt>
-    series[previous][mastercard][tokenized]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    Indicate if the series was initiated with a tokenized payment.
-
-    <div class="type">Conditional.
-    Required if <code>series[previous][mastercard]</code> is present.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][visa]</code> is present.</div>
-  </dd>
 </dl>
 
 The Visa specific reference to the series has only one part.
