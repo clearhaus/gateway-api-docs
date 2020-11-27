@@ -932,6 +932,33 @@ The Mastercard specific reference to the series contains the following parts.
   </dd>
 
   <dt>
+    series[previous][mastercard][exemption]
+    <span class="type">(<code>mit</code>|<code>recurring</code>)</span>
+  </dt>
+  <dd>
+    The <i>Mastercard exemption</i> to be used for the series. If the
+    previous-in-series is a subsequent-in-series it should be equal to the
+    <i>Mastercard exemption</i> applied for the previous-in-series.
+    <ul>
+      <li><code>mit</code>: A <i>Mastercard exemption</i> (not formally an
+      acquirer exemption for SCA) indicating that the transaction is out of
+      scope for SCA. Relevant for varying-amount series. Refer to the partner
+      guideline for more details.</li>
+      <li><code>recurring</code>: The previous-in-series was acquirer exempted
+      for SCA because it was a subsequent-in-series, fixed-amount series
+      authorization.</li>
+    </ul>
+    Clearhaus will use the same <i>Mastercard exemption</i> for the entire
+    series when later referring to the previous-in-series via
+    <code>series[previous][id]</code>.
+
+    <div class="type">Conditional.
+    Required if <code>series[previous][mastercard]</code> is present.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][visa]</code> is present.</div>
+  </dd>
+
+  <dt>
     series[previous][mastercard][tokenized]
     <span class="type">(true|false)</span>
   </dt>
