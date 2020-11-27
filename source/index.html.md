@@ -925,7 +925,10 @@ The Mastercard specific reference to the series contains the following parts.
     two spaces;
     to be used in Data Element 48, Subfield 63.
 
-    <div class="type">Optional. Cannot be present if <code>series[previous][id]</code> or <code>series[previous][visa]</code> is present.</div>
+    <div class="type">Conditional.
+    Required if <code>series[previous][mastercard]</code> is present.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][visa]</code> is present.</div>
   </dd>
 
   <dt>
@@ -935,7 +938,10 @@ The Mastercard specific reference to the series contains the following parts.
   <dd>
     Indicate if the series was initiated with a tokenized payment.
 
-    <div class="type">Conditional. Required if <code>series[previous][mastercard][tid]</code> is present.</div>
+    <div class="type">Conditional.
+    Required if <code>series[previous][mastercard]</code> is present.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][visa]</code> is present.</div>
   </dd>
 </dl>
 
@@ -950,7 +956,9 @@ The Visa specific reference to the series has only one part.
     Transaction ID from Field 62.2 of the first (or previous) in series
     authorization; to be used in Field 125, Usage 2, Dataset ID 03.
 
-    <div class="type">Optional. Cannot be present if <code>series[previous][id]</code> or <code>series[previous][mastercard]</code> is present.</div>
+    <div class="type">Optional.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][mastercard]</code> is present.</div>
   </dd>
 </dl>
 
