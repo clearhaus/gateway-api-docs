@@ -933,21 +933,29 @@ The Mastercard specific reference to the series contains the following parts.
 
   <dt>
     series[previous][mastercard][exemption]
-    <span class="type">(<code>mit</code>|<code>recurring</code>)</span>
+    <span class="type">(<code>fixed_amount_series</code>|<code>variable_amount_series</code>)</span>
   </dt>
   <dd>
-    The <i>Mastercard exemption</i> to be used for the series. If the
-    previous-in-series is a subsequent-in-series it should be equal to the
-    <i>Mastercard exemption</i> applied for the previous-in-series.
+    The <i>Mastercard exemption</i> to be used for the series indicating if the
+    series is a fixed-amount or a variable-amount series.
     <ul>
-      <li><code>mit</code>: A <i>Mastercard exemption</i> (not formally an
-      acquirer exemption for SCA) indicating that the transaction is out of
-      scope for SCA. Relevant for varying-amount series. Refer to the partner
-      guideline for more details.</li>
-      <li><code>recurring</code>: The previous-in-series was acquirer exempted
-      for SCA because it was a subsequent-in-series, fixed-amount series
-      authorization.</li>
+      <li><code>fixed_amount_series</code>:
+        The series is a fixed-amount series. (MPMI value <code>03</code>.)
+      </li>
+      <li><code>variable_amount_series</code>:
+        The series is a variable-amount series. (MPMI value <code>01</code>.)
+        A <i>Mastercard exemption</i> (not formally an acquirer exemption for
+        SCA) indicating that the transaction is out of scope for SCA.
+      </li>
     </ul>
+    If the previous-in-series is a subsequent-in-series it should be equal to
+    the <i>Mastercard exemption</i> applied for the previous-in-series.
+    The value originates from Mastercard Data element 48, Subelement 22,
+    Subfield 1 named "Multi-Purpose Merchant Indicator (MPMI).
+    The value <code>01</code> indicates variable-amount whereas <code>01</code>
+    indicates fixed-amount.
+
+    <br />
     Clearhaus will use the same <i>Mastercard exemption</i> for the entire
     series when later referring to the previous-in-series via
     <code>series[previous][id]</code>.
