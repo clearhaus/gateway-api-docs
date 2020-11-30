@@ -335,7 +335,7 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-Clearhaus currently support only one type of subscription billing:
+Clearhaus currently supports only one type of subscription billing:
 
 * Recurring: Transactions processed at predetermined, regular intervals not
     exceeding 1 year; e.g. a monthly subscription for a magazine.
@@ -374,8 +374,8 @@ Example response (snippet):
 
 This should be followed by a capture.
 
-Subsequent recurring authorizations initiated by the merchant are made
-similarly, however, CSC is not included, and the previous-in-series is
+Subsequent-in-series recurring authorizations initiated by the merchant are
+made similarly, however, CSC is not included, and the previous-in-series is
 referenced, e.g.:
 
 ````shell
@@ -394,7 +394,7 @@ curl -X POST \
 A first-in-series authorization can also be made using the `applepay`
 payment method; subsequent-in-series authorizations, however,
 must be made using the `card` payment method using the card details of the
-previous-in-series authorization referenced.
+referenced previous-in-series authorization.
 
 Any first-in-series authorization must be made with strong customer
 authentication (SCA) regardless of the authorization amount.
@@ -594,7 +594,7 @@ Exactly one payment method must be used.
     Default:
     <ul>
       <li><code>merchant</code>, if the authorization is
-      subsequent-in-subsequent (<code>cardholder</code> is invalid),</li>
+      subsequent-in-series (<code>cardholder</code> is invalid),</li>
       <li><code>cardholder</code>, otherwise.</li>
     </ul>
 
@@ -626,10 +626,10 @@ Exactly one payment method must be used.
     <span class="type"><code>recurring</code></span>
   </dt>
   <dd>
-    Indicate the type of series.
+    The type of series.
     <br />
     <code>recurring</code>: A series of transactions where the cardholder has
-    explicitly agreed that the merchant will repeatedly charge the cardholder at
+    explicitly agreed that the merchant may repeatedly charge the cardholder at
     regular, predetermined intervals that may not exceed 1 year.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
@@ -683,9 +683,9 @@ Exactly one payment method must be used.
 
 <p class="alert alert-info">
   <b>Notice:</b> When <code>recurring</code> is used, Clearhaus automatically
-  identify if there was a previous-in-series and together with the level of
-  authentication (CSC, 3-D Secure, etc.) conclude if the payment is a first
-  recurring or a subsequent recurring.
+  identifies if there was a previous-in-series and if that is the case uses the
+  level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is
+  a first-in-in-series or a subsequent-in-series recurring.
 </p>
 
 
@@ -904,18 +904,19 @@ Only one 3-D Secure version can be used for a given authorization.
 
 ##### Scheme reference to series
 
-If the previous-in-series authorization was made via this API, you should use
-`series[previous][id]` to reference the previous-in-series authorization.
-Otherwise, you must obtain explicit approval from Clearhaus to use the raw
-scheme values grouped in <code>series[previous][mastercard]</code> and
-<code>series[previous][visa]</code>.
+If the previous-in-series authorization was made via this API, you must use
+`series[previous][id]` to reference it. If it was not made via this API, you 
+must obtain explicit approval from Clearhaus to use the raw scheme values
+grouped in <code>series[previous][mastercard]</code> and
+<code>series[previous][visa]</code>. This is relevant when moving subscriptions
+to Clearhaus from another acquirer.
 
 The Mastercard specific reference to the series contains the following parts.
 
 <dl class="dl-vertical">
   <dt>
     series[previous][mastercard][tid]
-    <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4}[ ]{2}</span>
+    <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}</span>
   </dt>
   <dd>
     Trace ID being the concatenation of values
@@ -936,8 +937,8 @@ The Mastercard specific reference to the series contains the following parts.
     <span class="type">(<code>fixed_amount_series</code>|<code>variable_amount_series</code>)</span>
   </dt>
   <dd>
-    The <i>Mastercard exemption</i> to be used for the series indicating if the
-    series is a fixed-amount or a variable-amount series.
+    The <i>Mastercard exemption</i> is used to indicate if the series is 
+    fixed-amount or a variable-amount.
     <ul>
       <li><code>fixed_amount_series</code>:
         The series is a fixed-amount series. (MPMI value <code>03</code>.)
@@ -952,12 +953,12 @@ The Mastercard specific reference to the series contains the following parts.
     the <i>Mastercard exemption</i> applied for the previous-in-series.
     The value originates from Mastercard Data element 48, Subelement 22,
     Subfield 1 named "Multi-Purpose Merchant Indicator (MPMI).
-    The value <code>01</code> indicates variable-amount whereas <code>01</code>
-    indicates fixed-amount.
+    The value <code>01</code> indicates variable amount whereas <code>01</code>
+    indicates fixed amount.
 
     <br />
-    Clearhaus will use the same <i>Mastercard exemption</i> for the entire
-    series when later referring to the previous-in-series via
+    Clearhaus uses the same <i>Mastercard exemption</i> for an entire series
+    when a previous-in-series authorization in the series is referenced via
     <code>series[previous][id]</code>.
 
     <div class="type">Conditional.
@@ -975,7 +976,7 @@ The Visa specific reference to the series has only one part.
     <span class="type">[0-9]{15}</span>
   </dt>
   <dd>
-    Transaction ID from Field 62.2 of the first (or previous) in series
+    Transaction ID from Field 62.2 of the first-in-series or previous-in-series
     authorization; to be used in Field 125, Usage 2, Dataset ID 03.
 
     <div class="type">Optional.
