@@ -344,7 +344,7 @@ There may be an agreed end of the series.
 
 ### Repeatedly reserve money
 
-A first-in-series recurring payment is made by making an authorization and
+A first-in-series recurring payment is created by making an authorization and
 marking it as a `recurring` series. As an example, a first-in-series recurring
 payment could be made this way:
 
