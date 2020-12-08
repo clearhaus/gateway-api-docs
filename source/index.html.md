@@ -688,6 +688,11 @@ Exactly one payment method must be used.
   a first-in-in-series or a subsequent-in-series recurring.
 </p>
 
+<p class="alert alert-info">
+  <b>Notice:</b> Since <code>series[type]</code> cannot be supplied together
+  with <code>series[previous]</code>, a series will stay of the same type.
+</p>
+
 
 ##### Method: `card`
 
