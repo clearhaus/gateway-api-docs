@@ -990,6 +990,14 @@ The Visa specific reference to the series has only one part.
   </dd>
 </dl>
 
+<p class="alert alert-info">
+  <b>Notice:</b> A series migrated to Clearhaus using these scheme references
+  cannot be continued with the now deprecated <code>recurring</code> flag.
+  Instead, the subsequent-in-series following an authorization using scheme
+  references must use <code>series[previous][id]</code> to point to the
+  previous in series.
+</p>
+
 
 ### Captures
 
