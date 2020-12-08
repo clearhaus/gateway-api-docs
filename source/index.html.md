@@ -927,7 +927,7 @@ The Mastercard specific reference to the series contains the following parts.
     Trace ID being the concatenation of values
     Data element 63 subfield 1 (Financial Network Code) (position 1-3),
     Data element 63 subfield 2 (Banknet Reference Number) (position 4-9),
-    Data element 15 (Date, Settlement) (position 10-13), and
+    Data element 15 (Date, Settlement, in MMDD format) (position 10-13), and
     two spaces;
     to be used in Data Element 48, Subfield 63.
 
