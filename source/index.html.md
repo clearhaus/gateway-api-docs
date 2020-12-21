@@ -708,7 +708,7 @@ object][ApplePay-PaymentToken] for more information.
     Full tokenCallback response serialized as JSON, supplied as a string.
     Required for token-based authentication.
     <br>
-    Example: <code>{"paymentId":"string","tokenData":{"cryptogramInfo":{...},...},...}</code>
+    Example: <code>{"paymentId":"string","tokenData":{"cryptogramInfo":{...},...},...}</code>
     <div class="type">Optional</div>
   </dd>
   <dt>mobilepayonline[phone_number]
