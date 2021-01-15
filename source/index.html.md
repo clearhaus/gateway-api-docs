@@ -690,7 +690,7 @@ Exactly one payment method must be used.
 
 <p class="alert alert-info">
   <b>Notice:</b> Since <code>series[type]</code> cannot be supplied together
-  with <code>series[previous]</code>, a series will stay of the same type.
+  with <code>series[previous]</code>, the type of a series cannot change.
 </p>
 
 
