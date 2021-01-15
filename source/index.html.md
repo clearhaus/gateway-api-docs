@@ -335,12 +335,10 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-Clearhaus currently supports only one type of subscription billing:
+Clearhaus currently supports the recurring type of subscription billing.
 
-* Recurring: Transactions processed at predetermined, regular intervals not
-    exceeding 1 year; e.g. a monthly subscription for a magazine.
-
-There may be an agreed end of the series.
+There may be an agreed end of the series. The amount may be varying. See the
+partner guideline for more details.
 
 ### Repeatedly reserve money
 
