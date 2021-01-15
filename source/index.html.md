@@ -1367,6 +1367,16 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Update authorization parameters
+
+Replace `recurring` with `series[type]=recurring` and add `series[previous]` as
+a way of pointing to the previous-in-series authorization (either via a
+Clearhaus authorization ID or via raw scheme values).
+
+Add also two optional parameters `credential_on_file` and `initiator` to allow
+for explicitly specifying if credential on file is being stored or used, and if
+the transaction is merchant or cardholder initiated.
+
 ### Support for multiple signatures removed
 
 Support for multiple signatures for request signing will be removed any time after 2020-10-31.
