@@ -1402,27 +1402,6 @@ category, the name might be necessary for approval.
 
 In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
 
-### Remove deprecated `/cards`, `threed_secure` and `card[number]`
-
-The deprecations announced in 2018 will be executed. Partners must expect
-`/cards` endpoints, the `threed_secure` and the `card[number]` parameters to be
-unavailable at any point in time after 2019-08-20.
-Refer to [the documentation source code
-changes](https://github.com/clearhaus/gateway-api-docs/pull/82/files) for the
-exact documentation change.
-
-### Add merchant blocked by cardholder status
-
-Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
-is avaliable. Please be advised that appropriate action must be taken to
-adequately handle this status code, see [Merchant blocked by cardholder
-status](#merchant-blocked-by-cardholder-status)
-
-### Add a valid test CSC
-
-Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
-testing against `gateway.test.clearhaus.com`.
-
 [JSON-HAL]: https://tools.ietf.org/html/draft-kelly-json-hal-08 "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
