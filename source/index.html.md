@@ -333,24 +333,18 @@ Depending on card scheme and merchant category, the name on the card might be
 necessary for approval of credits. It may be provided through the optional
 parameter `card[name]`.
 
-## Recurring payments
+## Series of transactions
 
-Recurring payments enable you to repeatedly charge cardholders without providing
-CSC or other means of cardholder authentication for subsequent payments.
+Clearhaus supports the recurring type of subscription billing.
 
-### Subscription concept
-
-Many PSPs have a subscription concept for supporting recurring payments.
-The first approved authorization is the initial recurring authorization (also
-known as "first in series"), all later authorizations are called subsequent
-authorizations. Clearhaus supports subscriptions in the form of recurring
-payments.
+There may be an agreed end of the series. The amount may be varying. See the
+partner guideline for more details.
 
 ### Repeatedly reserve money
 
-A recurring payment is made by making an authorization and setting `recurring`
-parameter to `true`. The first recurring payment for a given card could be made
-this way (notice that the amount may be zero):
+A first-in-series recurring payment is created by making an authorization and
+marking it as a `recurring` series. As an example, a first-in-series recurring
+payment could be made this way:
 
 ````shell
 curl -X POST \
@@ -358,12 +352,12 @@ curl -X POST \
   -u <your-api-key>:  \
   -d "amount=2050"    \
   -d "currency=EUR"   \
-  -d "recurring=true" \
+  -d "series[type]=recurring"     \
   -d "card[pan]=4111111111111111" \
   -d "card[expire_month]=06"      \
-  -d "card[expire_year]=2022"     \
+  -d "card[expire_year]=2026"     \
   -d "card[csc]=123"              \
-  --data-urlencode "card[3dsecure][v1][pares]=<some-pares-value>" \
+  --data-urlencode "card[3dsecure][v2][rreq]=<some-rreq-value>" \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
@@ -371,26 +365,37 @@ Example response (snippet):
 
 ````json
 {
-    "id": "e3e9d215-6efc-4c0e-b3d7-2226057c6de8",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "recurring": true
+    "id": "1b722683-92ad-4c6b-85da-e119d550670d",
+    "status": { "code": 20000 }
 }
 ````
 
-This should be followed by a capture except when the amount is `0`.
+This should be followed by a capture.
 
-Subsequent authorizations are made similarly, however, CSC would not be
-included. For 3-D Secure version 1 (see [3-D Secure](#3-d-secure)), PARes would
-not be included. 3-D Secure version 2 has some support for subsequent
-authorizations.
+Subsequent-in-series recurring authorizations initiated by the merchant are
+made similarly, however, CSC is not included, and the previous-in-series is
+referenced, e.g.:
 
-An initial recurring authorization can also be made using the `applepay` and
-`mobilepayonline` payment methods; subsequent recurring payments, however, must
-be made using the `card` payment method using the card details of the initial
-recurring authorization.
+````shell
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations \
+  -u <your-api-key>:  \
+  -d "amount=2050"    \
+  -d "currency=EUR"   \
+  -d "series[previous][id]=1b722683-92ad-4c6b-85da-e119d550670d" \
+  -d "card[pan]=4111111111111111" \
+  -d "card[expire_month]=06"      \
+  -d "card[expire_year]=2026"     \
+  -H "Signature: <signing-api-key> RS256-hex <signature>"
+````
+
+A first-in-series authorization can also be made using the `applepay`
+payment method; subsequent-in-series authorizations, however,
+must be made using the `card` payment method using the card details of the
+referenced previous-in-series authorization.
+
+Any first-in-series authorization must be made with strong customer
+authentication (SCA) regardless of the authorization amount.
 
 
 ## 3-D Secure
@@ -540,12 +545,60 @@ Exactly one payment method must be used.
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
   </dd>
+
   <dt>currency
     <span class="type">[A-Z]{3}</span>
   </dt>
   <dd>
     <a target="_blank" href="currencies.txt">3-letter currency code</a>. (Some exponents differ from ISO 4217.)
   </dd>
+
+  <dt>credential_on_file
+    <span class="type">(<code>store</code>|<code>use</code>)</span>
+  </dt>
+  <dd>
+    Indicate if the payment credential (e.g. PAN and expiry) will be stored for
+    future use where the payment credential is not provided by the
+    cardholder but collected from (encrypted) storage.
+    <br />
+    <code>store</code>: The payment credential will be stored; it may only be
+    stored if the authorization is approved.
+    <br />
+    <code>use</code>: The payment credential has already been stored and is now
+    being used.
+    <br />
+    Default:
+    <ul>
+      <li><code>use</code>, if <code>initiator</code> is <code>merchant</code>
+      (<code>store</code> is invalid),</li>
+      <li><code>store</code>, if the authorization is first-in-series.</li>
+    </ul>
+
+    <div class="type">Optional</code>
+  </dd>
+
+  <dt>initiator
+    <span class="type">(<code>cardholder</code>|<code>merchant</code>)</span>
+  </dt>
+  <dd>
+    The initiator of the authorization. An authorization is initiated by the
+    cardholder if the cardholder decided the transaction should be created.
+    This is regardless of whether a stored payment credential is being used.
+    <br />
+    For compliance reasons there should be a previous approved transaction (for
+    the cardholder and the merchant) marked with <code>storing</code> before
+    <code>initiator</code> may be <code>merchant</code>.
+    <br />
+    Default:
+    <ul>
+      <li><code>merchant</code>, if the authorization is
+      subsequent-in-series (<code>cardholder</code> is invalid),</li>
+      <li><code>cardholder</code>, otherwise.</li>
+    </ul>
+
+    <div class="type">Optional</div>
+  </dd>
+
   <dt>ip
     <span class="type">[0-9.a-fA-F:]{3,45}</span>
   </dt>
@@ -553,13 +606,54 @@ Exactly one payment method must be used.
     Cardholder's IP address. It must be a valid v4 or v6 address.
     <div class="type">Optional<br></div>
   </dd>
-  <dt>recurring
-    <span class="type">(true|false)</span>
+
+  <dt>reference
+    <span class="type">[\x20-\x7E]{1,30}
+      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+        ASCII printable characters
+      </a>
+    </span>
   </dt>
   <dd>
-    Must be <code>true</code> for recurring payments.
+    A reference to an external object, such as an order number.
     <div class="type">Optional</div>
   </dd>
+
+  <dt>
+    series[type]
+    <span class="type"><code>recurring</code></span>
+  </dt>
+  <dd>
+    The type of series.
+    <br />
+    <code>recurring</code>: A series of transactions where the cardholder has
+    explicitly agreed that the merchant may repeatedly charge the cardholder at
+    regular, predetermined intervals that may not exceed 1 year.
+
+    <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
+  </dd>
+
+  <dt>
+    series[previous][id]
+    <span class="type">[:UUIDv4:]</span>
+  </dt>
+  <dd>
+    The Clearhaus authorization ID as a reference to the latest approved
+    authorization in the series.
+    <br />
+    If omitted and <code>series[type]</code> is populated, then the
+    authorization will be a first-in-series.
+    <br />
+    Can be used only with payment method <code>card</code>.
+    <br />
+    If the latest approved authorization in the series was not processed via
+    Clearhaus, after obtaining explicit approval from Clearhaus, you can
+    provide raw scheme values; see
+    <a href="#scheme-reference-to-series">Scheme reference to series</a>.
+
+    <div class="type">Conditional. Cannot be present if <code>series[type]</code> is present.</div>
+  </dd>
+
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
       <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
@@ -572,18 +666,31 @@ Exactly one payment method must be used.
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
     <div class="type">Optional</div>
   </dd>
-  <dt>reference
-    <span class="type">[\x20-\x7E]{1,30}
-      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
-        ASCII printable characters
-      </a>
-    </span>
+
+  <!-- deprecated -->
+  <dt><strike>recurring</strike>
+    <span class="type">(true|false)</span>
   </dt>
   <dd>
-    A reference to an external object, such as an order number.
-    <div class="type">Optional</div>
+    Deprecated! Please use <code>series</code>.
+    <br />
+    <div class="type">Optional. Cannot be used with <code>series</code> or
+    <code>initiator</code>.</div>
   </dd>
 </dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> When <code>recurring</code> is used, Clearhaus automatically
+  identifies if there was a previous-in-series and if that is the case uses the
+  level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is
+  a first-in-in-series or a subsequent-in-series recurring.
+</p>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Since <code>series[type]</code> cannot be supplied together
+  with <code>series[previous]</code>, the type of a series cannot change.
+</p>
+
 
 ##### Method: `card`
 
@@ -632,7 +739,7 @@ Exactly one payment method must be used.
 <p class="alert alert-info">
   <b>Notice:</b> An authorization that includes
   <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
-  and/or <code>card[csc]</code> cannot be a subsequent recurring authorization.
+  and/or <code>card[csc]</code> cannot be a subsequent-in-series authorization.
 </p>
 
 
@@ -808,6 +915,97 @@ Only one 3-D Secure version can be used for a given authorization.
     <div class="type">Optional. Cannot be present if <code>ares</code> is present.</div>
   </dd>
 </dl>
+
+##### Scheme reference to series
+
+If the previous-in-series authorization was made via this API, you must use
+`series[previous][id]` to reference it. If it was not made via this API, you 
+must obtain explicit approval from Clearhaus to use the raw scheme values
+grouped in <code>series[previous][mastercard]</code> and
+<code>series[previous][visa]</code>. This is relevant when moving subscriptions
+to Clearhaus from another acquirer.
+
+The Mastercard specific reference to the series contains the following parts.
+
+<dl class="dl-vertical">
+  <dt>
+    series[previous][mastercard][tid]
+    <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}</span>
+  </dt>
+  <dd>
+    Trace ID being the concatenation of values
+    Data element 63 subfield 1 (Financial Network Code) (position 1-3),
+    Data element 63 subfield 2 (Banknet Reference Number) (position 4-9),
+    Data element 15 (Date, Settlement, in MMDD format) (position 10-13), and
+    two spaces;
+    to be used in Data Element 48, Subfield 63.
+
+    <div class="type">Conditional.
+    Required if <code>series[previous][mastercard]</code> is present.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][visa]</code> is present.</div>
+  </dd>
+
+  <dt>
+    series[previous][mastercard][exemption]
+    <span class="type">(<code>fixed_amount_series</code>|<code>variable_amount_series</code>)</span>
+  </dt>
+  <dd>
+    The <i>Mastercard exemption</i> is used to indicate if the series is 
+    fixed-amount or a variable-amount.
+    <ul>
+      <li><code>fixed_amount_series</code>:
+        The series is a fixed-amount series. (MPMI value <code>03</code>.)
+      </li>
+      <li><code>variable_amount_series</code>:
+        The series is a variable-amount series. (MPMI value <code>01</code>.)
+        A <i>Mastercard exemption</i> (not formally an acquirer exemption for
+        SCA) indicating that the transaction is out of scope for SCA.
+      </li>
+    </ul>
+    If the previous-in-series is a subsequent-in-series it should be equal to
+    the <i>Mastercard exemption</i> applied for the previous-in-series.
+    The value originates from Mastercard Data element 48, Subelement 22,
+    Subfield 1 named "Multi-Purpose Merchant Indicator (MPMI).
+    The value <code>01</code> indicates variable amount whereas <code>01</code>
+    indicates fixed amount.
+
+    <br />
+    Clearhaus uses the same <i>Mastercard exemption</i> for an entire series
+    when a previous-in-series authorization in the series is referenced via
+    <code>series[previous][id]</code>.
+
+    <div class="type">Conditional.
+    Required if <code>series[previous][mastercard]</code> is present.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][visa]</code> is present.</div>
+  </dd>
+</dl>
+
+The Visa specific reference to the series has only one part.
+
+<dl class="dl-vertical">
+  <dt>
+    series[previous][visa][tid]
+    <span class="type">[0-9]{15}</span>
+  </dt>
+  <dd>
+    Transaction ID from Field 62.2 of the first-in-series or previous-in-series
+    authorization; to be used in Field 125, Usage 2, Dataset ID 03.
+
+    <div class="type">Optional.
+    Cannot be present if <code>series[previous][id]</code> or
+    <code>series[previous][mastercard]</code> is present.</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> A series migrated to Clearhaus using these scheme references
+  cannot be continued with the now deprecated <code>recurring</code> flag.
+  Instead, the subsequent-in-series following an authorization created using
+  scheme references must use <code>series[previous][id]</code> to point to the
+  previous in series.
+</p>
 
 
 ### Captures
@@ -992,6 +1190,11 @@ POST https://gateway.clearhaus.com/credits
   </dd>
 </dl>
 
+<p class="alert alert-info">
+<b>Notice:</b> Implicitly, <code>initiator</code> is <code>merchant</code> and
+<code>credential_on_file</code> is <code>use</code>.
+</p>
+
 ### Account
 
 The account resource holds basic merchant account information. Only `HTTP GET`
@@ -1175,6 +1378,16 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Update authorization parameters
+
+Replace `recurring` with `series[type]=recurring` and add `series[previous]` as
+a way of pointing to the previous-in-series authorization (either via a
+Clearhaus authorization ID or via raw scheme values).
+
+Add also two optional parameters `credential_on_file` and `initiator` to allow
+for explicitly specifying if credential on file is being stored or used, and if
+the transaction is merchant or cardholder initiated.
+
 ### Support for multiple signatures removed
 
 Support for multiple signatures for request signing will be removed any time after 2020-10-31.
@@ -1199,27 +1412,6 @@ category, the name might be necessary for approval.
 ### Request signing becomes mandatory
 
 In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
-
-### Remove deprecated `/cards`, `threed_secure` and `card[number]`
-
-The deprecations announced in 2018 will be executed. Partners must expect
-`/cards` endpoints, the `threed_secure` and the `card[number]` parameters to be
-unavailable at any point in time after 2019-08-20.
-Refer to [the documentation source code
-changes](https://github.com/clearhaus/gateway-api-docs/pull/82/files) for the
-exact documentation change.
-
-### Add merchant blocked by cardholder status
-
-Starting 2019-04-11 a new status code `40420 - Merchant blocked by cardholder`
-is avaliable. Please be advised that appropriate action must be taken to
-adequately handle this status code, see [Merchant blocked by cardholder
-status](#merchant-blocked-by-cardholder-status)
-
-### Add a valid test CSC
-
-Starting 2019-02-22 the CSC 987 has been added as a valid CSC for all PANs when
-testing against `gateway.test.clearhaus.com`.
 
 [JSON-HAL]: https://tools.ietf.org/html/draft-kelly-json-hal-08 "IETF HAL draft"
 [HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
