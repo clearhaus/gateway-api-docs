@@ -394,8 +394,10 @@ payment method; subsequent-in-series authorizations, however,
 must be made using the `card` payment method using the card details of the
 referenced previous-in-series authorization.
 
-Any first-in-series authorization must be made with strong customer
-authentication (SCA) regardless of the authorization amount.
+A card is in scope for SCA (strong customer authentication) if card country is
+in EEA. (Exceptions apply for UK.)
+Any first-in-series authorization made with a card in scope for SCA must be made
+with SCA regardless of the authorization amount.
 
 
 ## 3-D Secure
@@ -1193,6 +1195,9 @@ POST https://gateway.clearhaus.com/credits
 <p class="alert alert-info">
 <b>Notice:</b> Implicitly, <code>initiator</code> is <code>merchant</code> and
 <code>credential_on_file</code> is <code>use</code>.
+<br />
+<b>Notice:</b> SCA is required when <code>credential_on_file</code> is
+<code>store</code> when the card is in scope for SCA.
 </p>
 
 ### Account
