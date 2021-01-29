@@ -533,7 +533,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`.
+`card`, `applepay`, `mobilepayonline`, `vipps`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -850,6 +850,36 @@ object][ApplePay-PaymentToken] for more information.
   payment method.
   <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
+  strongly authenticated (SCA in PSD2).
+</p>
+
+##### Method: `vipps`
+
+<dl class="dl-vertical">
+  <dt>vipps[payment_token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Full response serialized as JSON, supplied as a string.
+    <br>
+    Example: <code>{"pspTransactionId":"string","networkToken":{"cryptogram": "string",...},...}</code>
+    <div class="type">Optional</div>
+  </dd>
+  <dt>
+    vipps[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>vipps</code>
+  payment method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>vipps</code> is
   strongly authenticated (SCA in PSD2).
 </p>
 
