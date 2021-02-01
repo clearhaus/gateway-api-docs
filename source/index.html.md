@@ -856,6 +856,24 @@ object][ApplePay-PaymentToken] for more information.
 ##### Method: `vipps`
 
 <dl class="dl-vertical">
+  <dt>vipps[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.<br />
+  </dd>
+  <dt>vipps[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>vipps[expire_year]
+    <span class="type">[0-9]{4}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
   <dt>vipps[payment_token]
     <span class="type">[:json:]</span>
   </dt>
@@ -879,8 +897,6 @@ object][ApplePay-PaymentToken] for more information.
   <b>Notice:</b> Signing is required to use the <code>vipps</code>
   payment method.
   <br />
-  <b>Notice:</b> An authorization made with <code>vipps</code> is
-  strongly authenticated (SCA in PSD2).
 </p>
 
 ##### Authentication: `[3dsecure]`
