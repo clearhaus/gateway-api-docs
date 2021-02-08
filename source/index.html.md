@@ -63,7 +63,7 @@ All responses will be delivered in JSON format (see [JSON-HAL][JSON-HAL]).
 Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.10.0; charset=utf-8
 ````
 
-where the version follows [Semantic Versioning](http://semver.org).
+where the version follows [Semantic Versioning](https://semver.org).
 
 We use HTTP response codes to indicate API response status:
 
@@ -403,7 +403,7 @@ authentication (SCA) regardless of the authorization amount.
 
 3-D Secure is a protocol designed to improve security for online transactions.
 Before you continue please read more about this protocol at
-[3dsecure.io](http://docs.3dsecure.io).
+[3dsecure.io](https://docs.3dsecure.io).
 
 3-D Secure is the only way to achieve liability shift for fraud chargebacks.
 
@@ -610,7 +610,7 @@ Exactly one payment method must be used.
 
   <dt>reference
     <span class="type">[\x20-\x7E]{1,30}
-      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href= "https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -657,7 +657,7 @@ Exactly one payment method must be used.
 
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -732,7 +732,7 @@ Exactly one payment method must be used.
   </dt>
   <dd>
     Deprecated! Please use <code>card[3dsecure][v1][pares]</code>. <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -841,7 +841,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Deprecated! Please use <code>mobilepayonline[3dsecure][v1][pares]</code>. <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -886,7 +886,7 @@ Only one 3-D Secure version can be used for a given authorization.
     <span class="type">[:base64:]</span>
   </dt>
   <dd>
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3Dsecure.io</a>.
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -1032,7 +1032,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1069,7 +1069,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1140,7 +1140,7 @@ POST https://gateway.clearhaus.com/credits
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1151,7 +1151,7 @@ POST https://gateway.clearhaus.com/credits
     <div class="type">Optional</div>
   </dd>
   <dt>reference
-    <span class="type">[\x20-\x7E]{1,30} <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
+    <span class="type">[\x20-\x7E]{1,30} <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
   </dt>
   <dd>
     A reference to an external object, such as an order number.
@@ -1219,7 +1219,7 @@ GET https://gateway.clearhaus.com/account
   </dd>
   <dt>descriptor
     <span class="type">[\x20-\x7E]{0,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1228,7 +1228,7 @@ GET https://gateway.clearhaus.com/account
     The default <code>text_on_statement</code>.
   </dd>
   <dt>name
-    <span class="type">[\x20-\x7E]{0,20} <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
+    <span class="type">[\x20-\x7E]{0,20} <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
   </dt>
   <dd>
     Merchant company name.
@@ -1415,6 +1415,6 @@ category, the name might be necessary for approval.
 In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
 
 [JSON-HAL]: https://tools.ietf.org/html/draft-kelly-json-hal-08 "IETF HAL draft"
-[HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
-[Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
+[HATEOAS]: https://en.wikipedia.org/wiki/HATEOAS
+[Tokenization]: https://en.wikipedia.org/wiki/Tokenization_(data_security)
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
