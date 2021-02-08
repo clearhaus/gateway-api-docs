@@ -4,8 +4,9 @@ title: Clearhaus Transaction API Documentation
 
 # Getting Started
 
-To use this transaction API you must [be a
-partner](https://www.clearhaus.com/psp-partners) (and partners must be PCI DSS L1).
+To use this transaction API you must [be a technical
+partner](https://www.clearhaus.com/psp-partner) (and such partners must be
+PCI DSS L1).
 
 <p class="alert alert-danger">
 API keys come with many privileges so keep them secret.
