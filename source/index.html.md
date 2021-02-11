@@ -1239,6 +1239,12 @@ GET https://gateway.clearhaus.com/account
   <dd>
     ISO 3166-1 2-letter country code for merchant company.
   </dd>
+  <dt>country
+    <span class="type">[A-Z]{3}</span>
+  </dt>
+  <dd>
+    ISO 4217 3-letter currency code for merchant currency.
+  </dd>
   <dt>mcc
     <span class="type">[0-9]{4}</span>
   </dt>
