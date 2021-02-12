@@ -1239,7 +1239,7 @@ GET https://gateway.clearhaus.com/account
   <dd>
     ISO 3166-1 2-letter country code for merchant company.
   </dd>
-  <dt>country
+  <dt>currency
     <span class="type">[A-Z]{3}</span>
   </dt>
   <dd>
