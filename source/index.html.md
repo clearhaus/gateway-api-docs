@@ -698,6 +698,11 @@ Exactly one payment method must be used.
   <code>store</code> when supplying <code>series[type]</code>.
 </p>
 
+<p class="alert alert-info">
+  <b>Notice:</b> If a series is being created using credentials already stored on file, use
+  <code>credential_on_file=use</code> together with <code>series[type]</code>.
+</p>
+
 
 ##### Method: `card`
 
