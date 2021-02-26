@@ -814,7 +814,9 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Full tokenCallback response serialized as JSON, supplied as a string.
-    Required for token-based authentication.
+    Required for token-based authentication. MobilePay Online uses Visa
+    Token Service (VTS) for Visa transactions and Mastercard Secure Card
+    on file for Commerce Platforms (S4C) for Mastercard transactions.
     <br>
     Example: <code>{"paymentId":"string","tokenData":{"cryptogramInfo":{...},...},...}</code>
     <div class="type">Optional</div>
