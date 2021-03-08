@@ -826,8 +826,8 @@ supported.
   <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> is strongly
   authenticated (SCA in PSD2) if <code>authMethod</code> is
-  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for
-  <i><a href="https://developers.google.com/pay/api/web/guides/resources/sca">sca</a></i>
+  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for SCA 
+  (<a href="https://developers.google.com/pay/api/web/guides/resources/sca">link</a>)
   have been followed.
 
   If <code>authMethod</code> is <code>PAN_ONLY</code>, a 3-D Secure flow is
