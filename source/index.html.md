@@ -398,6 +398,7 @@ card details of the referenced previous-in-series authorization.
 Any first-in-series authorization must be made with strong customer
 authentication (SCA) regardless of the authorization amount.
 
+
 ## 3-D Secure
 
 3-D Secure is a protocol designed to improve security for online transactions.
@@ -679,6 +680,19 @@ Exactly one payment method must be used.
   </dd>
 </dl>
 
+<p class="alert alert-info">
+  <b>Notice:</b> When <code>recurring</code> is used, Clearhaus automatically
+  identifies if there was a previous-in-series and if that is the case uses the
+  level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is
+  a first-in-in-series or a subsequent-in-series recurring.
+</p>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Since <code>series[type]</code> cannot be supplied together
+  with <code>series[previous]</code>, the type of a series cannot change.
+</p>
+
+
 ##### Method: `card`
 
 <dl class="dl-vertical">
@@ -728,6 +742,7 @@ Exactly one payment method must be used.
   <code>card[3dsecure][v1][pares]</code>, <code>card[3dsecure][v2][rreq]</code>,
   and/or <code>card[csc]</code> cannot be a subsequent-in-series authorization.
 </p>
+
 
 ##### Method: `applepay`
 
