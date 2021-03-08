@@ -824,12 +824,11 @@ supported.
   <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
   method.
   <br />
-  <b>Notice:</b> An authorization made with <code>googlepay</code> may be fully
-  3-D Secured, 3-D Secure attempted, or with no 3-D Secure; this is indicated by
-  the <code>eciIndicator</code> of the <code>paymentMethodDetails</code>.
-  <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> is
-  strongly authenticated (SCA in PSD2) if fully 3-D Secure.
+  strongly authenticated (SCA in PSD2) if `authMethod` is `CRYPTOGRAM_3DS` and the
+  Google Pay guidelines for [sca](GooglePay-SCA) have been followed.
+
+  If `authMethod` is `PAN_ONLY`, a 3-D Secure flow is required for SCA.
   <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
   subsequent recurring authorization.
@@ -1475,3 +1474,5 @@ In the first quarter of 2020 signing of POST requests will become mandatory. We 
 [HATEOAS]: https://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: https://en.wikipedia.org/wiki/Tokenization_(data_security)
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
+[GooglePay-PaymentCryptography]: https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography
+[GooglePay-SCA]: https://developers.google.com/pay/api/web/guides/resources/sca
