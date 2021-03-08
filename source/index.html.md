@@ -391,7 +391,7 @@ curl -X POST \
 ````
 
 A first-in-series authorization can also be made using the `applepay`,
-`googlepay` or mobilepayoneline` payment methods; subsequent-in-series
+`googlepay` or `mobilepayoneline` payment methods; subsequent-in-series
 authorizations, however, must be made using the `card` payment method using the
 card details of the referenced previous-in-series authorization.
 
