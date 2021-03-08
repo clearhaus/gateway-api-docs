@@ -836,8 +836,8 @@ supported.
   <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
   subsequent recurring authorization.
   <br />
-  <b>Notice:</b> The merchant ID for the <code>googlepay</code> test
-  environment is <code>12345678901234567890</code>.
+  <b>Notice:</b> The <code>recipient_id</code> for the <code>googlepay</code>
+  test environment is <code>merchant:12345678901234567890</code>.
 </p>
 
 ##### Method: `mobilepayonline`
