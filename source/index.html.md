@@ -390,10 +390,10 @@ curl -X POST \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
-A first-in-series authorization can also be made using the `applepay`
-payment method; subsequent-in-series authorizations, however,
-must be made using the `card` payment method using the card details of the
-referenced previous-in-series authorization.
+A first-in-series authorization can also be made using the `applepay`,
+`googlepay` or `mobilepayoneline` payment methods; subsequent-in-series
+authorizations, however, must be made using the `card` payment method using the
+card details of the referenced previous-in-series authorization.
 
 Any first-in-series authorization must be made with strong customer
 authentication (SCA) regardless of the authorization amount.
@@ -785,6 +785,59 @@ object][ApplePay-PaymentToken] for more information.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent recurring authorization.
+</p>
+
+
+##### Method: `googlepay`
+
+To accept a payment using Google Pay, the complete payment token, recipient ID
+and derived shared secret, are required. Please refer to the [official
+documentation][GooglePay-PaymentCryptography]. Only protocol version `ECv2` is
+supported.
+
+<dl class="dl-vertical">
+  <dt>googlepay[token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Raw payment method token as received in response from Google. UTF-8 encoded
+    serialization of a JSON dictionary.
+  </dd>
+  <dt>googlepay[shared_key]
+    <span class="type">[:base64:]</span>
+  </dt>
+  <dd>
+    The shared secret derived from the ephemeral public key and your private
+    key.
+  </dd>
+  <dt>googlepay[recipient_id]
+    <span class="type">[\x21-\x7E]+
+      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a> excluding space
+    </span>
+  </dt>
+  <dd>
+    The Google Pay recipient of the payload, e.g. <code>merchant:0123456789</code>.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
+  method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> is strongly
+  authenticated (SCA in PSD2) if <code>authMethod</code> is
+  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for SCA 
+  (<a href="https://developers.google.com/pay/api/web/guides/resources/sca">link</a>)
+  have been followed.
+
+  If <code>authMethod</code> is <code>PAN_ONLY</code>, a 3-D Secure flow is
+  required for SCA.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
+  subsequent recurring authorization.
+  <br />
+  <b>Notice:</b> The <code>recipient_id</code> for the <code>googlepay</code>
+  test environment is <code>merchant:12345678901234567890</code>.
 </p>
 
 ##### Method: `mobilepayonline`
@@ -1424,3 +1477,4 @@ In the first quarter of 2020 signing of POST requests will become mandatory. We 
 [HATEOAS]: https://en.wikipedia.org/wiki/HATEOAS
 [Tokenization]: https://en.wikipedia.org/wiki/Tokenization_(data_security)
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
+[GooglePay-PaymentCryptography]: https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography
