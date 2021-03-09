@@ -1181,9 +1181,7 @@ POST https://gateway.clearhaus.com/credits
     <span class="type">[1-9][0-9]{1,9}</span>
   </dt>
   <dd>
-    Amount in minor units of given currency (e.g. cents if in Euro). As for
-    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
-    Visa, the amount must not exceed the equivalent of 50,000 USD.
+    Amount in minor units of given currency (e.g. cents if in Euro).
   </dd>
   <dt>currency
     <span class="type">[A-Z]{3}</span>
