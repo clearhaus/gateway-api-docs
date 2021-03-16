@@ -367,7 +367,11 @@ Example response (snippet):
 ````json
 {
     "id": "1b722683-92ad-4c6b-85da-e119d550670d",
-    "status": { "code": 20000 }
+    "status": { "code": 20000 },
+    "series": {
+        "type": "recurring",
+        "tid": "481048839682954"
+    }
 }
 ````
 
