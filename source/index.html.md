@@ -400,7 +400,8 @@ authorizations, however, must be made using the `card` payment method using the
 card details of the referenced previous-in-series authorization.
 
 Any first-in-series authorization must be made with strong customer
-authentication (SCA) regardless of the authorization amount.
+authentication (SCA) regardless of the authorization amount (when the cardholder
+is in scope for SCA).
 
 
 ## 3-D Secure
