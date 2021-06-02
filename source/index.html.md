@@ -336,16 +336,22 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-Clearhaus supports the recurring type of subscription billing.
+Clearhaus supports two types of subscription billing:
 
-There may be an agreed end of the series. The amount may be varying. See the
-partner guideline for more details.
+* Recurring: Transactions processed at agreed predetermined, regular intervals not
+    exceeding 1 year; e.g. a monthly subscription for a magazine.
+* Unscheduled (UCOF, Unscheduled Credential on File): Transactions that does not
+    occur on predetermined, regular intervals; e.g. a car sharing subscription
+    billed weekly but only for weeks when the service is used.
+
+For both types, there may be an agreed end of the series and the amount may be
+varying. See the partner guideline for more details.
 
 ### Repeatedly reserve money
 
-A first-in-series recurring payment is created by making an authorization and
-marking it as a `recurring` series. As an example, a first-in-series recurring
-payment could be made this way:
+A first-in-series payment is created by making an authorization and
+marking it as either a `recurring` or `unscheduled` series.
+For instance, a first-in-series recurring payment could be made this way:
 
 ````shell
 curl -X POST \
@@ -377,8 +383,8 @@ Example response (snippet):
 
 This should be followed by a capture.
 
-Subsequent-in-series recurring authorizations initiated by the merchant are
-made similarly, however, CSC is not included, and the previous-in-series is
+Subsequent-in-series authorizations initiated by the merchant are made
+similarly, however, CSC is not included, and the previous-in-series is
 referenced, e.g.:
 
 ````shell
@@ -626,7 +632,7 @@ Exactly one payment method must be used.
 
   <dt>
     series[type]
-    <span class="type"><code>recurring</code></span>
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
   </dt>
   <dd>
     The type of series.
@@ -634,6 +640,10 @@ Exactly one payment method must be used.
     <code>recurring</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant may repeatedly charge the cardholder at
     regular, predetermined intervals that may not exceed 1 year.
+    <br />
+    <code>unscheduled</code>: A series of transactions where the cardholder has
+    explicitly agreed that the merchant may repeatedly charge the cardholder at
+    unknown times, e.g. based on cardholder usage.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
@@ -788,7 +798,7 @@ object][ApplePay-PaymentToken] for more information.
   <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
-  subsequent recurring authorization.
+  subsequent-in-series authorization.
 </p>
 
 
@@ -838,7 +848,7 @@ supported.
   required for SCA.
   <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
-  subsequent recurring authorization.
+  subsequent-in-series authorization.
   <br />
   <b>Notice:</b> The <code>recipient_id</code> for the <code>googlepay</code>
   test environment is <code>merchant:12345678901234567890</code>.
