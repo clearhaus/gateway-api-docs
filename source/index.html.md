@@ -673,6 +673,32 @@ Exactly one payment method must be used.
     <div class="type">Optional</div>
   </dd>
 
+  <dt>
+    order_method
+    <span class="type">(<code>ecommerce</code>|<code>mail</code>|<code>telephone</code>)</span>
+  </dt>
+  <dd>
+    <code>ecommerce</code>: When the order arrives via electronic commerce,
+    including payment link.
+    <br />
+    <code>mail</code>: When the order details and payment credentials are
+    obtained via mail (physical as well as electronic).
+    <br />
+    <code>telephone</code>: When the order details and payment credentials are
+    obtained via telephone.
+    <br />
+    Default: <code>ecommerce</code>
+    <br />
+    For both <code>mail</code> and <code>telephone</code>, neither
+    <code>series[]</code>, <code>recurring</code>, nor
+    <code>credential_on_file</code> are allowed. Additionally,
+    <code>initiator</code> cannot be <code>merchant</code>.
+    <br />
+    Payment method must be <code>card</code> and neither <code>card[csc]</code>
+    nor <code>card[3dsecure]</code> (nor <code>card[pares]</code>) can be
+    present.
+  </dd>
+
   <!-- deprecated -->
   <dt><strike>recurring</strike>
     <span class="type">(true|false)</span>
