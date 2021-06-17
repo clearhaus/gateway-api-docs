@@ -933,6 +933,13 @@ supported.
   <dd>
     Expiry year of card to charge.
   </dd>
+  <dt>moto[csc]
+    <span class="type">[0-9]{3}</span>
+  </dt>
+  <dd>
+    Card Security Code.
+    <div class="type">Optional</div>
+  </dd>
   <dt>moto[type]
     <span class="type">(mail|telephone)</span>
   </dt>
