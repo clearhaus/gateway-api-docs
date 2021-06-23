@@ -539,7 +539,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`.
+`card`, `applepay`, `mobilepayonline`, `moto`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -910,6 +910,38 @@ supported.
   <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated (SCA in PSD2).
+</p>
+
+##### Method: `moto`
+
+<dl class="dl-vertical">
+  <dt>moto[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.<br />
+  </dd>
+  <dt>moto[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>moto[expire_year]
+    <span class="type">[0-9]{4}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>moto</code> payment
+  method.
+  <br />
+  <b>Notice:</b> Neither <code>series[]</code> (nor <code>recurring</code>)
+  nor <code>credential_on_file</code> is supported.
+  Also, <code>initiator</code> cannot be <code>merchant</code>.
 </p>
 
 ##### Authentication: `[3dsecure]`
