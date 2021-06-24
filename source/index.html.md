@@ -1435,7 +1435,7 @@ For testing towards the test endpoint `gateway.test.clearhaus.com` please use
 PANs that are either <b>not</b>
 <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, are
 one of the special test PANs 2221000000000009, 4111111111111111,
-5500000000000004, or are Apple Pay test cards.
+5000000000000004, or are Apple Pay test cards.
 
 For PANs starting with 420000 and ending with 0000, and PANs starting with
 555555 and ending with 4444, you can specify a valid status `code` as
