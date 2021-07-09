@@ -340,8 +340,8 @@ Clearhaus supports two types of subscription billing:
 
 * Recurring: Transactions processed at agreed, predetermined, regular intervals not
     exceeding 1 year; e.g. a monthly subscription for a magazine.
-* Unscheduled (UCOF, Unscheduled Credential on File): Transactions that does not
-    occur on predetermined, regular intervals; e.g. a car sharing subscription
+* Unscheduled (UCOF, Unscheduled Credential on File): Transactions not occurring
+    on predetermined, regular intervals; e.g. a car sharing subscription
     billed weekly but only for weeks when the service is used.
 
 For both types, there may be an agreed end of the series and the amount may be
@@ -643,7 +643,7 @@ Exactly one payment method must be used.
     <br />
     <code>unscheduled</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant may repeatedly charge the cardholder at
-    unknown times, e.g. based on cardholder usage.
+    non-predetermined times, e.g. based on cardholder usage.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
