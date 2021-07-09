@@ -338,7 +338,7 @@ parameter `card[name]`.
 
 Clearhaus supports two types of subscription billing:
 
-* Recurring: Transactions processed at agreed predetermined, regular intervals not
+* Recurring: Transactions processed at agreed, predetermined, regular intervals not
     exceeding 1 year; e.g. a monthly subscription for a magazine.
 * Unscheduled (UCOF, Unscheduled Credential on File): Transactions that does not
     occur on predetermined, regular intervals; e.g. a car sharing subscription
