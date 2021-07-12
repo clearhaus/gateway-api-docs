@@ -637,6 +637,9 @@ Exactly one payment method must be used.
   <dd>
     The type of series.
     <br />
+    This parameter is used exactly when initiating a series. To create a
+    subsequent-in-series authorization use <code>series[previous][...]</code>.
+    <br />
     <code>recurring</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant may repeatedly charge the cardholder at
     regular, predetermined intervals that may not exceed 1 year.
@@ -656,8 +659,8 @@ Exactly one payment method must be used.
     The Clearhaus authorization ID as a reference to the latest approved
     authorization in the series.
     <br />
-    If omitted and <code>series[type]</code> is populated, then the
-    authorization will be a first-in-series.
+    This parameter is used for a subsequent-in-series.
+    To create a first-in-series authorization use <code>series[type]</code>.
     <br />
     Can be used only with payment method <code>card</code>.
     <br />
@@ -986,16 +989,35 @@ Only one 3-D Secure version can be used for a given authorization.
 
 ##### Scheme reference to series
 
-If the previous-in-series authorization was made via this API, you must use
-`series[previous][id]` to reference it. If it was not made via this API, you 
+If the previous-in-series authorization was made via this API, you should use
+`series[previous][id]` to reference it. If it was not made via this API, you
 must obtain explicit approval from Clearhaus to use the raw scheme values
 grouped in <code>series[previous][mastercard]</code> and
-<code>series[previous][visa]</code>. This is relevant when moving subscriptions
-to Clearhaus from another acquirer.
+<code>series[previous][visa]</code>. This is relevant when moving a subscription
+from another acquirer to Clearhaus or among Clearhaus accounts.
 
 The Mastercard specific reference to the series contains the following parts.
 
 <dl class="dl-vertical">
+  <dt>
+    series[previous][mastercard][type]
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
+  </dt>
+  <dd>
+    The type of the existing series.
+    <br />
+    Default: <code>recurring</code>.
+
+    <div class="type">
+    Conditional.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
+  </dd>
+
   <dt>
     series[previous][mastercard][tid]
     <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}</span>
@@ -1008,10 +1030,18 @@ The Mastercard specific reference to the series contains the following parts.
     two spaces;
     to be used in Data Element 48, Subfield 63.
 
-    <div class="type">Conditional.
-    Required if <code>series[previous][mastercard]</code> is present.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][visa]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
   </dd>
 
   <dt>
@@ -1043,16 +1073,43 @@ The Mastercard specific reference to the series contains the following parts.
     when a previous-in-series authorization in the series is referenced via
     <code>series[previous][id]</code>.
 
-    <div class="type">Conditional.
-    Required if <code>series[previous][mastercard]</code> is present.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][visa]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
   </dd>
 </dl>
 
-The Visa specific reference to the series has only one part.
+The Visa specific reference to the series contains the following parts.
 
 <dl class="dl-vertical">
+  <dt>
+    series[previous][visa][type]
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
+  </dt>
+  <dd>
+    The type of the existing series.
+    <br />
+    Default: <code>recurring</code>.
+
+    <div class="type">
+    Conditional.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+    </div>
+  </dd>
+
   <dt>
     series[previous][visa][tid]
     <span class="type">[0-9]{15}</span>
@@ -1061,9 +1118,18 @@ The Visa specific reference to the series has only one part.
     Transaction ID from Field 62.2 of the first-in-series or previous-in-series
     authorization; to be used in Field 125, Usage 2, Dataset ID 03.
 
-    <div class="type">Optional.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][mastercard]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    <code>series[previous][visa][type]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+    </div>
   </dd>
 </dl>
 
