@@ -1057,8 +1057,8 @@ The Mastercard specific reference to the series contains the following parts.
     If the previous-in-series is a subsequent-in-series it should be equal to
     the <i>Mastercard exemption</i> applied for the previous-in-series.
     The value originates from Mastercard Data element 48, Subelement 22,
-    Subfield 1 named "Multi-Purpose Merchant Indicator (MPMI).
-    The value <code>01</code> indicates variable amount whereas <code>01</code>
+    Subfield 1.
+    The value <code>01</code> indicates variable amount whereas <code>03</code>
     indicates fixed amount.
 
     <br />
