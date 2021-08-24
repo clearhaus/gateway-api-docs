@@ -1462,7 +1462,7 @@ Declined   |  40000 |  General input error                |
            |  40414 |  Suspected fraud                    | AC
            |  40415 |  Amount limit exceeded              | AC
            |  40416 |  Additional authentication required | AC
-           |  40420 |  Merchant blocked by cardholder     | AC
+           |  40420 |  Merchant blocked by cardholder     | A
            |  50000 |  Clearhaus error                    |
 
 
