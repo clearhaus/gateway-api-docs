@@ -844,7 +844,7 @@ supported.
   <br />
   <b>Notice:</b> An authorization made with <code>googlepay</code> is strongly
   authenticated (SCA in PSD2) if <code>authMethod</code> is
-  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for SCA 
+  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for SCA
   (<a href="https://developers.google.com/pay/api/web/guides/resources/sca">link</a>)
   have been followed.
 
@@ -1082,7 +1082,7 @@ The Mastercard specific reference to the series contains the following parts.
     <span class="type">(<code>fixed_amount_series</code>|<code>variable_amount_series</code>)</span>
   </dt>
   <dd>
-    The <i>Mastercard exemption</i> is used to indicate if the series is 
+    The <i>Mastercard exemption</i> is used to indicate if the series is
     fixed-amount or a variable-amount.
     <ul>
       <li><code>fixed_amount_series</code>:
