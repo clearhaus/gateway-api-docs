@@ -1436,9 +1436,9 @@ codes in the table below.
 
 The transaction type column shows the transaction types a status code can be
 received for. Blank means all types. A, C and V are short for authorizations,
-credits and voids, and they can be combined into e.g. AC meaning authorizations
-and credits. Negation is indicated with a leading minus, e.g. -V means all
-types but voids.
+credits and voids, respectively, and they can be combined into e.g. AC meaning
+authorizations and credits. Negation is indicated with a leading minus, e.g. -V
+means all types but voids.
 
 Status     | `code` |  Meaning                            | Transaction types
 ---------- | ------ | ----------------------------------- | -----------------
