@@ -1432,38 +1432,34 @@ GET https://gateway.clearhaus.com/account
 ## Transaction status codes
 
 When you make a new transaction the JSON response includes one of the status
-codes in the table below.
+codes in the following table. The rightmost columns indicate which transaction
+types a particular status code can be received for; Au, Ca, Re, Vo and Cr are
+short for authorizations, captures, refunds, voids and credits, respectively.
 
-The transaction type column shows the transaction types a status code can be
-received for. Blank means all types. A, C and V are short for authorizations,
-credits and voids, respectively, and they can be combined into e.g. AC meaning
-authorizations and credits. Negation is indicated with a leading minus, e.g. -V
-means all types but voids.
-
-Status     | `code` |  Meaning                            | Transaction types
----------- | ------ | ----------------------------------- | -----------------
-Approved   |  20000 |  Approved                           |
-Declined   |  40000 |  General input error                |
-           |  40110 |  Invalid card number                | AC
-           |  40111 |  Unsupported card scheme            | AC
-           |  40120 |  Invalid CSC                        | A
-           |  40130 |  Invalid expire date                | AC
-           |  40135 |  Card expired                       |
-           |  40140 |  Invalid currency                   | AC
-           |  40150 |  Invalid text on statement          | -V
-           |  40200 |  Clearhaus rule violation           |
-           |  40300 |  3-D Secure problem                 | A
-           |  40310 |  3-D Secure authentication failure  | A
-           |  40400 |  Backend problem                    | ACV
-           |  40410 |  Declined by issuer or card scheme  | ACV
-           |  40411 |  Card restricted                    | AC
-           |  40412 |  Card lost or stolen                | AC
-           |  40413 |  Insufficient funds                 | AC
-           |  40414 |  Suspected fraud                    | AC
-           |  40415 |  Amount limit exceeded              | AC
-           |  40416 |  Additional authentication required | AC
-           |  40420 |  Merchant blocked by cardholder     | A
-           |  50000 |  Clearhaus error                    |
+Status     | `code` |  Meaning                            | Au      | Ca      | Re      | Vo      | Cr      |
+---------- | ------ | ----------------------------------- | ------- | ------- | ------- | ------- | ------- |
+Approved   |  20000 |  Approved                           | &check; | &check; | &check; | &check; | &check; |
+Declined   |  40000 |  General input error                | &check; | &check; | &check; | &check; | &check; |
+           |  40110 |  Invalid card number                | &check; |         |         |         | &check; |
+           |  40111 |  Unsupported card scheme            | &check; |         |         |         | &check; |
+           |  40120 |  Invalid CSC                        | &check; |         |         |         |         |
+           |  40130 |  Invalid expire date                | &check; |         |         |         | &check; |
+           |  40135 |  Card expired                       | &check; | &check; | &check; | &check; | &check; |
+           |  40140 |  Invalid currency                   | &check; |         |         |         | &check; |
+           |  40150 |  Invalid text on statement          | &check; | &check; | &check; |         |         |
+           |  40200 |  Clearhaus rule violation           | &check; | &check; | &check; | &check; | &check; |
+           |  40300 |  3-D Secure problem                 | &check; |         |         |         |         |
+           |  40310 |  3-D Secure authentication failure  | &check; |         |         |         |         |
+           |  40400 |  Backend problem                    | &check; |         |         | &check; | &check; |
+           |  40410 |  Declined by issuer or card scheme  | &check; |         |         | &check; | &check; |
+           |  40411 |  Card restricted                    | &check; |         |         |         | &check; |
+           |  40412 |  Card lost or stolen                | &check; |         |         |         | &check; |
+           |  40413 |  Insufficient funds                 | &check; |         |         |         | &check; |
+           |  40414 |  Suspected fraud                    | &check; |         |         |         | &check; |
+           |  40415 |  Amount limit exceeded              | &check; |         |         |         | &check; |
+           |  40416 |  Additional authentication required | &check; |         |         |         | &check; |
+           |  40420 |  Merchant blocked by cardholder     | &check; |         |         |         |         |
+           |  50000 |  Clearhaus error                    | &check; | &check; | &check; | &check; | &check; |
 
 
 ### Status message
