@@ -598,8 +598,9 @@ Exactly one payment method must be used.
     This is regardless of whether a stored payment credential is being used.
     <br />
     For compliance reasons there should be a previous approved transaction (for
-    the cardholder and the merchant) marked with <code>storing</code> before
-    <code>initiator</code> may be <code>merchant</code>.
+    the combination of card and merchant) where
+    <code>credential_on_file=store</code> before <code>initiator</code> may be
+    <code>merchant</code>.
     <br />
     Default:
     <ul>
