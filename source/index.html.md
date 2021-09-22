@@ -808,6 +808,42 @@ object][ApplePay-PaymentToken] for more information.
   subsequent-in-series authorization.
 </p>
 
+Additionally, an Apple Pay authorization can be created using raw values from
+a payment token:
+
+<dl class="dl-vertical">
+  <dt>applepay[raw][pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>applepay[raw][cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Online payment cryptogram.
+  </dd>
+  <dt>applepay[raw][eci]
+    <span class="type">[0-9]{1,2}</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
 
 ##### Method: `googlepay`
 
