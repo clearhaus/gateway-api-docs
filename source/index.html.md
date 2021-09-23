@@ -793,21 +793,6 @@ object][ApplePay-PaymentToken] for more information.
   </dd>
 </dl>
 
-<p class="alert alert-info">
-  <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
-  method.
-  <br />
-  <b>Notice:</b> An authorization made with <code>applepay</code> is
-  strongly authenticated (SCA in PSD2).
-  <br />
-  <b>Notice:</b> An authorization made with <code>applepay</code> may be 3-D
-  Secured to some degree or not at all; this is indicated by the
-  <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
-  <br />
-  <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
-  subsequent-in-series authorization.
-</p>
-
 Additionally, an Apple Pay authorization can be created using raw values from
 a payment token:
 
@@ -846,6 +831,27 @@ a payment token:
     <div class="type">Optional</div>
   </dd>
 </dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
+  method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>applepay</code> is
+  strongly authenticated (SCA in PSD2).
+  <br />
+  <b>Notice:</b> An authorization made with <code>applepay</code> may be 3-D
+  Secured to some degree or not at all; this is indicated by the
+  <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
+  <br />
+  <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
+  subsequent-in-series authorization.
+  <br />
+  <b>Notice:</b> Clients using <code>applepay[raw]</code> are responsible for
+  verifying the payment token's signature, decrypting the token's payment data,
+  validating the format of the fields in the payment data, etc. The procedure
+  is available in Apple Pay's
+  <a href="https://developer.apple.com/library/archive/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html">Payment Token Format Reference</a>.
+</p>
 
 ##### Method: `googlepay`
 
