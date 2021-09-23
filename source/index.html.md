@@ -834,13 +834,15 @@ a payment token:
     <span class="type">[:base64:]{28}</span>
   </dt>
   <dd>
-    Online payment cryptogram.
+    Online payment cryptogram. Found as <code>onlinePaymentCryptogram</code> in
+    the payment token.
   </dd>
   <dt>applepay[raw][eci]
     <span class="type">[0-9]{1,2}</span>
   </dt>
   <dd>
-    Electronic Commerce Indicator.
+    Electronic Commerce Indicator. Found as <code>eciIndicator</code> in the
+    payment token.
     <div class="type">Optional</div>
   </dd>
 </dl>
