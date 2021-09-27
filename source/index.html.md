@@ -823,7 +823,7 @@ a payment token:
     the payment token.
   </dd>
   <dt>applepay[raw][eci]
-    <span class="type">[0-9]{1,2}</span>
+    <span class="type">[0-9]{2}</span>
   </dt>
   <dd>
     Electronic Commerce Indicator. Found as <code>eciIndicator</code> in the
