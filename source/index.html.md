@@ -793,6 +793,45 @@ object][ApplePay-PaymentToken] for more information.
   </dd>
 </dl>
 
+Additionally, an Apple Pay authorization can be created using raw values from
+a payment token:
+
+<dl class="dl-vertical">
+  <dt>applepay[raw][pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>applepay[raw][cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Online payment cryptogram. Found as <code>onlinePaymentCryptogram</code> in
+    the payment token.
+  </dd>
+  <dt>applepay[raw][eci]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator. Found as <code>eciIndicator</code> in the
+    payment token.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
 <p class="alert alert-info">
   <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
   method.
@@ -806,8 +845,13 @@ object][ApplePay-PaymentToken] for more information.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent-in-series authorization.
+  <br />
+  <b>Notice:</b> Clients using <code>applepay[raw]</code> are responsible for
+  verifying the payment token's signature, decrypting the token's payment data,
+  validating the format of the fields in the payment data, etc. The procedure
+  is available in Apple Pay's
+  <a href="https://developer.apple.com/library/archive/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html">Payment Token Format Reference</a>.
 </p>
-
 
 ##### Method: `googlepay`
 
