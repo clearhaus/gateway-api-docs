@@ -1596,6 +1596,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Removing VES from supported currencies
+
+The currency VES will not be supported after 2021-10-01T04:00:00Z.
+
 ### Update authorization parameters
 
 Replace `recurring` with `series[type]=recurring` and add `series[previous]` as
