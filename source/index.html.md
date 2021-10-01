@@ -808,6 +808,13 @@ object][ApplePay-PaymentToken] for more information.
   subsequent-in-series authorization.
 </p>
 
+<p class="alert alert-info">
+  <b>Notice:</b> In production, the Apple Pay token's signature is checked
+  against Apple's certificate chain. For the test system, we use
+  <a href="applepay-test-certificate-chain.tar">a self-generated certificate
+  chain</a> (includes a client certificate and key for your convenience).
+</p>
+
 
 ##### Method: `googlepay`
 
