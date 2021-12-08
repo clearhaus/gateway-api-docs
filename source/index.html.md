@@ -4,8 +4,9 @@ title: Clearhaus Transaction API Documentation
 
 # Getting Started
 
-To use this transaction API you must [be a
-partner](https://www.clearhaus.com/psp-partners) (and partners must be PCI DSS L1).
+To use this transaction API you must [be a technical
+partner](https://www.clearhaus.com/psp-partner) (and such partners must be
+PCI DSS L1).
 
 <p class="alert alert-danger">
 API keys come with many privileges so keep them secret.
@@ -62,7 +63,7 @@ All responses will be delivered in JSON format (see [JSON-HAL][JSON-HAL]).
 Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.10.0; charset=utf-8
 ````
 
-where the version follows [Semantic Versioning](http://semver.org).
+where the version follows [Semantic Versioning](https://semver.org).
 
 We use HTTP response codes to indicate API response status:
 
@@ -335,16 +336,22 @@ parameter `card[name]`.
 
 ## Series of transactions
 
-Clearhaus supports the recurring type of subscription billing.
+Clearhaus supports two types of subscription billing:
 
-There may be an agreed end of the series. The amount may be varying. See the
-partner guideline for more details.
+* Recurring: Transactions processed at agreed, predetermined, regular intervals not
+    exceeding 1 year; e.g. a monthly subscription for a magazine.
+* Unscheduled (UCOF, Unscheduled Credential on File): Transactions not occurring
+    on predetermined, regular intervals; e.g. a car sharing subscription
+    billed weekly but only for weeks when the service is used.
+
+For both types, there may be an agreed end of the series and the amount may be
+varying. See the partner guideline for more details.
 
 ### Repeatedly reserve money
 
-A first-in-series recurring payment is created by making an authorization and
-marking it as a `recurring` series. As an example, a first-in-series recurring
-payment could be made this way:
+A first-in-series payment is created by making an authorization and
+marking it as either a `recurring` or `unscheduled` series.
+For instance, a first-in-series recurring payment could be made this way:
 
 ````shell
 curl -X POST \
@@ -366,14 +373,18 @@ Example response (snippet):
 ````json
 {
     "id": "1b722683-92ad-4c6b-85da-e119d550670d",
-    "status": { "code": 20000 }
+    "status": { "code": 20000 },
+    "series": {
+        "type": "recurring",
+        "tid": "481048839682954"
+    }
 }
 ````
 
 This should be followed by a capture.
 
-Subsequent-in-series recurring authorizations initiated by the merchant are
-made similarly, however, CSC is not included, and the previous-in-series is
+Subsequent-in-series authorizations initiated by the merchant are made
+similarly, however, CSC is not included, and the previous-in-series is
 referenced, e.g.:
 
 ````shell
@@ -389,20 +400,23 @@ curl -X POST \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ````
 
-A first-in-series authorization can also be made using the `applepay`
-payment method; subsequent-in-series authorizations, however,
-must be made using the `card` payment method using the card details of the
-referenced previous-in-series authorization.
+A first-in-series authorization can also be made using the `applepay`,
+`googlepay` or `mobilepayonline` payment methods.
+
+A subsequent-in-series authorization must be made using the `card` payment
+method with the exact card details of the referenced previous-in-series
+authorization.
 
 Any first-in-series authorization must be made with strong customer
-authentication (SCA) regardless of the authorization amount.
+authentication (SCA) regardless of the authorization amount (when the cardholder
+is in scope for SCA).
 
 
 ## 3-D Secure
 
 3-D Secure is a protocol designed to improve security for online transactions.
 Before you continue please read more about this protocol at
-[3dsecure.io](http://docs.3dsecure.io).
+[3dsecure.io](https://docs.3dsecure.io).
 
 3-D Secure is the only way to achieve liability shift for fraud chargebacks.
 
@@ -533,7 +547,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`, `vipps`.
+`card`, `applepay`, `mobilepayonline`, `moto`, `vipps`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -586,8 +600,9 @@ Exactly one payment method must be used.
     This is regardless of whether a stored payment credential is being used.
     <br />
     For compliance reasons there should be a previous approved transaction (for
-    the cardholder and the merchant) marked with <code>storing</code> before
-    <code>initiator</code> may be <code>merchant</code>.
+    the combination of card and merchant) where
+    <code>credential_on_file=store</code> before <code>initiator</code> may be
+    <code>merchant</code>.
     <br />
     Default:
     <ul>
@@ -609,7 +624,7 @@ Exactly one payment method must be used.
 
   <dt>reference
     <span class="type">[\x20-\x7E]{1,30}
-      <a target="_blank" href= "http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href= "https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -621,14 +636,21 @@ Exactly one payment method must be used.
 
   <dt>
     series[type]
-    <span class="type"><code>recurring</code></span>
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
   </dt>
   <dd>
     The type of series.
     <br />
+    This parameter is used exactly when initiating a series. To create a
+    subsequent-in-series authorization use <code>series[previous][...]</code>.
+    <br />
     <code>recurring</code>: A series of transactions where the cardholder has
     explicitly agreed that the merchant may repeatedly charge the cardholder at
     regular, predetermined intervals that may not exceed 1 year.
+    <br />
+    <code>unscheduled</code>: A series of transactions where the cardholder has
+    explicitly agreed that the merchant may repeatedly charge the cardholder at
+    non-predetermined times, e.g. based on cardholder usage.
 
     <div class="type">Conditional. Cannot be present if <code>series[previous]</code> is present.</div>
   </dd>
@@ -641,8 +663,8 @@ Exactly one payment method must be used.
     The Clearhaus authorization ID as a reference to the latest approved
     authorization in the series.
     <br />
-    If omitted and <code>series[type]</code> is populated, then the
-    authorization will be a first-in-series.
+    This parameter is used for a subsequent-in-series.
+    To create a first-in-series authorization use <code>series[type]</code>.
     <br />
     Can be used only with payment method <code>card</code>.
     <br />
@@ -656,7 +678,7 @@ Exactly one payment method must be used.
 
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -731,7 +753,7 @@ Exactly one payment method must be used.
   </dt>
   <dd>
     Deprecated! Please use <code>card[3dsecure][v1][pares]</code>. <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -771,6 +793,45 @@ object][ApplePay-PaymentToken] for more information.
   </dd>
 </dl>
 
+Additionally, an Apple Pay authorization can be created using raw values from
+a payment token:
+
+<dl class="dl-vertical">
+  <dt>applepay[raw][pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>applepay[raw][cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Online payment cryptogram. Found as <code>onlinePaymentCryptogram</code> in
+    the payment token.
+  </dd>
+  <dt>applepay[raw][eci]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator. Found as <code>eciIndicator</code> in the
+    payment token.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
 <p class="alert alert-info">
   <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
   method.
@@ -783,7 +844,65 @@ object][ApplePay-PaymentToken] for more information.
   <code>eciIndicator</code> of the <code>applepay[payment_token]</code>.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
-  subsequent recurring authorization.
+  subsequent-in-series authorization.
+  <br />
+  <b>Notice:</b> Clients using <code>applepay[raw]</code> are responsible for
+  verifying the payment token's signature, decrypting the token's payment data,
+  validating the format of the fields in the payment data, etc. The procedure
+  is available in Apple Pay's
+  <a href="https://developer.apple.com/library/archive/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html">Payment Token Format Reference</a>.
+</p>
+
+##### Method: `googlepay`
+
+To accept a payment using Google Pay, the complete payment token, recipient ID
+and derived shared secret, are required. Please refer to the [official
+documentation][GooglePay-PaymentCryptography]. Only protocol version `ECv2` is
+supported.
+
+<dl class="dl-vertical">
+  <dt>googlepay[token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Raw payment method token as received in response from Google. UTF-8 encoded
+    serialization of a JSON dictionary.
+  </dd>
+  <dt>googlepay[shared_key]
+    <span class="type">[:base64:]</span>
+  </dt>
+  <dd>
+    The shared secret derived from the ephemeral public key and your private
+    key.
+  </dd>
+  <dt>googlepay[recipient_id]
+    <span class="type">[\x21-\x7E]+
+      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a> excluding space
+    </span>
+  </dt>
+  <dd>
+    The Google Pay recipient of the payload, e.g. <code>merchant:0123456789</code>.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>googlepay</code> payment
+  method.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> is strongly
+  authenticated (SCA in PSD2) if <code>authMethod</code> is
+  <code>CRYPTOGRAM_3DS</code> and the Google Pay guidelines for SCA 
+  (<a href="https://developers.google.com/pay/api/web/guides/resources/sca">link</a>)
+  have been followed.
+
+  If <code>authMethod</code> is <code>PAN_ONLY</code>, a 3-D Secure flow is
+  required for SCA.
+  <br />
+  <b>Notice:</b> An authorization made with <code>googlepay</code> cannot be a
+  subsequent-in-series authorization.
+  <br />
+  <b>Notice:</b> The <code>recipient_id</code> for the <code>googlepay</code>
+  test environment is <code>merchant:12345678901234567890</code>.
 </p>
 
 ##### Method: `mobilepayonline`
@@ -840,7 +959,7 @@ object][ApplePay-PaymentToken] for more information.
   </dt>
   <dd>
     Deprecated! Please use <code>mobilepayonline[3dsecure][v1][pares]</code>. <br />
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3dsecure.io</a>
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3dsecure.io</a>
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -851,6 +970,38 @@ object][ApplePay-PaymentToken] for more information.
   <br />
   <b>Notice:</b> An authorization made with <code>mobilepayonline</code> is
   strongly authenticated (SCA in PSD2).
+</p>
+
+##### Method: `moto`
+
+<dl class="dl-vertical">
+  <dt>moto[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.<br />
+  </dd>
+  <dt>moto[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>moto[expire_year]
+    <span class="type">[0-9]{4}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>moto</code> payment
+  method.
+  <br />
+  <b>Notice:</b> Neither <code>series[]</code> (nor <code>recurring</code>)
+  nor <code>credential_on_file</code> is supported.
+  Also, <code>initiator</code> cannot be <code>merchant</code>.
 </p>
 
 ##### Method: `vipps`
@@ -931,7 +1082,7 @@ Only one 3-D Secure version can be used for a given authorization.
     <span class="type">[:base64:]</span>
   </dt>
   <dd>
-    See more information at <a target="_blank" href="http://docs.3dsecure.io">3Dsecure.io</a>.
+    See more information at <a target="_blank" href="https://docs.3dsecure.io">3Dsecure.io</a>.
     <div class="type">Optional</div>
   </dd>
 </dl>
@@ -964,16 +1115,35 @@ Only one 3-D Secure version can be used for a given authorization.
 
 ##### Scheme reference to series
 
-If the previous-in-series authorization was made via this API, you must use
-`series[previous][id]` to reference it. If it was not made via this API, you 
+If the previous-in-series authorization was made via this API, you should use
+`series[previous][id]` to reference it. If it was not made via this API, you
 must obtain explicit approval from Clearhaus to use the raw scheme values
 grouped in <code>series[previous][mastercard]</code> and
-<code>series[previous][visa]</code>. This is relevant when moving subscriptions
-to Clearhaus from another acquirer.
+<code>series[previous][visa]</code>. This is relevant when moving a subscription
+from another acquirer to Clearhaus or among Clearhaus accounts.
 
 The Mastercard specific reference to the series contains the following parts.
 
 <dl class="dl-vertical">
+  <dt>
+    series[previous][mastercard][type]
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
+  </dt>
+  <dd>
+    The type of the existing series.
+    <br />
+    Default: <code>recurring</code>.
+
+    <div class="type">
+    Conditional.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
+  </dd>
+
   <dt>
     series[previous][mastercard][tid]
     <span class="type">[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}</span>
@@ -986,10 +1156,18 @@ The Mastercard specific reference to the series contains the following parts.
     two spaces;
     to be used in Data Element 48, Subfield 63.
 
-    <div class="type">Conditional.
-    Required if <code>series[previous][mastercard]</code> is present.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][visa]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
   </dd>
 
   <dt>
@@ -1012,8 +1190,8 @@ The Mastercard specific reference to the series contains the following parts.
     If the previous-in-series is a subsequent-in-series it should be equal to
     the <i>Mastercard exemption</i> applied for the previous-in-series.
     The value originates from Mastercard Data element 48, Subelement 22,
-    Subfield 1 named "Multi-Purpose Merchant Indicator (MPMI).
-    The value <code>01</code> indicates variable amount whereas <code>01</code>
+    Subfield 1.
+    The value <code>01</code> indicates variable amount whereas <code>03</code>
     indicates fixed amount.
 
     <br />
@@ -1021,16 +1199,43 @@ The Mastercard specific reference to the series contains the following parts.
     when a previous-in-series authorization in the series is referenced via
     <code>series[previous][id]</code>.
 
-    <div class="type">Conditional.
-    Required if <code>series[previous][mastercard]</code> is present.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][visa]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][visa][...]</code>
+    is present.
+    </div>
   </dd>
 </dl>
 
-The Visa specific reference to the series has only one part.
+The Visa specific reference to the series contains the following parts.
 
 <dl class="dl-vertical">
+  <dt>
+    series[previous][visa][type]
+    <span class="type">(<code>recurring</code>|<code>unscheduled</code>)</span>
+  </dt>
+  <dd>
+    The type of the existing series.
+    <br />
+    Default: <code>recurring</code>.
+
+    <div class="type">
+    Conditional.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+    </div>
+  </dd>
+
   <dt>
     series[previous][visa][tid]
     <span class="type">[0-9]{15}</span>
@@ -1039,9 +1244,18 @@ The Visa specific reference to the series has only one part.
     Transaction ID from Field 62.2 of the first-in-series or previous-in-series
     authorization; to be used in Field 125, Usage 2, Dataset ID 03.
 
-    <div class="type">Optional.
-    Cannot be present if <code>series[previous][id]</code> or
-    <code>series[previous][mastercard]</code> is present.</div>
+    <div class="type">
+    Conditional.
+
+    Required if
+    <code>series[previous][visa][type]</code>
+    is present.
+
+    Cannot be present if
+    <code>series[previous][id]</code> or
+    any <code>series[previous][mastercard][...]</code>
+    is present.
+    </div>
   </dd>
 </dl>
 
@@ -1077,7 +1291,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1114,7 +1328,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1173,9 +1387,7 @@ POST https://gateway.clearhaus.com/credits
     <span class="type">[1-9][0-9]{1,9}</span>
   </dt>
   <dd>
-    Amount in minor units of given currency (e.g. cents if in Euro). As for
-    Mastercard, the amount must not exceed the equivalent of 5,000 EUR; as for
-    Visa, the amount must not exceed the equivalent of 50,000 USD.
+    Amount in minor units of given currency (e.g. cents if in Euro).
   </dd>
   <dt>currency
     <span class="type">[A-Z]{3}</span>
@@ -1185,7 +1397,7 @@ POST https://gateway.clearhaus.com/credits
   </dd>
   <dt>text_on_statement
     <span class="type">[\x20-\x7E]{2,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1196,7 +1408,7 @@ POST https://gateway.clearhaus.com/credits
     <div class="type">Optional</div>
   </dd>
   <dt>reference
-    <span class="type">[\x20-\x7E]{1,30} <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
+    <span class="type">[\x20-\x7E]{1,30} <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
   </dt>
   <dd>
     A reference to an external object, such as an order number.
@@ -1264,7 +1476,7 @@ GET https://gateway.clearhaus.com/account
   </dd>
   <dt>descriptor
     <span class="type">[\x20-\x7E]{0,22}
-      <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
         ASCII printable characters
       </a>
     </span>
@@ -1273,7 +1485,7 @@ GET https://gateway.clearhaus.com/account
     The default <code>text_on_statement</code>.
   </dd>
   <dt>name
-    <span class="type">[\x20-\x7E]{0,20} <a target="_blank" href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
+    <span class="type">[\x20-\x7E]{0,20} <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">ASCII printable characters</a></span>
   </dt>
   <dd>
     Merchant company name.
@@ -1283,6 +1495,12 @@ GET https://gateway.clearhaus.com/account
   </dt>
   <dd>
     ISO 3166-1 2-letter country code for merchant company.
+  </dd>
+  <dt>currency
+    <span class="type">[A-Z]{3}</span>
+  </dt>
+  <dd>
+    ISO 4217 3-letter currency code for merchant currency.
   </dd>
   <dt>mcc
     <span class="type">[0-9]{4}</span>
@@ -1386,7 +1604,7 @@ For testing towards the test endpoint `gateway.test.clearhaus.com` please use
 PANs that are either <b>not</b>
 <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn-compliant</a>, are
 one of the special test PANs 2221000000000009, 4111111111111111,
-5500000000000004, or are Apple Pay test cards.
+5000000000000004, or are Apple Pay test cards.
 
 For PANs starting with 420000 and ending with 0000, and PANs starting with
 555555 and ending with 4444, you can specify a valid status `code` as
@@ -1424,6 +1642,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Removing VES from supported currencies
+
+The currency VES will not be supported after 2021-10-01T04:00:00Z.
+
 ### Update authorization parameters
 
 Replace `recurring` with `series[type]=recurring` and add `series[previous]` as
@@ -1460,6 +1682,7 @@ category, the name might be necessary for approval.
 In the first quarter of 2020 signing of POST requests will become mandatory. We will work together with clients to ensure their requests are compliant before introducing enforcement of the requirement in the transaction gateway.
 
 [JSON-HAL]: https://tools.ietf.org/html/draft-kelly-json-hal-08 "IETF HAL draft"
-[HATEOAS]: http://en.wikipedia.org/wiki/HATEOAS
-[Tokenization]: http://en.wikipedia.org/wiki/Tokenization_(data_security)
+[HATEOAS]: https://en.wikipedia.org/wiki/HATEOAS
+[Tokenization]: https://en.wikipedia.org/wiki/Tokenization_(data_security)
 [ApplePay-PaymentToken]: https://developer.apple.com/library/content/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html
+[GooglePay-PaymentCryptography]: https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography
