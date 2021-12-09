@@ -547,7 +547,7 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`, `moto`.
+`card`, `applepay`, `mobilepayonline`, `moto`, `vipps`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -1002,6 +1002,52 @@ supported.
   <b>Notice:</b> Neither <code>series[]</code> (nor <code>recurring</code>)
   nor <code>credential_on_file</code> is supported.
   Also, <code>initiator</code> cannot be <code>merchant</code>.
+</p>
+
+##### Method: `vipps`
+
+<dl class="dl-vertical">
+  <dt>vipps[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.<br />
+  </dd>
+  <dt>vipps[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>vipps[expire_year]
+    <span class="type">[0-9]{4}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>vipps[payment_token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Full response serialized as JSON, supplied as a string.
+    <br>
+    Example: <code>{"pspTransactionId":"string","networkToken":{"cryptogram": "string",...},...}</code>
+    <div class="type">Optional</div>
+  </dd>
+  <dt>
+    vipps[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>vipps</code>
+  payment method.
+  <br />
 </p>
 
 ##### Authentication: `[3dsecure]`
