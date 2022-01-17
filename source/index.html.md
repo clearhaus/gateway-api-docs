@@ -494,6 +494,48 @@ Example response (snippet):
   please use <code>3dsecure</code>.
 </p>
 
+## Travel addendum data
+
+Clearhaus supports the addition of Travel addendum data on captures for the following service types:
+
+ * Lodgings (Hotels, Motels, Resorts)
+ * Car Rental Agencies
+ * Airlines and Air Carriers
+
+### Capture with travel addendum data
+
+````shell
+curl -X POST \
+  https://gateway.test.clearhaus.com/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d/captures \
+  -u <your-api-key>:                         \
+  -d "text_on_statement=Some company"        \
+  -d travel[car][check_out]="220118"         \
+  -d travel[car][no_show]=false              \
+  -d travel[car][extra_charge]=extra_mileage
+````
+
+Example response (snippet):
+
+````json
+{
+    "id": "051f57a4-1652-4853-85ef-d0ec9a36791b",
+    "status": {
+        "code": 20000
+    },
+    "processed_at": "2018-07-09T12:58:56+00:00",
+    "amount": 2050,
+    "_links": {
+        "authorization": {
+            "href": "/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d"
+        },
+        "refunds": {
+            "href": "/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d/refunds"
+        }
+    }
+}
+````
+
+
 ## Fetch account information
 
 Some basic account information can be fetched:
@@ -1300,6 +1342,79 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
     Text that will be placed on cardholder's bank statement. Overrides <code>text_on_statement</code> from authorization.
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
     <div class="type">Optional</div>
+  </dd>
+  <dt>travel
+    <span class="type">[\x20-\x7E]{2,22}
+      <a target="_blank" href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">
+        ASCII printable characters
+      </a>
+    </span>
+  </dt>
+  <dd>
+    Text about travel will go here
+  </dd>
+</dl>
+
+##### Travel addendum data
+
+For service type Lodging the following fields are relevant
+
+<dl class="dl-vertical">
+  <dt>
+    travel[lodging][no_show]
+    <span class="type">(true|false)</span>
+  </dt>
+  <dd>
+    An indicator that the cardholder is being billed for a reserved room that was not actually
+    rented (AKA a "no-show" charge). The issuer may provide this information on the customer
+    statement or use it to enhance customer service information.
+  </dd>
+  <dt>
+    travel[lodging][extra_charge]
+    <span class="type">(<code>no_extra_charge</code>|<code>restaurant</code>|<code>gift_shop</code>|<code>mini_bar</code>|<code>telephone</code>|<code>other</code>|<code>laundry</code>)</span>
+  </dt>
+  <dd>
+    This field may be used to indicate the type of additional charges added to a customer's bill
+    after check-out. Each position in the field can be used to indicate a type of charge. If there
+    are less than six additional charges, they must be left-justified, space-filled or zero-filled
+    to the right.
+  </dd>
+  <dt>
+    travel[lodging][check_in]
+    <span class="type">[0-9]{6}</span>
+  </dt>
+  <dd>
+    The date the customer checked into the hotel, or in the case of a no-show or an advance lodging,
+    the scheduled arrival date. The entry must be a six-digit numeric, either zeros or a valid date,
+    in the format YYMMDD.
+  </dd>
+</dl>
+
+For service type Car Rental the following fields are relevant
+
+<dl class="dl-vertical">
+  <dt>
+    travel[car][no_show]
+    <span class="type">(true|false)</span>
+  </dt>
+  <dd>
+    An indicator that the cardholder is being billed for a reserved vehicle that was not actually
+    rented (that is, a "no-show" charge).
+  </dd>
+  <dt>
+    travel[car][extra_charge]
+    <span class="type">(<code>no_extra_charge</code>|<code>gas</code>|<code>extra_mileage</code>|<code>late_return</code>|<code>one_way_service_fee</code>|<code>parking_violation</code>)</span>
+  </dt>
+  <dd>
+  Description: Additional charges (gas, late fee, etc.) being billed.
+  </dd>
+  <dt>
+    travel[car][check_out]
+    <span class="type">[0-9]{6}</span>
+  </dt>
+  <dd>
+  Car pick-up date. The entry must be a six-digit numeric, either zeros or a valid date, in the
+  format YYMMDD.
   </dd>
 </dl>
 
