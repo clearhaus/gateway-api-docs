@@ -1338,11 +1338,11 @@ For service type `[flight]`, the following parameter is relevant.
 
 <dl class="dl-vertical">
   <dt>
-    travel[flight][check_in_date]
+    travel[flight][departure_date]
     <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
   </dt>
   <dd>
-    The check-in date; can be in the future or in the past.
+    The departure date; can be in the future or in the past.
   </dd>
 </dl>
 
