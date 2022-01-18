@@ -494,47 +494,6 @@ Example response (snippet):
   please use <code>3dsecure</code>.
 </p>
 
-## Travel addendum data
-
-Clearhaus supports the addition of Travel addendum data on captures for the following service types:
-
- * Lodgings (Hotels, Motels, Resorts)
- * Car Rental Agencies
- * Airlines and Air Carriers
-
-### Capture with travel addendum data
-
-````shell
-curl -X POST \
-  https://gateway.test.clearhaus.com/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d/captures \
-  -u <your-api-key>:                         \
-  -d "text_on_statement=Some company"        \
-  -d "travel[mobility][pick_up]=2022-01-18"  \
-  -d "travel[mobility][no_show]=false"       \
-  -d "travel[mobility][extra_charge][extra_mileage]=true"
-````
-
-Example response (snippet):
-
-````json
-{
-    "id": "051f57a4-1652-4853-85ef-d0ec9a36791b",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "amount": 2050,
-    "_links": {
-        "authorization": {
-            "href": "/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d"
-        },
-        "refunds": {
-            "href": "/authorizations/043b98b1-1652-439c-9d89-a9a939281c4d/refunds"
-        }
-    }
-}
-````
-
 
 ## Fetch account information
 
