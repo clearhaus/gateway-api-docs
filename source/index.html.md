@@ -1319,23 +1319,10 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 ##### Travel data
 
 At most one type of travel data can be supplied for a capture; if `travel` is
-supplied, it must include exactly one of `travel[lodging][...]`,
-`travel[car][...]`, or `travel[flight][...]`.
+supplied, it must include exactly one of `travel[car][...]`,
+`travel[flight][...]`, or `travel[lodging][...]`.
 
-For service type lodging the following parameters are relevant.
-
-<dl class="dl-vertical">
-  <dt>
-    travel[lodging][check_in_date]
-    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
-  </dt>
-  <dd>
-    The agreed check-in date; can be in the future or in the past.
-  </dd>
-</dl>
-
-For service type `mobility` (often also known as "Car Rental"), the following
-fields are relevant.
+For service type `[car]` (rental), the following parameter is relevant.
 
 <dl class="dl-vertical">
   <dt>
@@ -1347,7 +1334,7 @@ fields are relevant.
   </dd>
 </dl>
 
-For service type `flight`, the following fields are relevant.
+For service type `[flight]`, the following parameter is relevant.
 
 <dl class="dl-vertical">
   <dt>
@@ -1356,6 +1343,18 @@ For service type `flight`, the following fields are relevant.
   </dt>
   <dd>
     The check-in date; can be in the future or in the past.
+  </dd>
+</dl>
+
+For service type `[lodging]` the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[lodging][check_in_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The agreed check-in date; can be in the future or in the past.
   </dd>
 </dl>
 
