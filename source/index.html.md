@@ -1306,90 +1306,31 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
     <span class="type">dictionary</span>
   </dt>
   <dd>
-    See <a href="#travel-addendum-data">Travel addendum data</a>.
+    See <a href="#travel-data">Travel data</a>.
     <div class="type">Optional</div>
   </dd>
 </dl>
 
 <p class="alert alert-info">
-<b>Notice:</b> A capture cannot be made if the authorization is 180 days old.
+<b>Notice:</b> A capture cannot be made if the authorization is 180 days old or more.
 </p>
 
 
-##### Travel addendum data
+##### Travel data
 
-At most one type of travel addendum data can be supplied for a capture; if
-`travel` is supplied, it must include exactly one of `travel[lodging]`,
-`travel[mobility]`, or `travel[flight]`.
+At most one type of travel data can be supplied for a capture; if `travel` is
+supplied, it must include exactly one of `travel[lodging][...]`,
+`travel[car][...]`, or `travel[flight][...]`.
 
 For service type lodging the following parameters are relevant.
 
 <dl class="dl-vertical">
   <dt>
-    travel[lodging][check_in]
+    travel[lodging][check_in_date]
     <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
   </dt>
   <dd>
     The agreed check-in date; can be in the future or in the past.
-  </dd>
-  <dt>
-    travel[lodging][no_show]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    Indicate that the cardholder is being billed for a reserved room that was
-    not actually rented (also known as a "no-show" charge).
-    The issuer may provide this information on the customer statement or use it
-    to enhance customer service information.
-    <div class="type">Optional.</div>
-  </dd>
-</dl>
-
-Additionally, if the capture is due to extra charges related to lodging, these
-should be specified using the following parameters.
-
-<dl class="dl-vertical">
-  <dt>
-    travel[lodging][extra_charge][restaurant]
-    <span class="type">(true|false)</span>
-    </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[lodging][extra_charge][gift_shop]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[lodging][extra_charge][mini_bar]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[lodging][extra_charge][telephone]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[lodging][extra_charge][laundry]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[lodging][extra_charge][other]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
   </dd>
 </dl>
 
@@ -1398,61 +1339,11 @@ fields are relevant.
 
 <dl class="dl-vertical">
   <dt>
-    travel[mobility][pick_up]
+    travel[car][pick_up_date]
     <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
   </dt>
   <dd>
     The agreed pick-up date; can be in the future or in the past.
-  </dd>
-  <dt>
-    travel[mobility][no_show]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    An indicator that the cardholder is being billed for a reserved vehicle that was not actually
-    rented (that is, a "no-show" charge).
-    <div class="type">Optional.</div>
-  </dd>
-</dl>
-
-Additionally, if the capture is due to extra charges relevant to mobility, these
-should be specified using the following parameters.
-
-<dl class="dl-vertical">
-  <dt>
-    travel[mobility][extra_charge][propellant]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[mobility][extra_charge][extra_milage]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[mobility][extra_charge][late_return]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[mobility][extra_charge][one_way_service_fee]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
-  </dd>
-  <dt>
-    travel[mobility][extra_charge][parking_violation]
-    <span class="type">(true|false)</span>
-  </dt>
-  <dd>
-    <div class="type">Optional.</div>
   </dd>
 </dl>
 
@@ -1460,11 +1351,11 @@ For service type `flight`, the following fields are relevant.
 
 <dl class="dl-vertical">
   <dt>
-    travel[flight][tbd]
-    <span class="type">TBD</span>
+    travel[flight][check_in_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
   </dt>
   <dd>
-    TBD
+    The check-in date; can be in the future or in the past.
   </dd>
 </dl>
 
