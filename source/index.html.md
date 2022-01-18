@@ -1319,8 +1319,8 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 ##### Travel data
 
 At most one type of travel data can be supplied for a capture; if `travel` is
-supplied, it must include exactly one of `travel[car][...]`,
-`travel[flight][...]`, or `travel[lodging][...]`.
+supplied, it must include exactly one of `travel[car]`, `travel[flight]`, or
+`travel[lodging]`.
 
 For service type `[car]` (rental), the following parameter is relevant.
 
