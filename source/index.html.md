@@ -1695,6 +1695,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+### Accept travel data
+
+[Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-xx-yy.
+
 ### Removing VES from supported currencies
 
 The currency VES will not be supported after 2021-10-01T04:00:00Z.
