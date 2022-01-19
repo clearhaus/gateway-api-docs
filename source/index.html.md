@@ -1312,7 +1312,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 </dl>
 
 <p class="alert alert-info">
-<b>Notice:</b> A capture cannot be made if the authorization is 180 days old or more.
+<b>Notice:</b> A capture cannot be made if the authorization is 180 days old or older.
 </p>
 
 
