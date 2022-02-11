@@ -1696,7 +1696,7 @@ Sorted by descending timestamp.
 
 ### Accept travel data
 
-[Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-xx-yy.
+[Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
 
 ### Removing VES from supported currencies
 
