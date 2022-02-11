@@ -494,6 +494,7 @@ Example response (snippet):
   please use <code>3dsecure</code>.
 </p>
 
+
 ## Fetch account information
 
 Some basic account information can be fetched:
@@ -1301,11 +1302,62 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
     <div class="type">Optional</div>
   </dd>
+  <dt>travel
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#travel-data">Travel data</a>.
+    <div class="type">Optional</div>
+  </dd>
 </dl>
 
 <p class="alert alert-info">
-<b>Notice:</b> A capture cannot be made if the authorization is 180 days old.
+<b>Notice:</b> A capture cannot be made if the authorization is 180 days old or older.
 </p>
+
+
+##### Travel data
+
+At most one type of travel data can be supplied for a capture; if `travel` is
+supplied, it must include exactly one of `travel[car]`, `travel[flight]`, or
+`travel[lodging]`.
+
+For service type `[car]` (rental), the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[car][pick_up_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The agreed pick-up date; can be in the future or in the past.
+  </dd>
+</dl>
+
+For service type `[flight]`, the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[flight][departure_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The departure date; can be in the future or in the past.
+  </dd>
+</dl>
+
+For service type `[lodging]` the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[lodging][check_in_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The agreed check-in date; can be in the future or in the past.
+  </dd>
+</dl>
+
 
 ### Refunds
 
@@ -1641,6 +1693,10 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Accept travel data
+
+[Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
 
 ### Removing VES from supported currencies
 
