@@ -555,7 +555,7 @@ Exactly one payment method must be used.
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[0-9]{1,10}</span>
+    <span class="type">(0|[1-9][0-9]{,8})</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1283,7 +1283,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1371,7 +1371,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1436,7 +1436,7 @@ POST https://gateway.clearhaus.com/credits
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
