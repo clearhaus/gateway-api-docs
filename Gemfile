@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.5.5'
 
 gem 'middleman'
 gem 'middleman-syntax'
@@ -15,5 +15,5 @@ gem 'bootstrap-sass'
 gem 'execjs'
 
 # Heroku hosting
-gem 'puma', '~> 4'
+gem 'puma', '~> 4.3.12'
 gem 'rake', '~> 13'

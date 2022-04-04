@@ -1,7 +1,7 @@
-FROM node:stretch
+FROM node:buster
 
 RUN apt-get update \
-    && apt-get install -y ruby2.3 bundler \
+    && apt-get install -y ruby2.5 bundler \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./Gemfile /tmp/Gemfile
