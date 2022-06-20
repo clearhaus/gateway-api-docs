@@ -3,19 +3,13 @@ version: 2
 jobs:
   build:
     machine:
-      image: circleci/classic:latest
+      image: ubuntu-2004:202201-02
     environment:
       AWS_REGION: eu-west-1
       BUILD_DIR: /build
       DOCKER_IMAGE: r.clrhs.dk/gateway-api-docs
     steps:
       - checkout
-      - run:
-          name: Install AWS CLI
-          command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
       - run:
           name: Build Docker image
           command: |
