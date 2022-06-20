@@ -125,7 +125,7 @@ signature, otherwise the transaction will fail.
 The RSA signature is an `RSASSA-PKCS1-v1_5` signature of the body. It is
 represented in hex.
 
-If the signing API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
+If the signing API key is `0a1b2c3d-4e5f-4c2f-9999-000000000000`, the signing
 private key (in PEM format) is
 
 ```
@@ -149,7 +149,7 @@ amount=2050&currency=EUR&ip=1.1.1.1&card[pan]=4111111111111111&card[expire_month
 then the `Signature` header should be
 
 ```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex 7ae0e14d35b2a15a7ff812a1899d7f0a5d28063f0c276081876a51fc3773f499459f944f8b57c6e0e76b47c218b20ebaad7c6250dcd1804dd19c87fb7f1216ba
+Signature: 0a1b2c3d-4e5f-4c2f-9999-000000000000 RS256-hex 7ae0e14d35b2a15a7ff812a1899d7f0a5d28063f0c276081876a51fc3773f499459f944f8b57c6e0e76b47c218b20ebaad7c6250dcd1804dd19c87fb7f1216ba
 ```
 
 In Ruby, you can calculate the RS256 hex signature using
