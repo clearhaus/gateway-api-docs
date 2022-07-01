@@ -1029,7 +1029,7 @@ VTS transactions. Only one scheme can be used for a given authorization.
   </dd>
 </dl>
 
-###### Method: `token[mastercard]`
+##### Method: `token[mastercard]`
 
 <dl class="dl-vertical">
   <dt>token[mastercard][tan]
