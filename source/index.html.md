@@ -1008,7 +1008,8 @@ supported.
 ##### Method: `token`
 
 Mastercard and Visa supply and require different sets of parameters for MDES and
-VTS transactions. Only one scheme can be used for a given authorization.
+VTS transactions, respectively. Only one scheme can be used for a given 
+authorization.
 
 <dl class="dl-vertical">
   <dt>
