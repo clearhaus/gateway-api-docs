@@ -1589,7 +1589,7 @@ Declined   |  40000 |  General input error                | &check; | &check; | 
            |  40111 |  Unsupported card scheme            | &check; |         |         |         | &check; |
            |  40120 |  Invalid CSC                        | &check; |         |         |         |         |
            |  40130 |  Invalid expire date                | &check; |         |         |         | &check; |
-           |  40135 |  Card expired                       | &check; | &check; | &check; | &check; | &check; |
+           |  40135 |  Card expired                       | &check; |         |         |         | &check; |
            |  40140 |  Invalid currency                   | &check; |         |         |         | &check; |
            |  40150 |  Invalid text on statement          | &check; | &check; | &check; |         |         |
            |  40200 |  Clearhaus rule violation           | &check; | &check; | &check; | &check; | &check; |
