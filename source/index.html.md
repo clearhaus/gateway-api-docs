@@ -1603,7 +1603,7 @@ Declined   |  40000 |  General input error                | &check; | &check; | 
            |  40414 |  Suspected fraud                    | &check; |         |         |         | &check; |
            |  40415 |  Amount limit exceeded              | &check; |         |         |         | &check; |
            |  40416 |  Additional authentication required | &check; |         |         |         | &check; |
-           |  40420 |  Merchant blocked by cardholder     | &check; |         |         |         |         |
+           |  40420 |  Merchant blocked by cardholder     | &check; |         |         |         | &check; |
            |  50000 |  Clearhaus error                    | &check; | &check; | &check; | &check; | &check; |
 
 
