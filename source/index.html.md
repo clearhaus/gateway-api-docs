@@ -1591,7 +1591,7 @@ Declined   |  40000 |  General input error                | &check; | &check; | 
            |  40130 |  Invalid expire date                | &check; |         |         |         | &check; |
            |  40135 |  Card expired                       | &check; |         |         |         | &check; |
            |  40140 |  Invalid currency                   | &check; |         |         |         | &check; |
-           |  40150 |  Invalid text on statement          | &check; | &check; | &check; |         |         |
+           |  40150 |  Invalid text on statement          | &check; | &check; | &check; |         | &check; |
            |  40200 |  Clearhaus rule violation           | &check; | &check; | &check; | &check; | &check; |
            |  40300 |  3-D Secure problem                 | &check; |         |         |         |         |
            |  40310 |  3-D Secure authentication failure  | &check; |         |         |         |         |
