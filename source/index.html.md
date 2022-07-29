@@ -1576,12 +1576,12 @@ GET https://gateway.clearhaus.com/account
 
 ## Transaction status codes
 
-When you make a new transaction the JSON response includes one of the status
+When you make a new transaction, the JSON response includes one of the status
 codes in the following table. The rightmost columns indicate which transaction
-types a particular status code can be received for; Au, Ca, Re, Vo and Cr are
-short for authorizations, captures, refunds, voids and credits, respectively.
+types a particular status code can be received for.
 
-Status     | `code` |  Meaning                            | Au      | Ca      | Re      | Vo      | Cr      |
+<div id="transaction-status-codes-table"></div>
+Status     | `code` |  Meaning                            | Auth    | Capture | Refund  | Void    | Credit  |
 ---------- | ------ | ----------------------------------- | ------- | ------- | ------- | ------- | ------- |
 Approved   |  20000 |  Approved                           | &check; | &check; | &check; | &check; | &check; |
 Declined   |  40000 |  General input error                | &check; | &check; | &check; | &check; | &check; |
@@ -1605,7 +1605,6 @@ Declined   |  40000 |  General input error                | &check; | &check; | 
            |  40416 |  Additional authentication required | &check; |         |         |         | &check; |
            |  40420 |  Merchant blocked by cardholder     | &check; |         |         |         | &check; |
            |  50000 |  Clearhaus error                    | &check; | &check; | &check; | &check; | &check; |
-
 
 ### Status message
 
