@@ -125,7 +125,7 @@ signature, otherwise the transaction will fail.
 The RSA signature is an `RSASSA-PKCS1-v1_5` signature of the body. It is
 represented in hex.
 
-If the signing API key is `4390aec7-f76a-4c2f-8597-c87c2d06cb4f`, the signing
+If the signing API key is `0a1b2c3d-4e5f-4c2f-9999-000000000000`, the signing
 private key (in PEM format) is
 
 ```
@@ -149,7 +149,7 @@ amount=2050&currency=EUR&ip=1.1.1.1&card[pan]=4111111111111111&card[expire_month
 then the `Signature` header should be
 
 ```
-Signature: 4390aec7-f76a-4c2f-8597-c87c2d06cb4f RS256-hex 7ae0e14d35b2a15a7ff812a1899d7f0a5d28063f0c276081876a51fc3773f499459f944f8b57c6e0e76b47c218b20ebaad7c6250dcd1804dd19c87fb7f1216ba
+Signature: 0a1b2c3d-4e5f-4c2f-9999-000000000000 RS256-hex 7ae0e14d35b2a15a7ff812a1899d7f0a5d28063f0c276081876a51fc3773f499459f944f8b57c6e0e76b47c218b20ebaad7c6250dcd1804dd19c87fb7f1216ba
 ```
 
 In Ruby, you can calculate the RS256 hex signature using
@@ -401,9 +401,11 @@ curl -X POST \
 ````
 
 A first-in-series authorization can also be made using the `applepay`,
-`googlepay` or `mobilepayoneline` payment methods; subsequent-in-series
-authorizations, however, must be made using the `card` payment method using the
-card details of the referenced previous-in-series authorization.
+`googlepay` or `mobilepayonline` payment methods.
+
+A subsequent-in-series authorization must be made using the `card` payment
+method with the exact card details of the referenced previous-in-series
+authorization.
 
 Any first-in-series authorization must be made with strong customer
 authentication (SCA) regardless of the authorization amount (when the cardholder
@@ -492,6 +494,7 @@ Example response (snippet):
   please use <code>3dsecure</code>.
 </p>
 
+
 ## Fetch account information
 
 Some basic account information can be fetched:
@@ -545,14 +548,14 @@ POST https://gateway.clearhaus.com/authorizations
 ````
 
 Authorizations can be created using different payment methods:
-`card`, `applepay`, `mobilepayonline`, `moto`.
+`card`, `applepay`, `mobilepayonline`, `moto`, `vipps`.
 Exactly one payment method must be used.
 
 #### Parameters
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[0-9]{1,10}</span>
+    <span class="type">(0|[1-9][0-9]{,8})</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -598,8 +601,9 @@ Exactly one payment method must be used.
     This is regardless of whether a stored payment credential is being used.
     <br />
     For compliance reasons there should be a previous approved transaction (for
-    the cardholder and the merchant) marked with <code>storing</code> before
-    <code>initiator</code> may be <code>merchant</code>.
+    the combination of card and merchant) where
+    <code>credential_on_file=store</code> before <code>initiator</code> may be
+    <code>merchant</code>.
     <br />
     Default:
     <ul>
@@ -790,6 +794,45 @@ object][ApplePay-PaymentToken] for more information.
   </dd>
 </dl>
 
+Additionally, an Apple Pay authorization can be created using raw values from
+a payment token:
+
+<dl class="dl-vertical">
+  <dt>applepay[raw][pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>applepay[raw][expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>applepay[raw][cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Online payment cryptogram. Found as <code>onlinePaymentCryptogram</code> in
+    the payment token.
+  </dd>
+  <dt>applepay[raw][eci]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator. Found as <code>eciIndicator</code> in the
+    payment token.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
 <p class="alert alert-info">
   <b>Notice:</b> Signing is required to use the <code>applepay</code> payment
   method.
@@ -803,8 +846,13 @@ object][ApplePay-PaymentToken] for more information.
   <br />
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent-in-series authorization.
+  <br />
+  <b>Notice:</b> Clients using <code>applepay[raw]</code> are responsible for
+  verifying the payment token's signature, decrypting the token's payment data,
+  validating the format of the fields in the payment data, etc. The procedure
+  is available in Apple Pay's
+  <a href="https://developer.apple.com/library/archive/documentation/PassKit/Reference/PaymentTokenJSON/PaymentTokenJSON.html">Payment Token Format Reference</a>.
 </p>
-
 
 ##### Method: `googlepay`
 
@@ -955,6 +1003,52 @@ supported.
   <b>Notice:</b> Neither <code>series[]</code> (nor <code>recurring</code>)
   nor <code>credential_on_file</code> is supported.
   Also, <code>initiator</code> cannot be <code>merchant</code>.
+</p>
+
+##### Method: `vipps`
+
+<dl class="dl-vertical">
+  <dt>vipps[pan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Primary account number of card to charge.<br />
+  </dd>
+  <dt>vipps[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of card to charge.
+  </dd>
+  <dt>vipps[expire_year]
+    <span class="type">[0-9]{4}</span>
+  </dt>
+  <dd>
+    Expiry year of card to charge.
+  </dd>
+  <dt>vipps[payment_token]
+    <span class="type">[:json:]</span>
+  </dt>
+  <dd>
+    Full response serialized as JSON, supplied as a string.
+    <br>
+    Example: <code>{"pspTransactionId":"string","networkToken":{"cryptogram": "string",...},...}</code>
+    <div class="type">Optional</div>
+  </dd>
+  <dt>
+    vipps[3dsecure]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure">Authentication: [3dsecure]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>vipps</code>
+  payment method.
+  <br />
 </p>
 
 ##### Authentication: `[3dsecure]`
@@ -1189,7 +1283,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1208,11 +1302,62 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
     <div class="type">May not be all digits, all same character, or all sequential characters (e.g. "abc")</div>
     <div class="type">Optional</div>
   </dd>
+  <dt>travel
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#travel-data">Travel data</a>.
+    <div class="type">Optional</div>
+  </dd>
 </dl>
 
 <p class="alert alert-info">
-<b>Notice:</b> A capture cannot be made if the authorization is 180 days old.
+<b>Notice:</b> A capture cannot be made if the authorization is 180 days old or older.
 </p>
+
+
+##### Travel data
+
+At most one type of travel data can be supplied for a capture; if `travel` is
+supplied, it must include exactly one of `travel[car]`, `travel[flight]`, or
+`travel[lodging]`.
+
+For service type `[car]` (rental), the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[car][pick_up_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The agreed pick-up date; can be in the future or in the past.
+  </dd>
+</dl>
+
+For service type `[flight]`, the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[flight][departure_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The departure date; can be in the future or in the past.
+  </dd>
+</dl>
+
+For service type `[lodging]` the following parameter is relevant.
+
+<dl class="dl-vertical">
+  <dt>
+    travel[lodging][check_in_date]
+    <span class="type">20[0-9]{2}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD)</span>
+  </dt>
+  <dd>
+    The agreed check-in date; can be in the future or in the past.
+  </dd>
+</dl>
+
 
 ### Refunds
 
@@ -1226,7 +1371,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/refunds
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1291,7 +1436,7 @@ POST https://gateway.clearhaus.com/credits
 
 <dl class="dl-vertical">
   <dt>amount
-    <span class="type">[1-9][0-9]{1,9}</span>
+    <span class="type">[1-9][0-9]{,8}</span>
   </dt>
   <dd>
     Amount in minor units of given currency (e.g. cents if in Euro).
@@ -1516,7 +1661,8 @@ one of the special test PANs 2221000000000009, 4111111111111111,
 
 For PANs starting with 420000 and ending with 0000, and PANs starting with
 555555 and ending with 4444, you can specify a valid status `code` as
-transaction amount to trigger the status.
+transaction amount to trigger the status; any other transaction amount will
+result in 40110.
 
 When testing towards the test endpoint, the CSC 987&mdash;and only 987&mdash;is
 considered a match for all PANs.
@@ -1549,6 +1695,14 @@ https://gateway.clearhaus.com/account
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
 Sorted by descending timestamp.
+
+### Accept travel data
+
+[Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
+
+### Removing VES from supported currencies
+
+The currency VES will not be supported after 2021-10-01T04:00:00Z.
 
 ### Update authorization parameters
 
