@@ -163,3 +163,14 @@ dt > .type {
   padding-left: 10px;
   height: 100%;
 }
+
+#transaction-status-codes-table + table {
+  th:nth-child(n+4) {
+    font-variant-caps: all-small-caps;
+  }
+
+  th:nth-child(n+4),
+  td:nth-child(n+4) {
+    text-align: center;
+  }
+}
