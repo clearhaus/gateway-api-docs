@@ -847,6 +847,11 @@ a payment token:
   <b>Notice:</b> An authorization made with <code>applepay</code> cannot be a
   subsequent-in-series authorization.
   <br />
+  <b>Notice:</b> In production, the Apple Pay token's signature is checked
+  against Apple's certificate chain. For the test system, we use
+  <a href="applepay-test-certificate-chain.tar">a self-generated certificate
+  chain</a> (includes a client certificate and key for your convenience).
+  <br />
   <b>Notice:</b> Clients using <code>applepay[raw]</code> are responsible for
   verifying the payment token's signature, decrypting the token's payment data,
   validating the format of the fields in the payment data, etc. The procedure
