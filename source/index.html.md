@@ -1048,7 +1048,7 @@ authorization.
     Found in <code>encryptedPayload.encryptedData.applicationExpiryDate</code> in the MDES response.
   </dd>
   <dt>token[mastercard][cryptogram]
-    <span class="type">[:hex:]</span>
+    <span class="type">[:base64:]</span>
   </dt>
   <dd>
     Token cryptogram.
