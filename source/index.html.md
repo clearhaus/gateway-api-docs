@@ -1072,6 +1072,7 @@ authorization.
   </dt>
   <dd>
     Token Account Number (also known as Digital Account Number) to charge.
+  Found in <code>tokenInfo.encTokenInfo.token</code> in the VTS response.
   </dd>
   <dt>token[visa][expire_month]
     <span class="type">[0-9]{2}</span>
