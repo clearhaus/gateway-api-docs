@@ -547,8 +547,8 @@ To reserve money on a cardholder's bank account you make a new authorization res
 POST https://gateway.clearhaus.com/authorizations
 ````
 
-Authorizations can be created using different payment methods:
-`card`, `applepay`, `googlepay`, `mobilepayonline`, `moto`, `token`, `vipps`.
+Authorizations can be created using different payment methods: `card`,
+`applepay`, `googlepay`, `mobilepayonline`, `m4m`, `moto`, `vipps`, `vts`.
 Exactly one payment method must be used.
 
 #### Parameters
@@ -973,6 +973,70 @@ supported.
   strongly authenticated (SCA in PSD2).
 </p>
 
+##### Method: `m4m`
+
+Mastercard Digital Enablement Service (MDES) for Merchants (M4M).
+
+The required values are found in either the MDES <code>transact</code> response
+or the Secure Card on File (SCOF) <code>checkout</code> response.
+
+<dl class="dl-vertical">
+  <dt>m4m[tan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Token Account Number to charge.<br />
+    Found in <code>encryptedPayload.encryptedData.accountNumber</code> (MDES)<br />
+    or <code>encryptedPayload.token.paymentToken</code> (SCOF).
+  </dd>
+  <dt>m4m[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of token to charge.<br />
+    Found in <code>encryptedPayload.encryptedData.applicationExpiryDate</code> (MDES)<br />
+    or <code>encryptedPayload.token.tokenExpirationMonth</code> (SCOF).
+  </dd>
+  <dt>m4m[expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of token to charge.<br />
+    Found in <code>encryptedPayload.encryptedData.applicationExpiryDate</code> (MDES)<br />
+    or <code>encryptedPayload.token.tokenExpirationYear</code> (SCOF).
+  </dd>
+  <dt>m4m[cryptogram]
+    <span class="type">[:base64:]{4,32}</span>
+  </dt>
+  <dd>
+    Token cryptogram.<br />
+    Must start with <code>[A-P]</code> to be a Digital Secure Remote Payments
+    (DSRP) cryptogram.<br />
+    Found in <code>encryptedPayload.encryptedData.de48se43Data</code> (MDES)<br />
+    or <code>encryptedPayload.dynamicData.dynamicDataValue</code> (SCOF).
+  </dd>
+  <dt>m4m[eci]
+    <span class="type">0[267]</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator.<br />
+    Found in <code>eci</code> (SCOF).
+  </dd>
+  <dt>
+    m4m[3dsecure][v2]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure-v2">Authentication: [3dsecure][v2]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>m4m</code> payment
+  method.
+</p>
+
 ##### Method: `moto`
 
 <dl class="dl-vertical">
@@ -1004,113 +1068,6 @@ supported.
   nor <code>credential_on_file</code> is supported.
   Also, <code>initiator</code> cannot be <code>merchant</code>.
 </p>
-
-##### Method: `token`
-
-Mastercard and Visa supply and require different sets of parameters for MDES and
-VTS transactions, respectively. Only one scheme can be used for a given 
-authorization.
-
-<dl class="dl-vertical">
-  <dt>
-    token[visa]
-    <span class="type">dictionary</span>
-  </dt>
-  <dd>
-    Visa token data.
-    <div class="type">Optional. Cannot be present if <code>[mastercard]</code> is present.</div>
-  </dd>
-  <dt>
-    token[mastercard]
-    <span class="type">dictionary</span>
-  </dt>
-  <dd>
-    Mastercard token data.
-    <div class="type">Optional. Cannot be present if <code>[visa]</code> is present.</div>
-  </dd>
-</dl>
-
-##### Method: `token[mastercard]`
-
-<dl class="dl-vertical">
-  <dt>token[mastercard][tan]
-    <span class="type">[0-9]{12,19}</span>
-  </dt>
-  <dd>
-    Token Account Number to charge.
-    Found in <code>encryptedPayload.encryptedData.accountNumber</code> in the MDES response.
-  </dd>
-  <dt>token[mastercard][expiry]
-    <span class="type">[0-9]{6}</span>
-  </dt>
-  <dd>
-    Expiry.
-    Found in <code>encryptedPayload.encryptedData.applicationExpiryDate</code> in the MDES response.
-  </dd>
-  <dt>token[mastercard][cryptogram]
-    <span class="type">[:base64:]</span>
-  </dt>
-  <dd>
-    Token cryptogram.
-    Found in <code>encryptedPayload.encryptedData.de48se43Data</code> in the MDES response.
-  </dd>
-  <dt>
-    token[mastercard][3dsecure][v2]
-    <span class="type">dictionary</span>
-  </dt>
-  <dd>
-    See <a href="#authentication-3dsecure-v2">Authentication: [3dsecure][v2]</a>.
-    <div class="type">Optional</div>
-  </dd>
-</dl>
-
-##### Method: `token[visa]`
-
-<dl class="dl-vertical">
-  <dt>token[visa][tan]
-    <span class="type">[0-9]{16}</span>
-  </dt>
-  <dd>
-    Token Account Number (also known as Digital Account Number) to charge.
-  Found in <code>tokenInfo.encTokenInfo.token</code> in the VTS response.
-  </dd>
-  <dt>token[visa][expire_month]
-    <span class="type">[0-9]{2}</span>
-  </dt>
-  <dd>
-    Expiry month.
-    Found in <code>tokenInfo.expirationDate.month</code> in the VTS response.
-  </dd>
-  <dt>token[visa][expire_year]
-    <span class="type">20[0-9]{2}</span>
-  </dt>
-  <dd>
-    Expiry year.
-    Found in <code>tokenInfo.expirationDate.year</code> in the VTS response.
-  </dd>
-  <dt>token[visa][cryptogram]
-    <span class="type">[:base64:]{28}</span>
-  </dt>
-  <dd>
-    Token cryptogram.
-    Found in <code>cryptogramInfo.cryptogram</code> in the VTS response.
-  </dd>
-  <dt>token[visa][eci]
-    <span class="type">[0-9]{2}</span>
-  </dt>
-  <dd>
-    Electronic Commerce Indicator.
-    Found in <code>cryptogramInfo.eci</code> in the VTS response.
-  </dd>
-  <dt>
-    token[visa][3dsecure][v2]
-    <span class="type">dictionary</span>
-  </dt>
-  <dd>
-    See <a href="#authentication-3dsecure-v2">Authentication: [3dsecure][v2]</a>.
-    <div class="type">Optional</div>
-  </dd>
-</dl>
 
 ##### Method: `vipps`
 
@@ -1156,6 +1113,63 @@ authorization.
   <b>Notice:</b> Signing is required to use the <code>vipps</code>
   payment method.
   <br />
+</p>
+
+##### Method: `vts`
+
+Visa Token Service (VTS).
+
+The required values are found in the VTS provision token response.
+
+<dl class="dl-vertical">
+  <dt>vts[tan]
+    <span class="type">[0-9]{12,19}</span>
+  </dt>
+  <dd>
+    Token Account Number to charge.<br />
+    Found in <code>tokenInfo.encTokenInfo</code>.
+  </dd>
+  <dt>vts[expire_month]
+    <span class="type">[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry month of token to charge.<br />
+    Found in <code>tokenInfo.expirationDate.month</code>.
+  </dd>
+  <dt>vts[expire_year]
+    <span class="type">20[0-9]{2}</span>
+  </dt>
+  <dd>
+    Expiry year of token to charge.<br />
+    Found in <code>tokenInfo.expirationDate.year</code>.
+  </dd>
+  <dt>vts[cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Token cryptogram.<br />
+    Found in <code>cryptogramInfo.cryptogram</code>.
+  </dd>
+  <dt>vts[eci]
+    <span class="type">0[567]</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator.<br />
+    Found in <code>cryptogramInfo.eci</code>.
+  </dd>
+  <dt>
+    vts[3dsecure][v2]
+    <span class="type">dictionary</span>
+  </dt>
+  <dd>
+    See <a href="#authentication-3dsecure-v2">Authentication: [3dsecure][v2]</a>.
+    <div class="type">Optional</div>
+  </dd>
+</dl>
+
+<p class="alert alert-info">
+  <b>Notice:</b> Signing is required to use the <code>vts</code> payment
+  method.
 </p>
 
 ##### Authentication: `[3dsecure]`
