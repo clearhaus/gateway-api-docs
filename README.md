@@ -1,21 +1,20 @@
-# Gateway API documentation
+### Developer documentation
 
-## Installation
-
-```bash
-git clone https://github.com/clearhaus/gateway-api-docs.git
-
-docker build -t gateway-api-docs .
-```
-
-## Development
-
-Update gateway documentation in source/index.md.
-
-Run middleman webserver:
 
 ```bash
-docker run --rm -it -p 4567:4567 -v /path/to/gateway-api-docs.git:/web gateway-api-docs
+# serve locally
+docker run --rm -it \
+--name gateway-api-docs \
+-p 1313:1313 \
+-v $PWD:/opt/clearhaus/gateway-api-docs \
+gateway-api-docs-v2
 ```
 
-Browse http://localhost:4567
+Some files a statically made when starting the hugo server.
+- `.js` files
+- `.css` files
+
+To update these files run:
+```shell
+docker exec -it gateway-api-docs yarn update_build 
+```
