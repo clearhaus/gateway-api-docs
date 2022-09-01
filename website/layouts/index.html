@@ -1,0 +1,69 @@
+{{ partial "header" . }}
+
+<body class="home">
+	<section id="hero">
+		<header>
+			<div class="wrapper">
+				<a href="/" id="logo"><img src="img/logo.svg"></a>
+			</div>
+		</header>
+		<div class="wrapper">
+			<div class="hero-content">
+				<h1 class="line">Clearhaus Transaction API</h1>
+				<p class="big">Welcome to Clearhaus Transaction API. You can use our API to process payment card transactions.
+					The API is organized around REST and designed to have predictable and resource-oriented URLs. The table below
+					basically sums up what you can do:</p>
+				<dl class="dl-horizontal">
+					<dt>Reserve money on a cardholder's bank account:</dt>
+					<dd><code>POST https://gateway.clearhaus.com/authorizations</code></dd>
+					<dt>Withdraw money from a cardholder's bank account:</dt>
+					<dd><code>POST https://gateway.clearhaus.com/authorizations/:id/captures</code></dd>
+					<dt>Refund money to a cardholder:</dt>
+					<dd><code>POST https://gateway.clearhaus.com/authorizations/:id/refunds</code></dd>
+					<dt>Payout money to a cardholder:</dt>
+					<dd><code>POST https://gateway.clearhaus.com/credits</code></dd>
+				</dl>
+				<span></span>
+				<a href="#getting-started" class="get-started-button button green-button">Get Started</a>
+
+			</div>
+			<div class="terminal">
+				<div class="terminal-topbar">
+					<span class="close-button"></span>
+					<span class="minimize-button"></span>
+					<span class="fullscreen-button"></span>
+				</div>
+				<pre class="terminal-content">
+Last login: Sun Aug 15 10:15:51 2049 from deckard
+clearhaus$ <span class="typed-text"></span>
+				</pre>
+			</div>
+		</div>
+	</section>
+<div class="docs scrollpage">
+<section class="content">
+	<div class="wrapper">
+		<article>
+			{{ with .Sections }}
+				{{ range .ByWeight }}
+							{{ partial "section_list.html" . }}
+					{{ end }}
+			{{ end }}
+		</article>
+		<div class="side-bar">
+				<ul class="side-navigation">
+				</ul>
+			<div class="scroll-bound">
+				<aside class="content-navigation">
+					<span class="content-title">Table of Contents</span>
+					<ul class="content-navigation-content">
+					</ul>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+	<ul class="mobile-navigation-content">
+	</ul>
+{{ partial "footer" . }}
