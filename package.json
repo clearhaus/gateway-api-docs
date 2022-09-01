@@ -1,0 +1,48 @@
+{
+  "name": "Gateway_api_docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "auth0-js": "^9.11.0",
+    "axios": "^0.19.0",
+    "core-js": "3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^3.0.3",
+    "regenerator-runtime": "^0.13.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "child_process": "^1.0.2",
+    "concurrent-transform": "^1.0.0",
+    "gulp-awspublish": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-cloudfront-invalidate": "^0.1.5",
+    "gulp-uglify-es": "^1.0.4",
+    "minimist": "^1.2.0"
+  },
+  "scripts": {
+    "serve": "gulp build && hugo server --source=website/ --bind=0.0.0.0",
+    "build": "gulp build",
+    "update_build": "gulp update",
+    "deploy:production": "gulp deploy --env production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clearhaus/gateway-api-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clearhaus/gateway-api-docs/issues"
+  },
+  "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme"
+}
