@@ -1,17 +1,19 @@
 ### Developer documentation
 
+Build the Docker image:
+
 ```shell
-# build the docker image
 docker build -t gateway-api-docs --file build/Dockerfile . 
 ```
 
+Serve locally:
+
 ```shell
-# serve locally
 docker run --rm -it \
---name gateway-api-docs \
--p 1313:1313 \
--v $PWD:/opt/clearhaus/gateway-api-docs \
-gateway-api-docs
+  --name gateway-api-docs \
+  -p 1313:1313 \
+  -v $PWD:/opt/clearhaus/gateway-api-docs \
+  gateway-api-docs
 ```
 
 Some files a statically made when starting the hugo server.

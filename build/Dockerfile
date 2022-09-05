@@ -10,12 +10,8 @@ RUN apt-get update && \
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends nodejs yarn && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 RUN yarn global add gulp
 WORKDIR /tmp
 COPY ./package.json /tmp/package.json
@@ -26,7 +22,7 @@ RUN yarn install && \
     cp -a /tmp/node_modules /opt/clearhaus/gateway-api-docs
 RUN yarn
 RUN curl -s https://api.github.com/repos/gohugoio/hugo/releases \
-    | grep  browser_download_url \
+    | grep browser_download_url \
     | grep Linux-64bit.deb \
     | grep -v extended \
     | head -1 \
