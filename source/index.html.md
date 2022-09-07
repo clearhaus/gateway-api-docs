@@ -1064,6 +1064,14 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     Electronic Commerce Indicator.<br />
     Found in <code>eci</code> (SCOF).
   </dd>
+  <dt>token[m4m][delegation]
+    <span class="type">(applepay|googlepay_app)</span>
+  </dt>
+  <dd>
+    Type of delegated authentication. Do not send this parameter if delegated
+    authentication has not taken place.
+    <div class="type">Optional</div>
+  </dd>
   <dt>
     token[m4m][3dsecure][v2]
     <span class="type">dictionary</span>
@@ -1113,6 +1121,14 @@ The required values are found in the VTS provision token response.
   <dd>
     Electronic Commerce Indicator.<br />
     Found in <code>cryptogramInfo.eci</code>.
+  </dd>
+  <dt>token[vts][delegation]
+    <span class="type">(applepay|googlepay_app)</span>
+  </dt>
+  <dd>
+    Type of delegated authentication. Do not send this parameter if delegated
+    authentication has not taken place.
+    <div class="type">Optional</div>
   </dd>
   <dt>
     token[vts][3dsecure][v2]
