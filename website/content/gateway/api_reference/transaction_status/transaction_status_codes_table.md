@@ -18,13 +18,13 @@ weight: 195
 |          | 40200 | Clearhaus rule violation           | ✓    | ✓       | ✓      | ✓    | ✓      |
 |          | 40300 | 3-D Secure problem                 | ✓    |         |        |      |        |
 |          | 40310 | 3-D Secure authentication failure  | ✓    |         |        |      |        |
-|          | 40400 | Backend problem                    | ✓    | ✓       | ✓      |      |        |
-|          | 40410 | Declined by issuer or card scheme  | ✓    | ✓       | ✓      |      |        |
-|          | 40411 | Card restricted                    | ✓    | ✓       |        |      |        |
-|          | 40412 | Card lost or stolen                | ✓    | ✓       |        |      |        |
-|          | 40413 | Insufficient funds                 | ✓    | ✓       |        |      |        |
-|          | 40414 | Suspected fraud                    | ✓    | ✓       |        |      |        |
-|          | 40415 | Amount limit exceeded              | ✓    | ✓       |        |      |        |
-|          | 40416 | Additional authentication required | ✓    | ✓       |        |      |        |
-|          | 40420 | Merchant blocked by cardholder     | ✓    | ✓       |        |      |        |
+|          | 40400 | Backend problem                    | ✓    |         |        | ✓    | ✓      |
+|          | 40410 | Declined by issuer or card scheme  | ✓    |         |        | ✓    | ✓      |
+|          | 40411 | Card restricted                    | ✓    |         |        |      | ✓      |
+|          | 40412 | Card lost or stolen                | ✓    |         |        |      | ✓      |
+|          | 40413 | Insufficient funds                 | ✓    |         |        |      | ✓      |
+|          | 40414 | Suspected fraud                    | ✓    |         |        |      | ✓      |
+|          | 40415 | Amount limit exceeded              | ✓    |         |        |      | ✓      |
+|          | 40416 | Additional authentication required | ✓    |         |        |      | ✓      |
+|          | 40420 | Merchant blocked by cardholder     | ✓    |         |        |      | ✓      |
 |          | 50000 | Clearhaus error                    | ✓    | ✓       | ✓      | ✓    | ✓      |
