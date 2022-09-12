@@ -1,4 +1,4 @@
-### Developer documentation
+### Gateway API documentation
 
 Build the Docker image:
 
