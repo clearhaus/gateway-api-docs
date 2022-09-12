@@ -15,7 +15,7 @@ const parallelize = require('concurrent-transform');
 
 const config = {
   production: {
-    baseUrl: 'https://developer.clearhaus.com',
+    baseUrl: 'https://docs.gateway.clearhaus.com/',
     aws: {
       region: process.env.AWS_REGION,
       params: {
