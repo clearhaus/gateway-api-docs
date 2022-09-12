@@ -16,7 +16,7 @@ docker run --rm -it \
   gateway-api-docs
 ```
 
-Some files a statically made when starting the hugo server.
+Some files are statically made when starting the Hugo server.
 - `.js` files
 - `.css` files
 
