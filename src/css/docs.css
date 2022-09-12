@@ -829,6 +829,7 @@ div.docs.scrollpage dl dt {
 	display: inline-flex;
 	margin-left: 10px;
 	margin-top: 10px;
+	margin-bottom: -10px;
 }
 
 div.docs.scrollpage dl dt p {
@@ -838,6 +839,10 @@ div.docs.scrollpage dl dt p {
 
 div.docs.scrollpage dl dd {
 	margin-left: 30px;
+}
+
+div.docs.scrollpage dl dd p {
+	margin-top: 0;
 }
 
 .description_details_header {

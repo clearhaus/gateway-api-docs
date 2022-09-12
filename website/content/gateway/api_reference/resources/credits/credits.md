@@ -57,5 +57,5 @@ POST https://gateway.clearhaus.com/credits
 {{% /description_list %}}
 
 {{% notice %}}
-**Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is use. 
+**Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`. 
 {{% /notice %}}

@@ -16,9 +16,6 @@ https://gateway.clearhaus.com/authorizations/:id/captures
 # voids
 https://gateway.clearhaus.com/authorizations/:id/voids
 
-# refunds
-https://gateway.clearhaus.com/authorizations/:id/refunds
-
 # credits
 https://gateway.clearhaus.com/credits
 

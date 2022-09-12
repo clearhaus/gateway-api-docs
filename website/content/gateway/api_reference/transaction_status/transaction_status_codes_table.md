@@ -8,12 +8,12 @@ weight: 195
 | -------- | ----- | ---------------------------------- | ---- | ------- | ------ | ---- | ------ |
 | Approved | 20000 | Approved                           | ✓    | ✓       | ✓      | ✓    | ✓      |
 | Declined | 40000 | General input error                | ✓    | ✓       | ✓      | ✓    | ✓      |
-|          | 40110 | Invalid card number                | ✓    | ✓       |        |      |        |
-|          | 40111 | Unsupported card scheme            | ✓    | ✓       |        |      |        |
+|          | 40110 | Invalid card number                | ✓    |         |        |      | ✓      |
+|          | 40111 | Unsupported card scheme            | ✓    |         |        |      | ✓      |
 |          | 40120 | Invalid CSC                        | ✓    |         |        |      |        |
-|          | 40130 | Invalid expire date                | ✓    | ✓       |        |      |        |
-|          | 40135 | Card expired                       | ✓    | ✓       |        |      |        |
-|          | 40140 | Invalid currency                   | ✓    | ✓       |        |      |        |
+|          | 40130 | Invalid expire date                | ✓    |         |        |      | ✓      |
+|          | 40135 | Card expired                       | ✓    |         |        |      | ✓      |
+|          | 40140 | Invalid currency                   | ✓    |         |        |      | ✓      |
 |          | 40150 | Invalid text on statement          | ✓    | ✓       | ✓      |      | ✓      |
 |          | 40200 | Clearhaus rule violation           | ✓    | ✓       | ✓      | ✓    | ✓      |
 |          | 40300 | 3-D Secure problem                 | ✓    |         |        |      |        |

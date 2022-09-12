@@ -4,7 +4,7 @@ date: 2022-04-12T14:46:29+02:00
 anchor: "rsa-signature"
 weight: 40
 ---
-## RSA signature
+#### RSA signature
 The RSA signature is an {{% highlight_text %}} RSASSA-PKCS1-v1_5 v{{% /highlight_text %}} signature of the body. It is represented in hex.
 
 If the signing API key is {{% highlight_text %}}4390aec7-f76a-4c2f-8597-c87c2d06cb4f {{% /highlight_text %}}, the signing private key (in PEM format) is
