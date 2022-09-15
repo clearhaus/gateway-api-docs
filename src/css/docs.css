@@ -121,10 +121,9 @@ div.docs .category-navigation nav {
 }
 
 div.docs .category-navigation nav a {
-	font-family: "Circular", sans-serif;
 	font-size: 13px;
 	font-weight: 500;
-	color: #BABABA;
+	color: #959595;
 	letter-spacing: 0.3px;
 	text-decoration: none;
 	line-height: 50px;
@@ -135,7 +134,6 @@ div.docs .category-navigation nav a {
 }
 
 div.docs .category-navigation nav a.active {
-	font-family: "Circular", sans-serif;
 	font-weight: 500;
 	color: #4790DB;
 	position: relative;
@@ -203,7 +201,6 @@ div.docs section.content .wrapper {
 	padding: 0;
 	max-width: 1246px;
 	height: 100%;
-	padding-bottom: 0;
 	align-items: stretch;
 }
 
@@ -487,7 +484,6 @@ div.docs.scrollpage section.content .wrapper .side-navigation li a {
 	border: 1px solid #F0F0F2;
 	border-radius: 0px;
 	border-top: none;
-	font-family: "Calibre", sans-serif;
 	font-size: 15px;
 	text-decoration: none;
 	padding: 14px 20px;
@@ -511,7 +507,6 @@ div.docs.scrollpage section.content .wrapper .side-navigation li:last-child a {
 }
 
 div.docs article h1 {
-	font-family: "Circular", sans-serif;
 	font-size: 44px;
 	font-weight: 500;
 	color: #2D2D2D;
@@ -523,7 +518,7 @@ div.docs article h1 {
 }
 
 div.docs article h2 {
-	font-family: "Circular", sans-serif;
+
 	font-size: 29px;
 	color: #2D2D2D;
 	margin-top: 58px;
@@ -589,7 +584,6 @@ div.docs .horizontal-navigation ul li:hover {
 }
 
 div.docs .horizontal-navigation ul li {
-	border-right: none;
 	text-align: center;
 	border: 1px solid #F0F0F2;
 	border-right: none;
@@ -620,15 +614,11 @@ div.docs article .link-rel {
 	padding: 1px;
 }
 
-
-/* div.docs article .link-rel {} */
-
 div.docs article .link-rel-header {
 	padding: 10px 20px;
 }
 
 div.docs article .link-rel-name {
-	font-family: "Circular", sans-serif;
 	font-size: 22px;
 	font-weight: 500;
 	color: #FFFFFF;
@@ -637,7 +627,6 @@ div.docs article .link-rel-name {
 
 div.docs article .link-rel-label {
 	opacity: 0.39;
-	font-family: "Circular", sans-serif;
 	font-size: 11px;
 	font-weight: 500;
 	color: #FFFFFF;
@@ -647,9 +636,8 @@ div.docs article .link-rel-label {
 
 div.docs article .link-rel-content {
 	background-color: #fff;
-	padding: 5px 20px 1px 20px;
 	border-radius: 0 0 2px 2px;
-	padding-bottom: 18px;
+	padding: 5px 20px 18px;
 	box-sizing: border-box;
 	overflow-x: auto;
 }
@@ -672,7 +660,6 @@ div.docs article .notes-block sup {
 	top: 3px;
 	margin: 3px;
 	font-weight: 800;
-	position: relative;
 	display: block;
 	line-height: 14px;
 	padding: 0px;
@@ -693,9 +680,7 @@ div.docs article .notes-block div {
 }
 
 div.docs article sup {
-	color: red;
 	top: 3px;
-	margin: 3px;
 	font-weight: 800;
 	position: relative;
 	display: inline-block;
@@ -705,9 +690,7 @@ div.docs article sup {
 	padding: 1px 1px 1px 1px;
 	text-align: center;
 	height: 12px;
-	margin-top: -4px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin: -4px 5px 3px;
 	vertical-align: middle;
 	border: 1px solid #4790DB;
 	border-radius: 50%;
@@ -732,7 +715,6 @@ div.docs article .link-rel-content p {
 
 div.docs .notes-block,
 div.docs .notes-block li {
-	font-family: "Calibre", sans-serif;
 	font-size: 12px;
 }
 
@@ -741,11 +723,9 @@ div.docs sup {
 }
 
 div.docs .notice {
-	font-family: "Calibre", sans-serif;
 	font-size: 15px;
 	background-color: #fcf8e3;
-	border: 1px solid #F4E7AB;
-	border-color: #F9EFC7;
+	border: 1px solid #F9EFC7;
 	padding: 20px;
 	box-shadow: 0px 2px 0px #F9EFC7;
 	border-radius: 3px;
@@ -770,11 +750,10 @@ div.docs .notice p {
 }
 
 div.docs .warning {
-	font-family: "Calibre", sans-serif;
+
 	font-size: 15px;
 	background-color: #f2dede;
 	border: 1px solid #ebccd1;
-	border-color: #ebccd1;
 	padding: 20px;
 	box-shadow: 0px 2px 0px #ebccd1;
 	border-radius: 3px;
@@ -867,7 +846,6 @@ div.docs span.regex_optional {
 
 div.docs article h3 {
 	margin: 50px 0 20px 0;
-	font-family: "Circular", sans-serif;
 	font-size: 25px;
 	color: #2D2D2D;
 	letter-spacing: -0.4px;
@@ -896,7 +874,6 @@ div.docs article h3:before {
 	width: 100%;
 	padding: 10px 20px;
 	height: 100%;
-	content: "";
 	display: block;
 	background-color: rgba(255, 255, 0, 0);
 	z-index: -1;
@@ -914,7 +891,6 @@ div.docs article table {
 }
 
 body article p {
-	font-family: "Calibre", sans-serif;
 	font-size: 15px;
 	color: #2D2D2D;
 	letter-spacing: 0.3px;
@@ -923,7 +899,6 @@ body article p {
 }
 
 div.docs article li {
-	font-family: "Calibre", sans-serif;
 	font-size: 15px;
 	color: #2D2D2D;
 	letter-spacing: 0.3px;
@@ -936,7 +911,6 @@ div.docs.scrollpage ul li {
 }
 
 th {
-	font-family: "Circular", sans-serif;
 	font-size: 12px;
 	color: #2D2D2D;
 	line-height: 20px;
@@ -955,7 +929,6 @@ tbody tr:nth-child(odd) {
 td {
 	text-align: left;
 	padding: 10px 10px;
-	font-family: "Calibre", sans-serif;
 	font-weight: 500;
 	border: 1px solid #F0F0F2;
 	font-size: 14px;
@@ -1014,18 +987,16 @@ div.docs.scrollpage section.content .wrapper aside ul {
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li a {
-	font-family: "Calibre", sans-serif;
 	font-size: 13px;
 	text-decoration: none;
 	letter-spacing: 0px;
 	margin: 0px;
 	display: block;
 	width: 100%;
-	padding: 10px;
-	padding-left: 20px;
+	padding: 10px 10px 10px 20px;
 	box-sizing: border-box;
 	border-radius: 3px;
-	color: #BABABA;
+	color: #959595;
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li a.h2 {
@@ -1041,7 +1012,7 @@ div.docs.scrollpage section.content .wrapper aside .content-title {
 	font-family: "Circular", sans-serif;
 	font-size: 12px;
 	font-weight: 500;
-	color: #BABABA;
+	color: #959595;
 	margin-left: 20px;
 	text-transform: uppercase;
 	letter-spacing: 0.3px;
@@ -1067,7 +1038,6 @@ div.docs.scrollpage section.content:before {
 div.docs.scrollpage section.content .wrapper {
 	padding: 0 30px;
 }
-
 
 .mobile-navigation-content {
 	display: none;
@@ -1157,7 +1127,6 @@ div.docs.scrollpage section.content .wrapper {
 		background-color: #4790DB;
 		margin: 0 0 0 0;
 		display: block;
-
 	}
 
 	div.docs.scrollpage section.content .wrapper aside ul {
@@ -1167,7 +1136,6 @@ div.docs.scrollpage section.content .wrapper {
 
 	div.docs.scrollpage section.content .wrapper aside ul li.active a {
 		border-radius: 0;
-
 	}
 
 	div.docs.scrollpage section.content .wrapper aside ul li.active a:hover {
@@ -1254,7 +1222,6 @@ div.docs .category-navigation nav a:hover {
 
 .mobile-navigation-content li.active:after {
 	content: "↕";
-	font-family: "Calibre", sans-serif;
 	color: #fff;
 	font-weight: 100;
 	font-size: 20px;
@@ -1269,7 +1236,6 @@ div.docs .category-navigation nav a:hover {
 .mobile-navigation-content li a {
 	color: #fff;
 	text-transform: uppercase;
-	font-family: "Circular", sans-serif;
 	font-size: 13px;
 	font-weight: 500;
 	letter-spacing: 0.7px;
@@ -1422,7 +1388,6 @@ div.docs section.content .wrapper aside.onscreen {
 	cursor: pointer;
 	font-size: 18px;
 	transition: background 0.1s, color 0.1s;
-	font-family: "Calibre", sans-serif;
 	color: #2D2D2D;
 }
 
