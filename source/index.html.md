@@ -1047,6 +1047,13 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     Found in <code>encryptedPayload.encryptedData.applicationExpiryDate</code> (MDES)<br />
     or <code>encryptedPayload.token.tokenExpirationYear</code> (SCOF).
   </dd>
+  <dt>token[m4m][eci]
+    <span class="type">0[267]</span>
+  </dt>
+  <dd>
+    Electronic Commerce Indicator.<br />
+    Found in <code>eci</code> (SCOF).
+  </dd>
   <dt>token[m4m][cryptogram]
     <span class="type">[:base64:]{4,32}</span>
   </dt>
@@ -1056,13 +1063,7 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     (DSRP) cryptogram.<br />
     Found in <code>encryptedPayload.encryptedData.de48se43Data</code> (MDES)<br />
     or <code>encryptedPayload.dynamicData.dynamicDataValue</code> (SCOF).
-  </dd>
-  <dt>token[m4m][eci]
-    <span class="type">0[267]</span>
-  </dt>
-  <dd>
-    Electronic Commerce Indicator.<br />
-    Found in <code>eci</code> (SCOF).
+    <div class="type">Optional for subsequent-in-series authorizations; otherwise required.</div>
   </dd>
   <dt>token[m4m][delegation]
     <span class="type">(applepay|googlepay_app)</span>
@@ -1108,19 +1109,20 @@ The required values are found in the VTS provision token response.
     Expiry year of token to charge.<br />
     Found in <code>tokenInfo.expirationDate.year</code>.
   </dd>
-  <dt>token[vts][cryptogram]
-    <span class="type">[:base64:]{28}</span>
-  </dt>
-  <dd>
-    Token cryptogram.<br />
-    Found in <code>cryptogramInfo.cryptogram</code>.
-  </dd>
   <dt>token[vts][eci]
     <span class="type">0[567]</span>
   </dt>
   <dd>
     Electronic Commerce Indicator.<br />
     Found in <code>cryptogramInfo.eci</code>.
+  </dd>
+  <dt>token[vts][cryptogram]
+    <span class="type">[:base64:]{28}</span>
+  </dt>
+  <dd>
+    Token cryptogram.<br />
+    Found in <code>cryptogramInfo.cryptogram</code>.
+    <div class="type">Optional for subsequent-in-series authorizations; otherwise required.</div>
   </dd>
   <dt>token[vts][delegation]
     <span class="type">(applepay|googlepay_app)</span>
