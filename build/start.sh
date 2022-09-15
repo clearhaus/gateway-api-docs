@@ -1,4 +1,4 @@
 #!/bin/sh
 
-
-exec yarn serve
+yarn install
+yarn serve
