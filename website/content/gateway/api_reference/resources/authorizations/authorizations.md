@@ -30,11 +30,8 @@ Authorizations can be created using different payment methods: `card`, `applepay
 
 Default:
 
-
 - `use`, if `initiator` is `merchant` (`store` is invalid),
-
 - `store` if the authorization is first-in-series.
-
 
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 
@@ -43,7 +40,7 @@ Default:
 {{% description_term %}}initiator {{% regex %}}(cardholder|merchant){{% /regex %}}{{% /description_term %}}
 
 {{% description_details %}}The initiator of the authorization. An authorization is initiated by the cardholder if the cardholder decided the transaction should be created. This is regardless of whether a stored payment credential is being used.
-For compliance reasons there should be a previous approved transaction (for the combination of card and merchant) where `credential_on_file=store` before `initiator` may be `merchant`.
+For compliance reasons there should be a previously approved transaction (for the combination of card and merchant) where `credential_on_file=store` before `initiator` may be `merchant`.
 
 Default:
 - `merchant`, if the authorization is subsequent-in-series (`cardholder` is invalid),
@@ -103,5 +100,5 @@ Conditional. Cannot be present if  `series[type]` is present.
 {{% regex_optional %}}~~Cannot be used with `series` or `initiator`.~~{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
-{{% notice %}}{{% bold %}}Notice{{% /bold %}}: When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.{{% /notice %}}
-{{% notice %}}{{% bold %}}Notice{{% /bold %}}: Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.{{% /notice %}}
+{{% notice %}}**Notice:** When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.{{% /notice %}}
+{{% notice %}}**Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.{{% /notice %}}

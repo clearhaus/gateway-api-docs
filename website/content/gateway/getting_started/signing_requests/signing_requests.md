@@ -14,4 +14,4 @@ The signature is an RSA signature of the HTTP body; it is represented in hex. Th
 Signature: <partner-signing-api-key> RS256-hex <signature>
 ```
 
-{{% notice %}}{{% bold %}}Notice{{% /bold %}}: If the signature header is included, it must hold a correct signature, otherwise the transaction will fail.{{% /notice %}}
+{{% notice %}}**Notice:** If the signature header is included, it must hold a correct signature, otherwise the transaction will fail.{{% /notice %}}

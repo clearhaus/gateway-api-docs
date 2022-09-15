@@ -35,4 +35,4 @@ See more information at [3dsecure.io](https://wwww.3dsecure.io)
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
-{{% notice %}}{{% bold %}}Notice{{% /bold %}}: An authorization that includes `card[3dsecure][v1][pares]`, `card[3dsecure][v2][rreq]`, and/or `card[csc]` cannot be a subsequent-in-series authorization.{{% /notice %}}
+{{% notice %}}**Notice:** An authorization that includes `card[3dsecure][v1][pares]`, `card[3dsecure][v2][rreq]`, and/or `card[csc]` cannot be a subsequent-in-series authorization.{{% /notice %}}

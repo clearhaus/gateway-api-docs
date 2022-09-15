@@ -11,6 +11,7 @@ All responses will be delivered in JSON format (see [JSON-HAL](https://tools.iet
 Content-Type: application/vnd.clearhaus-gateway.hal+json; version=0.10.0; charset=utf-8
 ```
 where the version follows [Semantic Versioning](https://semver.org/).
+
 We use HTTP response codes to indicate API response status:
 ```
 Number  Text

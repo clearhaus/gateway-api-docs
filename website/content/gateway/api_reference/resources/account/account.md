@@ -17,7 +17,7 @@ GET https://gateway.clearhaus.com/account
 {{% /description_details %}}
 
 {{% description_term %}}descriptor{{% regex %}}[\x20-\x7E]{0,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The default `text_on_statement`. 
+{{% description_details %}}The default `text_on_statement`.
 {{% /description_details %}}
 
 {{% description_term %}}name{{% regex %}}[\x20-\x7E]{0,20} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
