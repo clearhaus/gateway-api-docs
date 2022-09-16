@@ -1,4 +1,4 @@
 #!/bin/sh
 
-yarn install
-yarn serve
+yarnpkg install
+yarnpkg serve
