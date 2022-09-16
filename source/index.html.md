@@ -714,6 +714,17 @@ Exactly one payment method must be used.
   with <code>series[previous]</code>, the type of a series cannot change.
 </p>
 
+<p class="alert alert-info">
+  <b>Notice:</b> Since <code>series[previous]</code> cannot be supplied together
+  with <code>series[type]</code>, <code>credential_on_file</code> will default to
+  <code>store</code> when supplying <code>series[type]</code>.
+</p>
+
+<p class="alert alert-info">
+  <b>Notice:</b> If a series is being created using credentials already stored on file, use
+  <code>credential_on_file=use</code> together with <code>series[type]</code>.
+</p>
+
 
 ##### Method: `card`
 
