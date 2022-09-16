@@ -3,7 +3,7 @@
 Build the Docker image:
 
 ```shell
-docker build -t gateway-api-docs --file build/Dockerfile . 
+./build/build.sh
 ```
 
 Serve locally:
@@ -13,7 +13,7 @@ docker run --rm -it \
   --name gateway-api-docs \
   -p 1313:1313 \
   -v $PWD:/opt/clearhaus/gateway-api-docs \
-  gateway-api-docs
+  clearhaus/gateway-api-docs
 ```
 
 Some files are statically made when starting the Hugo server.
