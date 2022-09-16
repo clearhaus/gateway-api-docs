@@ -12,12 +12,12 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.NONPCI_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.NONPCI_AWS_SECRET_ACCESS_KEY }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: build `prod`
         working-directory: project
-        run: docker build -t clearhaus/gateway-api-docs --file build/Dockerfile .
+        run: ./build/build.sh
 
       - name: Deploy `prod`
         working-directory: project
-        run: docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY clearhaus/gateway-api-docs yarn deploy:production
+        run: docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY clearhaus/gateway-api-docs yarnpkg deploy:production
