@@ -1,0 +1,11 @@
+languageCode = "en-us"
+title = "Clearhaus Gateway API docs"
+relativeurls = false
+canonifyurls = true
+enableInlineShortcodes = true
+PygmentsCodeFences = true
+pygmentsstyle = "xcode"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
