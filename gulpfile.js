@@ -24,7 +24,7 @@ const config = {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 
-      distribution: 'd2te2qckkr0lw4',
+      distribution: 'E78MG8DOLYAEP',
       paths: ['/*']
     }
   }

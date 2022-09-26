@@ -15,9 +15,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: build `prod`
-        working-directory: project
         run: ./build/build.sh
 
       - name: Deploy `prod`
-        working-directory: project
         run: docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY clearhaus/gateway-api-docs yarnpkg deploy:production

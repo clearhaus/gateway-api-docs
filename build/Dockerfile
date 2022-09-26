@@ -11,4 +11,4 @@ COPY . /opt/clearhaus/gateway-api-docs
 
 EXPOSE 1313
 
-CMD sh ./build/start.sh
+RUN yarnpkg install
