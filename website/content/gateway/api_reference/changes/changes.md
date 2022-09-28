@@ -15,7 +15,7 @@ Both Visa and Mastercard are phasing out 3-D Secure version 1 (3DSv1) in favour
 of 3-D Secure version 2 (3DSv2). As a consequence, we are deprecating 3DSv1
 which will effectively stop working with schemes mid-October; 2022-10-18 for
 Mastercard and 2022-10-14 for Visa. The `[3dsecure][v1]` authentication method
-will be removed any time after 2022-10-18.
+and the `[pares]` parameters will be removed any time after 2022-10-18.
 
 #### Accept travel data
 [Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
