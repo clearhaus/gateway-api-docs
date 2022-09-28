@@ -33,7 +33,6 @@ const config = {
 function uglifyCSS() {
   return gulp.src('src/css/*.css')
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
