@@ -66,9 +66,10 @@ Default:
 
 {{% description_term %}}series[type] {{% regex %}}(recurring|unscheduled){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use.
-`series\[previous\]\[...\]`.
-`recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.<!-- TODO: List these -->
-`unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
+`series[previous][...]`.
+
+- `recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.
+- `unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
 
 {{% regex_optional %}}Conditional.{{% /regex_optional %}}
 Cannot be present if `series[previous]` is present.
@@ -100,5 +101,9 @@ Conditional. Cannot be present if  `series[type]` is present.
 {{% regex_optional %}}~~Cannot be used with `series` or `initiator`.~~{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
-{{% notice %}}**Notice:** When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.{{% /notice %}}
-{{% notice %}}**Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.{{% /notice %}}
+{{% notice %}}
+**Notice:** When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.
+{{% /notice %}}
+{{% notice %}}
+**Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
+{{% /notice %}}
