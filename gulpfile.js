@@ -3,7 +3,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
 const exec = require('child_process').exec;
 const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-uglify-es').default;
+const uglify = require('gulp-terser');
 const concat = require('gulp-concat');
 const imagemin = require('imagemin');
 
