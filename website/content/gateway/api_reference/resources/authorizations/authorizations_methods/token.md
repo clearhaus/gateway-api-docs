@@ -11,6 +11,8 @@ Two token frameworks are supported:
 * `token[m4m]`: Mastercard Digital Enablement Service (MDES) for Merchants (M4M)
 * `token[vts]`: Visa Token Service (VTS)
 
+Requirement of some parameters depends on the initiator of the transaction; a parameter might be required for cardholder-initiated transactions (CITs) and otherwise optional. See the details for each parameter.
+
 {{% notice %}}
 **Notice**: Signing is required to use the `token` payment methods.
 {{% /notice %}}
@@ -42,6 +44,7 @@ Found in `encryptedPayload.encryptedData.applicationExpiryDate` (MDES) or `encry
 {{% description_details %}}Electronic Commerce Indicator.
 
 Found in `eci` (SCOF).
+{{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[m4m][cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
@@ -50,7 +53,7 @@ Found in `eci` (SCOF).
 Must start with `[A-P]` to be a Digital Secure Remote Payments (DSRP) cryptogram.
 
 Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPayload.dynamicData.dynamicDataValue` (SCOF).
-{{% regex_optional %}}Required for cardholder-initiated transactions; otherwise optional.{{% /regex_optional %}}
+{{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[m4m][3dsecure][v2] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
@@ -86,13 +89,14 @@ Found in `tokenInfo.expirationDate.year`.
 {{% description_details %}}Electronic Commerce Indicator.
 
 Found in `cryptogramInfo.eci`.
+{{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[vts][cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token cryptogram.
 
 Found in `cryptogramInfo.cryptogram`.
-{{% regex_optional %}}Required for cardholder-initiated transactions; otherwise optional.{{% /regex_optional %}}
+{{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[vts][3dsecure][v2] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
