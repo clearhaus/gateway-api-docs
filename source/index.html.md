@@ -1110,7 +1110,7 @@ The required values are found in the VTS provision token response.
     Found in <code>tokenInfo.expirationDate.year</code>.
   </dd>
   <dt>token[vts][eci]
-    <span class="type">0[567]</span>
+    <span class="type">0[57]</span>
   </dt>
   <dd>
     Electronic Commerce Indicator.<br />
