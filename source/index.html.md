@@ -1063,7 +1063,7 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     (DSRP) cryptogram.<br />
     Found in <code>encryptedPayload.encryptedData.de48se43Data</code> (MDES)<br />
     or <code>encryptedPayload.dynamicData.dynamicDataValue</code> (SCOF).
-    <div class="type">Optional for subsequent-in-series authorizations; otherwise required.</div>
+    <div class="type">Required for cardholder-initiated transactions; otherwise optional.</div>
   </dd>
   <dt>token[m4m][delegation]
     <span class="type">(applepay|googlepay_app)</span>
@@ -1122,7 +1122,7 @@ The required values are found in the VTS provision token response.
   <dd>
     Token cryptogram.<br />
     Found in <code>cryptogramInfo.cryptogram</code>.
-    <div class="type">Optional for subsequent-in-series authorizations; otherwise required.</div>
+    <div class="type">Required for cardholder-initiated transactions; otherwise optional.</div>
   </dd>
   <dt>token[vts][delegation]
     <span class="type">(applepay|googlepay_app)</span>
