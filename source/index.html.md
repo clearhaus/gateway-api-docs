@@ -1065,14 +1065,6 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     or <code>encryptedPayload.dynamicData.dynamicDataValue</code> (SCOF).
     <div class="type">Required for cardholder-initiated transactions; otherwise optional.</div>
   </dd>
-  <dt>token[m4m][delegation]
-    <span class="type">(applepay|googlepay_app)</span>
-  </dt>
-  <dd>
-    Type of delegated authentication. Do not send this parameter if delegated
-    authentication has not taken place.
-    <div class="type">Optional</div>
-  </dd>
   <dt>
     token[m4m][3dsecure][v2]
     <span class="type">dictionary</span>
@@ -1123,14 +1115,6 @@ The required values are found in the VTS provision token response.
     Token cryptogram.<br />
     Found in <code>cryptogramInfo.cryptogram</code>.
     <div class="type">Required for cardholder-initiated transactions; otherwise optional.</div>
-  </dd>
-  <dt>token[vts][delegation]
-    <span class="type">(applepay|googlepay_app)</span>
-  </dt>
-  <dd>
-    Type of delegated authentication. Do not send this parameter if delegated
-    authentication has not taken place.
-    <div class="type">Optional</div>
   </dd>
   <dt>
     token[vts][3dsecure][v2]
