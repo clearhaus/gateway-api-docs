@@ -23,7 +23,7 @@ The required values are found in either the MDES `transact` response or the Secu
 
 {{% description_list %}}
 {{% description_term %}}token[m4m][tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Account Number (TAN) to charge.
+{{% description_details %}}Token Account Number (TAN) of the token to charge.
 
 Found in `encryptedPayload.encryptedData.accountNumber` (MDES) or `encryptedPayload.token.paymentToken` (SCOF).
 {{% /description_details %}}
@@ -68,7 +68,7 @@ The required values are found in the VTS provision token response.
 
 {{% description_list %}}
 {{% description_term %}}token[vts][tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Account Number (TAN) to charge.
+{{% description_details %}}Token Account Number (TAN) of the token to charge.
 
 Found in `tokenInfo.encTokenInfo`.
 {{% /description_details %}}
