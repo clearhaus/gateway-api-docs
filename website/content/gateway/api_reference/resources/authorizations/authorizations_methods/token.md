@@ -43,7 +43,7 @@ Found in `encryptedPayload.encryptedData.applicationExpiryDate` (MDES) or `encry
 {{% description_term %}}token[m4m][eci] {{% regex %}}0[267]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Electronic Commerce Indicator.
 
-Found in `eci` (SCOF).
+Found in `eci` (SCOF). (Not available in MDES.)
 {{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
 {{% /description_details %}}
 
