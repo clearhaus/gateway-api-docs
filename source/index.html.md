@@ -1055,7 +1055,7 @@ or the Secure Card on File (SCOF) <code>checkout</code> response.
     Found in <code>eci</code> (SCOF).
   </dd>
   <dt>token[m4m][cryptogram]
-    <span class="type">[:base64:]{4,32}</span>
+    <span class="type">[:base64:]{28}</span>
   </dt>
   <dd>
     Token cryptogram.<br />
