@@ -50,7 +50,7 @@ Found in `eci` (SCOF). (Not available in MDES.)
 {{% description_term %}}token[m4m][tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram and Digital Secure Remote Payments (DSRP) cryptogram.
 
-Must start with `[A-P]` to be a DSRP cryptogram.
+Only DSRP cryptograms are supported. The value must start with `[A-P]` to be a DSRP cryptogram.
 
 Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPayload.dynamicData.dynamicDataValue` (SCOF).
 {{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
