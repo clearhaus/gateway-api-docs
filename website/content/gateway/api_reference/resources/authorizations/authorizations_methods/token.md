@@ -47,10 +47,10 @@ Found in `eci` (SCOF). (Not available in MDES.)
 {{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}token[m4m][cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token cryptogram.
+{{% description_term %}}token[m4m][tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram and Digital Secure Remote Payments (DSRP) cryptogram.
 
-Must start with `[A-P]` to be a Digital Secure Remote Payments (DSRP) cryptogram.
+Must start with `[A-P]` to be a DSRP cryptogram.
 
 Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPayload.dynamicData.dynamicDataValue` (SCOF).
 {{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
@@ -92,8 +92,8 @@ Found in `cryptogramInfo.eci`.
 {{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}token[vts][cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token cryptogram.
+{{% description_term %}}token[vts][tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram and Token Authentication Verification Value (TAVV).
 
 Found in `cryptogramInfo.cryptogram`.
 {{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
