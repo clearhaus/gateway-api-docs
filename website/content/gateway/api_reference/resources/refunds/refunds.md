@@ -4,7 +4,7 @@ date: 2022-04-13T12:37:22+02:00
 anchor: "refunds"
 weight: 170
 ---
-#### Voids
+#### Refunds
 To refund money to a cardholder’s bank account you make a new refund resource. You can make multiple refunds for an authorization transaction.
 ```shell
 POST https://gateway.clearhaus.com/authorizations/:id/refunds
