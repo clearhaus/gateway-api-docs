@@ -12,7 +12,7 @@ Only one 3-D Secure version can be used for a given authorization.
 {{% /description_term %}}
 {{% description_details %}}
 3-D Secure version 2, also known as EMV 3-D Secure.
-{{% regex_optional %}}Optional. Cannot be present if `v1` is present{{% /regex_optional %}}
+{{% regex_optional %}}Optional. ~~Cannot be present if `v1` is present.~~{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_list %}}
