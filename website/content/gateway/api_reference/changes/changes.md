@@ -17,6 +17,9 @@ which will effectively stop working with schemes mid-October; 2022-10-18 for
 Mastercard and 2022-10-14 for Visa. The `[3dsecure][v1]` authentication method
 and the `[pares]` parameters will be removed any time after 2022-10-18.
 
+#### Change SLL currency to SLE
+The currency SLL has been changed to SLE on 2022-10-07.
+
 #### Accept travel data
 [Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
 
