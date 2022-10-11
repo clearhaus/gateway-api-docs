@@ -3,9 +3,9 @@ const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
 const exec = require('child_process').exec;
 const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-uglify-es').default;
+const uglify = require('gulp-terser');
 const concat = require('gulp-concat');
-const imagemin = require('gulp-imagemin');
+const imagemin = require('imagemin');
 
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -33,7 +33,6 @@ const config = {
 function uglifyCSS() {
   return gulp.src('src/css/*.css')
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
@@ -63,14 +62,12 @@ function appBundle() {
 };
 
 function imageMIN() {
-  return gulp.src('src/img/**/*')
-    .pipe(imagemin({
-      optimizationLevel: 5,
-      progressive: true,
-      interlaced: true
-    }))
-    .pipe(gulp.dest('website/static/img'));
-};
+  return imagemin(['src/img/**/*'],
+    {
+      destination: 'website/static/img',
+    }
+  )
+}
 
 function hugoClean() {
   return gulp.src('website/public', { read: false })

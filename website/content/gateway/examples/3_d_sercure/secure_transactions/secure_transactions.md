@@ -4,34 +4,6 @@ date: 2022-04-13T12:37:22+02:00
 anchor: "secure_transactions"
 weight: 85
 ---
-To perform a 3-D Secure version 1 transaction you make an ordinary authorization including a {{% highlight_text %}}pares{{% /highlight_text %}} value:
-```shell
-curl -X POST https://gateway.test.clearhaus.com/authorizations \
-     -u <your-api-key>: \
-     -d "amount=2050"   \
-     -d "currency=EUR"  \
-     -d "ip=1.1.1.1"    \
-     -d "card[pan]=4111111111111111" \
-     -d "card[expire_month]=06"      \
-     -d "card[expire_year]=2022"     \
-     -d "card[csc]=123"              \
-     --data-urlencode "card[3dsecure][v1][pares]=<some-pares-value>" \
-     -H "Signature: <signing-api-key> RS256-hex <signature>"
-```
-Example response (snippet):
-```json
-{
-    "id": "84412a34-fa29-4369-a098-0165a80e8fda",
-    "status": {
-        "code": 20000
-    },
-    "processed_at": "2018-07-09T12:58:56+00:00",
-    "3dsecure": {
-        "version": "1.0.2",
-        "status": "Y"
-    }
-}
-```
 To perform a 3-D Secure version 2 transaction you make an ordinary authorization including an {{% highlight_text %}}ares{{% /highlight_text %}} or an {{% highlight_text %}}rreq{{% /highlight_text %}} value. The former is used in the following example:
 ```shell
 curl -X POST https://gateway.test.clearhaus.com/authorizations \
@@ -60,4 +32,6 @@ Example response (snippet):
     }
 }
 ```
-{{% notice %}}**Notice:** The response element {{% highlight_text %}}threed_secure{{% /highlight_text %}} is deprecated, please use {{% highlight_text %}}3dsecure{{% /highlight_text %}}.{{% /notice %}}
+{{% notice %}}
+**Notice:** The response element {{% highlight_text %}}threed_secure{{% /highlight_text %}} is deprecated, please use {{% highlight_text %}}3dsecure{{% /highlight_text %}}.
+{{% /notice %}}

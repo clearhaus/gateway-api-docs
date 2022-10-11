@@ -37,5 +37,10 @@ Example response (snippet):
 }
 ```
 In order to actually transfer money from cardholder’s bank account to your merchant bank account you will have to make a capture transaction.
-{{% notice %}}**Notice:** Some issuers will approve authorizations although the CSC did not match; in this case the {{% highlight_text %}} status {{% /highlight_text %}} {{% highlight_text %}} code {{% /highlight_text %}} will be {{% highlight_text %}} 20000 {{% /highlight_text %}} but {{% highlight_text %}} csc {{% /highlight_text %}} {{% highlight_text %}} matches {{% /highlight_text %}} will be {{% highlight_text %}} false {{% /highlight_text %}}. Please be aware that rules to disallow captures for such authorizations may be in place for a merchant.{{% /notice %}}
-{{% notice %}}**Notice:**{{% highlight_text %}} csc {{% /highlight_text %}} {{% highlight_text %}} matches {{% /highlight_text %}} is {{% highlight_text %}} true {{% /highlight_text %}} if issuer or card scheme confirmed CSC to match; it is {{% highlight_text %}} false {{% /highlight_text %}} if issuer or card scheme did not perform validation or if validation failed.{{% /notice %}}
+{{% notice %}}
+**Notice:** Some issuers will approve authorizations although the CSC did not match; in this case the `status` `code` will be `20000` but `csc` `matches` will be `false`. Please be aware that rules to disallow captures for such authorizations may be in place for a merchant.
+{{% /notice %}}
+
+{{% notice %}}
+**Notice**: `csc` `matches` is `true`if issuer or card scheme confirmed CSC to match; it is `false` if issuer or card scheme did not perform validation or if validation failed.
+{{% /notice %}}
