@@ -69,6 +69,14 @@ function imageMIN() {
   )
 }
 
+function prepFavicon() {
+  return imagemin(['src/favicon.ico'],
+      {
+        destination: 'website/static'
+      }
+    )
+}
+
 function hugoClean() {
   return gulp.src('website/public', { read: false })
     .pipe(clean());
@@ -83,7 +91,7 @@ function hugoBuild() {
   });
 };
 
-const hugoPrep = gulp.parallel(uglifyCSS, prepJS, prepFonts, prepBinaries, imageMIN);
+const hugoPrep = gulp.parallel(uglifyCSS, prepJS, prepFonts, prepBinaries, imageMIN, prepFavicon);
 const build = gulp.series(hugoPrep, hugoBuild);
 
 function publish() {
