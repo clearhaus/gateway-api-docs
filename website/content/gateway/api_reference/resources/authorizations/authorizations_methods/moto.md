@@ -12,12 +12,12 @@ weight: 130
 Primary account number of card to charge.
 {{% /description_details %}}
 
-{{% description_term %}}mobilepayonline[expire_month]  {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}moto[expire_month]  {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 Expiry month of card to charge.
 {{% /description_details %}}
 
-{{% description_term %}}mobilepayonline[expire_year]  {{% regex %}}[0-9]{4}{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}moto[expire_year]  {{% regex %}}[0-9]{4}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 Expiry year of card to charge.
 {{% /description_details %}}

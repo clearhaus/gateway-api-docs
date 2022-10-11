@@ -25,7 +25,7 @@ weight: 110
 {{% /description_details %}}
 
 {{% description_term %}}card[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}See [ Authentication: [3dsecure].](#authentication-3dsecure)
+{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure).
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
