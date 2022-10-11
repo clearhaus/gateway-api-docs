@@ -17,6 +17,10 @@ which will effectively stop working with schemes mid-October; 2022-10-18 for
 Mastercard and 2022-10-14 for Visa. The `[3dsecure][v1]` authentication method
 and the `[pares]` parameters will be removed any time after 2022-10-18.
 
+#### Payment methods added for token frameworks
+The payment methods `token[m4m]` and `token[vts]` have been added on 2022-10-07.
+Please see [Method: token](#method-token) for an introduction.
+
 #### Change SLL currency to SLE
 The currency SLL has been changed to SLE on 2022-10-07.
 
