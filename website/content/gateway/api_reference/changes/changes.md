@@ -10,6 +10,8 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp
 
+#### Change SLL currency to SLE
+The currency SLL will be changed to SLE after 2022-10-01.
 
 #### Accept travel data
 [Travel data](#travel-data) can be [supplied for a capture](#captures) as of 2022-02-11.
