@@ -14,7 +14,7 @@ Two token frameworks are supported:
 Requirement of some parameters depends on the initiator of the transaction; a parameter might be required for cardholder-initiated transactions (CITs) and otherwise optional. See the details for each parameter.
 
 {{% notice %}}
-**Notice**: Signing is required to use the `token` payment methods.
+**Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
 
 #### Method: token[m4m]
