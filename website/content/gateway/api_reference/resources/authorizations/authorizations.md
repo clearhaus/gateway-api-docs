@@ -9,7 +9,7 @@ To reserve money on a cardholder’s bank account you make a new authorization r
 ```shell
 POST https://gateway.clearhaus.com/authorizations
 ```
-Authorizations can be created using different payment methods: `card`, `applepay`, `googlepay`, `mobilepayonline`, `moto`, `token` and `vipps`. Exactly one payment method must be used.
+Authorizations can be created using different payment methods: [`card`](#method-card), [`applepay`](#method-applepay), [`googlepay`](#method-googlepay), [`mobilepayonline`](#method-mobilepayonline), [`moto`](#method-moto), [`token`](#method-token) and [`vipps`](#method-vipps). Exactly one payment method must be used.
 
 ##### Parameters
 {{% description_list %}}
