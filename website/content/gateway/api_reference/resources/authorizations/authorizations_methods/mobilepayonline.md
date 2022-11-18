@@ -6,6 +6,8 @@ weight: 125
 ---
 #### Method: mobilepayonline
 
+{{% description_list %}}
+
 {{% description_term %}}mobilepayonline[payment_token]  {{% regex %}}[\:json\:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 Full tokenCallback response serialized as JSON, supplied as a string. Required for token-based authentication.
@@ -28,7 +30,6 @@ Deprecated! Please use `mobilepayonline[payment_token]`.
 {{% regex_optional %}}~~Optional~~{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_list %}}
 {{% description_term %}}~~mobilepayonline[pan]~~  {{% regex %}}~~[0-9]{12,19}~~{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 Deprecated! Please use `mobilepayonline[payment_token]`.
