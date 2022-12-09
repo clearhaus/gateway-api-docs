@@ -91,7 +91,7 @@ Conditional. Cannot be present if  `series[type]` is present.
 
 {{% regex_optional %}}May not be all digits, all same character, or all sequential characters (e.g. “abc”){{% /regex_optional %}}
 
-{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}~~recurring~~{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
