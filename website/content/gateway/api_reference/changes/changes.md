@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp
 
+#### Croatian Kuna (HRK) changes to Euro (EUR)
+Due to the [accession of Croatia to the euro area on
+2023-01-01](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220712~b97dd38de3.en.html),
+HRK will become an invalid currency. Please notice the deadlines communicated in
+the partner bulletin of Q4 2022.
+
 #### Deprecation and phase-out of 3-D Secure version 1
 Both Visa and Mastercard are phasing out 3-D Secure version 1 (3DSv1) in favour
 of 3-D Secure version 2 (3DSv2). As a consequence, we are deprecating 3DSv1
