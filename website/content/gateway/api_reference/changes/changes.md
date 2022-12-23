@@ -10,7 +10,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp
 
-#### Croatia Kuna (HRK) changes to Euro (EUR)
+#### Croatian Kuna (HRK) changes to Euro (EUR)
 Due to the [accession of Croatia to the euro area on
 2023-01-01](https://www.ecb.europa.eu/press/pr/date/2022/html/ecb.pr220712~b97dd38de3.en.html),
 HRK will become an invalid currency. Please notice the deadlines communicated in
