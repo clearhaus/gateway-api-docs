@@ -30,8 +30,8 @@ weight: 110
 {{% /description_details %}}
 
 {{% description_term %}}~~card[pares]~~ {{% regex %}}[\:base64\:]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Deprecated! Please use `card[3dsecure][v1][pares].` 
-See more information at [3dsecure.io](https://wwww.3dsecure.io)
+{{% description_details %}}Deprecated! Please use `card[3dsecure][v1][pares].`
+See more information at [3dsecure.io](https://www.3dsecure.io)
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
