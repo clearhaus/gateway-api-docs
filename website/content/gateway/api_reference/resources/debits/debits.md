@@ -11,7 +11,7 @@ POST https://gateway.clearhaus.com/debits
 ```
 Debits are created using the same payment methods and parameters as listed under [Authorizations](#authorizations). Exactly one payment method must be used.
 
-For authentication and scheme reference to series also see [Authorizations](#authorizations). Notice that only 3-D Secure version 2, i.e. `[3dsecure][v2][...]`, is supported for debits, not version 1.
+For authentication and scheme reference to series see the sections under [Authorizations](#authorizations), respectively. Notice that only 3-D Secure version 2, i.e. `[3dsecure][v2][...]`, is supported for debits, not version 1.
 
 Under certain circumstances, sender information is required for a debit. See [Sender information](#sender_information).
 
