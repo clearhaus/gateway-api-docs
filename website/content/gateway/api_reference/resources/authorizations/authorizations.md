@@ -65,8 +65,7 @@ Default:
 
 
 {{% description_term %}}series[type] {{% regex %}}(recurring|unscheduled){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use.
-`series[previous][...]`.
+{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use `series[previous][...]`.
 
 - `recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.
 - `unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
