@@ -5,7 +5,7 @@ anchor: "resources"
 weight: 100
 ---
 ## Resources
-Our API offers six different resources:
+Our API offers eight different resources:
 
 - [Authorizations](#authorizations)
 - [Captures](#captures)
