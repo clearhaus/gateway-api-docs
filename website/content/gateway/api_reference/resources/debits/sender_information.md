@@ -30,11 +30,11 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% /description_details %}}
 
 {{% description_term %}}sender[state] {{% regex %}}[A-Z]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's state when the country is 124 (Canada) or 840 (USA).
+{{% description_details %}}The sender's state when the country is CA (Canada/124) or US (USA/840).
 {{% /description_details %}}
 
-{{% description_term %}}sender[country] {{% regex %}}[0-9]{3}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's country (ISO 3166-1 numeric).
+{{% description_term %}}sender[country] {{% regex %}}[A-Z]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's country (ISO 3166-1 2-letter country code).
 {{% /description_details %}}
 
 {{% description_term %}}sender[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
