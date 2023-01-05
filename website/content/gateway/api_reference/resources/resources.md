@@ -12,6 +12,6 @@ Our API offers six different resources:
 - [Refunds](#refunds)
 - [Voids](#voids)
 - [Debits](#debits)
-- [Debit Refunds](#debit_refunds)
+- [Debit refunds](#debit_refunds)
 - [Credits](#credits)
 - [Account](#account)
