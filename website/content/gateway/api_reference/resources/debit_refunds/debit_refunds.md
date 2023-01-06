@@ -15,5 +15,5 @@ POST https://gateway.clearhaus.com/debits/:id/refunds
 No parameters are needed to make a new refund transaction.
 
 {{% notice %}}
-**Notice**: A refund of a Visa AFT debit might be declined by Visa or the issuer if the debit age is 24 hours or more, or if settlement has taken place for the debit.
+**Notice**: A refund of a Visa AFT debit might be declined by Visa or the issuer if the debit age is 24 hours or more, or if settlement has taken place for the debit. The transaction gateway does not track debit age or settlement, i.e. it relies on Visa and the issuer to decline late refunds.
 {{% /notice %}}
