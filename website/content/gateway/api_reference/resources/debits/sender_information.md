@@ -50,7 +50,7 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 
 {{% description_term %}}sender[reference] {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Sender reference number. You must be able to uniquely identify the sender using this number.
-{{% regex_optional %}}Required if no account number is supplied.{{% /regex_optional %}}
+{{% regex_optional %}}Required if no account number is supplied or if the merchant account's Business Application Identifier (BAI) is Funds Disbursement (FD).{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
