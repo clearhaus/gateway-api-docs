@@ -9,7 +9,7 @@ Our API offers eight different resources:
 
 - [Authorizations](#authorizations)
 - [Captures](#captures)
-- [Refunds](#refunds)
+- [Capture refunds](#capture_refunds)
 - [Voids](#voids)
 - [Debits](#debits)
 - [Debit refunds](#debit_refunds)
