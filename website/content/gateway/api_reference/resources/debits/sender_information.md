@@ -5,7 +5,7 @@ anchor: "sender_information"
 weight: 177
 ---
 ##### Sender information
-To be compliant with card scheme rules, these parameters are required for debits under certain circumstances. Card scheme or issuer might even decline up front if one or more parameters are absent. See the partner guideline for more details.
+Information about the sender is required for debits under certain circumstances to be compliant with card scheme rules. See the partner guideline for more details.
 
 {{% description_list %}}
 
