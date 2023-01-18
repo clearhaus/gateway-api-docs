@@ -30,11 +30,6 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required for intra-EEA and international debits.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}sender[postal_code] {{% regex %}}[\x20-\x7E]{5,10} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's postal code.
-{{% regex_optional %}}Optional{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% description_term %}}sender[state] {{% regex %}}[A-Z]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The sender's state.
 {{% regex_optional %}}Required if the country is CA (Canada) or US (USA).{{% /regex_optional %}}
