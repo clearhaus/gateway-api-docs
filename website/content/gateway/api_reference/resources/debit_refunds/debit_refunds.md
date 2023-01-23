@@ -15,5 +15,5 @@ POST https://gateway.clearhaus.com/debits/:id/refunds
 No parameters are needed to make a new refund transaction.
 
 {{% notice %}}
-**Notice**: A refund of a Visa AFT debit might be declined by Visa or the issuer if the debit age is 24 hours or more, or the debit has cleared. The transaction gateway does not track the clearing of the debit, i.e. it relies on Visa and the issuer to decline late refunds.
+**Notice**: In almost all cases, an approved debit is eventually cleared by Visa and the issuer. It should be noted that Visa or the issuer might decline a debit refund with the reasoning that 24 hours have passed since the debit or that the debit has cleared. There is no dedicated signaling for this, so the transaction gateway has no dedicated status code. We recommend that a debit refund is created as soon as possible, in case a debit needs to be refunded.
 {{% /notice %}}
