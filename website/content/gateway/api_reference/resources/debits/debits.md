@@ -9,9 +9,7 @@ To transfer money from a cardholder's bank account in real-time, in one step, yo
 ```shell
 POST https://gateway.clearhaus.com/debits
 ```
-Debits are created using a payment method ([card](#method-card), [applepay](#method-applepay), [googlepay](#method-googlepay), [mobilepayonline](#method-mobilepayonline), [moto](#method-moto), [token](#method-token), or [vipps](#method-vipps)) as listed under [Authorizations](#authorizations). Exactly one payment method must be used.
-
-For authentication, [3-D Secure version 2](#authentication-3dsecurev2) is supported, and also [scheme reference to series](#scheme-reference-to-series) is supported---exactly as it is for [Authorizations](#authorizations). Notice that 3-D Secure version 1 is not supported.
+Debits support the same parameters and payment methods as [Authorizations](#authorizations), with the exception that 3-D Secure version 1 is not supported.
 
 Under certain circumstances, sender information is required for a debit. See [Sender information](#sender_information).
 
