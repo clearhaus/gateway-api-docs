@@ -8,7 +8,10 @@ weight: 220
 
 Follow coming changes on the [source code repository](https://github.com/clearhaus/gateway-api-docs).
 
-Sorted by descending timestamp
+Sorted by descending timestamp.
+
+#### Debits and debit refunds resources added
+Starting 2023-02-01, [debits](#debits) and [debit refunds](#debit_refunds) resources are available.
 
 #### Croatian Kuna (HRK) changes to Euro (EUR)
 Due to the [accession of Croatia to the euro area on

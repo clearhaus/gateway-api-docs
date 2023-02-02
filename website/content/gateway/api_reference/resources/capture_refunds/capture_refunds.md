@@ -1,14 +1,18 @@
 ---
-title: "Refunds"
-date: 2022-04-13T12:37:22+02:00
-anchor: "refunds"
+title: "Capture refunds"
+date: 2023-01-09T13:37:00+01:00
+anchor: "capture_refunds"
 weight: 170
 ---
-#### Refunds
-To refund money to a cardholder’s bank account you make a new refund resource. You can make multiple refunds for an authorization transaction.
+#### Capture refunds
+To refund money to a cardholder's bank account you make a new refund resource. You can make multiple refunds for an authorization transaction.
+
 ```shell
 POST https://gateway.clearhaus.com/authorizations/:id/refunds
 ```
+
+These are refunds of one or more captures made on an authorization and shall not be confused with [debit refunds](#debit_refunds). Notice the association with authorizations rather than directly with captures.
+
 ##### Parameters
 {{% description_list %}}
 {{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}

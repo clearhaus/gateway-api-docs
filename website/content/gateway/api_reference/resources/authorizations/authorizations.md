@@ -65,8 +65,7 @@ Default:
 
 
 {{% description_term %}}series[type] {{% regex %}}(recurring|unscheduled){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use.
-`series[previous][...]`.
+{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use `series[previous][...]`.
 
 - `recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.
 - `unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
@@ -79,11 +78,11 @@ Cannot be present if `series[previous]` is present.
 
 {{% description_term %}}series[previous][id] {{% regex %}}[:UUIDv4:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The Clearhaus authorization ID as a reference to the latest approved authorization in the series.
-This parameter is used for a subsequent-in-series. To create a first-in-series authorization use  `series[type] `.
-Can be used only with payment method  `card`.
+This parameter is used for a subsequent-in-series. To create a first-in-series authorization use `series[type]`.
+Can be used only with payment method `card`.
 If the latest approved authorization in the series was not processed via Clearhaus, after obtaining explicit approval from Clearhaus, you can provide raw scheme values; see [Scheme reference to series](#scheme-reference-to-series).
 
-Conditional. Cannot be present if  `series[type]` is present.
+Conditional. Cannot be present if `series[type]` is present.
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
