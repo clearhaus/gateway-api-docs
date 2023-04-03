@@ -10,6 +10,17 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Removal of deprecated parameters
+We are removing several parameters that have been deprecated for an extended
+period of time. We promise that the following parameters are functional until
+2023-05-01, but give no guarantees thereafter.
+
+* Request parameter `recurring`. Please use `series[]` instead.
+* Request parameters `card[pares]`, `mobilepayonline[pares]`, and
+  `[3dsecure][v1]` since 3DSv1 is being fully sunset 2023-04-15.
+* Response parameter `threed_secure`, since 3DSv1 is being sunset fully
+  2023-04-15.
+
 #### Debits and debit refunds resources added
 Starting 2023-02-01, [debits](#debits) and [debit refunds](#debit_refunds) resources are available.
 
