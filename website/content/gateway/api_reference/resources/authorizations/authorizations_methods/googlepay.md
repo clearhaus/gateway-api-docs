@@ -1,7 +1,7 @@
 ---
 title: "googlepay"
 date: 2022-04-13T12:37:22+02:00
-anchor: "method-googleapy"
+anchor: "method-googlepay"
 weight: 120
 ---
 #### Method: googlepay

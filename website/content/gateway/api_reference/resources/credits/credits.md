@@ -23,7 +23,7 @@ POST https://gateway.clearhaus.com/credits
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
 {{% regex_optional %}} May not be all digits, all same character, or all sequential characters (e.g. “abc”){{% /regex_optional %}}
-{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}

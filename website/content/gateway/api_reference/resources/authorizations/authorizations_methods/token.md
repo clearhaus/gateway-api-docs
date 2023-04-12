@@ -56,6 +56,15 @@ Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPaylo
 {{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}token[m4m][rcai] {{% regex %}}[:base64:]{1..150}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Remote Commerce Acceptor Identifier.
+
+Merchant identifier such as business website URL or reverse domain name (e.g. com.example.www). The identifier must be encoded as Base64.
+
+Found in `customOutputData.remoteCommerceAcceptorIdentifier` (SCOF). (Not available in MDES.)
+{{% regex_optional %}}Optional.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}token[m4m][3dsecure][v2] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}See [Authentication: [3dsecure][v2]](#authentication-3dsecure-v2).
 {{% regex_optional %}}Optional{{% /regex_optional %}}
