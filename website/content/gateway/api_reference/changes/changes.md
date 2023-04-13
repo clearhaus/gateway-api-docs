@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Icelandic Krona (ISK) temporarily switched off due to ISK exponent change
+Mastercard and Visa are changing the currency exponent for the Icelandic krona (ISK) from two to zero to align with the [International Organization for Standardization (ISO)](https://www.iso.org/iso-4217-currency-codes.html). In order to make this change successful for all involved parties, the ISK currency will be switched off from 2023-04-13 19:00 UTC (Thursday) to 2023-04-17 08:00 UTC (Monday).
+From 2023-04-17 08:00 UTC (Monday) the exponent for ISK will be zero. An authorization of 100 ISK (10000 minor units) made before the ISK switch off is capturable by a capture of 100 ISK (100 minor units) after the ISK switch on.
+
 #### Debits and debit refunds resources added
 Starting 2023-02-01, [debits](#debits) and [debit refunds](#debit_refunds) resources are available.
 
