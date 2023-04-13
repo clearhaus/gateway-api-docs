@@ -30,5 +30,5 @@ weight: 110
 {{% /description_details %}}
 {{% /description_list %}}
 {{% notice %}}
-**Notice:** An authorization that includes `card[3dsecure][v2][rreq]`, and/or `card[csc]` cannot be a subsequent-in-series authorization.
+**Notice:** An authorization that includes `card[3dsecure][v2][rreq]` and/or `card[csc]` cannot be a subsequent-in-series authorization.
 {{% /notice %}}
