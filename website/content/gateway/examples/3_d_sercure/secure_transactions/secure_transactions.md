@@ -32,6 +32,3 @@ Example response (snippet):
     }
 }
 ```
-{{% notice %}}
-**Notice:** The response element {{% highlight_text %}}threed_secure{{% /highlight_text %}} is deprecated, please use {{% highlight_text %}}3dsecure{{% /highlight_text %}}.
-{{% /notice %}}

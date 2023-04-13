@@ -93,16 +93,6 @@ Conditional. Cannot be present if `series[type]` is present.
 {{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}~~recurring~~{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Deprecated! Please use `series`.
-
-{{% regex_optional %}}~~Optional~~{{% /regex_optional %}} 
-{{% regex_optional %}}~~Cannot be used with `series` or `initiator`.~~{{% /regex_optional %}}
-{{% /description_details %}}
-{{% /description_list %}}
-{{% notice %}}
-**Notice:** When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.
-{{% /notice %}}
 {{% notice %}}
 **Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
 {{% /notice %}}
