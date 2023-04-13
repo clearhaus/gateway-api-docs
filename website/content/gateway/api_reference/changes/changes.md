@@ -25,6 +25,7 @@ ISK changes exponent from 2 to exponent 0.
 Transactions in ISK will be declined between 2023-04-13T19:00:00Z (Thursday
 evening) and 2023-04-17T08:00:00Z (Monday morning) (both inclusive); before this
 timespan, the exponent is 2; after the timespan, the exponent is 0.
+
 #### Debits and debit refunds resources added
 Starting 2023-02-01, [debits](#debits) and [debit refunds](#debit_refunds) resources are available.
 
