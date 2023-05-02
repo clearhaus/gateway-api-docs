@@ -33,5 +33,5 @@ Example response (snippet):
 }
 ```
 
-The field {{% highlight_text %}}card[name]{{% /highlight_text %}} is mandatory for Mastercard payment of winnings (gaming/gambling merchants).
+The field {{% highlight_text %}}card[name]{{% /highlight_text %}} is mandatory for Mastercard Payment of winnings (gaming/gambling merchants).
 Depending on card scheme and merchant category, the name on the card might be necessary for approval of credits.
