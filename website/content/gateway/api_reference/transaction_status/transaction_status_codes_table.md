@@ -10,7 +10,7 @@ weight: 195
 | 40000 | General input error                | ✓    | ✓       | ✓      | ✓    | ✓      | ✓      | ✓            |
 | 40110 | Invalid card number                | ✓    |         |        |      | ✓      | ✓      | ✓            |
 | 40111 | Unsupported card scheme            | ✓    |         |        |      | ✓      | ✓      |              |
-| 40120 | Invalid CSC                        | ✓    |         |        |      |        | ✓      | ✓            |
+| 40120 | Invalid CSC                        | ✓    |         |        |      |        | ✓      |              |
 | 40130 | Invalid expire date                | ✓    |         |        |      | ✓      | ✓      |              |
 | 40135 | Card expired                       | ✓    |         |        |      | ✓      | ✓      | ✓            |
 | 40140 | Invalid currency                   | ✓    | ✓       | ✓      | ✓    | ✓      | ✓      | ✓            |
