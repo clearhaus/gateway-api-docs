@@ -9,7 +9,7 @@ To transfer money from a cardholder's bank account in real-time, in one step, yo
 ```shell
 POST https://gateway.clearhaus.com/debits
 ```
-Debits support the same parameters and payment methods as [Authorizations](#authorizations), with the exception that 3-D Secure version 1 is not supported.
+Debits support the same parameters and payment methods as [Authorizations](#authorizations), with the exception that amount must be greater than zero.
 
 Under certain circumstances, sender information is required for a debit. See [Sender information](#sender_information).
 
