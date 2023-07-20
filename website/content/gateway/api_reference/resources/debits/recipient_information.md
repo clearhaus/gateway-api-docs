@@ -1,0 +1,23 @@
+---
+title: "recipient_information"
+date: 2023-07-20T13:01:49+01:00
+anchor: "recipient_information"
+weight: 178
+---
+##### Recipient information
+
+{{% description_list %}}
+
+{{% description_term %}}recipient[name] {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The recipient's legal name.
+
+Example: "Doe Jane A." (last name, first name, optional middle initial).
+
+{{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete (only first or last name).{{% /regex_optional %}}
+{{% regex_optional %}}Required for intra-EEA and international debits. Also required if any of the address-related parameters are supplied.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}recipient[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The recipient's account number, i.e. an identification of the account being funded by the debit. It can be an IBAN, a proprietary wallet number, a prepaid PAN, etc.
+{{% regex_optional %}}Required{{% /regex_optional %}}
+{{% /description_details %}}

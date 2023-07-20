@@ -40,11 +40,6 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required for intra-EEA and international debits.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}sender[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's account number, i.e. an identification of the account being funded by the debit. It can be an IBAN, a proprietary wallet number, a prepaid PAN, etc.
-{{% regex_optional %}}Required{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% description_term %}}sender[reference] {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Sender reference number. You must be able to uniquely identify the sender using this number.
 {{% regex_optional %}}Required if the merchant account's Business Application Identifier (BAI) is Funds Disbursement (FD).{{% /regex_optional %}}
