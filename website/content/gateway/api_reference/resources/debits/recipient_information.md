@@ -14,7 +14,7 @@ weight: 178
 Example: "Doe Jane A." (last name, first name, optional middle initial).
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete (only first or last name).{{% /regex_optional %}}
-{{% regex_optional %}}Required for intra-EEA and international debits. Also required if any of the address-related parameters are supplied.{{% /regex_optional %}}
+{{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
