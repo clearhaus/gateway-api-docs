@@ -79,7 +79,7 @@ Cannot be present if `series[previous]` is present.
 {{% description_term %}}series[previous][id] {{% regex %}}[:UUIDv4:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The Clearhaus authorization ID as a reference to the latest approved authorization in the series.
 This parameter is used for a subsequent-in-series. To create a first-in-series authorization use `series[type]`.
-Can be used only with payment method `card`.
+Can be used only with payment methods `card` and `token`.
 If the latest approved authorization in the series was not processed via Clearhaus, after obtaining explicit approval from Clearhaus, you can provide raw scheme values; see [Scheme reference to series](#scheme-reference-to-series).
 
 Conditional. Cannot be present if `series[type]` is present.
