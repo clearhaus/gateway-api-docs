@@ -13,7 +13,8 @@ Sorted by descending timestamp.
 #### Add recipient to debits
 The `recipient` concept has been added to debits. The
 `recipient[account_number]` and `recipient[name]` parameters are now required
-for merchant accounts with BAI AA from 2023-07-31.
+for merchant accounts with Business Application Identifier (BAI)
+Account-to-Account (AA) from 2023-07-31.
 
 #### Removal of deprecated parameters
 We are removing several parameters that have been deprecated for an extended
