@@ -22,22 +22,22 @@ POST https://gateway.clearhaus.com/credits
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
-{{% regex_optional %}} May not be all digits, all same character, or all sequential characters (e.g. “abc”){{% /regex_optional %}}
-{{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
+{{% regex_optional %}}May not be all digits, all same character, or all sequential characters (e.g. “abc”).{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}} A reference to an external object, such as an order number. 
+{{% description_details %}} A reference to an external object, such as an order number.
 
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Primary account number of card to charge. 
+{{% description_details %}}Primary account number of card to charge.
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry month of card to charge. 
+{{% description_details %}}Expiry month of card to charge.
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
@@ -45,17 +45,17 @@ POST https://gateway.clearhaus.com/credits
 {{% /description_details %}}
 
 {{% description_term %}}card[csc] {{% regex %}} [0-9]{3}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Card Security Code. 
-{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% description_details %}}Card Security Code.
+{{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[name] {{% regex %}}[A-Za-z0-9 ]{1,30}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Name on card. 
-{{% regex_optional %}}Required for Mastercard Payment of winnings, otherwise optional{{% /regex_optional %}}
+{{% description_details %}}Name on card.
+{{% regex_optional %}}Required for Mastercard Payment of winnings, otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
 
 {{% notice %}}
-**Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`. 
+**Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`.
 {{% /notice %}}
