@@ -5,6 +5,7 @@ anchor: "recipient_information"
 weight: 178
 ---
 ##### Recipient information
+See the partner guideline for more details.
 
 {{% description_list %}}
 

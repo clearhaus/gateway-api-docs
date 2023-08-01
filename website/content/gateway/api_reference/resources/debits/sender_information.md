@@ -5,7 +5,7 @@ anchor: "sender_information"
 weight: 177
 ---
 ##### Sender information
-Information about the sender is required for debits under certain circumstances to be compliant with card scheme rules. See the partner guideline for more details.
+See the partner guideline for more details.
 
 Intra-EEA, mentioned below, includes the United Kingdom and Gibraltar.
 
