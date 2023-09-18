@@ -28,6 +28,13 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}marketplace[regional_purchase]{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Indicates whether a marketplace purchase is regional or not.
+
+Default: `true`.
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% /description_list %}}
 
 {{% notice %}}

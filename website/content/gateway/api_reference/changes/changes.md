@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Add marketplace regional purchase indicator to captures and capture refunds
+The `marketplace` concept has been added to captures and capture refunds. The
+`marketplace[regional_purchase]` parameter is optional with default `true`.
+
 #### Add recipient to debits
 The `recipient` concept has been added to debits. The
 `recipient[account_number]` and `recipient[name]` parameters are now required
