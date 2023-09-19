@@ -30,8 +30,7 @@ These are refunds of one or more captures made on an authorization and shall not
 {{% description_term %}}marketplace[regional_purchase]{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Indicates whether a marketplace purchase is regional or not.
 
-Default: `true`.
-{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% regex_optional %}}Required if the merchant is a marketplace.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}

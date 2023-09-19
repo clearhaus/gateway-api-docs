@@ -12,7 +12,8 @@ Sorted by descending timestamp.
 
 #### Add marketplace regional purchase indicator to captures and capture refunds
 The `marketplace` concept has been added to captures and capture refunds. The
-`marketplace[regional_purchase]` parameter is optional with default `true`.
+`marketplace[regional_purchase]` parameter is required if the merchant is a
+marketplace.
 
 #### Add recipient to debits
 The `recipient` concept has been added to debits. The
