@@ -10,7 +10,11 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-#### Add recipient to debits
+#### Addition of `[3dsecure]` dictionary to `googlepay` payment method
+Starting 2023-12-11, 3-D Secure authentication details can be added to a Google
+Pay authorization and debit.
+
+#### Addition recipient to debits
 The `recipient` concept has been added to debits. The
 `recipient[account_number]` and `recipient[name]` parameters are now required
 for merchant accounts with Business Application Identifier (BAI)
