@@ -19,7 +19,7 @@ A `marketplace` concept has been added to captures and capture refunds. The
 `marketplace[interregional_retailer]` parameter is required if the merchant is
 a marketplace.
 
-#### Addition recipient to debits
+#### Addition of recipient to debits
 The `recipient` concept has been added to debits. The
 `recipient[account_number]` and `recipient[name]` parameters are now required
 for merchant accounts with Business Application Identifier (BAI)
