@@ -14,6 +14,11 @@ Sorted by descending timestamp.
 Starting 2023-12-11, 3-D Secure authentication details can be added to a Google
 Pay authorization and debit.
 
+#### Addition of marketplace interregional retailer indicator to captures and capture refunds
+A `marketplace` concept has been added to captures and capture refunds. The
+`marketplace[interregional_retailer]` parameter is required if the merchant is
+a marketplace.
+
 #### Addition recipient to debits
 The `recipient` concept has been added to debits. The
 `recipient[account_number]` and `recipient[name]` parameters are now required

@@ -27,6 +27,12 @@ These are refunds of one or more captures made on an authorization and shall not
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}marketplace[interregional_retailer]{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Indicates whether or not a marketplace retailer outside EEA, Gibraltar, and the UK is involved in the transaction.
+
+{{% regex_optional %}}Required if the merchant is a marketplace.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% /description_list %}}
 
 {{% notice %}}

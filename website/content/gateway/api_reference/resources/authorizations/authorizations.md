@@ -22,7 +22,7 @@ Authorizations can be created using different payment methods: [`card`](#method-
 {{% /description_details %}}
 
 {{% description_term %}} credential\_on\_file {{% regex %}}(store|use){{% /regex %}}{{% /description_term %}}
-{{% description_details %}} Indicate if the payment credential (e.g. PAN and expiry) will be stored for future use where the payment credential is not provided by the cardholder but collected from (encrypted) storage.
+{{% description_details %}} Indicate if the payment credential (e.g. PAN and expiry) will be stored for future use where the payment credential is not provided by the cardholder but collected from (encrypted) storage, or was already stored and is now being used.
 
 `store`: The payment credential will be stored; it may only be stored if the authorization is approved.
 

@@ -21,7 +21,7 @@ The shared secret derived from the ephemeral public key and your private key
 
 {{% description_term %}}googlepay[recipient_id] {{% regex %}}[\x21-\x7E]+ [ASCII printable characters](http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) excluding space {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
-Primary account number of card to charge.
+ID assigned by Google. Prepend it with either `merchant:` or `gateway:` depending on ID type.
 {{% /description_details %}}
 
 {{% description_term %}}googlepay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
