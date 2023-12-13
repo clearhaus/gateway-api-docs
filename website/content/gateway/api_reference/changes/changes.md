@@ -10,7 +10,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-#### Addition of `[3dsecure]` dictionary to `googlepay` payment method
+#### Addition of `3dsecure` sub-dictionary to `googlepay` payment method
 Starting 2023-12-11, 3-D Secure authentication details can be added to a Google
 Pay authorization and debit.
 
