@@ -39,6 +39,6 @@ See [Authentication: [3dsecure]](#authentication-3dsecure).
 
 **Notice**: An authorization made with `googlepay` cannot be a subsequent-in-series authorization.
 
-**Notice**: The `recipient_id` for the `googlepay` test environment is `merchant:12345678901234567890`.
+**Notice**: The `recipient_id` for `googlepay` in the test environment is `merchant:12345678901234567890`.
 
 {{% /notice %}}
