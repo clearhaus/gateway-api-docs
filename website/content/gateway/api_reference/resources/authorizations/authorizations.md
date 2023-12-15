@@ -85,7 +85,7 @@ If the latest approved authorization in the series was not processed via Clearha
 Conditional. Cannot be present if `series[type]` is present.
 {{% /description_details %}}
 
-{{% description_term %}}sca_exemption[tra] {{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
+{{% description_term %}}sca_exemption[transaction_risk_analysis] {{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Whether or not to claim a Transaction Risk Analysis (TRA) SCA exemption.
 {{% /description_details %}}
 
