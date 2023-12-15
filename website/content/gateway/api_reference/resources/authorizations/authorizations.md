@@ -85,6 +85,10 @@ If the latest approved authorization in the series was not processed via Clearha
 Conditional. Cannot be present if `series[type]` is present.
 {{% /description_details %}}
 
+{{% description_term %}}sca_exemption[tra] {{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Whether or not to claim a Transaction Risk Analysis (TRA) SCA exemption.
+{{% /description_details %}}
+
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
