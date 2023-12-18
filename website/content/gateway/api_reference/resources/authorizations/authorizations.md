@@ -86,7 +86,7 @@ Conditional. Cannot be present if `series[type]` is present.
 {{% /description_details %}}
 
 {{% description_term %}}sca_exemption[transaction_risk_analysis] {{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Whether or not to claim a Transaction Risk Analysis (TRA) SCA exemption.
+{{% description_details %}}Whether or not to request Transaction Risk Analysis (TRA) SCA exemption.
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
