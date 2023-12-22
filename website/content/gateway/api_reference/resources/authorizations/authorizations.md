@@ -88,6 +88,10 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% description_details %}}Whether or not to request Transaction Risk Analysis (TRA) SCA exemption.
 
 {{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
+
+{{% notice %}}
+**Notice:** Please be aware that rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
+{{% /notice %}}
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
