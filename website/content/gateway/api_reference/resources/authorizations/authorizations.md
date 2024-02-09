@@ -70,8 +70,7 @@ Default:
 - `recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.
 - `unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
 
-{{% regex_optional %}}Conditional.{{% /regex_optional %}}
-Cannot be present if `series[previous]` is present.
+{{% regex_optional %}}Mutually exclusive with `series[previous]` and `sca_exemption`.{{% /regex_optional %}}
 
 {{% /description_details %}}
 
@@ -82,7 +81,17 @@ This parameter is used for a subsequent-in-series. To create a first-in-series a
 Can be used only with payment methods `card` and `token`.
 If the latest approved authorization in the series was not processed via Clearhaus, after obtaining explicit approval from Clearhaus, you can provide raw scheme values; see [Scheme reference to series](#scheme-reference-to-series).
 
-Conditional. Cannot be present if `series[type]` is present.
+{{% regex_optional %}}Mutually exclusive with `series[type]` and `sca_exemption`.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sca_exemption {{% regex %}}transaction_risk_analysis{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Request the Transaction Risk Analysis (TRA) SCA exemption.
+
+{{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
+
+{{% notice %}}
+**Notice:** Please be aware that rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
+{{% /notice %}}
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}

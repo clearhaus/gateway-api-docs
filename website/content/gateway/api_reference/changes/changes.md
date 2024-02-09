@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of `sca_exemption` parameter
+Starting 2024-02-09, the `sca_exemption` parameter is available for
+authorizations and debits.
+
 #### Addition of `3dsecure` sub-dictionary to `googlepay` payment method
 Starting 2023-12-11, 3-D Secure authentication details can be added to a Google
 Pay authorization and debit.
