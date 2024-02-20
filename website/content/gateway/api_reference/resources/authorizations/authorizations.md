@@ -90,7 +90,9 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
 
 {{% notice %}}
-**Notice:** Please be aware that rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
+**Notice:** Rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
+
+**Notice:** The exemption will be requested upstream regardless of the necessity of SCA.
 {{% /notice %}}
 {{% /description_details %}}
 
