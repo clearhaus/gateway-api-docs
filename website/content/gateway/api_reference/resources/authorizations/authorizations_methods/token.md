@@ -53,7 +53,7 @@ Found in `eci` (SCOF). (Not available in MDES.)
 Only DSRP cryptograms are supported. The value must start with `[A-P]` to be a DSRP cryptogram.
 
 Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPayload.dynamicData.dynamicDataValue` (SCOF).
-{{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
+{{% regex_optional %}}Required for CITs. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[m4m][rcai] {{% regex %}}[:base64:]{1..150}{{% /regex %}}{{% /description_term %}}
