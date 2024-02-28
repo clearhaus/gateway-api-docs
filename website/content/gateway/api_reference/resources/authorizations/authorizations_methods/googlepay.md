@@ -37,8 +37,6 @@ See [Authentication: [3dsecure]](#authentication-3dsecure).
 
 **Notice**: To obtain liability shift for a googlepay token with `authMethod` `CRYPTOGRAM_3DS` the `ECI` must be `02` or empty for Mastercard and `07` for VISA. For other values, a 3-D Secure flow is required for liability shift.
 
-**Notice**: The `3dsecure` sub-dictionary is not supported if `authMethod` is `CRYPTOGRAM_3DS`.
-
 **Notice**: An authorization made with `googlepay` cannot be a subsequent-in-series authorization.
 
 **Notice**: The `recipient_id` for `googlepay` in the test environment is `merchant:12345678901234567890`.
