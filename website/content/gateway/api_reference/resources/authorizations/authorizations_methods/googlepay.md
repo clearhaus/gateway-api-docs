@@ -35,7 +35,7 @@ See [Authentication: [3dsecure]](#authentication-3dsecure).
 
 **Notice**: An authorization made with `googlepay` is strongly authenticated (SCA in PSD2) if `authMethod` is `CRYPTOGRAM_3DS` and the [Google Pay guidelines for SCA](https://developers.google.com/pay/api/android/guides/resources/sca) have been followed. If `authMethod` is `PAN_ONLY`, a 3-D Secure flow is required for SCA and the resulting ARes/RReq must be supplied in the `3dsecure` sub-dictionary.
 
-**Notice**: The `3dsecure` sub-dictionary is not supported if `authMethod` is `CRYPTOGRAM_3DS`.
+**Notice**: To obtain liability shift for a `googlepay` token with `authMethod` `CRYPTOGRAM_3DS` the `ECI` must be `02` or empty for Mastercard and `05` for VISA. For other values, a 3-D Secure flow is required for liability shift.
 
 **Notice**: An authorization made with `googlepay` cannot be a subsequent-in-series authorization.
 
