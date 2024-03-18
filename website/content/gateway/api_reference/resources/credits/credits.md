@@ -16,7 +16,7 @@ POST https://gateway.clearhaus.com/credits
 {{% /description_details %}}
 
 {{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.) 
+{{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.)
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
@@ -30,6 +30,12 @@ POST https://gateway.clearhaus.com/credits
 {{% description_details %}} A reference to an external object, such as an order number.
 
 {{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}purpose_of_payment {{% regex %}}[A-Z]{6}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}} The fields code shall reflect the nature and purpose of the transaction.
+Valid codes are list in Visas Purpose of Payment - Standardized Codes List.
+{{% regex_optional %}} Required for outbound transactions sent into Argentina, Bangladesh, Chile, Columbia, Egypt, India and Mexico. {{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
