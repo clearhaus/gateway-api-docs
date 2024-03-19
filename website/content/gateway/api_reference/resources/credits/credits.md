@@ -35,7 +35,7 @@ POST https://gateway.clearhaus.com/credits
 {{% description_term %}}purpose_of_payment {{% regex %}}[A-Z]{6}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}} The fields code shall reflect the nature and purpose of the transaction.
 Valid codes are list in Visas Purpose of Payment - Standardized Codes List.
-{{% regex_optional %}} Required for outbound transactions sent into Argentina, Bangladesh, Chile, Columbia, Egypt, India and Mexico. {{% /regex_optional %}}
+{{% regex_optional %}} Required for Visa cross-border transactions destined for Argentina, Bangladesh, Chile, Columbia, Egypt, India and Mexico. {{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
