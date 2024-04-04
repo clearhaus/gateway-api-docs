@@ -93,12 +93,11 @@ easy rolling of API keys. A merchant account usually uses one API key.
 API keys can have an expire date. API keys can be enabled or disabled. For
 merchant accounts, these details can be observed in the Clearhaus Dashboard.
 
-For merchant accounts, the use of one active (enabled and unexpired) API key is
-indistinguishable from the use of another active API key. An authorization made
-with one API key can be captured using any active API key for that same merchant
-account.
-This is in contrast to accounts which are independent; an authorization made on
-one merchant account cannot be captured on another account.
+For a merchant account, the use of one active (enabled and unexpired) API key
+is indistinguishable from the use of another active API key. An authorization
+made with one API key can be captured using any active API key for that same
+merchant account. In contrast, an authorization made on one merchant account
+cannot be captured on another merchant account.
 
 A partner account API key can be a signing API key, meaning that it has a
 verification key for verifying request signatures. This verification key is the
