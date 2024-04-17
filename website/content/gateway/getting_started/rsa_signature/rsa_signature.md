@@ -7,7 +7,7 @@ weight: 40
 #### RSA signature
 The RSA signature is an {{% highlight_text %}} RSASSA-PKCS1-v1_5 v{{% /highlight_text %}} signature of the body. It is represented in hex.
 
-If the signing API key is {{% highlight_text %}}4390aec7-f76a-4c2f-8597-c87c2d06cb4f {{% /highlight_text %}}, the signing private key (in PEM format) is
+If the signing API key is {{% highlight_text %}}4390aec7-f76a-4c2f-8597-c87c2d06cb4f {{% /highlight_text %}}, the signing private (and public) key (in PEM format) is
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
@@ -19,6 +19,11 @@ Gx9UEDRghN+Qv/OuIKFldu1Ba4f8W30CIQCaQFIBtunTTVdF28r+cLzgYW9eWwbW
 pEP4TdZ4WlW6AQIhAMDCTUdeUpjxlH/87BXROORozAXocBW8bvJUI486U5ctAiAd
 InviQqJd1KTGRDmWIGrE5YACVmW2JSszD9t5VKxkAA==
 -----END RSA PRIVATE KEY-----
+
+-----BEGIN PUBLIC KEY-----
+MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALYK0zmwuYkH3YWcFNLLddx5cwDxEY7G
+i1xITuQqRrU4yD3uSw+JWYKknb4Tbndb6iEHY+e6gIGD+49TojnNeIUCAwEAAQ==
+-----END PUBLIC KEY-----
 ```
 and the body is
 ```
