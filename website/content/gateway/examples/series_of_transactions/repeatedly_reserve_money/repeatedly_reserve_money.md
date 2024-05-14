@@ -47,6 +47,6 @@ curl -X POST \
 ```
 A first-in-series authorization or debit can also be made using the {{% highlight_text %}}applepay{{% /highlight_text %}}, {{% highlight_text %}}googlepay{{% /highlight_text %}}, {{% highlight_text %}}mobilepayonline{{% /highlight_text %}}, {{% highlight_text %}}token{{% /highlight_text %}} or {{% highlight_text %}}vipps{{% /highlight_text %}} payment methods.
 
-A subsequent-in-series authorization or debit on a token must be made using the {{% highlight_text %}}token{{% /highlight_text %}} payment method. In case it is on a card (a PAN in a non-tokenized BIN range) the authorization or debit must be made using the {{% highlight_text %}}card{{% /highlight_text %}} payment method.
+A subsequent-in-series authorization or debit on a token must be made using the {{% highlight_text %}}token{{% /highlight_text %}} payment method. In case it is made using a PAN the {{% highlight_text %}}card{{% /highlight_text %}} payment method must be used.
 
 When the cardholder is in scope for strong cardholder authentication (SCA), a first-in-series authorization or debit must be made with SCA regardless of the authorization amount.
