@@ -5,7 +5,7 @@ anchor: "repeatedly_reserve_money"
 weight: 75
 ---
 ### Repeatedly reserve money
-A first-in-series payment is created by making an authorization and marking it as either a {{% highlight_text %}}recurring{{% /highlight_text %}} or {{% highlight_text %}}unscheduled{{% /highlight_text %}} series. For instance, a first-in-series recurring payment could be made this way:
+A first-in-series payment is created by making an authorization or debit and marking it as either a {{% highlight_text %}}recurring{{% /highlight_text %}} or {{% highlight_text %}}unscheduled{{% /highlight_text %}} series. For instance, a first-in-series recurring payment could be made this way:
 ```shell
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations \
@@ -31,8 +31,8 @@ Example response (snippet):
     }
 }
 ```
-This should be followed by a capture.
-Subsequent-in-series authorizations initiated by the merchant are made similarly, however, CSC is not included, and the previous-in-series is referenced, e.g.:
+For an authorization this should be followed by a capture.
+Subsequent-in-series authorizations or debits initiated by the merchant are made similarly, however, CSC is not included, and a previous-in-series is referenced, e.g.:
 ```shell
 curl -X POST \
   https://gateway.test.clearhaus.com/authorizations \
@@ -45,8 +45,8 @@ curl -X POST \
   -d "card[expire_year]=2026"     \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ```
-A first-in-series authorization can also be made using the {{% highlight_text %}}applepay{{% /highlight_text %}}, {{% highlight_text %}}googlepay{{% /highlight_text %}} or {{% highlight_text %}}mobilepayonline{{% /highlight_text %}} payment methods.
+A first-in-series authorization or debit can also be made using the {{% highlight_text %}}applepay{{% /highlight_text %}}, {{% highlight_text %}}googlepay{{% /highlight_text %}}, {{% highlight_text %}}mobilepayonline{{% /highlight_text %}}, {{% highlight_text %}}token{{% /highlight_text %}} or {{% highlight_text %}}vipps{{% /highlight_text %}} payment methods.
 
-A subsequent-in-series authorization must be made using the {{% highlight_text %}}card{{% /highlight_text %}} payment method with the exact card details of the referenced previous-in-series authorization.
+A subsequent-in-series authorization or debit on a token must be made using the {{% highlight_text %}}token{{% /highlight_text %}} payment method. In case it is made using a PAN the {{% highlight_text %}}card{{% /highlight_text %}} payment method must be used.
 
-Any first-in-series authorization must be made with strong customer authentication (SCA) regardless of the authorization amount (when the cardholder is in scope for SCA).
+When the cardholder is in scope for strong cardholder authentication (SCA), a first-in-series authorization or debit must be made with SCA regardless of the authorization amount.
