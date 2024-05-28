@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Removal of `token[m4m][eci]` parameter
+Starting 2024-05-15, the `token[m4m][eci]` parameter has been removed. As the
+API accepts unknown parameters in general, this means that the parameter is now
+being ignored. It is recommended that the parameter is no longer sent to the
+transaction gateway.
+
 #### Addition of `sca_exemption` parameter
 Starting 2024-02-09, the `sca_exemption` parameter is available for
 authorizations and debits.
