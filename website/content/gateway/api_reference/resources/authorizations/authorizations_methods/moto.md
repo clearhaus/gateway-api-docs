@@ -24,7 +24,5 @@ Expiry year of card to charge.
 
 {{% /description_list %}}
 {{% notice %}}
-**Notice**: Signing is required to use the `moto` payment method.
-
 **Notice**: Neither `series[]` nor `credential_on_file` is supported. Also, `initiator` cannot be `merchant`.
 {{% /notice %}}

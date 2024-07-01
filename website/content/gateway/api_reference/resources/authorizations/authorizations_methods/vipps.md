@@ -37,7 +37,3 @@ See [Authentication: [3dsecure]](#authentication-3dsecure).
 
 
 {{% /description_list %}}
-
-{{% notice %}}
-**Notice**: Signing is required to use the `vipps` payment method. 
-{{% /notice %}}

@@ -45,8 +45,6 @@ Primary account number of card to charge.
 
 {{% /description_list %}}
 {{% notice %}}
-**Notice**: Signing is required to use the `applepay` payment method.
-
 **Notice**: An authorization made with `applepay` is strongly authenticated (SCA in PSD2).
 
 **Notice**: An authorization made with `applepay` may be 3-D Secured to some degree or not at all; this is indicated by the `eciIndicator` of the `applepay[payment_token]`.
