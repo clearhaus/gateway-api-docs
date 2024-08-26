@@ -10,6 +10,17 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Removal of `threed_secure` property from response
+Starting 2024-11-01, an authorization response will no longer contain the
+`threed_secure` property. We recommend the `sca` dictionary is used instead.
+The `sca` dictionary contains the two boolean-valued properties `provided` and
+`necessary`. Another useful property in the response is
+`liable_for_fraud_disputes` which is either `"merchant"` or `"issuer"`.
+Properties specifically related to 3-D Secure are available in the `3dsecure`
+dictionary, however, please note that strong customer authentication (SCA) is
+usually the most important property and can be achieved by other means than 3-D
+Secure.
+
 #### Removal of `token[m4m][eci]` parameter
 Starting 2024-06-03, the `token[m4m][eci]` parameter has been removed. As the
 API accepts unknown parameters in general, the parameter can still be sent. It
