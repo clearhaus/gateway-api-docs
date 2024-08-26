@@ -12,9 +12,9 @@ Sorted by descending timestamp.
 
 #### Removal of `threed_secure` property from response
 Starting 2024-11-01, an authorization response will no longer contain the
-`threed_secure` property. We recommend the `sca` dictionary is used instead.
-The `sca` dictionary contains the two boolean-valued properties `provided` and
-`necessary`. Another useful property in the response is
+`threed_secure` property. We recommend that the `sca` dictionary is used
+instead. The `sca` dictionary contains the two boolean-valued properties
+`provided` and `necessary`. Another useful property in the response is
 `liable_for_fraud_disputes` which is either `"merchant"` or `"issuer"`.
 Properties specifically related to 3-D Secure are available in the `3dsecure`
 dictionary, however, please note that strong customer authentication (SCA) is
