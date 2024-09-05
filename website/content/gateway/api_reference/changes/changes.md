@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Added new currencies and countries
+Starting 2024-09-05, the Zimbabwean dollar (ZWL) and Zambian kwacha (ZMW) currencies
+are now supported.
+
+Country codes BQ, CW, SS, SX are also now supported.
+
 #### Removal of `token[m4m][eci]` parameter
 Starting 2024-06-03, the `token[m4m][eci]` parameter has been removed. As the
 API accepts unknown parameters in general, the parameter can still be sent. It
