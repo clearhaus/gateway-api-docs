@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Added new currencies and countries
-Starting 2024-09-05, the Zimbabwean dollar (ZWL) and Zambian kwacha (ZMW) currencies
+Starting 2024-09-05, the Zimbabwean Gold (ZWG) and Zambian kwacha (ZMW) currencies
 are now supported.
 
 Country codes BQ, CW, SS, SX are also now supported.
