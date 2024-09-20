@@ -37,6 +37,10 @@ Default:
 
 {{% /description_details %}}
 
+{{% notice %}}
+**Notice:** If an authorization does neither `use` nor `store` credential on file, omit the `credential_on_file` parameter.
+{{% /notice %}}
+
 {{% description_term %}}initiator {{% regex %}}(cardholder|merchant){{% /regex %}}{{% /description_term %}}
 
 {{% description_details %}}The initiator of the authorization. An authorization is initiated by the cardholder if the cardholder decided the transaction should be created. This is regardless of whether a stored payment credential is being used.
