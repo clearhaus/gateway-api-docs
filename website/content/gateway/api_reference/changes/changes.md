@@ -14,7 +14,7 @@ Sorted by descending timestamp.
 Starting 2024-09-05, the Zimbabwe Gold (ZWG) and Zambian Kwacha (ZMW) currencies
 are now supported.
 
-Country codes BQ, CW, SS, SX are also now supported.
+Country codes BQ, CW, QZ, SS, and SX are also now supported.
 
 #### Removal of `token[m4m][eci]` parameter
 Starting 2024-06-03, the `token[m4m][eci]` parameter has been removed. As the
