@@ -29,7 +29,7 @@ GET https://gateway.clearhaus.com/account
 {{% /description_details %}}
 
 {{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}ISO 4217 3-letter currency code for merchant currency. 
+{{% description_details %}}ISO 4217 3-letter currency code for merchant funding currency.
 {{% /description_details %}}
 
 {{% description_term %}}mcc{{% regex %}}[0-9]{4}{{% /regex %}}{{% /description_term %}}
