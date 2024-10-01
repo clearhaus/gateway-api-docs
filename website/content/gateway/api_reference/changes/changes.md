@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Allowing voids on status code 50000 authorizations
-We've added support for voids on authorizations with status code 50000.
+We have added support for voids on authorizations with status code 50000.
 
 #### Added new currencies and countries
 Starting 2024-09-25, the Zimbabwe Gold (ZWG) and Zambian Kwacha (ZMW) currencies
