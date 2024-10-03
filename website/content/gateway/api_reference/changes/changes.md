@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Capture refund period extended
+Starting 2024-10-03 the maximum allowed period of time between the latest
+approved capture and a capture refund has been extended from 180 to 365 days.
+
 #### Allowing voids on status code 50000 authorizations
 We have added support for voids on authorizations with status code 50000.
 

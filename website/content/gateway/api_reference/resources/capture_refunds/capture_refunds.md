@@ -39,5 +39,5 @@ These are refunds of one or more captures made on an authorization and shall not
 **Notice**: A refund does not “free up” what is captured from the authorization; that is, after authorizing 10, capturing 5 and refunding 5, you can still only capture 5. 
 {{% /notice %}}
 {{% notice %}}
-**Notice**: A refund cannot be made if the last capture is 180 days old. 
+**Notice**: A refund cannot be made if the last capture is more than 365 days old.
 {{% /notice %}}
