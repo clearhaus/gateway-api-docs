@@ -28,4 +28,10 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required if the merchant account's Business Application Identifier (BAI) is Funds Disbursement (FD).{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}recipient[purpose_of_payment] {{% regex %}}[A-Z]{6}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}} The fields code shall reflect the nature and purpose of the transaction.
+Valid codes are list in Visas Purpose of Payment - Standardized Codes List.
+{{% regex_optional %}} Required for Visa cross-border transactions destined for Argentina, Bangladesh, Chile, Columbia, Egypt, India and Mexico. {{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% /description_list %}}
