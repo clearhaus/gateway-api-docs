@@ -21,6 +21,19 @@ dictionary, however, please note that strong customer authentication (SCA) is
 usually the most important property and can be achieved by other means than 3-D
 Secure.
 
+#### Capture refund period extended
+Starting 2024-10-03 the maximum allowed period of time between the latest
+approved capture and a capture refund has been extended from 180 to 365 days.
+
+#### Allowing voids on status code 50000 authorizations
+We have added support for voids on authorizations with status code 50000.
+
+#### Added new currencies and countries
+Starting 2024-09-25, the Zimbabwe Gold (ZWG) and Zambian Kwacha (ZMW) currencies
+are now supported.
+
+Country codes BQ, CW, QZ, SS, and SX are also now supported.
+
 #### Removal of `token[m4m][eci]` parameter
 Starting 2024-06-03, the `token[m4m][eci]` parameter has been removed. As the
 API accepts unknown parameters in general, the parameter can still be sent. It

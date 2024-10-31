@@ -37,6 +37,7 @@ weight: 230
 | CDF  | 976 | 2   |                              |
 | CHF  | 756 | 2   |                              |
 | CLP  | 152 | 0   |                              |
+| CNH  | 157 | 2   | Not recognized by Visa       |
 | CNY  | 156 | 2   |                              |
 | COP  | 170 | 2   |                              |
 | CRC  | 188 | 2   |                              |
@@ -47,9 +48,8 @@ weight: 230
 | DKK  | 208 | 2   |                              |
 | DOP  | 214 | 2   |                              |
 | DZD  | 012 | 2   |                              |
-| EEK  | 233 | 2   |                              |
 | EGP  | 818 | 2   |                              |
-| ERN  | 232 | 2   |                              |
+| ERN  | 232 | 2   | Not recognized by Mastercard |
 | ETB  | 230 | 2   |                              |
 | EUR  | 978 | 2   |                              |
 | FJD  | 242 | 2   |                              |
@@ -64,14 +64,13 @@ weight: 230
 | GYD  | 328 | 2   |                              |
 | HKD  | 344 | 2   |                              |
 | HNL  | 340 | 2   |                              |
-| HRK  | 191 | 2   |                              |
 | HTG  | 332 | 2   |                              |
 | HUF  | 348 | 2   |                              |
 | IDR  | 360 | 2   |                              |
 | ILS  | 376 | 2   |                              |
 | INR  | 356 | 2   |                              |
 | IQD  | 368 | 3   |                              |
-| IRR  | 364 | 2   |                              |
+| IRR  | 364 | 2   | Not recognized by Mastercard |
 | ISK  | 352 | 0   |                              |
 | JMD  | 388 | 2   |                              |
 | JOD  | 400 | 3   |                              |
@@ -80,7 +79,7 @@ weight: 230
 | KGS  | 417 | 2   |                              |
 | KHR  | 116 | 2   |                              |
 | KMF  | 174 | 0   |                              |
-| KPW  | 408 | 2   |                              |
+| KPW  | 408 | 2   | Not recognized by Mastercard |
 | KRW  | 410 | 0   |                              |
 | KWD  | 414 | 3   |                              |
 | KYD  | 136 | 2   |                              |
@@ -89,8 +88,8 @@ weight: 230
 | LBP  | 422 | 2   |                              |
 | LKR  | 144 | 2   |                              |
 | LRD  | 430 | 2   |                              |
-| LSL  | 426 | 2   |                              |
-| LYD  | 434 | 3   | Not recognized by MasterCard |
+| LSL  | 426 | 2   | Not recognized by Visa       |
+| LYD  | 434 | 3   | Not recognized by Mastercard |
 | MAD  | 504 | 2   |                              |
 | MDL  | 498 | 2   |                              |
 | MGA  | 969 | 2   |                              |
@@ -98,7 +97,6 @@ weight: 230
 | MMK  | 104 | 2   |                              |
 | MNT  | 496 | 2   |                              |
 | MOP  | 446 | 2   |                              |
-| MRO  | 478 | 2   |                              |
 | MRU  | 929 | 2   |                              |
 | MUR  | 480 | 2   |                              |
 | MVR  | 462 | 2   |                              |
@@ -135,9 +133,10 @@ weight: 230
 | SLE  | 925 | 2   |                              |
 | SOS  | 706 | 2   |                              |
 | SRD  | 968 | 2   |                              |
-| STD  | 678 | 2   |                              |
+| SSP  | 728 | 2   |                              |
 | STN  | 930 | 2   |                              |
-| SYP  | 760 | 2   |                              |
+| SVC  | 222 | 2   | Not recognized by Visa       |
+| SYP  | 760 | 2   | Not recognized by Mastercard |
 | SZL  | 748 | 2   |                              |
 | THB  | 764 | 2   |                              |
 | TJS  | 972 | 2   |                              |
@@ -153,7 +152,6 @@ weight: 230
 | USD  | 840 | 2   |                              |
 | UYU  | 858 | 2   |                              |
 | UZS  | 860 | 2   |                              |
-| VEF  | 937 | 2   |                              |
 | VND  | 704 | 0   |                              |
 | VUV  | 548 | 0   |                              |
 | WST  | 882 | 2   |                              |
@@ -163,4 +161,5 @@ weight: 230
 | XPF  | 953 | 0   |                              |
 | YER  | 886 | 2   |                              |
 | ZAR  | 710 | 2   |                              |
-| ZMK  | 894 | 2   |                              |
+| ZMW  | 967 | 2   |                              |
+| ZWG  | 924 | 2   |                              |
