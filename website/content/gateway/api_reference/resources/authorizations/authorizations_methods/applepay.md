@@ -40,6 +40,7 @@ Primary account number of card to charge.
 
 {{% description_term %}}applepay[raw][eci] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Electronic Commerce Indicator. Found as `eciIndicator` in the payment token.
+{{% regex_optional %}}Required for Visa. Otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 
