@@ -23,7 +23,7 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}recipient[account_type] {{% regex %}}(other|rtn_and_ban|iban|pan|email|phone_number|ban_and_bic|wallet_id|social_network_id){{% /regex %}}{{% /description_term %}}
+{{% description_term %}}recipient[account_number_type] {{% regex %}}(other|rtn_and_ban|iban|pan|email|phone_number|ban_and_bic|wallet_id|social_network_id){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's account type, i.e. the type of the account.
 {{% regex_optional %}}Required	for Mastercard; otherwise optional{{% /regex_optional %}}
 {{% /description_details %}}
