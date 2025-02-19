@@ -16,7 +16,7 @@ POST https://gateway.clearhaus.com/credits
 {{% /description_details %}}
 
 {{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.) 
+{{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.)
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
