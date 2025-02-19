@@ -23,6 +23,11 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}recipient[account_type] {{% regex %}}(other|rtn_and_ban|iban|pan|email|phone_number|ban_and_bic|wallet_id|social_network_id){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The recipient's account type, i.e. the type of the account.
+{{% regex_optional %}}Required	for Mastercard; otherwise optional{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}recipient[reference] {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Recipient reference number. You must be able to uniquely identify the recipient using this number.
 {{% regex_optional %}}Required if the merchant account's Business Application Identifier (BAI) is Funds Disbursement (FD).{{% /regex_optional %}}
