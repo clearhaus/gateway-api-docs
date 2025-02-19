@@ -21,7 +21,7 @@ Authorizations can be created using different payment methods: [`card`](#method-
 {{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.)
 {{% /description_details %}}
 
-{{% description_term %}} credential\_on\_file {{% regex %}}(store|use){{% /regex %}}{{% /description_term %}}
+{{% description_term %}}credential\_on\_file {{% regex %}}(store|use){{% /regex %}}{{% /description_term %}}
 {{% description_details %}} Indicate if the payment credential (e.g. PAN and expiry) will be stored for future use where the payment credential is not provided by the cardholder but collected from (encrypted) storage.
 
 `store`: The payment credential will be stored; it may only be stored if the authorization is approved.
