@@ -11,8 +11,8 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Addition of Mastercard debits
-Mastercard debits support added. The parameter `account_number_type` will be
-required for Mastercard debits.
+Mastercard debits support added. The parameter `recipient[account_number_type]`
+will be required for Mastercard debits.
 
 #### Removal of `threed_secure` property from response
 Starting 2024-11-01, an authorization response will no longer contain the
