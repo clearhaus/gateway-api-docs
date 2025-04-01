@@ -40,4 +40,9 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% regex_optional %}}Required for intra-EEA and international debits.{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}sender[date_of_birth] {{% regex %}}[0-9]{4}-[0-9]{2}-[0-9]{2} (YYYY-MM-DD){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's date of birth (ISO 8601).
+{{% regex_optional %}}Required for international debits.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% /description_list %}}
