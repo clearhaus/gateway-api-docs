@@ -22,7 +22,7 @@ Authorizations can be created using different payment methods: [`card`](#method-
 {{% /description_details %}}
 
 {{% description_term %}} credential\_on\_file {{% regex %}}(store|use){{% /regex %}}{{% /description_term %}}
-{{% description_details %}} Indicate if the payment credential (e.g. PAN and expiry) will be stored for future use where the payment credential is not provided by the cardholder but collected from (encrypted) storage.
+{{% description_details %}} Indicate if the payment credential (e.g. PAN and expiry) will be stored for future use where the payment credential is not provided by the cardholder but collected from (encrypted) storage, or was already stored and is now being used.
 
 `store`: The payment credential will be stored; it may only be stored if the authorization is approved.
 
@@ -36,6 +36,10 @@ Default:
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 
 {{% /description_details %}}
+
+{{% notice %}}
+**Notice:** If an authorization does neither `use` nor `store` credential on file, omit the `credential_on_file` parameter.
+{{% /notice %}}
 
 {{% description_term %}}initiator {{% regex %}}(cardholder|merchant){{% /regex %}}{{% /description_term %}}
 
@@ -65,25 +69,35 @@ Default:
 
 
 {{% description_term %}}series[type] {{% regex %}}(recurring|unscheduled){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use.
-`series[previous][...]`.
+{{% description_details %}}The type of series. This parameter is used exactly when initiating a series. To create a subsequent-in-series authorization use `series[previous][...]`.
 
 - `recurring`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at regular, predetermined intervals that may not exceed 1 year.
 - `unscheduled`\: A series of transactions where the cardholder has explicitly agreed that the merchant may repeatedly charge the cardholder at non-predetermined times, e.g. based on cardholder usage.
 
-{{% regex_optional %}}Conditional.{{% /regex_optional %}}
-Cannot be present if `series[previous]` is present.
+{{% regex_optional %}}Mutually exclusive with `series[previous]` and `sca_exemption`.{{% /regex_optional %}}
 
 {{% /description_details %}}
 
 
 {{% description_term %}}series[previous][id] {{% regex %}}[:UUIDv4:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The Clearhaus authorization ID as a reference to the latest approved authorization in the series.
-This parameter is used for a subsequent-in-series. To create a first-in-series authorization use  `series[type] `.
-Can be used only with payment method  `card`.
+This parameter is used for a subsequent-in-series. To create a first-in-series authorization use `series[type]`.
+Can be used only with payment methods `card` and `token`.
 If the latest approved authorization in the series was not processed via Clearhaus, after obtaining explicit approval from Clearhaus, you can provide raw scheme values; see [Scheme reference to series](#scheme-reference-to-series).
 
-Conditional. Cannot be present if  `series[type]` is present.
+{{% regex_optional %}}Mutually exclusive with `series[type]` and `sca_exemption`.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sca_exemption {{% regex %}}transaction_risk_analysis{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Request the Transaction Risk Analysis (TRA) SCA exemption.
+
+{{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
+
+{{% notice %}}
+**Notice:** Rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
+
+**Notice:** The exemption will be requested upstream regardless of the necessity of SCA.
+{{% /notice %}}
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
@@ -94,16 +108,6 @@ Conditional. Cannot be present if  `series[type]` is present.
 {{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}~~recurring~~{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Deprecated! Please use `series`.
-
-{{% regex_optional %}}~~Optional~~{{% /regex_optional %}} 
-{{% regex_optional %}}~~Cannot be used with `series` or `initiator`.~~{{% /regex_optional %}}
-{{% /description_details %}}
-{{% /description_list %}}
-{{% notice %}}
-**Notice:** When `recurring` is used, Clearhaus automatically identifies if there was a previous-in-series and if that is the case uses the level of authentication (CSC, 3-D Secure, etc.) to conclude if the payment is a first-in-in-series or a subsequent-in-series recurring.
-{{% /notice %}}
 {{% notice %}}
 **Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
 {{% /notice %}}

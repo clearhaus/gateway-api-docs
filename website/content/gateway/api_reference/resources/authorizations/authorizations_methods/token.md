@@ -40,20 +40,13 @@ Found in `encryptedPayload.encryptedData.applicationExpiryDate` (MDES) or `encry
 Found in `encryptedPayload.encryptedData.applicationExpiryDate` (MDES) or `encryptedPayload.token.tokenExpirationYear` (SCOF).
 {{% /description_details %}}
 
-{{% description_term %}}token[m4m][eci] {{% regex %}}0[267]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Electronic Commerce Indicator.
-
-Found in `eci` (SCOF). (Not available in MDES.)
-{{% regex_optional %}}Required for CITs; otherwise optional (defaults to `07`).{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% description_term %}}token[m4m][tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram and Digital Secure Remote Payments (DSRP) cryptogram.
 
 Only DSRP cryptograms are supported. The value must start with `[A-P]` to be a DSRP cryptogram.
 
 Found in `encryptedPayload.encryptedData.de48se43Data` (MDES) or `encryptedPayload.dynamicData.dynamicDataValue` (SCOF).
-{{% regex_optional %}}Required for CITs; otherwise optional.{{% /regex_optional %}}
+{{% regex_optional %}}Required for CITs. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}token[m4m][rcai] {{% regex %}}[:base64:]{1..150}{{% /regex %}}{{% /description_term %}}

@@ -32,4 +32,6 @@ Example response (snippet):
     "currency": "EUR"
 }
 ```
-Depending on card scheme and merchant category, the name on the card might be necessary for approval of credits. It may be provided through the optional parameter {{% highlight_text %}}card[name]{{% /highlight_text %}}.
+
+The field {{% highlight_text %}}card[name]{{% /highlight_text %}} is mandatory for Mastercard Payment of winnings (gaming/gambling merchants).
+Depending on card scheme and merchant category, the name on the card might be necessary for approval of credits.

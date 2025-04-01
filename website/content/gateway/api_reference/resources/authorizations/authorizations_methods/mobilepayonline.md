@@ -43,16 +43,6 @@ Phone number from where the PAN originates.
 See [Authentication: [3dsecure]](#authentication-3dsecure).
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
-
-
-{{% description_term %}}~~mobilepayonline[pares]~~  {{% regex %}}~~[\:base64\:]~~{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}
-Deprecated! Please use `mobilepayonline[3dsecure][v1][pares]`.
-
-See more information at [3dsecure.io](https://www.3dsecure.io).
-{{% regex_optional %}}Optional{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% /description_list %}}
 {{% notice %}}
 **Notice**: Signing is required to use the `mobilepayonline` payment method.

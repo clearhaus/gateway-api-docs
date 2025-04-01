@@ -48,8 +48,4 @@ Default: `recurring`.
 {{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /description_term %}}
 {{% description_details %}}Transaction ID from Field 62.2 of the first-in-series or previous-in-series authorization; to be used in Field 125, Usage 2, Dataset ID 03. 
 {{% regex_optional %}}Conditional. Required if `series[previous][visa][type]` is present. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present.{{% /regex_optional %}}{{% /description_details %}}
-{{% notice %}}
-**Notice**: A series migrated to Clearhaus using these scheme references cannot be continued with the now deprecated recurring flag. Instead, the subsequent-in-series following an authorization created using scheme references must use `series[previous][id]` to point to the previous in series. 
-
-{{% /notice %}}
 {{% /description_list %}}
