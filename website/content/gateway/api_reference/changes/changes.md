@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Sender date of birth for Visa intra-EEA and international Visa debits
+Starting April 2025, the `sender[date_of_birth]` parameter is mandated for intra-EEA and
+international Visa debits.
+
 #### Removal of `threed_secure` property from response
 Starting 2024-11-01, an authorization response will no longer contain the
 `threed_secure` property. We recommend that the `sca` dictionary is used
