@@ -14,7 +14,8 @@ Sorted by descending timestamp.
 Starting 2025-04-xx, support for Mastercard debits has been added. Notice that
 the parameters `recipient[name]`, `recipient[account_number]` and
 `recipient[account_number_type]` are unconditionally required for Mastercard
-debits.
+debits. In addition, notice that `card[name]` will be required for all
+Mastercard credits, not only Payment of Winnings (PoW).
 
 #### Sender date of birth for Visa intra-EEA and international Visa debits
 Starting April 2025, the `sender[date_of_birth]` parameter is mandated for intra-EEA and
