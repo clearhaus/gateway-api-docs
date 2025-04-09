@@ -7,12 +7,13 @@ anchor: "currencies"
 weight: 230
 ---
 | Code | Num | Exp | Comment                      |
-| ---- | --- | --- | ---------------------------- |
+|------|-----|-----|------------------------------|
 | AED  | 784 | 2   |                              |
 | AFN  | 971 | 2   |                              |
 | ALL  | 008 | 2   |                              |
 | AMD  | 051 | 2   |                              |
-| ANG  | 532 | 2   |                              |
+| ANG  | 532 | 2   | Not recognized by Visa       |
+| XCG  | 532 | 2   | Not recognized by Mastercard |
 | AOA  | 973 | 2   |                              |
 | ARS  | 032 | 2   |                              |
 | AUD  | 036 | 2   |                              |
