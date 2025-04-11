@@ -47,5 +47,5 @@ See [Authentication: [3dsecure]](#authentication-3dsecure).
 {{% notice %}}
 **Notice**: Signing is required to use the `mobilepayonline` payment method.
 
-**Notice**: An authorization made with `mobilepayonline` is strongly authenticated (SCA in PSD2). 
+**Notice**: An authorization made with `mobilepayonline` with a payment token is strongly authenticated (SCA in PSD2). 
 {{% /notice %}}
