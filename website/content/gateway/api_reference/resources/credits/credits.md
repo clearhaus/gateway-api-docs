@@ -51,7 +51,7 @@ POST https://gateway.clearhaus.com/credits
 
 {{% description_term %}}card[name] {{% regex %}}[A-Za-z0-9 ]{1,30}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Name on card.
-{{% regex_optional %}}Required for Mastercard.{{% /regex_optional %}}
+{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
