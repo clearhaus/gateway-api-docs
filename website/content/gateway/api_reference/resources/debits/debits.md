@@ -14,5 +14,5 @@ Debits support the same parameters and payment methods as [Authorizations](#auth
 Information about sender and recipient is required for debits under certain circumstances to be compliant with card scheme rules. See [Sender information](#sender_information) and [Recipient information](#recipient_information).
 
 {{% notice %}}
-**Notice:** Debits are only supported for Visa cards and funding transactions. In addition, only merchants with selected Merchant Category Codes (MCCs) and assigned Business Application Identifiers (BAIs) are able to process a debit; namely exactly those that will result in the debit being a Visa Account Funding Transaction (AFT).
+**Notice:** Only merchants with selected Merchant Category Codes (MCCs) and assigned Business Application Identifiers (BAIs) (Visa) or Transaction Type Indicators (TTIs) (Mastercard) are able to process a debit; namely exactly those that will result in the debit being a Visa Account Funding Transaction (AFT) or Mastercard Funding Transaction (FT).
 {{% /notice %}}

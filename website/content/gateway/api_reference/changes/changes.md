@@ -10,6 +10,14 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of Mastercard debits
+Starting 2025-04-28, support for Mastercard debits has been added. Notice that
+the parameters `recipient[name]`, `recipient[account_number]` and
+`recipient[account_number_type]` are unconditionally required for Mastercard
+debits. In addition, notice that `card[name]` will be required for Mastercard
+cross-border, non-Payment of Winnings (non-PoW) credits, not only for
+Mastercard PoW credits.
+
 #### Sender date of birth for Visa intra-EEA and international Visa debits
 Starting April 2025, the `sender[date_of_birth]` parameter is mandated for intra-EEA and
 international Visa debits.
