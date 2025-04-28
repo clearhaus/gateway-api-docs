@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Addition of Mastercard debits
-Starting 2025-04-xx, support for Mastercard debits has been added. Notice that
+Starting 2025-04-28, support for Mastercard debits has been added. Notice that
 the parameters `recipient[name]`, `recipient[account_number]` and
 `recipient[account_number_type]` are unconditionally required for Mastercard
 debits. In addition, notice that `card[name]` will be required for Mastercard
