@@ -41,3 +41,6 @@ These are refunds of one or more captures made on an authorization and shall not
 {{% notice %}}
 **Notice**: A refund cannot be made if the last capture is more than 365 days old.
 {{% /notice %}}
+{{% notice %}}
+**Notice**: For Visa transactions, amounts equivalent to less than USD 0.005 will be declined.
+{{% /notice %}}
