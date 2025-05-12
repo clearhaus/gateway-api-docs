@@ -10,6 +10,11 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Add minimum amount for Visa refunds and captures
+Starting 2025-XX-XX, we will enforce a minimum amount of USD 0.005 for refunds
+and captures made with Visa. This is due to USD 0.005 being half a minor and
+anything less be rounded to 0.
+
 #### Addition of Mastercard debits
 Starting 2025-04-28, support for Mastercard debits has been added. Notice that
 the parameters `recipient[name]`, `recipient[account_number]` and
