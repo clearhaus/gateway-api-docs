@@ -37,7 +37,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 {{% /description_list %}}
 
 {{% notice %}}
- **Notice**: A capture cannot be made if the authorization is 180 days old or older.
+**Notice**: A capture cannot be made if the authorization is 180 days old or older.
 {{% /notice %}}
 {{% notice %}}
 **Notice**: For Visa transactions, amounts equivalent to less than USD 0.005 will be declined.
