@@ -17,7 +17,7 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Text that will be placed on cardholder’s bank statement. Overrides `text_on_statement` from authorization.
+{{% description_details %}}Text that will be placed on cardholder's bank statement. Overrides `text_on_statement` from authorization.
 
 {{% regex_optional %}} May not be all digits, all same character, or all sequential characters (e.g. “abc”){{% /regex_optional %}}
 {{% regex_optional %}}Optional{{% /regex_optional %}}
