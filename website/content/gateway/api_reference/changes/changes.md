@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Add minimum amount for Visa refunds and captures
-Starting 2025-XX-XX, we will enforce a minimum amount of USD 0.005 for refunds
+Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for refunds
 and captures made with Visa. This is due to USD 0.005 being half a minor, and
 a smaller value will be rounded to 0 by Visa.
 
