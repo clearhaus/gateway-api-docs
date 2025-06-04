@@ -27,7 +27,7 @@ Example response (snippet):
     },
     "processed_at": "2020-07-03T11:06:58+00:00",
     "3dsecure": {
-        "version": "2.1.0",
+        "version": "2.2.0",
         "status": "Y"
     }
 }
