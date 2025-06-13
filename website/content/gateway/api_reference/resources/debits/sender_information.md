@@ -11,6 +11,11 @@ Intra-EEA, mentioned below, includes the United Kingdom and Gibraltar.
 
 {{% description_list %}}
 
+{{% description_term %}}{{% strike %}}sender[name]{{% /strike %}} {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}
+{{% regex_optional %}}Deprecated, see `sender[first_name]`, `sender[middle_name]` and `sender[last_name]` instead.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}sender[first_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The sender's legal first name.
 
