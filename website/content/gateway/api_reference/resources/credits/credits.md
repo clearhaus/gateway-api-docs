@@ -10,7 +10,7 @@ To payout (e.g. winnings and not refunds) money to a cardholder’s bank account
 POST https://gateway.clearhaus.com/credits
 ```
 
-Information about the recipient is required for credits to be compliant with card scheme rules. See [Recipient information](#credit_recipient_information).
+Information about the recipient is required for credits under certain circumstances to be compliant with card scheme rules. See [Recipient information](#credit_recipient_information).
 
 ##### Parameters
 {{% description_list %}}

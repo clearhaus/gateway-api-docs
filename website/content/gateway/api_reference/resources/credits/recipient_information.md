@@ -13,7 +13,7 @@ See the partner guideline for more details.
 {{% description_details %}}The recipient's legal first name.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
-{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW.{{% /regex_optional %}}
+{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW, i.e. it is only optional for Visa and for Mastercard domestic non-PoW.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[middle_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
@@ -25,7 +25,7 @@ See the partner guideline for more details.
 {{% description_details %}}The recipient's legal last name.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
-{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW.{{% /regex_optional %}}
+{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW, i.e. it is only optional for Visa and for Mastercard domestic non-PoW.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
