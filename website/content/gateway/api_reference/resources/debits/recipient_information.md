@@ -12,25 +12,30 @@ See the partner guideline for more details.
 {{% description_term %}}{{% strike %}}recipient[name]{{% /strike %}} {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 {{% regex_optional %}}Deprecated, see `recipient[first_name]`, `recipient[middle_name]` and `recipient[last_name]` instead.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient[first_name]`, `recipient[middle_name]` and `recipient[last_name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[first_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's legal first name.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
-{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% regex_optional %}}Required, mutually with `recipient[last_name]`{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[middle_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's legal middle name in case of any.
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
+{{% regex_optional %}}If set requires `recipient[first_name]` and `recipient[last_name]` to be set.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[last_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's legal last name.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
-{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% regex_optional %}}Required, mutually with `recipient[first_name]`{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
