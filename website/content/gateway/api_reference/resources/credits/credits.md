@@ -55,6 +55,7 @@ Information about the recipient is required for credits under certain circumstan
 {{% description_term %}}{{% strike %}}card[name]{{% /strike %}} {{% regex %}}[A-Za-z0-9 ]{1,30}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 {{% regex_optional %}}Deprecated, see [Recipient information](#credit_recipient_information) instead.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
