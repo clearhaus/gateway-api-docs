@@ -14,6 +14,7 @@ Intra-EEA, mentioned below, includes the United Kingdom and Gibraltar.
 {{% description_term %}}{{% strike %}}sender[name]{{% /strike %}} {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}
 {{% regex_optional %}}Deprecated, see `sender[first_name]`, `sender[middle_name]` and `sender[last_name]` instead.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `sender[first_name]`, `sender[middle_name]` and `sender[last_name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}sender[first_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
@@ -21,12 +22,16 @@ Intra-EEA, mentioned below, includes the United Kingdom and Gibraltar.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
 {{% regex_optional %}}Required for intra-EEA and international debits. Also required if any of the address-related parameters are supplied.{{% /regex_optional %}}
+{{% regex_optional %}}Required, mutually with `sender[last_name]`{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `sender[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}sender[middle_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The sender's legal middle name in case of any.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
+{{% regex_optional %}}If set requires `sender[first_name]` and `sender[last_name]` to be set.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `sender[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}sender[last_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
@@ -34,6 +39,8 @@ Intra-EEA, mentioned below, includes the United Kingdom and Gibraltar.
 
 {{% regex_optional %}}It must not contain special characters (?, @, #, $, &, \*, etc.), be all numeric, be fictious, be a nickname or be incomplete.{{% /regex_optional %}}
 {{% regex_optional %}}Required for intra-EEA and international debits. Also required if any of the address-related parameters are supplied.{{% /regex_optional %}}
+{{% regex_optional %}}Required, mutually with `sender[first_name]`{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `sender[name]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}sender[address] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
