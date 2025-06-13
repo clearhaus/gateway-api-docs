@@ -33,5 +33,5 @@ Example response (snippet):
 }
 ```
 
-The field {{% highlight_text %}}card[name]{{% /highlight_text %}} is mandatory for Mastercard Payment of winnings (gaming/gambling merchants).
+The fields {{% highlight_text %}}recipient[first_name]{{% /highlight_text %}} and {{% highlight_text %}}recipient[last_name]{{% /highlight_text %}} are required for Mastercard Payment of Winnings (PoW, i.e. gaming/gambling merchants) and for Mastercard cross-border non-PoW.
 Depending on card scheme and merchant category, the name on the card might be necessary for approval of credits.
