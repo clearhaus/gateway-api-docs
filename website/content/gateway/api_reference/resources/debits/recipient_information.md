@@ -9,6 +9,11 @@ See the partner guideline for more details.
 
 {{% description_list %}}
 
+{{% description_term %}}{{% strike %}}recipient[name]{{% /strike %}} {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}
+{{% regex_optional %}}Deprecated, see `recipient[first_name]`, `recipient[middle_name]` and `recipient[last_name]` instead.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}recipient[first_name] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's legal first name.
 
