@@ -10,6 +10,15 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Add recipient and sender parameters for individual name parts
+Starting 2025-XX-XX, the new name-related parameters `recipient[first_name]`,
+`recipient[middle_name]`, `recipient[last_name]`, `sender[first_name]`,
+`sender[middle_name]` and `sender[last_name]` are supported.
+This will in time push for the deprecation of `card[name]`, `recipient[name]`
+and `sender[name]`. Both old and new parameters will be supported
+in a grace period, however, it is recommended that you plan the switch as we
+cannot guarantee how long our upstream provider supports the old fields.
+
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
 and refunds made with Visa. This is due to USD 0.005 being half a minor, and

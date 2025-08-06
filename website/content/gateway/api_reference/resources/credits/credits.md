@@ -9,6 +9,9 @@ To payout (e.g. winnings and not refunds) money to a cardholder’s bank account
 ```shell
 POST https://gateway.clearhaus.com/credits
 ```
+
+Information about the recipient is required for credits under certain circumstances to be compliant with card scheme rules. See [Recipient information](#credit_recipient_information).
+
 ##### Parameters
 {{% description_list %}}
 {{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
@@ -49,9 +52,10 @@ POST https://gateway.clearhaus.com/credits
 {{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}card[name] {{% regex %}}[A-Za-z0-9 ]{1,30}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Name on card.
-{{% regex_optional %}}Required for Mastercard Payment of Winnings (PoW) and for Mastercard cross-border non-PoW.{{% /regex_optional %}}
+{{% description_term %}}{{% strike %}}card[name]{{% /strike %}} {{% regex %}}[A-Za-z0-9 ]{1,30}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}
+{{% regex_optional %}}Deprecated, see [Recipient information](#credit_recipient_information) instead.{{% /regex_optional %}}
+{{% regex_optional %}}Mutually exclusive with `recipient`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% /description_list %}}
