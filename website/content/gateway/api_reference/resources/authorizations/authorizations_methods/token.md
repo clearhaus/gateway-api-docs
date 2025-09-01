@@ -6,8 +6,9 @@ weight: 135
 ---
 #### Method: token
 
-Two token frameworks are supported:
+Three token frameworks are supported:
 
+* `clicktopay`: Click to Pay
 * `token[m4m]`: Mastercard Digital Enablement Service (MDES) for Merchants (M4M)
 * `token[vts]`: Visa Token Service (VTS)
 
@@ -16,6 +17,38 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 {{% notice %}}
 **Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
+
+#### [Method: clicktopay](#method-clicktopay)
+
+TODO: describe the feature
+
+{{% description_list %}}
+{{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Account Number (TAN) of the token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry month of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry year of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram or Digital Secure Remote Payments (DSRP) cryptogram.
+{{% regex_optional %}}Required for CITs. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Electronic Commerce Indicator.
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
 
 #### Method: token[m4m]
 
@@ -63,6 +96,7 @@ Found in `customOutputData.remoteCommerceAcceptorIdentifier` (SCOF). (Not availa
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
+
 
 #### Method: token[vts]
 
