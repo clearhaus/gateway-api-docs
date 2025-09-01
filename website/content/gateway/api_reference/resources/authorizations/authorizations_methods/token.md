@@ -18,9 +18,9 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 **Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
 
-#### [Method: clicktopay](#method-clicktopay)
+#### Method: Click to Pay
 
-TODO: describe the feature
+Unified Click to Pay method for both Visa and Mastercard.
 
 {{% description_list %}}
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
@@ -35,13 +35,12 @@ TODO: describe the feature
 {{% description_details %}}Expiry year of token to charge.
 {{% /description_details %}}
 
-{{% description_term %}}clicktopay[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Authentication Value (TAV). Also known as token cryptogram or Digital Secure Remote Payments (DSRP) cryptogram.
-{{% regex_optional %}}Required for CITs. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token.{{% /regex_optional %}}
+{{% description_term %}}clicktopay[cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token cryptogram value in Base64 format.
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Electronic Commerce Indicator.
+{{% description_details %}}Zero-padded e-commerce indicator.
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
@@ -96,7 +95,6 @@ Found in `customOutputData.remoteCommerceAcceptorIdentifier` (SCOF). (Not availa
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
-
 
 #### Method: token[vts]
 
