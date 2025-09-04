@@ -4,7 +4,43 @@ date: 2022-04-13T12:37:22+02:00
 anchor: "method-token"
 weight: 135
 ---
-#### Method: token
+
+#### Method: token (New)
+
+{{% description_list %}}
+{{% description_term %}}token[type] {{% regex %}}(network|clicktopay){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Type of token used. Possible values: `network` (for both MDES and VTS tokens) or `clicktopay` (for Click to Pay tokens).
+{{% /description_details %}}
+
+{{% description_list %}}
+{{% description_term %}}token[account_number] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Account Number (TAN) of the token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry month of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry year of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}TOken cryptogram. Also known as Token Authentication Value (TAV or TAVV) and Digital Secure Remote Payments (DSRP) cryptogram.
+{{% /description_details %}}
+
+{{% description_term %}}token[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Electronic Commerce Indicator.
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}token[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}See [Authentication: [3dsecure](#authentication-3dsecure-v2).
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
+
+#### Method: token (Legacy)
 
 Two token frameworks are supported:
 
