@@ -8,6 +8,7 @@ weight: 135
 
 Two token frameworks are supported:
 
+* `token[clicktopay]`: Click to Pay by Visa and Mastercard
 * `token[m4m]`: Mastercard Digital Enablement Service (MDES) for Merchants (M4M)
 * `token[vts]`: Visa Token Service (VTS)
 
@@ -16,6 +17,38 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 {{% notice %}}
 **Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
+
+#### Method: Click to Pay
+
+Unified Click to Pay method for both Visa and Mastercard.
+
+{{% description_list %}}
+{{% description_term %}}token[clicktopay][tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token Account Number (TAN) of the token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[clicktopay][expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry month of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[clicktopay][expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Expiry year of token to charge.
+{{% /description_details %}}
+
+{{% description_term %}}token[clicktopay][tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token authentication value, also known as cryptogram.
+{{% /description_details %}}
+
+{{% description_term %}}token[clicktopay][eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Zero-padded e-commerce indicator.
+{{% /description_details %}}
+
+{{% description_term %}}token[clicktopay][3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
+
 
 #### Method: token[m4m]
 
