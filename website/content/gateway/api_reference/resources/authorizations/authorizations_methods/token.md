@@ -26,7 +26,7 @@ weight: 135
 {{% /description_details %}}
 
 {{% description_term %}}token[cryptogram] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}TOken cryptogram. Also known as Token Authentication Value (TAV or TAVV) and Digital Secure Remote Payments (DSRP) cryptogram.
+{{% description_details %}}Token cryptogram. Also known as Token Authentication Value (TAV or TAVV) and Digital Secure Remote Payments (DSRP) cryptogram.
 {{% /description_details %}}
 
 {{% description_term %}}token[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
