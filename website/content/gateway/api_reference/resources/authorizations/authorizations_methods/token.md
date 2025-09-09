@@ -20,7 +20,7 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 
 #### Method: Click to Pay
 
-Unified Click to Pay method for both Visa and Mastercard.
+Click to Pay token payment method for both Visa and Mastercard.
 
 {{% description_list %}}
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
