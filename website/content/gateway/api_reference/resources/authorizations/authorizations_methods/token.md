@@ -40,7 +40,8 @@ Click to Pay token payment method for both Visa and Mastercard.
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Zero-padded e-commerce indicator.
+{{% description_details %}}Zero-padded e-commerce indicator from token flow.
+{{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
