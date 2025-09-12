@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "browsersList": ["last 2 versions"],
+  "browsersList": [
+    "last 2 versions"
+  ],
   "dependencies": {
     "@babel/runtime": "^7.4.5",
     "auth0-js": "^9.11.0",
@@ -12,7 +14,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.0",
-    "imagemin":"^7.0.0"
+    "imagemin": "^7.0.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
