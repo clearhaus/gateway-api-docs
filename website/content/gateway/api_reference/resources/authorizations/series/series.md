@@ -18,7 +18,7 @@ Default: `recurring`.
 {{% regex_optional %}}Conditional. Cannot be present if `series[previous][id]` or any `series[previous][visa][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
 
-{{% description_term %}}series[previous][mastercard][tid] {{% regex %}}[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}series[previous][mastercard][tid] {{% regex %}}[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4}  {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Trace ID being the concatenation of values Data element 63 subfield 1 (Financial Network Code) (position 1-3), Data element 63 subfield 2 (Banknet Reference Number) (position 4-9), Data element 15 (Date, Settlement, in MMDD format) (position 10-13), and two spaces; to be used in Data Element 48, Subfield 63. 
 {{% regex_optional %}}Conditional. Required if any `series[previous][mastercard][...]` is present. Cannot be present if `series[previous][id]` or any `series[previous][visa][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
@@ -45,7 +45,7 @@ Default: `recurring`.
 {{% regex_optional %}}Conditional. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
 
-{{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /description_term %}}
+{{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Transaction ID from Field 62.2 of the first-in-series or previous-in-series authorization; to be used in Field 125, Usage 2, Dataset ID 03. 
 {{% regex_optional %}}Conditional. Required if `series[previous][visa][type]` is present. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present.{{% /regex_optional %}}{{% /description_details %}}
 {{% /description_list %}}
