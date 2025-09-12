@@ -7,26 +7,18 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.4.5",
-    "auth0-js": "^9.11.0",
-    "core-js": "3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
+    "gulp-awspublish": "^6.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.0",
     "imagemin": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
     "child_process": "^1.0.2",
     "concurrent-transform": "^1.0.0",
-    "gulp-awspublish": "^4.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-cloudfront-invalidate": "^0.1.5",
-    "gulp-terser": "^2.1.0",
     "minimist": "^1.2.0"
   },
   "scripts": {

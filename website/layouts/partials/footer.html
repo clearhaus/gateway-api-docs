@@ -9,10 +9,10 @@
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/jquery-2.1.0.min.js">')</script>
-{{ $typedJs := resources.Get "js/typed.js" | js.Build "typed.js" | fingerprint }}
-{{ $mainJs := resources.Get "js/main.js" | js.Build "main.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $typedJs }}" defer></script>
-<script type="text/javascript" src="{{ $mainJs }}" defer></script>
+{{ $typedJs := resources.Get "js/typed.js" | fingerprint }}
+{{ $mainJs := resources.Get "js/main.js" | fingerprint }}
+<script type="text/javascript" src="{{ $typedJs.Permalink }}"></script>
+<script type="text/javascript" src="{{ $mainJs.Permalink }}"></script>
 </body>
 
 </html>
