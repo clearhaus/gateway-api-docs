@@ -76,26 +76,6 @@ div.docs sup {
 	box-sizing: initial;
 }
 
-div.docs .api-navigation {
-	box-sizing: border-box;
-	padding: 20px;
-	border-radius: 3px;
-	margin-top: 60px;
-	transition: 0.3s ease height;
-	margin-bottom: 60px;
-	width: 320px;
-}
-
-div.docs .api-navigation.parked {
-	position: absolute;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-div.docs .api-navigation.afloat {
-	position: fixed;
-}
-
 div.docs section.content {
 	position: relative;
 	background-color: #fff;
@@ -1151,82 +1131,12 @@ div.docs.scrollpage section.content .wrapper {
 	}
 }
 
-.api-navigation-button {
-	display: none;
-	width: 100%;
-	position: fixed;
-	z-index: 100000;
-	height: 40px;
-	bottom: 0;
-	background-color: #4790DB;
-	cursor: pointer;
-	overflow: hidden;
-	transition: 0.2s ease all;
-}
-
-.api-navigation-button:hover {
-	background-color: #349374;
-}
-
-.api-navigation-button span {
-	color: #fff;
-	text-transform: uppercase;
-	font-family: "Circular", sans-serif;
-	font-size: 13px;
-	font-weight: 500;
-	letter-spacing: 0.7px;
-	display: block;
-	text-decoration: none;
-	position: absolute;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
-	top: 50%;
-	margin-bottom: -2px;
-	transition: 0.4s ease all;
-}
-
-.api-navigation-button .close {
-	transform: translateY(250%) translateX(-50%);
-}
-
-.api-navigation-button .open {
-	transform: translateY(-50%) translateX(-50%);
-}
-
-.api-navigation-button.active .close {
-	transform: translateY(-50%) translateX(-50%);
-}
-
-.api-navigation-button.active .open {
-	transform: translateY(-250%) translateX(-50%);
-}
-
 div.docs section.content .wrapper aside.onscreen {
 	display: block;
 }
 
 
 @media (max-width: 720px) {
-
-	.api-navigation-button {
-		display: block;
-	}
-
-	div.apipage section.content .wrapper aside {
-		display: none;
-		top: 0 !important;
-		left: 0 !important;
-		width: 100% !important;
-		height: 100% !important;
-		overflow: scroll;
-		z-index: 10000 !important;
-		position: fixed !important;
-		background-color: #fff !important;
-		opacity: 0;
-		transform: translateY(100px);
-		transition: 0.3s ease all;
-	}
-
 	div.docs section.content .wrapper aside.active {
 		opacity: 1;
 		transform: translateY(0);
@@ -1236,22 +1146,8 @@ div.docs section.content .wrapper aside.onscreen {
 		padding-left: 20px;
 	}
 
-	div.docs section.content .wrapper aside .api-navigation {
-		width: 100%;
-		padding: 20px 20px 0px 20px;
-		margin: 0;
-	}
-
-	div.docs section.content .wrapper aside .api-navigation>ul {
-		padding-bottom: 60px;
-	}
-
 	td {
 		padding: 10px 10px;
-	}
-
-	.apipage footer {
-		padding-bottom: 40px;
 	}
 }
 
