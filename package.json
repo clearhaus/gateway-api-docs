@@ -1,23 +1,17 @@
 {
   "name": "gateway_api_docs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
   "browsersList": [
     "last 2 versions"
   ],
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-awspublish": "^6.0.0",
-    "gulp-clean-css": "^4.0.0",
-    "gulp-concat": "^2.6.0",
-    "imagemin": "^7.0.0"
+    "gulp-awspublish": "^8.0.0"
   },
   "devDependencies": {
     "child_process": "^1.0.2",
     "concurrent-transform": "^1.0.0",
-    "gulp-clean": "^0.4.0",
     "gulp-cloudfront-invalidate": "^0.1.5",
     "minimist": "^1.2.0"
   },
