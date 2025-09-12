@@ -306,13 +306,6 @@ section#hero p {
 	padding: 14px 40px 12px 40px;
 }
 
-.merchant-icon {
-	margin: 60px auto 0 auto;
-	display: block;
-	position: relative;
-	z-index: 100;
-}
-
 .button.get-started-button {
 	padding: 13px 30px 11px 30px;
 }

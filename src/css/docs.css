@@ -24,20 +24,6 @@ div.docs header .wrapper nav {
 	display: flex;
 }
 
-div.docs div.api-category .wrapper.link-back {
-	transition: 0.2s ease all;
-	text-decoration: none;
-	position: relative;
-	padding: 15px 40px;
-	margin: 15px auto;
-	z-index: 101;
-}
-
-div.docs div.api-category .wrapper.link-back:hover {
-	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 3px;
-}
-
 div.docs .menu-link {
 	display: flex;
 	justify-content: center;
@@ -68,86 +54,9 @@ div.docs .menu-link.active:before {
 	background-color: rgba(255, 255, 255, 0.2);
 }
 
-div.docs div.api-category {
-	position: relative;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-div.docs div.api-category .wrapper {
-	display: flex;
-	align-items: center;
-	padding: 30px 0px;
-}
-
-div.docs div.api-category .category-icon {
-	height: 80px;
-	display: flex;
-	width: 80px;
-	justify-content: center;
-	align-items: center;
-	border-radius: 3px;
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-div.docs div.api-category .category-icon img {
-	width: 40px;
-	height: 40px;
-}
-
-div.docs div.api-category .category-title {
-	font-family: "Circular", sans-serif;
-	font-size: 36px;
-	color: #FFFFFF;
-	letter-spacing: -0.6px;
-	font-weight: 300;
-	margin: 0 0 -5px 30px;
-}
-
 div.docs section#hero {
 	height: auto;
 	padding-bottom: 0;
-}
-
-div.docs .category-navigation {
-	background-color: #fff;
-	padding: 2px 0 0px 0;
-	border: 1px solid #F0F0F2;
-}
-
-div.docs .category-navigation nav {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-div.docs .category-navigation nav a {
-	font-size: 13px;
-	font-weight: 500;
-	color: #959595;
-	letter-spacing: 0.3px;
-	text-decoration: none;
-	line-height: 50px;
-	text-transform: uppercase;
-	margin: 0 40px;
-	transition: 0.2s ease all;
-	white-space: nowrap;
-}
-
-div.docs .category-navigation nav a.active {
-	font-weight: 500;
-	color: #4790DB;
-	position: relative;
-}
-
-div.docs .category-navigation nav a.active:after {
-	content: "";
-	color: #4790DB;
-	background-color: #4790DB;
-	height: 2px;
-	width: 140%;
-	position: absolute;
-	bottom: 0px;
-	left: -20%;
 }
 
 div.docs section.content .wrapper aside {
@@ -1152,10 +1061,6 @@ div.docs.scrollpage section.content .wrapper {
 	}
 }
 
-div.docs .category-navigation nav a:hover {
-	color: #2d2d2d;
-}
-
 @media (max-width: 450px) {
 	.docs .menu-link.active {
 		display: none;
@@ -1164,23 +1069,6 @@ div.docs .category-navigation nav a:hover {
 	div.docs .menu-link {
 		padding-left: 20px;
 		padding-right: 20px;
-	}
-
-	div.docs .category-navigation nav {
-		flex-direction: column;
-	}
-
-	div.docs .category-navigation nav a {
-		width: 100%;
-		text-align: center;
-	}
-
-	div.docs .category-navigation nav a.active {
-		background-color: #F0F0F2;
-	}
-
-	div.docs .category-navigation nav a.active:after {
-		display: none;
 	}
 }
 
