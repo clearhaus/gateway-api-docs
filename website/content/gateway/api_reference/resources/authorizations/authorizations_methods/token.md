@@ -20,7 +20,7 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 
 #### Method: Click to Pay
 
-Click to Pay token payment method for both Visa and Mastercard.
+Click to Pay token payment method for both Visa and Mastercard CITs.
 
 {{% description_list %}}
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
@@ -41,7 +41,7 @@ Click to Pay token payment method for both Visa and Mastercard.
 
 {{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Zero-padded e-commerce indicator from token flow.
-{{% regex_optional %}}Optional.{{% /regex_optional %}}
+{{% regex_optional %}}Required for Visa CITs.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
