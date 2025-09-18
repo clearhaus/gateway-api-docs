@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Additional SCA exemtions added
+Starting 2025-XX-XX, we will start accpting new parameters for `sca-expemtion`.
+The two new parameters are `low_value_payment` and `secure_corporate_payment`
+
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
 and refunds made with Visa. This is due to USD 0.005 being half a minor, and
