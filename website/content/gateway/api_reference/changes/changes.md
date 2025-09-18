@@ -11,10 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Visa will start requiring additinal fields for domestic credits and debits
-Starting 2025-10-17, Visa will require `sender[name]`, `sender[address]`, `sender[city]`,
-`sender[country]` for all `/credits` and `/debits`.
-From 2026-04, Visa will also require `recipient[name]` for `/debits` and `card[name]` for
-`/credits`.
+From 2026-04-XX, Visa will require `card[name]` for `/credits`.
 
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
