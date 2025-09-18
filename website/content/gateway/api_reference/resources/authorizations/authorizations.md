@@ -88,8 +88,8 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% regex_optional %}}Mutually exclusive with `series[type]` and `sca_exemption`.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}sca_exemption {{% regex %}}transaction_risk_analysis{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Request the Transaction Risk Analysis (TRA) SCA exemption.
+{{% description_term %}}sca_exemption {{% regex %}}low_value_payment|secure_corporate_payment|transaction_risk_analysis{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Request one of the SCA exemption types.
 
 {{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
 
