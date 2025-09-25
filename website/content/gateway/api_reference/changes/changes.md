@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Add support for Click to Pay
-Starting TBD, we support Click to Pay as a token framework. Please see
+Starting 2025-10-01, we support Click to Pay as a token framework. Please see
 [Method: token](#method-token) for details.
 
 #### Add minimum amount for Visa captures and refunds
