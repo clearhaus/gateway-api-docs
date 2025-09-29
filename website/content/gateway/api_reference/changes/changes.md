@@ -10,7 +10,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-#### Visa will start requiring additinal fields for domestic credits and debits
+#### Visa will start requiring additional fields for domestic credits and debits
 From 2026-04-XX, Visa will require `card[name]` for `/credits`.
 
 #### Add minimum amount for Visa captures and refunds
