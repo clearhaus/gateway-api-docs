@@ -2,5 +2,5 @@ dist/
 node_modules/
 website/public/
 website/static/
-.pnp*
 .hugo_build.lock
+.yarn*
