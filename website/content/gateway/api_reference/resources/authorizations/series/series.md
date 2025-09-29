@@ -45,7 +45,7 @@ Default: `recurring`.
 {{% regex_optional %}}Conditional. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
 
-{{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /description_term %}}
+{{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Transaction ID from Field 62.2 of the first-in-series or previous-in-series authorization; to be used in Field 125, Usage 2, Dataset ID 03. 
 {{% regex_optional %}}Conditional. Required if `series[previous][visa][type]` is present. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present.{{% /regex_optional %}}{{% /description_details %}}
 {{% /description_list %}}
