@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Add support for Click to Pay
+Starting 2025-10-01, we support Click to Pay as a token framework. Please see
+[Method: token](#method-token) for details.
+
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
 and refunds made with Visa. This is due to USD 0.005 being half a minor, and
