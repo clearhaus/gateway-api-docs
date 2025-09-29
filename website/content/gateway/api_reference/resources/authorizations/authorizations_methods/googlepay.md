@@ -28,6 +28,7 @@ ID assigned by Google. Prepend it with either `merchant:` or `gateway:` dependin
 {{% description_details %}}
 See [Authentication: [3dsecure]](#authentication-3dsecure).
 {{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
 
 {{% /description_list %}}
 {{% notice %}}

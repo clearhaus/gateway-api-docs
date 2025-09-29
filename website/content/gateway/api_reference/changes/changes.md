@@ -10,8 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
-#### Visa will start requiring additional fields for domestic credits and debits
+#### Visa will start requiring additional fields for domestic credits
 From 2026-04-XX, Visa will require `card[name]` for `/credits`.
+
+#### Add support for Click to Pay
+Starting 2025-10-01, we support Click to Pay as a token framework. Please see
+[Method: token](#method-token) for details.
 
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures

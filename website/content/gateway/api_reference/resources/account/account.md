@@ -36,7 +36,7 @@ GET https://gateway.clearhaus.com/account
 {{% description_details %}}Merchant category code. 
 {{% /description_details %}}
 
-{{% description_term %}}acquirer{{% regex %}}{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}acquirer{{% /description_term %}}
 {{% description_details %}}Used for 3-D Secure. 
 {{% /description_details %}}
 
