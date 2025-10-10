@@ -26,7 +26,7 @@ const config = {
 
 function build() {
   const baseUrl = config[argv.env] ? config[argv.env].baseUrl : config['production'].baseUrl;
-  const command = 'hugo -v -b "' + baseUrl + '" --source=website';
+  const command = 'hugo --logLevel info --cleanDestinationDir -b "' + baseUrl + '" --source=website';
 
   return exec(command, function (err, stdout) {
     console.log(stdout);
