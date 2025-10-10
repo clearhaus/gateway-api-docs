@@ -4,7 +4,8 @@
 	<section id="hero">
 		<header>
 			<div class="wrapper">
-				<a href="https://developer.clearhaus.com/" id="logo"><img src="img/logo.svg"></a>
+				{{ $logo := resources.Get "img/logo.svg" }}
+				<a href="https://developer.clearhaus.com/" id="logo"><img src="{{ $logo.Permalink }}"></a>
 			</div>
 		</header>
 		<div class="wrapper">
