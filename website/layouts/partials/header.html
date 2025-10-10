@@ -10,6 +10,8 @@
 	<meta name="description" content="Clearhaus Transaction API">
 	<meta name="author" content="Clearhaus A/S">
 
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/docs.css">
+	{{ $mainCss := resources.Get "css/main.css" | fingerprint }}
+	{{ $docsCss := resources.Get "css/docs.css" | fingerprint }}
+	<link rel="stylesheet" href="{{ $mainCss.Permalink }}">
+	<link rel="stylesheet" href="{{ $docsCss.Permalink }}">
 </head>
