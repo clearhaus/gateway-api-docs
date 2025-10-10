@@ -11,6 +11,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.NONPCI_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.NONPCI_AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "eu-west-1"
     steps:
       - uses: actions/checkout@v4
 
@@ -18,4 +19,4 @@ jobs:
         run: ./build/build.sh
 
       - name: Deploy `prod`
-        run: docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY clearhaus/gateway-api-docs yarnpkg deploy:production
+        run: docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_REGION clearhaus/gateway-api-docs yarnpkg deploy:production
