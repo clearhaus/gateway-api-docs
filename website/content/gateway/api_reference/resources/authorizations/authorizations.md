@@ -108,6 +108,8 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% /description_list %}}
+
 {{% notice %}}
 **Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
 {{% /notice %}}

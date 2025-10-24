@@ -1,4 +1,3 @@
-
 var scrollToTop;
 var scrollTimer;
 var headings = [];
