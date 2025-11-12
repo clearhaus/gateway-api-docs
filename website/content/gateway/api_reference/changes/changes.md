@@ -10,6 +10,9 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Visa will start requiring additional fields for domestic credits
+From 2026-04-XX, Visa will require `card[name]` for `/credits`.
+
 #### Add support for Click to Pay
 Starting 2025-10-01, we support Click to Pay as a token framework. Please see
 [Method: token](#method-token) for details.
