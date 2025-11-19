@@ -1,11 +1,5 @@
 const gulp = require('gulp');
-const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean');
 const exec = require('child_process').exec;
-const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-terser');
-const concat = require('gulp-concat');
-const imagemin = require('imagemin');
 
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -30,61 +24,14 @@ const config = {
   }
 }
 
-function uglifyCSS() {
-  return gulp.src('src/css/*.css')
-    .pipe(autoprefixer({
-      cascade: false
-    }))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(gulp.dest('website/static/css'))
-};
-
-function prepJS() {
-  return gulp.src(['src/js/typed.js', 'src/js/main.js'])
-    .pipe(concat('jsbundle.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('website/static/js'))
-};
-
-function prepFonts() {
-  return gulp.src('src/fonts/*')
-    .pipe(gulp.dest('website/static/fonts'))
-}
-
-function prepBinaries() {
-  return gulp.src('src/*.pdf', 'src/*.txt')
-    .pipe(gulp.dest('website/static'))
-}
-
-function appBundle() {
-  return gulp.src('dist/appBundle.js')
-    .pipe(gulp.dest('website/static/js'))
-};
-
-function imageMIN() {
-  return imagemin(['src/img/**/*'],
-    {
-      destination: 'website/static/img',
-    }
-  )
-}
-
-function hugoClean() {
-  return gulp.src('website/public', { read: false })
-    .pipe(clean());
-};
-
-function hugoBuild() {
+function build() {
   const baseUrl = config[argv.env] ? config[argv.env].baseUrl : config['production'].baseUrl;
-  const command = 'hugo -v -b "' + baseUrl + '" --source=website';
+  const command = 'hugo --logLevel info --cleanDestinationDir -b "' + baseUrl + '" --source=website';
 
   return exec(command, function (err, stdout) {
     console.log(stdout);
   });
 };
-
-const hugoPrep = gulp.parallel(uglifyCSS, prepJS, prepFonts, prepBinaries, imageMIN);
-const build = gulp.series(hugoPrep, hugoBuild);
 
 function publish() {
   const options = config[argv.env].aws;
@@ -97,6 +44,5 @@ function publish() {
     .pipe(invalidate(options));
 };
 
-exports.update = hugoPrep;
 exports.build = build;
 exports.deploy = gulp.series(build, publish);

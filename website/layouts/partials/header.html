@@ -10,9 +10,8 @@
 	<meta name="description" content="Clearhaus Transaction API">
 	<meta name="author" content="Clearhaus A/S">
 
-	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/docs.css">
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
-	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
-
+	{{ $mainCss := resources.Get "css/main.css" | fingerprint }}
+	{{ $docsCss := resources.Get "css/docs.css" | fingerprint }}
+	<link rel="stylesheet" href="{{ $mainCss.Permalink }}">
+	<link rel="stylesheet" href="{{ $docsCss.Permalink }}">
 </head>

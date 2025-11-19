@@ -14,6 +14,10 @@ Sorted by descending timestamp.
 Starting 2025-XX-XX, we will start accpting new parameters for `sca-expemtion`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
 
+#### Add support for Click to Pay
+Starting 2025-10-01, we support Click to Pay as a token framework. Please see
+[Method: token](#method-token) for details.
+
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
 and refunds made with Visa. This is due to USD 0.005 being half a minor, and
