@@ -11,7 +11,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 Sorted by descending timestamp.
 
 #### Additional SCA exemtions added
-Starting 2025-XX-XX, we will start accpting new parameters for `sca-expemtion`.
+Starting 2025-XX-XX, we will start accepting new parameters for `sca_exemption`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
 
 #### Add support for Click to Pay
