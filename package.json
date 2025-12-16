@@ -6,8 +6,8 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-awspublish": "^8.0.0"
+    "gulp": "^5.0.1",
+    "gulp-awspublish": "^9.0.0"
   },
   "devDependencies": {
     "child_process": "^1.0.2",

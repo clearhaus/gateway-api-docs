@@ -22,5 +22,5 @@ Some files are statically made when starting the Hugo server.
 
 To update these files run:
 ```shell
-docker exec -it gateway-api-docs yarnpkg update_build
+docker exec -it gateway-api-docs yarn update_build
 ```

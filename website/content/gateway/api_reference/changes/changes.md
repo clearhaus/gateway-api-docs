@@ -14,6 +14,19 @@ Sorted by descending timestamp.
 Starting 2025-XX-XX, we will start accepting new parameters for `sca_exemption`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
 
+#### Deprecation of currency BGN
+As Bulgaria is moving from BGN to EUR we will be deprecating the BGN currency as follows:
+
+|Transaction Type|Visa (UTC)|Mastercard (UTC)|
+|---|---|---|
+|Authorizations|2025-12-31T21:59:59|2025-12-31T21:59:59|
+|Voids|2025-12-31T21:59:59|2025-12-31T21:59:59|
+|Captures|2026-02-28T21:59:59|2026-04-30T21:59:59|
+|Refunds|2026-02-28T21:59:59|2026-04-30T21:59:59|
+|Credits|2025-12-31T21:59:59|2025-12-31T21:59:59|
+|Debits|2025-12-31T21:59:59|2025-12-31T21:59:59|
+|Debit Refunds|2025-12-31T21:59:59|2025-12-31T21:59:59|
+
 #### Add support for Click to Pay
 Starting 2025-10-01, we support Click to Pay as a token framework. Please see
 [Method: token](#method-token) for details.
