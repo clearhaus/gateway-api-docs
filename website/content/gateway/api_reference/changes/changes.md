@@ -10,6 +10,10 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Additional SCA exemtions added
+Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
+The two new parameters are `low_value_payment` and `secure_corporate_payment`
+
 #### Deprecation of currency BGN
 As Bulgaria is moving from BGN to EUR we will be deprecating the BGN currency as follows:
 
