@@ -1,6 +1,7 @@
 {
   "name": "gateway_api_docs",
   "version": "2.0.0",
+  "packageManager": "yarn@4.12.0",
   "description": "",
   "browsersList": [
     "last 2 versions"
@@ -18,7 +19,7 @@
   "scripts": {
     "serve": "gulp build && hugo server --source=website/ --bind=0.0.0.0",
     "build": "gulp build",
-    "update_build": "gulp update",
+    "update_build": "gulp build",
     "deploy:production": "gulp deploy --env production"
   },
   "repository": {
@@ -30,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/clearhaus/gateway-api-docs/issues"
   },
-  "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme"
+  "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme",
 }

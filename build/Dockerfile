@@ -9,6 +9,9 @@ RUN apt-get update && \
 WORKDIR /opt/clearhaus/gateway-api-docs
 COPY . /opt/clearhaus/gateway-api-docs
 
+# Upgrade to latest Yarn (v4)
+RUN yarn set version stable
+
 EXPOSE 1313
 
 RUN yarn install
