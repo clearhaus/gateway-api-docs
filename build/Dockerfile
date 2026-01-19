@@ -9,6 +9,7 @@ RUN apt-get update && \
 # Install Yarn 1.x first, then upgrade to Yarn 4.12.0
 # This must be done before copying package.json to avoid packageManager field conflictsnpm install -g corepack
 RUN npm install -g npm@latest
+RUN npm install -g corepack
 RUN corepack enable
 RUN corepack prepare yarn@4.12.0 --activate
 
