@@ -6,8 +6,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Enable Corepack to use the Yarn version specified in package.json
-RUN corepack enable
+# Install Yarn 1.x first, then upgrade to Yarn 4.12.0
+# This must be done before copying package.json to avoid packageManager field conflicts
+RUN npm install -g yarn && \
+    yarn set version 4.12.0
 
 WORKDIR /opt/clearhaus/gateway-api-docs
 COPY . /opt/clearhaus/gateway-api-docs
