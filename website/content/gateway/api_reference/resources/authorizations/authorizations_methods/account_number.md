@@ -1,10 +1,10 @@
 ---
-title: "token"
+title: "account_number"
 date: 2022-04-13T12:37:22+02:00
-anchor: "method-token"
+anchor: "method-account-number"
 weight: 135
 ---
-#### Payment methods
+#### Account Number payment methods
 
 Payment methods supported:
 
