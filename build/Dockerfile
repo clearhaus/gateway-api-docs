@@ -1,4 +1,4 @@
-FROM node:trixie-slim
+FROM node:trixie
 
 # Install Hugo
 RUN apt-get update && \
@@ -6,11 +6,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/clearhaus/gateway-api-docs
-COPY . /opt/clearhaus/gateway-api-docs
-
 # Enable Corepack to use the Yarn version specified in package.json
 RUN corepack enable
+
+WORKDIR /opt/clearhaus/gateway-api-docs
+COPY . /opt/clearhaus/gateway-api-docs
 
 EXPOSE 1313
 
