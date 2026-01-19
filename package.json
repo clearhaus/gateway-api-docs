@@ -19,7 +19,6 @@
   "scripts": {
     "serve": "gulp build && hugo server --source=website/ --bind=0.0.0.0",
     "build": "gulp build",
-    "update_build": "gulp build",
     "deploy:production": "gulp deploy --env production"
   },
   "repository": {
