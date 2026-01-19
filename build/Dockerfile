@@ -9,8 +9,8 @@ RUN apt-get update && \
 WORKDIR /opt/clearhaus/gateway-api-docs
 COPY . /opt/clearhaus/gateway-api-docs
 
-# Upgrade to latest Yarn (v4)
-RUN yarn set version stable
+# Enable Corepack to use the Yarn version specified in package.json
+RUN corepack enable
 
 EXPOSE 1313
 
