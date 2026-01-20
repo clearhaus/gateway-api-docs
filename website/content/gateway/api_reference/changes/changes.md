@@ -10,6 +10,24 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Payment method documentation restructured
+Starting 2026-01-20, the payment method documentation has been restructured for improved clarity and consistency. The following changes have been made:
+
+* Field names have been unified by removing method-specific prefixes:
+  - `card[pan]` and `token[tan]` are now both `account_number`
+  - `card[expire_month]` and `token[expire_month]` are now both `expire_month`
+  - `applepay[payment_token]` and `googlepay[token]` are now both `payment_token` (with wallet-specific variations documented)
+  - `applepay[symmetric_key]` is now `symmetric_key` and `googlepay[shared_key]` is now `shared_key`
+  - Similar unification applies to other common fields across payment methods
+
+* A `type` field has been added to distinguish between payment methods, allowing the same field names to be used across different payment types:
+  - For account number-based methods: `card`, `clicktopay`, `mobilepayonline`, `moto`, `token`, `vipps`, or `applepay`
+  - For wallet methods: `applepay` or `googlepay`
+
+* Payment method-specific fields are clearly marked with tables indicating which methods they apply to
+
+This restructuring improves documentation consistency while maintaining all existing functionality. All payment methods continue to work as before, with the same underlying API behavior.
+
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
