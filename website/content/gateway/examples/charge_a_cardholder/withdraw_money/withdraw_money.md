@@ -2,7 +2,7 @@
 title: "Withdraw_money"
 date: 2022-04-13T09:54:07+02:00
 anchor: "withdraw_money"
-weight: 60
+weight: 120
 ---
 
 ### Withdraw money

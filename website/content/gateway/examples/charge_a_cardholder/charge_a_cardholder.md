@@ -2,7 +2,7 @@
 title: "Charge_a_cardholder"
 date: 2022-04-13T09:41:28+02:00
 anchor: "charge_a_cardholder"
-weight: 50
+weight: 110
 ---
 ## Charge a cardholder
 
