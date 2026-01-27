@@ -9,11 +9,7 @@ Build the Docker image:
 Serve locally:
 
 ```shell
-docker run --rm -it \
-  --name gateway-api-docs \
-  -p 1313:1313 \
-  -v $PWD:/opt/clearhaus/gateway-api-docs \
-  clearhaus/gateway-api-docs bash ./build/start.sh
+./build/start.sh
 ```
 
 Some files are statically made when starting the Hugo server.
@@ -22,5 +18,5 @@ Some files are statically made when starting the Hugo server.
 
 To update these files run:
 ```shell
-docker exec -it gateway-api-docs yarn update_build
+docker exec -it gateway-api-docs yarn build
 ```
