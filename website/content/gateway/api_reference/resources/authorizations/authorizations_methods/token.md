@@ -11,6 +11,7 @@ Token frameworks supported:
 * `clicktopay`: Click to Pay
 * `token`: Visa and Mastercard
 
+[token[m4m]](#deprecated) and [token[vts]](#deprecated) is deprecated, but still works.
 
 Requirement of some parameters depends on the initiator of the transaction; a parameter might be required for cardholder-initiated transactions (CITs) and otherwise optional. See the details for each parameter.
 
