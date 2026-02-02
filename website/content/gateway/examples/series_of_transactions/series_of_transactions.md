@@ -2,7 +2,7 @@
 title: "Series of transactions"
 date: 2022-04-13T12:37:22+02:00
 anchor: "series_of_transactions"
-weight: 70
+weight: 130
 ---
 ## Series of transactions
 Clearhaus supports two types of subscription billing:

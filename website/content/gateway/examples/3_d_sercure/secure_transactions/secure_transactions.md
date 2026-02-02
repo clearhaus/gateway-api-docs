@@ -2,7 +2,7 @@
 title: "secure_transactions"
 date: 2022-04-13T12:37:22+02:00
 anchor: "secure_transactions"
-weight: 85
+weight: 145
 ---
 To perform a 3-D Secure version 2 transaction you make an ordinary authorization including an {{% highlight_text %}}ares{{% /highlight_text %}} or an {{% highlight_text %}}rreq{{% /highlight_text %}} value. The former is used in the following example:
 ```shell

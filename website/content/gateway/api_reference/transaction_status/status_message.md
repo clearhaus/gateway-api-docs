@@ -2,7 +2,7 @@
 title: "Status message"
 date: 2022-04-13T12:37:22+02:00
 anchor: "status-message"
-weight: 200
+weight: 320
 ---
 #### Status messages
 
