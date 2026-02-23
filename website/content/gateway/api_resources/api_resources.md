@@ -2,9 +2,9 @@
 title: "resources"
 date: 2022-04-13T12:37:22+02:00
 anchor: "resources"
-weight: 100
+weight: 205
 ---
-## Resources
+# API Resources
 Our API offers eight different resources:
 
 - [Authorizations](#authorizations)

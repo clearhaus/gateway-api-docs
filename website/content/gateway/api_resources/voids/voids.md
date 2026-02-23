@@ -2,9 +2,9 @@
 title: "Voids"
 date: 2022-04-13T12:37:22+02:00
 anchor: "voids"
-weight: 175
+weight: 275
 ---
-#### Voids
+## Voids
 To release reserved money on a cardholder’s bank account you make a new void resource. A reservation usually lasts for at least seven days depending on the issuing bank and is then automatically released.
 ```shell
 POST https://gateway.clearhaus.com/authorizations/:id/voids

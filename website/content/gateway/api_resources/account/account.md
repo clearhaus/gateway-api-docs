@@ -2,9 +2,9 @@
 title: "Account"
 date: 2022-04-13T12:37:22+02:00
 anchor: "account"
-weight: 185
+weight: 285
 ---
-#### Account
+## Account
 The account resource holds basic merchant account information. Only `HTTP GET` is supported for this endpoint.
 ```shell
 GET https://gateway.clearhaus.com/account

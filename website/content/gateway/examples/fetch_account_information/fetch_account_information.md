@@ -2,7 +2,7 @@
 title: "fetch account information"
 date: 2022-04-13T12:37:22+02:00
 anchor: "fetch-account-information"
-weight: 90
+weight: 150
 ---
 ## Fetch account information
 Some basic account information can be fetched:

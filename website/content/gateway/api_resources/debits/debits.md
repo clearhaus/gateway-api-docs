@@ -2,9 +2,9 @@
 title: "debits"
 date: 2023-01-05T13:37:00+01:00
 anchor: "debits"
-weight: 176
+weight: 276
 ---
-#### Debits
+## Debits
 To transfer money from a cardholder's bank account in real-time, in one step, you make a new debit resource.
 ```shell
 POST https://gateway.clearhaus.com/debits

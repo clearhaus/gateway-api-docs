@@ -2,9 +2,9 @@
 title: "Scheme reference to series"
 date: 2022-04-13T12:37:22+02:00
 anchor: "scheme-reference-to-series"
-weight: 155
+weight: 255
 ---
-#### Scheme reference to series
+### Scheme reference to series
 
 If the previous-in-series authorization was made via this API, you should use `series[previous][id]` to reference it. If it was not made via this API, you must obtain explicit approval from Clearhaus to use the raw scheme values grouped in `series[previous][mastercard]` and `series[previous][visa]`. This is relevant when moving a subscription from another acquirer to Clearhaus or among Clearhaus accounts.
 

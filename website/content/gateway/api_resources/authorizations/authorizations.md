@@ -2,9 +2,9 @@
 title: "authorizations"
 date: 2022-04-13T12:37:22+02:00
 anchor: "authorizations"
-weight: 105
+weight: 210
 ---
-#### Authorizations
+## Authorizations
 To reserve money on a cardholder’s bank account you make a new authorization resource.
 ```shell
 POST https://gateway.clearhaus.com/authorizations

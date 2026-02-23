@@ -2,7 +2,7 @@
 title: "sender_information"
 date: 2023-01-05T13:37:00+01:00
 anchor: "sender_information"
-weight: 177
+weight: 277
 ---
 ##### Sender information
 See the partner guideline for more details.

@@ -889,7 +889,7 @@ div.docs.scrollpage section.content .wrapper aside ul li a {
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li a.h2 {
-	margin-left: 15px;
+	padding-left: 28px;
 }
 
 div.docs.scrollpage section.content .wrapper aside {
@@ -905,6 +905,11 @@ div.docs.scrollpage section.content .wrapper aside .content-title {
 	margin-left: 20px;
 	text-transform: uppercase;
 	letter-spacing: 0.3px;
+}
+
+div.docs.scrollpage section.content .wrapper aside.content-navigation {
+	max-height: calc(100vh - 100px);
+	overflow-y: auto;
 }
 
 div.docs.scrollpage section.content .wrapper article {

@@ -2,9 +2,9 @@
 title: "Travel data"
 date: 2022-04-13T12:37:22+02:00
 anchor: "travel-data"
-weight: 165
+weight: 265
 ---
-#### Travel data
+### Travel data
 At most one type of travel data can be supplied for a capture; if `travel` is supplied, it must include exactly one of `travel[car]`, `travel[flight]`, or `travel[lodging]`.
 
 For service type `[car]` (rental), the following parameter is relevant.

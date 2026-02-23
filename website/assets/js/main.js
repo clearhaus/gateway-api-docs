@@ -300,6 +300,39 @@ if (currentSection("scrollpage")) {
 		prepScrollTriggeredAnimations(scrollToTop);
 	});
 
+	function scrollToActiveNavigationItem() {
+		var $activeItem = $(".content-navigation-content li.active");
+		var $navigationContainer = $(".content-navigation");
+
+		if ($activeItem.length && $navigationContainer.length) {
+			// Get the item's position relative to the scrollable container
+			var itemPosition = $activeItem.position();
+			var itemTop = itemPosition.top;
+			var itemHeight = $activeItem.outerHeight();
+
+			// Get container dimensions
+			var containerHeight = $navigationContainer.height();
+			var containerScrollTop = $navigationContainer.scrollTop();
+
+			// Calculate if item is visible
+			var itemVisibleTop = itemTop;
+			var itemVisibleBottom = itemTop + itemHeight;
+
+			// If item is above visible area, scroll up
+			if (itemVisibleTop < 0) {
+				$navigationContainer.animate({
+					scrollTop: containerScrollTop + itemVisibleTop - 20
+				}, 200);
+			}
+			// If item is below visible area, scroll down
+			else if (itemVisibleBottom > containerHeight) {
+				$navigationContainer.animate({
+					scrollTop: containerScrollTop + (itemVisibleBottom - containerHeight) + 20
+				}, 200);
+			}
+		}
+	}
+
 	function handleAnchors(scrollToTop) {
 		handleScrollNavigationPosition();
 		checkMobileScrollStickyButton();
@@ -322,6 +355,10 @@ if (currentSection("scrollpage")) {
 			if (mobile) {
 				linksToMobileHeadings[lastHeader].addClass("active");
 			}
+
+			// Scroll table of contents to show active item
+			scrollToActiveNavigationItem();
+
 			history.replaceState(undefined, undefined, '#' + headings[lastHeader].linkhash);
 			previousActiveHeader = lastHeader;
 		}

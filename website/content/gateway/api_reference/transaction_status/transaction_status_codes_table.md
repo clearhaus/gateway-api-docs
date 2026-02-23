@@ -2,7 +2,7 @@
 title: "Transaction status codes table"
 date: 2022-04-13T12:37:22+02:00
 anchor: "transaction-status-codes-table"
-weight: 195
+weight: 315
 ---
 | Code  | Meaning                            | Auth | Capture | Refund | Void | Credit | Debit  | Debit Refund |
 |-------|------------------------------------|------|---------|--------|------|--------|--------|--------------|

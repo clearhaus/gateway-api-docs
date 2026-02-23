@@ -2,9 +2,9 @@
 title: "3dsecure"
 date: 2022-04-13T12:37:22+02:00
 anchor: "authentication-3dsecure-v2"
-weight: 150
+weight: 255
 ---
-#### Authentication: [3dsecure][v2]
+### Authentication: [3dsecure][v2]
 
 {{% description_list %}}
 {{% description_term %}}[3dsecure][v2][ares] {{% regex %}}[\:json\:]{{% /regex %}}{{% /description_term %}}

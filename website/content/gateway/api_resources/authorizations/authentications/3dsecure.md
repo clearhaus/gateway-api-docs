@@ -2,9 +2,9 @@
 title: "3dsecure"
 date: 2022-04-13T12:37:22+02:00
 anchor: "authentication-3dsecure"
-weight: 140
+weight: 250
 ---
-#### Authentication: [3dsecure]
+### Authentication: [3dsecure]
 
 Only one 3-D Secure version can be used for a given authorization.
 

@@ -2,9 +2,9 @@
 title: "debit_refunds"
 date: 2023-01-05T13:37:00+01:00
 anchor: "debit_refunds"
-weight: 178
+weight: 278
 ---
-#### Debit refunds
+## Debit refunds
 To refund money to a cardholder's bank account that has been transferred by a debit you make a new refund resource. Only a single refund can be made for a debit and it can only be for the full amount.
 
 ```shell

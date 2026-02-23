@@ -2,7 +2,7 @@
 title: "recipient_information"
 date: 2023-07-20T13:01:49+01:00
 anchor: "recipient_information"
-weight: 178
+weight: 278
 ---
 ##### Recipient information
 See the partner guideline for more details.

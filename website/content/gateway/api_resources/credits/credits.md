@@ -2,9 +2,9 @@
 title: "Credits"
 date: 2022-04-13T12:37:22+02:00
 anchor: "credits"
-weight: 180
+weight: 280
 ---
-#### Credits
+## Credits
 To payout (e.g. winnings and not refunds) money to a cardholder’s bank account you make a new credit resource.
 ```shell
 POST https://gateway.clearhaus.com/credits

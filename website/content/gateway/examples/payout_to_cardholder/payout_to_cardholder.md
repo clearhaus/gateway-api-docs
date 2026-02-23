@@ -2,7 +2,7 @@
 title: "Payout_to_cardholder"
 date: 2022-04-13T12:40:24+02:00
 anchor: "payout_to_cardholder"
-weight: 70
+weight: 130
 ---
 
 ## Payout to cardholder
