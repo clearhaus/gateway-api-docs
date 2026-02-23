@@ -2,7 +2,7 @@
 title: "Refund_to_cardholder"
 date: 2022-04-13T12:37:22+02:00
 anchor: "refund_to_cardholder"
-weight: 65
+weight: 125
 ---
 ## Refund to cardholder
 You can refund all money or a partial amount of what you have withdrawn from cardholder’s bank account:

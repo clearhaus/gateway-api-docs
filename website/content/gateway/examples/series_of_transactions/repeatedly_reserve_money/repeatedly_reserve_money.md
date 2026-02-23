@@ -2,7 +2,7 @@
 title: "Repeatedly_reserve_money"
 date: 2022-04-13T12:37:22+02:00
 anchor: "repeatedly_reserve_money"
-weight: 75
+weight: 135
 ---
 ### Repeatedly reserve money
 A first-in-series payment is created by making an authorization or debit and marking it as either a {{% highlight_text %}}recurring{{% /highlight_text %}} or {{% highlight_text %}}unscheduled{{% /highlight_text %}} series. For instance, a first-in-series recurring payment could be made this way:
