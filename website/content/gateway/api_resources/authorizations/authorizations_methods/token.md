@@ -116,7 +116,7 @@ For Mastercard only DSRP cryptograms are supported. The value must start with `[
 
 | Response | Found in  | Required for CITs |
 | ------   | --------- | ---- |
-| VTS      | `cryptogramInfo.eci`    | Yes; otherwise optional. |
+| VTS      | `cryptogramInfo.cryptogram`    | Yes; otherwise optional. |
 | MDES     | `encryptedPayload.encryptedData.de48se43Data` | Yes. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token|
 | SCOF     | `encryptedPayload.dynamicData.dynamicDataValue` | Yes. For MITs it shall only be included on the first, tokenized transaction or if there is a change to the token|
 {{% /description_details %}}
