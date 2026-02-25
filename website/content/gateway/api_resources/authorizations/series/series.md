@@ -20,8 +20,12 @@ Default: `recurring`.
 
 {{% description_term %}}series[previous][mastercard][tid] {{% regex %}}[A-Za-z0-9]{3}[A-Za-z0-9]{6}[0-9]{4} {2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Trace ID being the concatenation of values Data element 63 subfield 1 (Financial Network Code) (position 1-3), Data element 63 subfield 2 (Banknet Reference Number) (position 4-9), Data element 15 (Date, Settlement, in MMDD format) (position 10-13), and two spaces; to be used in Data Element 48, Subfield 63. 
-{{% regex_optional %}}Conditional. Required if any `series[previous][mastercard][...]` is present. Cannot be present if `series[previous][id]` or any `series[previous][visa][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
+{{% regex_optional %}}Conditional. `tid` or `economically_related_tlid` is required if any `series[previous][mastercard][...]` is present. Cannot be present if `series[previous][id]` or any `series[previous][visa][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
+
+{{% description_term %}}series[previous][mastercard][economically_related_tlid] {{% regex %}}[A-Za-z0-9_-]{22}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The Economically Related Transaction Link ID. Data Element 105 Subelement 002.
+{{% regex_optional %}}Conditional. `tid` or `economically_related_tlid` is required if any `series[previous][mastercard][...]` is present. Cannot be present if `series[previous][id]` or any `series[previous][visa][...]` is present. {{% /regex_optional %}}{{% /description_details %}}
 
 
 {{% description_term %}}series[previous][mastercard][exemption]  {{% regex %}}(fixed_amount_series|variable_amount_series){{% /regex %}}{{% /description_term %}}
