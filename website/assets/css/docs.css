@@ -94,12 +94,12 @@ div.docs section.content .wrapper {
 }
 
 div.docs .parent-node a:hover {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	border-radius: 4px;
 }
 
 div.docs .parent-node a:hover .node-title:before {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs section.content .wrapper aside .parent-node>.node-info .node-title {
@@ -148,7 +148,7 @@ div.docs section.content .wrapper aside .parent-node.active>.node-info:before {
 }
 
 div.docs section.content .wrapper aside .parent-node.active>.node-info {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	border-radius: 3px;
 	color: #fff;
 }
@@ -171,12 +171,12 @@ div.docs section.content .wrapper aside .parent-node>.node-info:before {
 	width: 8px;
 	top: 20px;
 	left: 20px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	border-radius: 99px;
 }
 
 div.docs section.content .wrapper aside .parent-node.opened>.node-info {
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 	border-radius: 3px;
 }
 
@@ -202,7 +202,7 @@ div.docs section.content .wrapper aside .child-node .node-info:before {
 	width: 8px;
 	top: 15px;
 	left: 6px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	border-radius: 99px;
 }
 
@@ -218,7 +218,7 @@ div.docs section.content .wrapper aside .child-node ul>*:first-child:after {
 	display: block;
 	top: -40px;
 	left: 0px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	z-index: 2;
 }
 
@@ -239,7 +239,7 @@ div.docs .child-node>.node-info {
 }
 
 div.docs .child-node>.node-info:hover {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs .child-node>.node-info:active {
@@ -247,7 +247,7 @@ div.docs .child-node>.node-info:active {
 }
 
 div.docs .child-node.active>.node-info {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	color: #fff;
 }
 
@@ -271,7 +271,7 @@ div.docs section.content .wrapper aside .child-node:before {
 	height: 100%;
 	width: 1px;
 	display: block;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs section.content .wrapper aside ul>li.child-node:only-child>a .node-title:after {
@@ -287,11 +287,11 @@ div.docs section.content .wrapper aside ul>li.child-node:only-child>a .node-titl
 }
 
 div.docs section.content .wrapper aside ul>li.child-node:only-child>a:hover .node-title:after {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs section.content .wrapper aside ul>li.child-node.active:only-child>a .node-title:after {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 }
 
 div.docs section.content .wrapper aside .child-node:last-child>.node-info .node-title:before {
@@ -327,7 +327,7 @@ div.docs section.content .wrapper aside .child-node .node-info:after {
 	display: block;
 	top: 18px;
 	left: -10px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs section.content .wrapper article {
@@ -348,7 +348,7 @@ div.docs article pre {
 	margin-top: 10px !important;
 	padding: 30px;
 	overflow-x: scroll;
-	background-color: #F0F0F2 !important;
+	background-color: var(--color-brand-fog) !important;
 	border-radius: 3px;
 	font-size: 11px;
 	overflow-x: hidden;
@@ -370,7 +370,7 @@ div.docs.scrollpage section.content .wrapper .side-navigation {
 
 div.docs.scrollpage section.content .wrapper .side-navigation li a {
 	display: block;
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 	border-radius: 0px;
 	border-top: none;
 	font-size: 15px;
@@ -381,13 +381,13 @@ div.docs.scrollpage section.content .wrapper .side-navigation li a {
 
 div.docs.scrollpage section.content .wrapper .side-navigation li:first-child a {
 	border-radius: 3px 3px 0 0;
-	border-top: 1px solid #F0F0F2;
+	border-top: 1px solid var(--color-brand-fog);
 }
 
 div.docs.scrollpage section.content .wrapper .side-navigation li a.active {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	color: #fff;
-	border-color: #4790DB;
+	border-color: var(--color-brand-rasberry);
 	font-weight: 800;
 }
 
@@ -402,7 +402,7 @@ div.docs article h1 {
 	margin-top: 54px;
 	margin-bottom: 30px;
 	padding-bottom: 15px;
-	border-bottom: 1px solid #F0F0F2;
+	border-bottom: 1px solid var(--color-brand-fog);
 	letter-spacing: -1px;
 }
 
@@ -415,7 +415,7 @@ div.docs article h2 {
 	margin-bottom: 30px;
 	margin-top: 70px;
 	padding-bottom: 14px;
-	border-bottom: 1px solid #F0F0F2;
+	border-bottom: 1px solid var(--color-brand-fog);
 	letter-spacing: -0.5px;
 }
 
@@ -425,7 +425,7 @@ div.docs article li code {
 
 div.docs article p code {
 	padding: 3px 10px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	margin: 0 3px;
 	border-radius: 3px;
 	font-size: 12px;
@@ -452,7 +452,7 @@ div.docs .horizontal-navigation ul li:first-child {
 div.docs .horizontal-navigation ul li:last-child {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
-	border-right: 1px solid #F0F0F2;
+	border-right: 1px solid var(--color-brand-fog);
 }
 
 div.docs .horizontal-navigation ul li.active a {
@@ -469,12 +469,12 @@ div.docs .horizontal-navigation ul li a {
 }
 
 div.docs .horizontal-navigation ul li:hover {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs .horizontal-navigation ul li {
 	text-align: center;
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 	border-right: none;
 	display: table-cell;
 }
@@ -496,7 +496,7 @@ div.docs article a:hover {
 }
 
 div.docs article .link-rel {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	border-radius: 3px;
 	margin-top: 20px;
 	margin-bottom: 40px;
@@ -557,7 +557,7 @@ div.docs article .notes-block sup {
 	text-align: center;
 	height: 14px;
 	vertical-align: super;
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	border-radius: 50%;
 	color: #fff !important;
 }
@@ -581,9 +581,9 @@ div.docs article sup {
 	height: 12px;
 	margin: -4px 5px 3px;
 	vertical-align: middle;
-	border: 1px solid #4790DB;
+	border: 1px solid var(--color-brand-rasberry);
 	border-radius: 50%;
-	color: #4790DB !important
+	color: var(--color-brand-rasberry) !important
 }
 
 div.docs article .link-rel-content h3 {
@@ -740,7 +740,7 @@ div.docs article h3 {
 	letter-spacing: -0.4px;
 	line-height: 34px;
 	font-weight: 400;
-	border-bottom: 1px solid #F0F0F2;
+	border-bottom: 1px solid var(--color-brand-fog);
 	padding-bottom: 10px;
 }
 
@@ -806,20 +806,20 @@ th {
 	font-weight: 500;
 	text-align: left;
 	padding: 16px 12px 14px 20px;
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
 
 tbody tr:nth-child(odd) {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 td {
 	text-align: left;
 	padding: 10px 10px;
 	font-weight: 500;
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 	font-size: 14px;
 	color: #555;
 
@@ -827,7 +827,7 @@ td {
 
 div.docs article span.code {
 	padding: 6px 14px;
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 	width: 100%;
 	border-radius: 3px;
 }
@@ -838,7 +838,7 @@ div.docs article .code-block {
 	overflow-x: scroll;
 	padding: 40px;
 	margin: 30px 0;
-	border: 1px solid #F0F0F2;
+	border: 1px solid var(--color-brand-fog);
 }
 
 
@@ -857,11 +857,11 @@ div.docs.scrollpage section.content .wrapper .side-bar {
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li:hover {
-	background-color: #F0F0F2;
+	background-color: var(--color-brand-fog);
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li.active a {
-	background-color: #4790DB;
+	background-color: var(--color-brand-rasberry);
 	color: #FFF;
 }
 
@@ -1018,7 +1018,7 @@ div.docs.scrollpage section.content .wrapper {
 		max-width: 100%;
 		padding: 20px 0 18px 0;
 		color: #fff;
-		background-color: #4790DB;
+		background-color: var(--color-brand-rasberry);
 		margin: 0 0 0 0;
 		display: block;
 	}
@@ -1038,7 +1038,7 @@ div.docs.scrollpage section.content .wrapper {
 	}
 
 	div.docs.scrollpage section.content .wrapper aside ul li a:hover {
-		background-color: #F0F0F2;
+		background-color: var(--color-brand-fog);
 	}
 
 	.mobile-navigation-content {
@@ -1181,7 +1181,7 @@ div.docs section.content .wrapper aside.onscreen {
 }
 
 .label:hover {
-	background: #f0f0f2;
+	background: var(--color-brand-fog);
 }
 
 .input:focus+.label {
@@ -1189,7 +1189,7 @@ div.docs section.content .wrapper aside.onscreen {
 }
 
 .input:checked+.label {
-	background: #f0f0f2;
+	background: var(--color-brand-fog);
 	color: #000;
 }
 

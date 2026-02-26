@@ -1,3 +1,27 @@
+:root {
+	--color-brand-rasberry: #fc1154;
+	/* lighten 80% */
+	--color-brand-rasberry-80: #FC1154CC;
+	/* lighten 50% */
+	--color-brand-rasberry-50: #FC115480;
+	/* color blueberry */
+	--color-brand-blueberry: #1B6AD7;
+	--color-brand-blueberry-50: #1B6AD780;
+	/* brand plum color */
+	--color-brand-plum: #0c1332;
+	--color-brand-plum-80: #0C1332CC;
+	--color-brand-plum-60: #0C133299;
+	--color-brand-plum-40: #0C133266;
+	--color-brand-plum-10: #0C13321A;
+	--color-brand-mist: #F1F7FB;
+	/* brand fog color */
+	--color-brand-fog: #A8BDCA;
+	/* hover states */
+	--color-brand-rasberry-hover: --color-brand-rasberry-80;
+	--color-brand-blueberry-hover: --color-brand-blueberry-50;
+	--color-brand-plum-hover: --color-brand-plum-80;
+}
+
 @font-face {
 	font-family: "Calibre";
 	src: url("/fonts/CalibreWeb-Regular.eot");
@@ -68,7 +92,7 @@ section#hero {
 	height: auto;
 	padding-bottom: 120px;
 	width: 100%;
-	background-color: #263345;
+	background-color: var(--color-brand-plum);
 }
 
 section#hero .terminal {
@@ -216,7 +240,7 @@ section#hero>.wrapper {
 
 .menu-link.active {
 	font-weight: 600;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: var(--color-brand-rasberry);
 	opacity: 1;
 	cursor: default;
 }
@@ -312,7 +336,7 @@ section#hero p {
 
 .green-button {
 	color: #fff;
-	background: #4790DB;
+	background: var(--color-brand-rasberry);
 	border-radius: 3px;
 	transition: 0.3s ease all;
 }
@@ -541,7 +565,7 @@ section.get-started {
 	border-radius: 3px;
 	transition: 0.2s ease all;
 	font-size: 15px;
-	color: #4790DB;
+	color: var(--color-brand-rasberry);
 	letter-spacing: 0px;
 	box-sizing: border-box;
 	width: 100%;
@@ -628,7 +652,7 @@ section.get-started {
 .footer-content {
 	width: 100%;
 	padding: 10px 0px;
-	background-color: #263345;
+	background-color: var(--color-brand-plum);
 	box-sizing: border-box;
 }
 
