@@ -4,7 +4,7 @@ div.docs section#hero:before {
 }
 
 div.docs section#hero header {
-	background-color: #263345;
+	background-color: var(--color-brand-gray-100);
 	position: relative;
 	z-index: 100;
 	padding: 0;
@@ -39,8 +39,7 @@ div.docs .menu-link.active {
 }
 
 div.docs #logo img {
-	width: 161px;
-	margin-top: 4px;
+	height: 22px;
 }
 
 div.docs .menu-link.active:before {
@@ -51,7 +50,6 @@ div.docs .menu-link.active:before {
 	left: 0;
 	height: 2px;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.2);
 }
 
 div.docs section#hero {
@@ -78,35 +76,36 @@ div.docs sup {
 
 div.docs section.content {
 	position: relative;
-	background-color: #fff;
+	background-color: var(--color-brand-white);
 	box-sizing: border-box;
 }
 
 div.docs section.content .wrapper {
 	position: relative;
 	z-index: 100;
-	background-color: #fff;
+	background-color: var(--color-brand-white);
 	display: flex;
 	padding: 0;
 	max-width: 1246px;
 	height: 100%;
+	padding-bottom: 0;
 	align-items: stretch;
 }
 
 div.docs .parent-node a:hover {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 	border-radius: 4px;
 }
 
 div.docs .parent-node a:hover .node-title:before {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs section.content .wrapper aside .parent-node>.node-info .node-title {
 	font-family: "Circular", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	margin: 0;
 }
 
@@ -122,7 +121,7 @@ div.docs section.content .wrapper aside .child-node .node-title {
 	font-family: "Circular", sans-serif;
 	font-weight: 500;
 	font-size: 14px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	line-height: 20px;
 }
 
@@ -131,7 +130,7 @@ div.docs section.content .wrapper aside .node-lr {
 	font-family: "Circular", sans-serif;
 	font-weight: 400;
 	font-size: 14px;
-	color: #777;
+	color: var(--color-brand-gray-60);
 	display: block;
 	margin-top: 2px;
 }
@@ -144,24 +143,22 @@ div.docs section.content .wrapper aside .parent-node>.node-info {
 }
 
 div.docs section.content .wrapper aside .parent-node.active>.node-info:before {
-	background-color: #fff;
+	background-color: var(--color-brand-plum-20);
 }
 
 div.docs section.content .wrapper aside .parent-node.active>.node-info {
-	background-color: var(--color-brand-rasberry);
+	background-color: var(--color-brand-plum-10);
 	border-radius: 3px;
-	color: #fff;
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs section.content .wrapper aside .parent-node.active>.node-info .node-title {
-	color: #fff;
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs section.content .wrapper aside .parent-node.active>.node-info .node-lr {
-	color: #fff;
+	color: var(--color-brand-blueberry-60);
 }
-
-div.docs section.content .wrapper aside .node.parent-node:first-child {}
 
 div.docs section.content .wrapper aside .parent-node>.node-info:before {
 	content: "";
@@ -171,7 +168,7 @@ div.docs section.content .wrapper aside .parent-node>.node-info:before {
 	width: 8px;
 	top: 20px;
 	left: 20px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 	border-radius: 99px;
 }
 
@@ -202,7 +199,7 @@ div.docs section.content .wrapper aside .child-node .node-info:before {
 	width: 8px;
 	top: 15px;
 	left: 6px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-20);
 	border-radius: 99px;
 }
 
@@ -218,7 +215,7 @@ div.docs section.content .wrapper aside .child-node ul>*:first-child:after {
 	display: block;
 	top: -40px;
 	left: 0px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 	z-index: 2;
 }
 
@@ -239,20 +236,20 @@ div.docs .child-node>.node-info {
 }
 
 div.docs .child-node>.node-info:hover {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-5);
 }
 
 div.docs .child-node>.node-info:active {
-	background-color: #e2e2e5;
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs .child-node.active>.node-info {
-	background-color: var(--color-brand-rasberry);
-	color: #fff;
+	background-color: var(--color-brand-plum-10);
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs section.content .wrapper aside .child-node.active>.node-info .node-title {
-	color: #fff;
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs section.content .wrapper aside .child-node.active>.node-info {
@@ -261,8 +258,7 @@ div.docs section.content .wrapper aside .child-node.active>.node-info {
 }
 
 div.docs section.content .wrapper aside .child-node.active>.node-info .node-lr {
-	color: #fff;
-	opacity: 0.8;
+	color: var(--color-brand-plum-60);
 }
 
 div.docs section.content .wrapper aside .child-node:before {
@@ -271,7 +267,7 @@ div.docs section.content .wrapper aside .child-node:before {
 	height: 100%;
 	width: 1px;
 	display: block;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs section.content .wrapper aside ul>li.child-node:only-child>a .node-title:after {
@@ -283,15 +279,15 @@ div.docs section.content .wrapper aside ul>li.child-node:only-child>a .node-titl
 	z-index: 10000;
 	left: 10px;
 	display: block;
-	background-color: white;
+	background-color: var(--color-brand-white);
 }
 
 div.docs section.content .wrapper aside ul>li.child-node:only-child>a:hover .node-title:after {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs section.content .wrapper aside ul>li.child-node.active:only-child>a .node-title:after {
-	background-color: var(--color-brand-rasberry);
+	background-color: var(--color-brand-plum-20);
 }
 
 div.docs section.content .wrapper aside .child-node:last-child>.node-info .node-title:before {
@@ -302,7 +298,7 @@ div.docs section.content .wrapper aside .child-node:last-child>.node-info .node-
 	display: block;
 	top: 19px;
 	left: -10px;
-	background-color: #fff;
+	background-color: var(--color-brand-white);
 	z-index: 2;
 }
 
@@ -315,7 +311,7 @@ div.docs section.content .wrapper aside .child-node:last-child>ul:after {
 	display: block;
 	top: 20px;
 	left: 0px;
-	background-color: #fff;
+	background-color: var(--color-brand-white);
 	z-index: 2;
 }
 
@@ -327,7 +323,7 @@ div.docs section.content .wrapper aside .child-node .node-info:after {
 	display: block;
 	top: 18px;
 	left: -10px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs section.content .wrapper article {
@@ -348,7 +344,7 @@ div.docs article pre {
 	margin-top: 10px !important;
 	padding: 30px;
 	overflow-x: scroll;
-	background-color: var(--color-brand-fog) !important;
+	background-color: var(--color-brand-plum-10) !important;
 	border-radius: 3px;
 	font-size: 11px;
 	overflow-x: hidden;
@@ -370,52 +366,48 @@ div.docs.scrollpage section.content .wrapper .side-navigation {
 
 div.docs.scrollpage section.content .wrapper .side-navigation li a {
 	display: block;
-	border: 1px solid var(--color-brand-fog);
-	border-radius: 0px;
+	border-radius: 3px;
 	border-top: none;
+	font-family: "Calibre", sans-serif;
 	font-size: 15px;
 	text-decoration: none;
-	padding: 14px 20px;
-	color: #000;
+	padding: 10px;
+	padding-left: 20px;
+	color: var(--color-brand-gray-100);
 }
 
-div.docs.scrollpage section.content .wrapper .side-navigation li:first-child a {
-	border-radius: 3px 3px 0 0;
-	border-top: 1px solid var(--color-brand-fog);
+body.docs.scrollpage section.content .wrapper .side-navigation li a:hover {
+	background-color: var(--color-brand-plum-5);
 }
 
 div.docs.scrollpage section.content .wrapper .side-navigation li a.active {
-	background-color: var(--color-brand-rasberry);
-	color: #fff;
-	border-color: var(--color-brand-rasberry);
-	font-weight: 800;
-}
-
-div.docs.scrollpage section.content .wrapper .side-navigation li:last-child a {
-	border-radius: 0 0 3px 3px;
+	background-color: var(--color-brand-plum-10);
+	color: var(--color-brand-blueberry-60);
+	font-weight: 600;
 }
 
 div.docs article h1 {
+	font-family: "Circular", sans-serif;
 	font-size: 44px;
 	font-weight: 500;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	margin-top: 54px;
 	margin-bottom: 30px;
 	padding-bottom: 15px;
-	border-bottom: 1px solid var(--color-brand-fog);
+	border-bottom: 1px solid var(--color-brand-plum-10);
 	letter-spacing: -1px;
 }
 
 div.docs article h2 {
-
+	font-family: "Circular", sans-serif;
 	font-size: 29px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	margin-top: 58px;
 	font-weight: 500;
 	margin-bottom: 30px;
 	margin-top: 70px;
 	padding-bottom: 14px;
-	border-bottom: 1px solid var(--color-brand-fog);
+	border-bottom: 1px solid var(--color-brand-plum-10);
 	letter-spacing: -0.5px;
 }
 
@@ -425,7 +417,7 @@ div.docs article li code {
 
 div.docs article p code {
 	padding: 3px 10px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 	margin: 0 3px;
 	border-radius: 3px;
 	font-size: 12px;
@@ -452,11 +444,11 @@ div.docs .horizontal-navigation ul li:first-child {
 div.docs .horizontal-navigation ul li:last-child {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
-	border-right: 1px solid var(--color-brand-fog);
+	border-right: 1px solid var(--color-brand-plum-10);
 }
 
 div.docs .horizontal-navigation ul li.active a {
-	background-color: #4AB190;
+	background-color: var(--color-brand-pea-60);
 }
 
 div.docs .horizontal-navigation ul li a {
@@ -469,12 +461,12 @@ div.docs .horizontal-navigation ul li a {
 }
 
 div.docs .horizontal-navigation ul li:hover {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 div.docs .horizontal-navigation ul li {
 	text-align: center;
-	border: 1px solid var(--color-brand-fog);
+	border: 1px solid var(--color-brand-plum-10);
 	border-right: none;
 	display: table-cell;
 }
@@ -485,7 +477,7 @@ div.docs ul li p {
 
 div.docs article a {
 	text-decoration: none;
-	color: #418FDE;
+	color: var(--color-brand-blueberry-60);
 	letter-spacing: -0.15px;
 	font-weight: 600;
 	border-bottom-color: rgba(92, 142, 198, 0);
@@ -496,7 +488,7 @@ div.docs article a:hover {
 }
 
 div.docs article .link-rel {
-	background-color: var(--color-brand-rasberry);
+	background-color: var(--color-brand-blueberry-60);
 	border-radius: 3px;
 	margin-top: 20px;
 	margin-bottom: 40px;
@@ -508,25 +500,28 @@ div.docs article .link-rel-header {
 }
 
 div.docs article .link-rel-name {
+	font-family: "Circular", sans-serif;
 	font-size: 22px;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: var(--color-brand-white);
 	letter-spacing: -0.37px;
 }
 
 div.docs article .link-rel-label {
 	opacity: 0.39;
+	font-family: "Circular", sans-serif;
 	font-size: 11px;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: var(--color-brand-white);
 	letter-spacing: 0.6px;
 	margin-left: 10px;
 }
 
 div.docs article .link-rel-content {
-	background-color: #fff;
+	background-color: var(--color-brand-white);
+	padding: 5px 20px 1px 20px;
 	border-radius: 0 0 2px 2px;
-	padding: 5px 20px 18px;
+	padding-bottom: 18px;
 	box-sizing: border-box;
 	overflow-x: auto;
 }
@@ -549,6 +544,7 @@ div.docs article .notes-block sup {
 	top: 3px;
 	margin: 3px;
 	font-weight: 800;
+	position: relative;
 	display: block;
 	line-height: 14px;
 	padding: 0px;
@@ -556,20 +552,21 @@ div.docs article .notes-block sup {
 	min-width: 13px;
 	text-align: center;
 	height: 14px;
-	vertical-align: super;
-	background-color: var(--color-brand-rasberry);
+	background-color: var(--color-brand-blueberry-60);
 	border-radius: 50%;
-	color: #fff !important;
+	color: var(--color-brand-white) !important;
 }
 
 div.docs article .notes-block div {
 	margin-left: 10px;
 	margin-top: 5px;
-	color: #777;
+	color: var(--color-brand-gray-60);
 }
 
 div.docs article sup {
+	color: var(--color-brand-blueberry-60);
 	top: 3px;
+	margin: 3px;
 	font-weight: 800;
 	position: relative;
 	display: inline-block;
@@ -579,11 +576,13 @@ div.docs article sup {
 	padding: 1px 1px 1px 1px;
 	text-align: center;
 	height: 12px;
-	margin: -4px 5px 3px;
+	margin-top: -4px;
+	margin-left: 5px;
+	margin-right: 5px;
 	vertical-align: middle;
-	border: 1px solid var(--color-brand-rasberry);
+	border: 1px solid var(--color-brand-blueberry-60);
 	border-radius: 50%;
-	color: var(--color-brand-rasberry) !important
+	color: var(--color-brand-blueberry-60) !important
 }
 
 div.docs article .link-rel-content h3 {
@@ -594,7 +593,7 @@ div.docs article .link-rel-content h3 {
 div.docs.scrollpage h4 {
 	margin-top: 15px;
 	padding-bottom: 10px;
-	border-bottom: 1px #ddd solid;
+	border-bottom: 1px var(--color-brand-plum-10) solid;
 }
 
 div.docs article .link-rel-content p {
@@ -608,15 +607,15 @@ div.docs .notes-block li {
 }
 
 div.docs sup {
-	color: red;
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs .notice {
+	font-family: "Calibre", sans-serif;
 	font-size: 15px;
-	background-color: #fcf8e3;
-	border: 1px solid #F9EFC7;
-	padding: 30px;
-	box-shadow: 0px 2px 0px #F9EFC7;
+	background-color: var(--color-brand-orange-10);
+	border: 1px solid var(--color-brand-orange-60);
+	padding: 20px;
 	border-radius: 3px;
 	margin-top: 10px;
 }
@@ -639,27 +638,25 @@ div.docs .notice p {
 }
 
 div.docs .warning {
-
 	font-size: 15px;
-	background-color: #f2dede;
-	border: 1px solid #ebccd1;
+	background-color: var(--color-brand-orange-10);
+	border: 1px solid var(--color-brand-orange-60);
 	padding: 20px;
-	box-shadow: 0px 2px 0px #ebccd1;
 	border-radius: 3px;
 }
 
 div.docs code.highlight_text {
 	padding: 0;
-	color: #c7254e;
-	background-color: #f9f2f4;
+	color: var(--color-brand-red-60);
+	background-color: var(--color-brand-red-10);
 	border-radius: 4px;
 	display: inline-block;
 }
 
 div.docs .regex_optional code {
 	padding: 0;
-	color: #c7254e;
-	background-color: #f9f2f4;
+	color: var(--color-brand-red-60);
+	background-color: var(--color-brand-red-10);
 	border-radius: 4px;
 	display: inline-block;
 }
@@ -671,16 +668,16 @@ div.docs div.notice p code,
 div.docs.scrollpage h4 code,
 div.docs.scrollpage article p code {
 	padding: 0;
-	color: #c7254e;
-	background-color: #f9f2f4;
+	color: var(--color-brand-red-60);
+	background-color: var(--color-brand-red-10);
 	border-radius: 4px;
 	display: inline-block;
 }
 
 div.docs div.highlight_text {
 	padding: 0;
-	color: #c7254e;
-	background-color: #f9f2f4;
+	color: var(--color-brand-red-60);
+	background-color: var(--color-brand-red-10);
 	border-radius: 4px;
 	display: inline-block;
 }
@@ -721,7 +718,7 @@ div.docs.scrollpage dl dd p {
 div.docs span.regex {
 	font-weight: lighter;
 	font-size: 15px;
-	color: #888;
+	color: var(--color-brand-gray-60);
 	padding-left: 10px;
 	height: 100%;
 }
@@ -729,18 +726,19 @@ div.docs span.regex {
 div.docs span.regex_optional {
 	font-weight: lighter;
 	font-size: 15px;
-	color: #888;
+	color: var(--color-brand-gray-60);
 	height: 100%;
 }
 
 div.docs article h3 {
 	margin: 50px 0 20px 0;
+	font-family: "Circular", sans-serif;
 	font-size: 25px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	letter-spacing: -0.4px;
 	line-height: 34px;
 	font-weight: 400;
-	border-bottom: 1px solid var(--color-brand-fog);
+	border-bottom: 1px solid var(--color-brand-plum-10);
 	padding-bottom: 10px;
 }
 
@@ -763,6 +761,7 @@ div.docs article h3:before {
 	width: 100%;
 	padding: 10px 20px;
 	height: 100%;
+	content: "";
 	display: block;
 	background-color: rgba(255, 255, 0, 0);
 	z-index: -1;
@@ -780,16 +779,19 @@ div.docs article table {
 }
 
 body article p {
+	font-family: "Calibre", sans-serif;
 	font-size: 15px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	letter-spacing: 0.3px;
 	font-weight: 500;
 	line-height: 1.85;
+	margin: 20px 0;
 }
 
 div.docs article li {
+	font-family: "Calibre", sans-serif;
 	font-size: 15px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	letter-spacing: 0.3px;
 	line-height: 1.95;
 	font-weight: 500;
@@ -800,45 +802,47 @@ div.docs.scrollpage ul li {
 }
 
 th {
+	font-family: "Circular", sans-serif;
 	font-size: 12px;
-	color: #2D2D2D;
+	color: var(--color-brand-gray-100);
 	line-height: 20px;
 	font-weight: 500;
 	text-align: left;
 	padding: 16px 12px 14px 20px;
-	border: 1px solid var(--color-brand-fog);
+	border: 1px solid var(--color-brand-plum-10);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
 
 tbody tr:nth-child(odd) {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 }
 
 td {
 	text-align: left;
 	padding: 10px 10px;
+	font-family: "Calibre", sans-serif;
 	font-weight: 500;
-	border: 1px solid var(--color-brand-fog);
+	border: 1px solid var(--color-brand-plum-10);
 	font-size: 14px;
-	color: #555;
+	color: var(--color-brand-gray-100);
 
 }
 
 div.docs article span.code {
 	padding: 6px 14px;
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-10);
 	width: 100%;
 	border-radius: 3px;
 }
 
 div.docs article .code-block {
-	background: #FBFBFB;
+	background: var(--color-brand-plum-10);
 	border-radius: 2px;
 	overflow-x: scroll;
 	padding: 40px;
 	margin: 30px 0;
-	border: 1px solid var(--color-brand-fog);
+	border: 1px solid var(--color-brand-plum-10);
 }
 
 
@@ -857,12 +861,13 @@ div.docs.scrollpage section.content .wrapper .side-bar {
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li:hover {
-	background-color: var(--color-brand-fog);
+	background-color: var(--color-brand-plum-5);
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li.active a {
-	background-color: var(--color-brand-rasberry);
-	color: #FFF;
+	font-weight: 500;
+	background-color: var(--color-brand-plum-10);
+	color: var(--color-brand-blueberry-60);
 }
 
 div.docs.scrollpage section.content .wrapper .scroll-bound {
@@ -876,16 +881,18 @@ div.docs.scrollpage section.content .wrapper aside ul {
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li a {
-	font-size: 13px;
+	font-family: "Calibre", sans-serif;
+	font-size: 15px;
 	text-decoration: none;
 	letter-spacing: 0px;
 	margin: 0px;
 	display: block;
 	width: 100%;
-	padding: 10px 10px 10px 20px;
+	padding: 10px;
+	padding-left: 20px;
 	box-sizing: border-box;
 	border-radius: 3px;
-	color: #959595;
+	color: var(--color-brand-gray-100);
 }
 
 div.docs.scrollpage section.content .wrapper aside ul li a.h2 {
@@ -901,7 +908,7 @@ div.docs.scrollpage section.content .wrapper aside .content-title {
 	font-family: "Circular", sans-serif;
 	font-size: 12px;
 	font-weight: 500;
-	color: #959595;
+	color: var(--color-brand-plum-60);
 	margin-left: 20px;
 	text-transform: uppercase;
 	letter-spacing: 0.3px;
@@ -949,7 +956,7 @@ div.docs.scrollpage section.content .wrapper {
 		left: 0 !important;
 		top: 0 !important;
 		width: 100% !important;
-		background-color: rgba(37, 56, 72, 1);
+		background-color: var(--color-brand-white);
 		z-index: 100000;
 		overflow: scroll;
 		height: 100vh;
@@ -1003,7 +1010,7 @@ div.docs.scrollpage section.content .wrapper {
 		padding: 16px 20px 16px 40px;
 		font-weight: 200;
 		letter-spacing: 0px;
-		color: rgba(255, 255, 255, 0.7);
+		color: var(--color-brand-gray-100);
 		font-weight: 500;
 		transition: 0.2s ease all;
 	}
@@ -1017,8 +1024,8 @@ div.docs.scrollpage section.content .wrapper {
 		text-align: center;
 		max-width: 100%;
 		padding: 20px 0 18px 0;
-		color: #fff;
-		background-color: var(--color-brand-rasberry);
+		color: var(--color-brand-gray-100);
+		background-color: var(--color-brand-white);
 		margin: 0 0 0 0;
 		display: block;
 	}
@@ -1033,12 +1040,12 @@ div.docs.scrollpage section.content .wrapper {
 	}
 
 	div.docs.scrollpage section.content .wrapper aside ul li.active a:hover {
-		background-color: #fff;
+		background-color: var(--color-brand-white);
 		cursor: default;
 	}
 
 	div.docs.scrollpage section.content .wrapper aside ul li a:hover {
-		background-color: var(--color-brand-fog);
+		background-color: var(--color-brand-plum-10);
 	}
 
 	.mobile-navigation-content {
@@ -1064,17 +1071,18 @@ div.docs.scrollpage section.content .wrapper {
 	height: 40px;
 	cursor: pointer;
 	width: 100%;
-	background-color: rgba(37, 56, 72, 0.95);
+	background-color: var(--color-brand-white);
+	border-top: 1px solid var(--color-brand-plum-10);
 	bottom: 0;
 	transition: 0.2s ease background-color;
 }
 
 .mobile-navigation-content:hover {
-	background-color: rgba(97, 96, 122, 0.95);
+	background-color: var(--color-brand-plum-10);
 }
 
 .mobile-navigation-content:active {
-	background-color: rgba(0, 0, 0, 1);
+	background-color: var(--color-brand-white);
 }
 
 .mobile-navigation-content li {
@@ -1095,7 +1103,8 @@ div.docs.scrollpage section.content .wrapper {
 
 .mobile-navigation-content li.active:after {
 	content: "↕";
-	color: #fff;
+	font-family: "Calibre", sans-serif;
+	color: var(--color-brand-white);
 	font-weight: 100;
 	font-size: 20px;
 	display: block;
@@ -1107,8 +1116,9 @@ div.docs.scrollpage section.content .wrapper {
 }
 
 .mobile-navigation-content li a {
-	color: #fff;
+	color: var(--color-brand-gray-100);
 	text-transform: uppercase;
+	font-family: "Circular", sans-serif;
 	font-size: 13px;
 	font-weight: 500;
 	letter-spacing: 0.7px;
@@ -1173,15 +1183,16 @@ div.docs section.content .wrapper aside.onscreen {
 
 .label {
 	padding: 10px 10px;
-	background: #fff;
+	background: var(--color-brand-white);
 	cursor: pointer;
 	font-size: 18px;
 	transition: background 0.1s, color 0.1s;
-	color: #2D2D2D;
+	font-family: "Calibre", sans-serif;
+	color: var(--color-brand-gray-100);
 }
 
 .label:hover {
-	background: var(--color-brand-fog);
+	background: var(--color-brand-plum-10);
 }
 
 .input:focus+.label {
@@ -1189,8 +1200,8 @@ div.docs section.content .wrapper aside.onscreen {
 }
 
 .input:checked+.label {
-	background: var(--color-brand-fog);
-	color: #000;
+	background: var(--color-brand-plum-10);
+	color: var(--color-brand-gray-100);
 }
 
 @media (min-width: 600px) {
@@ -1201,7 +1212,7 @@ div.docs section.content .wrapper aside.onscreen {
 
 .panel {
 	display: none;
-	background: #fff;
+	background: var(--color-brand-white);
 	max-width: 820px;
 }
 
