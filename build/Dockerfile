@@ -1,4 +1,4 @@
-FROM node:trixie-slim
+FROM node:22-trixie-slim
 
 # Install Hugo
 RUN apt-get update && \
