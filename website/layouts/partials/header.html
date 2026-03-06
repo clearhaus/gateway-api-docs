@@ -12,6 +12,7 @@
 	<meta name="description" content="Clearhaus Transaction API">
 	<meta name="author" content="Clearhaus A/S">
 
+	{{- range resources.Match "fonts/*" }}{{ $_ := .Permalink }}{{ end -}}
 	{{ $mainCss := resources.Get "css/main.css" | fingerprint }}
 	{{ $docsCss := resources.Get "css/docs.css" | fingerprint }}
 	<link rel="stylesheet" href="{{ $mainCss.Permalink }}">
