@@ -27,7 +27,9 @@ Example response (snippet):
     "status": { "code": 20000 },
     "series": {
         "type": "recurring",
-        "tid": "481048839682954"
+        "tid": "481048839682954",
+        "tlid": "GT24q0_ceu61OT5J0ZXUE3",
+        "economically_related_tlid": "8aWIaxDXJ3PF822ho-q722"
     }
 }
 ```
