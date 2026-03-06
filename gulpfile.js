@@ -37,7 +37,7 @@ function publish() {
   const options = config[argv.env].aws;
   const publisher = awspublish.create(options);
 
-  return gulp.src('website/public/**')
+  return gulp.src('website/public/**', { encoding: false })
     .pipe(parallelize(publisher.publish(), 10))
     .pipe(publisher.sync())
     .pipe(awspublish.reporter())
