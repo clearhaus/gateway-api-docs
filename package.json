@@ -30,5 +30,10 @@
   "bugs": {
     "url": "https://github.com/clearhaus/gateway-api-docs/issues"
   },
-  "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme"
+  "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme",
+  "resolutions": {
+    "fast-xml-parser": "^5.4.2",
+    "minimatch": "^10.2.4",
+    "tar": "^7.5.10"
+  }
 }
