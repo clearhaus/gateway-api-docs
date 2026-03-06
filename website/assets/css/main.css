@@ -104,9 +104,7 @@
 
 @font-face {
 	font-family: "Calibre";
-	src: url("/fonts/CalibreWeb-Regular.eot");
-	src: url("/fonts/CalibreWeb-Regular.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/CalibreWeb-Regular.woff2") format("woff2"),
+	src: url("/fonts/CalibreWeb-Regular.woff2") format("woff2"),
 		url("/fonts/CalibreWeb-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
@@ -114,9 +112,7 @@
 
 @font-face {
 	font-family: "Calibre";
-	src: url("/fonts/CalibreWeb-Semibold.eot");
-	src: url("/fonts/CalibreWeb-Semibold.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/CalibreWeb-Semibold.woff2") format("woff2"),
+	src: url("/fonts/CalibreWeb-Semibold.woff2") format("woff2"),
 		url("/fonts/CalibreWeb-Semibold.woff") format("woff");
 	font-weight: bold;
 	font-style: bold;
@@ -124,9 +120,7 @@
 
 @font-face {
 	font-family: "Circular";
-	src: url("/fonts/lineto-circular-pro-medium.eot");
-	src: url("/fonts/lineto-circular-pro-medium.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/lineto-circular-pro-medium.woff2") format("woff2"),
+	src: url("/fonts/lineto-circular-pro-medium.woff2") format("woff2"),
 		url("/fonts/lineto-circular-pro-medium.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
