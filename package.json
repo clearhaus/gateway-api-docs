@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/clearhaus/gateway-api-docs/#readme",
   "resolutions": {
-    "fast-xml-parser": "^5.4.2",
+    "fast-xml-parser": "^5.5.9",
     "minimatch": "^10.2.4",
     "tar": "^7.5.10"
   }
