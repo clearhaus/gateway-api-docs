@@ -24,6 +24,23 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 Click to Pay token payment method for both Visa and Mastercard CITs.
 
 {{% description_list %}}
+
+If 3-D Secure authentication was performed `ONBEHALF` as part of the Click to Pay flow, the following parameters can be provided:
+
+{{% description_term %}}clicktopay[payload] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
+{{% description_details %}} Full decrypted payload serialized as JSON, supplied as a string. The encrypted payload can be found in the `encryptedPayload` field in the Click to Pay checkout response.
+
+Example: `{"token":{"paymentToken":"",...}, "dynamicData":[{...}],...}`
+{{% /description_details %}}
+
+{{% description_term %}}clicktopay[assurance_data] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
+{{% description_details %}} Full assurance data serialized as JSON, supplied as a string. The assurance data can be found in the `assuranceData` field in the Click to Pay checkout response.
+
+Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", "methodResults":{...},...},...], "eci":"",...}`
+{{% /description_details %}}
+
+If 3-D Secure authentication was performed separately, the following parameters can be sent:
+
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token Account Number (TAN) of the token to charge.
 {{% /description_details %}}
@@ -53,7 +70,7 @@ Click to Pay token payment method for both Visa and Mastercard CITs.
 
 #### Method: token
 
-Token payment method for both For both Visa Token Service (VTS) and Mastercard Digital Enablement Service (MDES)
+Token payment method for both Visa Token Service (VTS) and Mastercard Digital Enablement Service (MDES)
 
 The required values are found in: 
 - the VTS provision token response.
@@ -105,7 +122,7 @@ The required values are found in:
 
 
 {{% description_term %}}token[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Authentication Value (TAV) also know as token cryptogram.
+{{% description_details %}}Token Authentication Value (TAV) also known as token cryptogram.
 
 Visa specific name: Token Authentication Verification Value (TAVV).
 
