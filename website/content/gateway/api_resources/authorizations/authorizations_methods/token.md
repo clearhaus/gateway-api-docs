@@ -23,10 +23,11 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 
 Click to Pay token payment method for both Visa and Mastercard CITs.
 
+
+Click to Pay can be used through two interfaces.
+The first interface uses the payloads from the checkout response:
+
 {{% description_list %}}
-
-If 3-D Secure authentication was performed `ONBEHALF` as part of the Click to Pay flow, the following parameters can be provided:
-
 {{% description_term %}}clicktopay[payload] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
 {{% description_details %}} Full decrypted payload serialized as JSON, supplied as a string. The encrypted payload can be found in the `encryptedPayload` field in the Click to Pay checkout response.
 
@@ -37,9 +38,19 @@ Example: `{"token":{"paymentToken":"",...}, "dynamicData":[{...}],...}`
 {{% description_details %}} Full assurance data serialized as JSON, supplied as a string. The assurance data can be found in the `assuranceData` field in the Click to Pay checkout response.
 
 Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", "methodResults":{...},...},...], "eci":"",...}`
+
+{{% regex_optional %}}Required for all Visa transactions. For Mastercard, required only when 3‑D Secure authentication was performed `ONBEHALF` {{% /regex_optional %}}
 {{% /description_details %}}
 
-If 3-D Secure authentication was performed separately, the following parameters can be sent:
+{{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
+{{% regex_optional %}}Optional. Should be sent if 3D-Secure authentication was done separately{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
+
+The second interface uses raw values:
+
+{{% description_list %}}
 
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token Account Number (TAN) of the token to charge.
