@@ -3,6 +3,9 @@ FROM node:22-trixie-slim
 # Install Hugo
 RUN apt-get update && \
     apt-get install -y hugo && \
+    # perl-base is Essential, hence --allow-remove-essential; nothing in this
+    # image needs perl at runtime.
+    apt-get purge -y --allow-remove-essential perl-base && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
