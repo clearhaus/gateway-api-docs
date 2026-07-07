@@ -6,11 +6,6 @@ weight: 240
 ---
 ### Method: token
 
-Token frameworks supported:
-
-* `clicktopay`: Click to Pay
-* `token`: Visa and Mastercard
-
 [token[m4m]](#deprecated) and [token[vts]](#deprecated) is deprecated, but still works.
 
 Requirement of some parameters depends on the initiator of the transaction; a parameter might be required for cardholder-initiated transactions (CITs) and otherwise optional. See the details for each parameter.
@@ -18,68 +13,6 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 {{% notice %}}
 **Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
-
-#### Method: Click to Pay
-
-Click to Pay token payment method for both Visa and Mastercard CITs.
-
-
-Click to Pay can be used through two interfaces.
-The first interface uses the payloads from the checkout response:
-
-{{% description_list %}}
-{{% description_term %}}clicktopay[payload] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
-{{% description_details %}} Full decrypted payload serialized as JSON, supplied as a string. The encrypted payload can be found in the `encryptedPayload` field in the Click to Pay checkout response.
-
-Example: `{"token":{"paymentToken":"",...}, "dynamicData":[{...}],...}`
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[assurance_data] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
-{{% description_details %}} Full assurance data serialized as JSON, supplied as a string. The assurance data can be found in the `assuranceData` field in the Click to Pay checkout response.
-
-Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", "methodResults":{...},...},...], "eci":"",...}`
-
-{{% regex_optional %}}Required for all Visa transactions. For Mastercard, required only when 3‑D Secure authentication was performed `ONBEHALF` {{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
-{{% regex_optional %}}Optional. Should be sent if 3D-Secure authentication was done separately{{% /regex_optional %}}
-{{% /description_details %}}
-{{% /description_list %}}
-
-The second interface uses raw values:
-
-{{% description_list %}}
-
-{{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Account Number (TAN) of the token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry month of token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry year of token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token authentication value, also known as cryptogram.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Zero-padded e-commerce indicator from token flow.
-{{% regex_optional %}}Required for Visa CITs.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
-{{% regex_optional %}}Optional{{% /regex_optional %}}
-{{% /description_details %}}
-{{% /description_list %}}
-
-#### Method: token
 
 Token payment method for both Visa Token Service (VTS) and Mastercard Digital Enablement Service (MDES)
 
