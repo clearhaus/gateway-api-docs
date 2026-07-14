@@ -37,7 +37,7 @@ Three 3-D Secure authentication methods are available: `ares`, `rreq` and `raw`.
 {{% description_details %}}The 3-D Secure version 2 trans status.
 {{% /description_details %}}
 
-{{% description_term %}}[3dsecure][v2][raw][message_version] {{% regex %}}[0-9]\.[0-9]\.[0-9]{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}[3dsecure][v2][raw][message_version] {{% regex %}}2[.][0-9][.][0-9]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The 3-D Secure version 2 message version.
 {{% /description_details %}}
 
