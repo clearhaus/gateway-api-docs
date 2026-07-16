@@ -47,7 +47,7 @@ curl -X POST \
   -d "card[expire_year]=2026"     \
   -H "Signature: <signing-api-key> RS256-hex <signature>"
 ```
-A first-in-series authorization or debit can also be made using the {{% highlight_text %}}applepay{{% /highlight_text %}}, {{% highlight_text %}}googlepay{{% /highlight_text %}}, {{% highlight_text %}}mobilepayonline{{% /highlight_text %}}, {{% highlight_text %}}token{{% /highlight_text %}} or {{% highlight_text %}}vipps{{% /highlight_text %}} payment methods.
+A first-in-series authorization or debit can also be made using the {{% highlight_text %}}applepay{{% /highlight_text %}}, {{% highlight_text %}}googlepay{{% /highlight_text %}}, {{% highlight_text %}}mobilepayonline{{% /highlight_text %}}, {{% highlight_text %}}token{{% /highlight_text %}}, {{% highlight_text %}}clicktopay{{% /highlight_text %}} or {{% highlight_text %}}vipps{{% /highlight_text %}} payment methods.
 
 A subsequent-in-series authorization or debit on a token must be made using the {{% highlight_text %}}token{{% /highlight_text %}} payment method. In case it is made using a PAN the {{% highlight_text %}}card{{% /highlight_text %}} payment method must be used.
 

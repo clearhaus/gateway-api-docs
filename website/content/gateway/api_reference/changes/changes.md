@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Updates to Click to Pay
+Starting 2026-xx-xx, we will expand the Click to Pay payment method:
+- The payment method allows for both cards and tokens.
+- Transactions can be created using a payload interface in addition to the raw interface.
+- The raw interface supports `[onbehalf][...]` fields to be used when 3-D Secure authentication was performed `ONBEHALF`.
+
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
@@ -29,7 +35,7 @@ As Bulgaria is moving from BGN to EUR we will be deprecating the BGN currency as
 
 #### Add support for Click to Pay
 Starting 2025-10-01, we support Click to Pay as a token framework. Please see
-[Method: token](#method-token) for details.
+[Method: clicktopay](#method-clicktopay) for details.
 
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
