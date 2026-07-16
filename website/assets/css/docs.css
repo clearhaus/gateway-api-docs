@@ -940,6 +940,19 @@ div.docs.scrollpage section.content .wrapper {
 	padding: 0 30px;
 }
 
+div.docs .deprecated-badge {
+	align-self: flex-start;
+	margin-left: 10px;
+	padding: 2px 6px;
+	border-radius: 4px;
+	color: var(--color-brand-orange-60);
+	background-color: var(--color-brand-orange-10);
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+	transform: translateY(4px);
+}
+
 .mobile-navigation-content {
 	display: none;
 }
