@@ -10,6 +10,11 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of raw 3-D Secure version 2 authentication data
+Starting 2026-07-27, raw 3-D Secure version 2 authentication data can be
+supplied using `[3dsecure][v2][raw]` as an alternative to `[3dsecure][v2][ares]` and `[3dsecure][v2][rreq]`.
+See [Authentication: [3dsecure][v2]](#authentication-3dsecure-v2) for details.
+
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
 The two new parameters are `low_value_payment` and `secure_corporate_payment`
