@@ -39,10 +39,12 @@ Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", 
 
 {{% description_term %}}clicktopay[can] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Cardholder Account Number (CAN) of the card or token to charge.
+{{% regex_optional %}} Required if `tan` is not present. Cannot be present if `tan` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}} <span class="deprecated-badge">Deprecated</span> {{% /description_term %}}
-{{% description_details %}} Token Account Number (TAN) of the token to charge. This field remains supported and is handled identically to `clicktopay[can]`.
+{{% description_details %}} Token Account Number (TAN) of the token to charge.
+{{% regex_optional %}} Required if `can` is not present. Cannot be present if `can` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
@@ -55,7 +57,7 @@ Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", 
 
 {{% description_term %}}clicktopay[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Token authentication value, also known as cryptogram.
-{{% regex_optional %}}Required when `can` is a token.{{% /regex_optional %}}
+{{% regex_optional %}}Required when `can` is a token or when `tan` is provided.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[eci] {{% regex %}}0[0-9]{{% /regex %}}{{% /description_term %}}
@@ -63,11 +65,11 @@ Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", 
 {{% regex_optional %}}Required for Visa tokens if no `eci` from a 3-D Secure flow is present in `[onbehalf][eci]` or `[3dsecure]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
-If 3-D Secure was performed `ONBEHALF` provide the authentication data in `[onbehalf][...]` fields:
+If 3-D Secure authentication was performed `ONBEHALF` as part of the Click to Pay checkout flow, provide the authentication data in the `[onbehalf][...]` field:
 
 {{% description_term %}}clicktopay[onbehalf][trans_status] {{% regex %}}[A-Z]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}} 3-D Secure trans status from a 3-D Secure `ONBEHALF` flow.
-{{% regex_optional %}} Required when 3-D Secure was performed `ONBEHALF`. {{% /regex_optional %}}
+{{% regex_optional %}} Optional. Provide it whenever the 3-D Secure result includes a trans status. {{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[onbehalf][eci] {{% regex %}}0[0-9]{{% /regex %}}{{% /description_term %}}
@@ -77,7 +79,7 @@ If 3-D Secure was performed `ONBEHALF` provide the authentication data in `[onbe
 
 {{% description_term %}}clicktopay[onbehalf][av] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}} 3-D Secure authentication value from a 3-D Secure `ONBEHALF` flow.
-{{% regex_optional %}} Required when 3-D Secure was performed `ONBEHALF`. {{% /regex_optional %}}
+{{% regex_optional %}} Required when `[onbehalf][trans_status]` is `Y` or `A`. Required for Visa when `[onbehalf][eci]` is `05` or `06`. Provide it whenever the 3-D Secure result includes an authentication value. {{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[onbehalf][ds_trans_id] {{% regex %}}[:UUID:]{{% /regex %}}{{% /description_term %}}
@@ -85,7 +87,7 @@ If 3-D Secure was performed `ONBEHALF` provide the authentication data in `[onbe
 {{% regex_optional %}}Required for Mastercard when 3-D Secure was performed `ONBEHALF`.{{% /regex_optional %}}
 {{% /description_details %}}
 
-If 3-D Secure was performed on the side provide the authentication data in the `3dsecure` field:
+If 3-D Secure authentication was performed outside of the Click to Pay checkout flow, provide the authentication data in the `[3dsecure]` field:
 
 {{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}

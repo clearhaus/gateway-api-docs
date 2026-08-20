@@ -12,9 +12,13 @@ Sorted by descending timestamp.
 
 #### Updates to Click to Pay
 Starting 2026-xx-xx, we will expand the Click to Pay payment method:
+
 - The payment method allows for both cards and tokens.
 - Transactions can be created using a payload interface in addition to the raw interface.
 - The raw interface supports `[onbehalf][...]` fields to be used when 3-D Secure authentication was performed `ONBEHALF`.
+- The raw interface accepts `clicktopay[can]` for the card or token number. `clicktopay[tan]` is deprecated but can still be provided. Exactly one of `clicktopay[can]` and `clicktopay[tan]` must be present.
+
+Please see [Method: clicktopay](#method-clicktopay) for details.
 
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
