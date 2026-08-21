@@ -76,6 +76,9 @@ Default:
 
 {{% regex_optional %}}Mutually exclusive with `series[previous]` and `sca_exemption`.{{% /regex_optional %}}
 
+{{% notice %}}
+**Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
+{{% /notice %}}
 {{% /description_details %}}
 
 
@@ -109,7 +112,3 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% /description_details %}}
 
 {{% /description_list %}}
-
-{{% notice %}}
-**Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
-{{% /notice %}}
