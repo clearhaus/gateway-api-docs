@@ -35,11 +35,10 @@ Default:
 
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 
-{{% /description_details %}}
-
 {{% notice %}}
 **Notice:** If an authorization does neither `use` nor `store` credential on file, omit the `credential_on_file` parameter.
 {{% /notice %}}
+{{% /description_details %}}
 
 {{% description_term %}}initiator {{% regex %}}(cardholder|merchant){{% /regex %}}{{% /description_term %}}
 
