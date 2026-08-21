@@ -35,11 +35,10 @@ Default:
 
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 
+{{% /description_details %}}
 {{% notice %}}
 **Notice:** If an authorization does neither `use` nor `store` credential on file, omit the `credential_on_file` parameter.
 {{% /notice %}}
-{{% /description_details %}}
-
 
 {{% description_term %}}initiator {{% regex %}}(cardholder|merchant){{% /regex %}}{{% /description_term %}}
 
@@ -76,11 +75,10 @@ Default:
 
 {{% regex_optional %}}Mutually exclusive with `series[previous]` and `sca_exemption`.{{% /regex_optional %}}
 
+{{% /description_details %}}
 {{% notice %}}
 **Notice:** Since `series[type]` cannot be supplied together with `series[previous]`, the type of a series cannot change.
 {{% /notice %}}
-{{% /description_details %}}
-
 
 {{% description_term %}}series[previous][id] {{% regex %}}[:UUIDv4:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The Clearhaus authorization ID as a reference to the latest approved authorization in the series.
@@ -96,12 +94,12 @@ If the latest approved authorization in the series was not processed via Clearha
 
 {{% regex_optional %}}Mutually exclusive with `series`.{{% /regex_optional %}}
 
+{{% /description_details %}}
 {{% notice %}}
 **Notice:** Rules to disallow authorizations with `sca_exemption` may be in place for a merchant.
 
 **Notice:** The exemption will be requested upstream regardless of the necessity of SCA.
 {{% /notice %}}
-{{% /description_details %}}
 
 {{% description_term %}}text_on_statement {{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
