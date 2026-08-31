@@ -5,7 +5,7 @@ anchor: "resources"
 weight: 205
 ---
 # API Resources
-Our API offers eight different resources:
+Our API offers nine different resources:
 
 - [Authorizations](#authorizations)
 - [Captures](#captures)
@@ -14,4 +14,5 @@ Our API offers eight different resources:
 - [Debits](#debits)
 - [Debit refunds](#debit_refunds)
 - [Credits](#credits)
+- [Verifications](#verifications)
 - [Account](#account)
