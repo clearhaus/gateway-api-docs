@@ -21,8 +21,16 @@ POST https://gateway.clearhaus.com/verifications
 
 ##### Parameters
 {{% description_list %}}
-{{% description_term %}}can {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Cardholder Account Number (CAN) to verify — either the primary account number (PAN) or a network token.
+{{% description_term %}}can[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Primary account number (PAN) of the card to verify.
+
+{{% regex_optional %}}Exactly one of `can[pan]` or `can[token]` must be given.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}can[token] {{% regex %}}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Token of the card to verify.
+
+{{% regex_optional %}}Exactly one of `can[pan]` or `can[token]` must be given.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}cardholder_name[first_name] {{% regex %}}[\x20-\x7E]{1,35}{{% /regex %}}{{% /description_term %}}
