@@ -42,7 +42,3 @@ POST https://gateway.clearhaus.com/verifications
 {{% /description_list %}}
 
 We determine whether the card is a Visa or Mastercard card and route the request accordingly; you do not need to specify a scheme, and the response is normalized to the same shape regardless of which scheme was used.
-
-{{% notice %}}
-**Notice**: A `no_match` result is still a successfully processed request — `status` (see [Status messages](#status-message)) reflects whether the request was processed, not the outcome of the name check.
-{{% /notice %}}
