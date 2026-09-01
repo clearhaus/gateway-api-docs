@@ -51,5 +51,10 @@ Default: `recurring`.
 
 {{% description_term %}}series[previous][visa][tid] {{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Transaction ID from Field 62.2 of the first-in-series or previous-in-series authorization; to be used in Field 125, Usage 2, Dataset ID 03. 
-{{% regex_optional %}}Conditional. Required if `series[previous][visa][type]` is present. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present.{{% /regex_optional %}}{{% /description_details %}}
+{{% regex_optional %}}Conditional. Cannot be present if `series[previous][id]` or any `series[previous][mastercard][...]` is present.{{% /regex_optional %}}{{% /description_details %}}
+
+
+{{% description_term %}}series[previous][visa][dankort_tid] {{% regex %}}999(0[1-9]|[12][0-9]|3[01])([01][0-9]|2[0-3])[0-5][0-9][0-9]{6}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The Dankort Transaction ID of the series being migrated to Visa. Consists of `999`, followed by the UTC day-of-month, hour and minute of the authorization (`DDHHMM`), followed by a 6-digit sequence.
+{{% regex_optional %}}Conditional. Requires `series[previous][visa][type]` to be present and `series[previous][visa][tid]` to be absent.{{% /regex_optional %}}{{% /description_details %}}
 {{% /description_list %}}
