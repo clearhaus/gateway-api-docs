@@ -15,6 +15,10 @@ Starting 2026-08-21, `series[previous][visa][dankort_tid]` can be supplied to re
 the Dankort TID a Visa MIT series was migrated from, for audit purposes. See
 [Scheme reference to series](#scheme-reference-to-series) for details.
 
+#### Added new retry limit exceeded status code
+Starting 2026-08-14, a new status code `42900` has been added to indicate that the retry
+limit has been exceeded. See [Transaction status codes](#api-reference) for details.
+
 #### Addition of raw 3-D Secure version 2 authentication data
 Starting 2026-07-27, raw 3-D Secure version 2 authentication data can be
 supplied using `[3dsecure][v2][raw]` as an alternative to `[3dsecure][v2][ares]` and `[3dsecure][v2][rreq]`.
