@@ -10,6 +10,7 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+
 #### Updates to Click to Pay
 Starting 2026-xx-xx, we will expand the Click to Pay payment method:
 
@@ -19,6 +20,21 @@ Starting 2026-xx-xx, we will expand the Click to Pay payment method:
 - The raw interface accepts `clicktopay[can]` for the card or token number. `clicktopay[tan]` is deprecated but can still be provided. Exactly one of `clicktopay[can]` and `clicktopay[tan]` must be present.
 
 Please see [Method: clicktopay](#method-clicktopay) for details.
+
+#### Addition of `series[previous][visa][dankort_tid]`
+Starting 2026-08-21, `series[previous][visa][dankort_tid]` can be supplied to record
+the Dankort TID a Visa MIT series was migrated from, for audit purposes. See
+[Scheme reference to series](#scheme-reference-to-series) for details.
+
+#### Added new retry limit exceeded status code
+Starting 2026-08-14, a new status code `42900` has been added to indicate that the retry
+limit has been exceeded. See [Transaction status codes](#api-reference) for details.
+
+#### Addition of raw 3-D Secure version 2 authentication data
+Starting 2026-07-27, raw 3-D Secure version 2 authentication data can be
+supplied using `[3dsecure][v2][raw]` as an alternative to `[3dsecure][v2][ares]` and `[3dsecure][v2][rreq]`.
+See [Authentication: [3dsecure][v2]](#authentication-3dsecure-v2) for details.
+
 
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.

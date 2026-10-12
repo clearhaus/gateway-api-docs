@@ -27,6 +27,7 @@ weight: 315
 | 40415 | Amount limit exceeded              | ✓    |         | ✓      |      | ✓      | ✓      | ✓            |
 | 40416 | Additional authentication required | ✓    |         | ✓      |      | ✓      | ✓      | ✓            |
 | 40420 | Merchant blocked by cardholder     | ✓    |         | ✓      |      | ✓      | ✓      | ✓            |
+| 42900 | Clearhaus retry limit exceeded     | ✓    |         |        |      |        |        |              |
 | 50000 | Clearhaus error                    | ✓    | ✓       | ✓      | ✓    | ✓      | ✓      | ✓            |
 
 Status code `20000` is the only code for which the transaction is approved. For the other codes the transaction is declined.
