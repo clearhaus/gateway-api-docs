@@ -412,7 +412,7 @@ div.docs article h2 {
 }
 
 div.docs article li code {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 div.docs article p code {
@@ -666,7 +666,8 @@ div.docs dd p code,
 div.docs dd ul li code,
 div.docs div.notice p code,
 div.docs.scrollpage h4 code,
-div.docs.scrollpage article p code {
+div.docs.scrollpage article p code,
+div.docs.scrollpage article li > code {
 	padding: 0;
 	color: var(--color-brand-red-60);
 	background-color: var(--color-brand-red-10);
