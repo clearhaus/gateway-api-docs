@@ -10,16 +10,16 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Expansion of `clicktopay` payment method
+Starting 2026-10-12, the `clicktopay` payment method has been expanded:
 
-#### Updates to Click to Pay
-Starting 2026-xx-xx, we will expand the Click to Pay payment method:
+- Both cards and tokens are supported.
+- An authorization or debit can be created from the decrypted Click to Pay payload using `clicktopay[payload]` and `clicktopay[assurance_data]`, as an alternative to supplying raw values.
+- When supplying raw values:
+  - 3-D Secure data from an `ONBEHALF` authentication performed during the Click to Pay checkout can be provided in `clicktopay[onbehalf]`.
+  - `clicktopay[can]` takes the card or token number. `clicktopay[tan]` is deprecated but still accepted. Exactly one of `clicktopay[can]` and `clicktopay[tan]` must be present.
 
-- The payment method allows for both cards and tokens.
-- Transactions can be created using a payload interface in addition to the raw interface.
-- The raw interface supports `[onbehalf][...]` fields to be used when 3-D Secure authentication was performed `ONBEHALF`.
-- The raw interface accepts `clicktopay[can]` for the card or token number. `clicktopay[tan]` is deprecated but can still be provided. Exactly one of `clicktopay[can]` and `clicktopay[tan]` must be present.
-
-Please see [Method: clicktopay](#method-clicktopay) for details.
+See [Method: clicktopay](#method-clicktopay) for details.
 
 #### Addition of `series[previous][visa][dankort_tid]`
 Starting 2026-08-21, `series[previous][visa][dankort_tid]` can be supplied to record

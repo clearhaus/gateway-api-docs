@@ -10,7 +10,7 @@ Click to Pay payment method for both Visa and Mastercard CITs.
 
 A Click to Pay authorization can be created using one of the two mutually exclusive interfaces. One by providing payloads and the other by providing raw values.
 
-#### Click to Pay payload interface:
+#### Click to Pay payload interface
 
 {{% description_list %}}
 {{% description_term %}}clicktopay[payload] {{% regex %}}[\:json\:] {{% /regex %}} {{% /description_term %}}
@@ -24,7 +24,7 @@ Example: `{"token":{"paymentToken":"",...}, "dynamicData":[{...}],...}`
 
 Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", "methodResults":{...},...},...], "eci":"",...}`
 
-{{% regex_optional %}}Required when 3‑D Secure authentication was performed `ONBEHALF`. Required for Visa tokens if no `[3dsecure]` with an `eci` is provided.{{% /regex_optional %}}
+{{% regex_optional %}}Required when 3-D Secure authentication was performed `ONBEHALF`. Required for Visa tokens if no `[3dsecure]` with an `eci` is provided.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
@@ -65,7 +65,7 @@ Example: `{"verificationData":[{"verificationType":"", "verificationMethod":"", 
 {{% regex_optional %}}Required for Visa tokens if no `eci` from a 3-D Secure flow is present in `[onbehalf][eci]` or `[3dsecure]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
-If 3-D Secure authentication was performed `ONBEHALF` as part of the Click to Pay checkout flow, provide the authentication data in the `[onbehalf][...]` field:
+If 3-D Secure authentication was performed `ONBEHALF` as part of the Click to Pay checkout flow, provide the authentication data in the `[onbehalf][...]` fields:
 
 {{% description_term %}}clicktopay[onbehalf][trans_status] {{% regex %}}[A-Z]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}} 3-D Secure trans status from a 3-D Secure `ONBEHALF` flow.
