@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of Account Name Validation
+Starting 2026-10-30, a new `validations` resource can be used to check whether a
+cardholder's name matches the name held by the issuing bank for a Visa or
+Mastercard card. Account Name Validation must be enabled for your account. See
+[Validations](#validations) for details.
+
 #### Addition of `series[previous][visa][dankort_tid]`
 Starting 2026-08-21, `series[previous][visa][dankort_tid]` can be supplied to record
 the Dankort TID a Visa MIT series was migrated from, for audit purposes. See
