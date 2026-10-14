@@ -6,11 +6,6 @@ weight: 240
 ---
 ### Method: token
 
-Token frameworks supported:
-
-* `clicktopay`: Click to Pay
-* `token`: Visa and Mastercard
-
 [token[m4m]](#deprecated) and [token[vts]](#deprecated) is deprecated, but still works.
 
 Requirement of some parameters depends on the initiator of the transaction; a parameter might be required for cardholder-initiated transactions (CITs) and otherwise optional. See the details for each parameter.
@@ -19,41 +14,7 @@ Requirement of some parameters depends on the initiator of the transaction; a pa
 **Notice**: Signing is required to use the `token` payment method.
 {{% /notice %}}
 
-#### Method: Click to Pay
-
-Click to Pay token payment method for both Visa and Mastercard CITs.
-
-{{% description_list %}}
-{{% description_term %}}clicktopay[tan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Account Number (TAN) of the token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry month of token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry year of token to charge.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token authentication value, also known as cryptogram.
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[eci] {{% regex %}}0[57]{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Zero-padded e-commerce indicator from token flow.
-{{% regex_optional %}}Required for Visa CITs.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}clicktopay[3dsecure] {{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}See [Authentication: [3dsecure]](#authentication-3dsecure-v2).
-{{% regex_optional %}}Optional{{% /regex_optional %}}
-{{% /description_details %}}
-{{% /description_list %}}
-
-#### Method: token
-
-Token payment method for both For both Visa Token Service (VTS) and Mastercard Digital Enablement Service (MDES)
+Token payment method for both Visa Token Service (VTS) and Mastercard Digital Enablement Service (MDES)
 
 The required values are found in: 
 - the VTS provision token response.
@@ -105,7 +66,7 @@ The required values are found in:
 
 
 {{% description_term %}}token[tav] {{% regex %}}[:base64:]{28}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Token Authentication Value (TAV) also know as token cryptogram.
+{{% description_details %}}Token Authentication Value (TAV) also known as token cryptogram.
 
 Visa specific name: Token Authentication Verification Value (TAVV).
 

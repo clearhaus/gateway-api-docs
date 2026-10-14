@@ -10,6 +10,17 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Expansion of `clicktopay` payment method
+Starting 2026-10-12, the `clicktopay` payment method has been expanded:
+
+- Both cards and tokens are supported.
+- An authorization or debit can be created from the decrypted Click to Pay payload using `clicktopay[payload]` and `clicktopay[assurance_data]`, as an alternative to supplying raw values.
+- When supplying raw values:
+  - 3-D Secure data from an `ONBEHALF` authentication performed during the Click to Pay checkout can be provided in `clicktopay[onbehalf]`.
+  - `clicktopay[can]` takes the card or token number. `clicktopay[tan]` is deprecated but still accepted. Exactly one of `clicktopay[can]` and `clicktopay[tan]` must be present.
+
+See [Method: clicktopay](#method-clicktopay) for details.
+
 #### Addition of `series[previous][visa][dankort_tid]`
 Starting 2026-08-21, `series[previous][visa][dankort_tid]` can be supplied to record
 the Dankort TID a Visa MIT series was migrated from, for audit purposes. See
@@ -23,6 +34,7 @@ limit has been exceeded. See [Transaction status codes](#api-reference) for deta
 Starting 2026-07-27, raw 3-D Secure version 2 authentication data can be
 supplied using `[3dsecure][v2][raw]` as an alternative to `[3dsecure][v2][ares]` and `[3dsecure][v2][rreq]`.
 See [Authentication: [3dsecure][v2]](#authentication-3dsecure-v2) for details.
+
 
 #### Additional SCA exemtions added
 Starting 2025-12-12, we will start accepting new parameters for `sca_exemption`.
@@ -43,7 +55,7 @@ As Bulgaria is moving from BGN to EUR we will be deprecating the BGN currency as
 
 #### Add support for Click to Pay
 Starting 2025-10-01, we support Click to Pay as a token framework. Please see
-[Method: token](#method-token) for details.
+[Method: clicktopay](#method-clicktopay) for details.
 
 #### Add minimum amount for Visa captures and refunds
 Starting 2025-05-19, we will enforce a minimum amount of USD 0.005 for captures
