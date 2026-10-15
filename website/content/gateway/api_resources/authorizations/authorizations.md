@@ -109,4 +109,18 @@ If the latest approved authorization in the series was not processed via Clearha
 {{% regex_optional %}}Optional, defaults to account's descriptor{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}merchant_url {{% regex %}}[\x20-\x7E]{1,255} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Merchant's website address.
+
+{{% regex_optional %}}Internationalised domain names and non-ASCII paths must be submitted in their ASCII form{{% /regex_optional %}}
+
+{{% regex_optional %}}Optional, defaults to account's url{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}merchant_phone_number {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Merchant's customer service phone number.
+
+{{% regex_optional %}}Optional, defaults to account's phone number{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% /description_list %}}
