@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of Account Name Validation
+Starting 2026-10-30, a new `validations` resource can be used to check whether a
+cardholder's name matches the name held by the issuing bank for a Visa or
+Mastercard card. Account Name Validation must be enabled for your account. See
+[Validations](#validations) for details.
+
 #### Expansion of `clicktopay` payment method
 Starting 2026-10-12, the `clicktopay` payment method has been expanded:
 
