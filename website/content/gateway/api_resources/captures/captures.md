@@ -23,6 +23,20 @@ POST https://gateway.clearhaus.com/authorizations/:id/captures
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}merchant_url {{% regex %}}[\x20-\x7E]{1,60} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Merchant's website address. Overrides `merchant_url` from authorization.
+
+{{% regex_optional %}}Internationalised domain names and non-ASCII paths must be submitted in their ASCII form{{% /regex_optional %}}
+
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}merchant_phone_number {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Merchant's customer service phone number. Overrides `merchant_phone_number` from authorization.
+
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}travel{{% regex %}}dictionary{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}See [Travel data](#travel-data).
 {{% regex_optional %}}Optional{{% /regex_optional %}}
