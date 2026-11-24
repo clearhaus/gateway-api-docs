@@ -62,25 +62,25 @@ Exactly one of `card` or `token` must be used. Any other `card` or `token` field
 
 ##### Response parameters
 {{% description_list %}}
-{{% description_term %}}id{{% /description_term %}}
+{{% description_term %}}id {{% regex %}}[:UUIDv4:]{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Clearhaus validation ID. Validations are not stored and cannot be fetched, so unlike other resources no `_links` are returned; refer to the ID when contacting Clearhaus about a validation.
 {{% /description_details %}}
 
-{{% description_term %}}status{{% /description_term %}}
+{{% description_term %}}status {{% regex %}}object{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}See [Status messages](#status-message).
 {{% /description_details %}}
 
-{{% description_term %}}processed_at{{% /description_term %}}
+{{% description_term %}}processed_at {{% regex %}}20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\+00:00 (YYYY-MM-DDThh:mm:ss+00:00){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Timestamp of when the validation was processed.
 {{% /description_details %}}
 
-{{% description_term %}}scheme_response[visa|mastercard][payment_account_reference]{{% /description_term %}}
+{{% description_term %}}scheme_response[visa|mastercard][payment_account_reference] {{% regex %}}[A-Z0-9]{29}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Payment Account Reference (PAR) of the card, under the card's scheme.
 
 {{% regex_optional %}}Omitted when the scheme does not return a PAR.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}name_match {{% regex %}}match|partial_match|no_match|unverified{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}name_match {{% regex %}}(match|partial_match|no_match|unverified){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The result of the name check:
 
 - `match`: The name matches the name held by the issuing bank.
@@ -94,7 +94,7 @@ Exactly one of `card` or `token` must be used. Any other `card` or `token` field
 **Notice:** The status code and the validation result are separate. The status code reflects whether the validation was approved; `name_match` reflects whether the name matched. For example, status `20000` with `name_match`: `no_match` means the issuer approved the validation but the name did not match.
 {{% /notice %}}
 
-{{% description_term %}}name_components_match[first_name|middle_name|last_name] {{% regex %}}match|partial_match|no_match|unverified{{% /regex %}}{{% /description_term %}}
+{{% description_term %}}name_components_match[first_name|middle_name|last_name] {{% regex %}}(match|partial_match|no_match|unverified){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The result of the name check for each part of the name, with the same values as `name_match`.
 
 {{% regex_optional %}}Visa only. Only included when `status` code is `20000`. `middle_name` is omitted when no result is returned for it.{{% /regex_optional %}}
@@ -102,11 +102,7 @@ Exactly one of `card` or `token` must be used. Any other `card` or `token` field
 {{% /description_list %}}
 
 {{% notice %}}
-**Notice**: Only Visa and Mastercard cards are supported; for any other card scheme the validation is rejected with status code `40111`.
-
 **Notice**: Account Name Validation must be enabled for your account before this endpoint can be used. If it is not enabled, the validation is rejected with status code `40000` and the message `account name validation not enabled`. Contact Clearhaus to have it enabled.
-
-**Notice**: Signing is required to make a validation.
 
 **Notice**: Unlike other resources, a processed validation is returned with HTTP status `200 OK` rather than `201 Created`. A validation rejected before it is processed (e.g. because of an invalid parameter, a missing signature or an unsupported card) is returned with `400 Bad Request`.
 {{% /notice %}}
