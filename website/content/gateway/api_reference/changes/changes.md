@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of person-to-person parameters to credits
+Starting TBD, credits completing a person-to-person money transfer must contain
+`funding_transaction_id`, sender information, `sender[account_number]`,
+`sender[source_of_funds]` and `recipient[name]`. See
+[Person-to-person money transfers](#credits) for details.
+
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a
 cardholder's name matches the name held by the issuing bank for a Visa or
