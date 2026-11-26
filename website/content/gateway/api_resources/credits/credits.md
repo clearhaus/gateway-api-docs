@@ -67,7 +67,7 @@ Credits completing a person-to-person money transfer must contain the following 
 
 {{% description_list %}}
 {{% description_term %}}funding_transaction_id{{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The card scheme transaction ID of the debit funding the credit, as returned in the debit response. Links the credit to the debit.
+{{% description_details %}}The card scheme transaction ID of the debit funding the credit, as returned in the debit response. Links the credit to the debit. `amount` and `currency` must equal the debit's.
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
