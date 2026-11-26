@@ -37,7 +37,7 @@ POST https://gateway.clearhaus.com/credits
 
 `currency` must be the debit's currency, and `amount` must not exceed the debit's amount.
 
-The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<sender name>` is the debit's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
+The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and `<sender name>` is the debit's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
 {{% regex_optional %}}Required for person-to-person money transfers (Visa BAI PP and AA). Not allowed for other credits.{{% /regex_optional %}}
 {{% /description_details %}}
 
