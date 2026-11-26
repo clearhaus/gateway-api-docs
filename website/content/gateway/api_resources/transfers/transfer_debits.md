@@ -16,7 +16,17 @@ The debit is made for the transfer's amount and currency, with the transfer's se
 The sender's bank statement shows `<abbreviation>*<recipient name>`, e.g. `ABCD*Doe Jane A.`
 
 ##### Parameters
-The sender's payment method and authentication, as for [Debits](#debits) (e.g. `card[pan]`, `card[3dsecure][v2][...]`). `amount`, `currency`, `text_on_statement`, `sender[...]` and `recipient[...]` are not allowed.
+Transfer debits support the same payment methods and authentication as [Debits](#debits). `amount`, `currency`, `text_on_statement`, `sender[...]` and `recipient[...]` are not allowed.
+
+{{% description_list %}}
+{{% description_term %}}card[...]{{% /description_term %}}
+{{% description_details %}}The sender's card. See [Method: card](#method-card).
+{{% /description_details %}}
+
+{{% description_term %}}card[3dsecure][v2][...]{{% /description_term %}}
+{{% description_details %}}3-D Secure version 2 authentication of the sender. See [Authentication: [3dsecure][v2]](#authentication-3dsecure-v2).
+{{% /description_details %}}
+{{% /description_list %}}
 
 {{% notice %}}
 **Notice**: Only a single approved debit can be made for a transfer. Refund the debit using [Debit refunds](#debit_refunds).
