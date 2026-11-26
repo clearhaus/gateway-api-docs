@@ -13,16 +13,16 @@ Sorted by descending timestamp.
 #### Person-to-person money transfer requirements for debits
 Starting TBD, for debits for person-to-person money transfers:
 - `sender[name]`, `sender[city]` and `sender[country]` are required, also for domestic debits.
+- `recipient[account_number_type]` is required and must be the new value `pan`, with `recipient[account_number]` containing the recipient's card number.
 - `text_on_statement` is not allowed; the text on the sender's bank statement is generated from `recipient[name]`.
 - A debit cannot be refunded once its money has been credited to the recipient.
 
-See [Debits](#debits), [Sender information](#sender_information) and [Debit refunds](#debit_refunds) for details.
+See [Debits](#debits), [Sender information](#sender_information), [Recipient information](#recipient_information) and [Debit refunds](#debit_refunds) for details.
 
 #### Addition of debit credits
 Starting TBD, a person-to-person money transfer can be completed by making a
-credit on an approved debit using `POST /debits/:id/credits`. The credit is linked
-to the debit, and sender information, recipient name and source of funds are taken
-from the debit. See [Debit credits](#debit_credits) for details.
+credit on an approved debit using `POST /debits/:id/credits`. The recipient's card,
+recipient name, sender information and source of funds are taken from the debit. See [Debit credits](#debit_credits) for details.
 
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a

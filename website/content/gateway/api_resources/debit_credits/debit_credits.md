@@ -11,7 +11,7 @@ To complete a person-to-person (P2P) money transfer, you transfer the money of a
 POST https://gateway.clearhaus.com/debits/:id/credits
 ```
 
-Sender information, recipient name and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information).
+The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`.
 
 Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
 
@@ -25,20 +25,6 @@ Any currency conversion must be done before the debit. The debit and the credit 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}A reference to an external object.
 {{% regex_optional %}}Optional{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Primary account number of the recipient's card.
-{{% /description_details %}}
-
-{{% description_term %}}card[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry month of the recipient's card.
-{{% regex_optional %}}Optional.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}card[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry year of the recipient's card.
-{{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
 
