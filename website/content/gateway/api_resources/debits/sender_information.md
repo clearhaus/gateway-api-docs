@@ -21,7 +21,7 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% /description_details %}}
 
 {{% description_term %}}sender[address] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's primary residential address (street name, house number, etc.). Must not be a P.O. box.
+{{% description_details %}}The sender's primary residential address (street name, house number, etc.).
 {{% regex_optional %}}Required for intra-EEA and international debits.{{% /regex_optional %}}
 {{% /description_details %}}
 
