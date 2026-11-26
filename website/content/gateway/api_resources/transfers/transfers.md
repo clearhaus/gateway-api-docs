@@ -11,9 +11,7 @@ To transfer money from a sender's card to a recipient's card (person-to-person m
 POST https://gateway.clearhaus.com/transfers
 ```
 
-The transaction gateway makes a [debit](#debits) on the sender's card and, if it is approved, a [credit](#credits) on the recipient's card. The credit is linked to the debit as required by the card scheme rules. If the credit is declined, the transaction gateway refunds the debit.
-
-The transaction gateway sets the text on the cardholders' statements as required by the card scheme rules: `<abbreviation>*<recipient name>` on the sender's statement and `<abbreviation>*<sender name>` on the recipient's statement (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and the names are truncated to 20 characters.
+The transaction gateway makes a [debit](#debits) on the sender's card and, if it is approved, a [credit](#credits) on the recipient's card. If the credit is declined, the transaction gateway refunds the debit.
 
 Any currency conversion must be done before the transfer; the debit and the credit are in the recipient's currency.
 
@@ -41,23 +39,9 @@ Any currency conversion must be done before the transfer; the debit and the cred
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}recipient[name]{{% /description_term %}}
-{{% description_details %}}See [Recipient information](#recipient_information).
+{{% description_term %}}recipient[...]{{% /description_term %}}
+{{% description_details %}}See [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`.
 {{% regex_optional %}}Required.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}recipient[card][pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Primary account number of the recipient's card.
-{{% /description_details %}}
-
-{{% description_term %}}recipient[card][expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry month of the recipient's card.
-{{% regex_optional %}}Optional.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}recipient[card][expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Expiry year of the recipient's card.
-{{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
 
