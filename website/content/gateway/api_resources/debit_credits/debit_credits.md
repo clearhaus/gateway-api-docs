@@ -11,9 +11,7 @@ To complete a person-to-person (P2P) money transfer, you transfer the money of a
 POST https://gateway.clearhaus.com/debits/:id/credits
 ```
 
-The credit is linked to the debit as required by the card scheme rules. Sender information, recipient name and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information).
-
-The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and `<sender name>` is the debit's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
+Sender information, recipient name and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information).
 
 Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
 
