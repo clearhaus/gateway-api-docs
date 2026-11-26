@@ -1,6 +1,6 @@
 ---
 title: "transfer_credits"
-date: 2026-11-26T12:00:00+01:00
+date: 2026-11-25T12:00:00+01:00
 anchor: "transfer_credits"
 weight: 284
 ---
