@@ -20,12 +20,14 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 
 {{% description_term %}}recipient[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's account number, i.e. an identification of the account being funded by the debit.
+
+For person-to-person money transfers, this is the recipient's card number (12–19 digits).
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}recipient[account_number_type] {{% regex %}}(other|rtn_and_ban|iban|email|phone_number|ban_and_bic|wallet_id|social_network_id){{% /regex %}}{{% /description_term %}}
+{{% description_term %}}recipient[account_number_type] {{% regex %}}(other|rtn_and_ban|iban|pan|email|phone_number|ban_and_bic|wallet_id|social_network_id){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's account number type.
-{{% regex_optional %}}Required	for Mastercard; otherwise optional{{% /regex_optional %}}
+{{% regex_optional %}}Required for Mastercard and for person-to-person money transfers, where it must be `pan`; otherwise optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}recipient[reference] {{% regex %}}[\x20-\x7E]{1,16} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
