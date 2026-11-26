@@ -16,3 +16,7 @@ Information about sender and recipient is required for debits under certain circ
 {{% notice %}}
 **Notice:** Only merchants with selected Merchant Category Codes (MCCs) and assigned Business Application Identifiers (BAIs) (Visa) or Transaction Type Indicators (TTIs) (Mastercard) are able to process a debit; namely exactly those that will result in the debit being a Visa Account Funding Transaction (AFT) or Mastercard Funding Transaction (FT).
 {{% /notice %}}
+
+{{% notice %}}
+**Notice**: For person-to-person money transfers (Visa BAI PP and AA), `text_on_statement` is not allowed. The transaction gateway sets the text on the sender's statement to `<abbreviation>*<recipient name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<recipient name>` is `recipient[name]` truncated to 20 characters, as required by the card scheme rules.
+{{% /notice %}}

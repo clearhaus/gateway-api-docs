@@ -23,7 +23,7 @@ POST https://gateway.clearhaus.com/credits
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
 {{% regex_optional %}}May not be all digits, all same character, or all sequential characters (e.g. “abc”).{{% /regex_optional %}}
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor. Not allowed for person-to-person money transfers.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
@@ -62,6 +62,8 @@ POST https://gateway.clearhaus.com/credits
 
 ##### Person-to-person money transfers
 Credits completing a person-to-person money transfer (Visa BAI PP and AA) must contain the following parameters. Any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency.
+
+The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<sender name>` is `sender[name]` truncated to 20 characters, as required by the card scheme rules.
 
 {{% description_list %}}
 {{% description_term %}}funding_transaction_id{{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
