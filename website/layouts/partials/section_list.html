@@ -1,0 +1,10 @@
+{{ partial "section.html" . }}
+{{ if .Pages }}
+{{ range .Pages.ByWeight }}
+{{ if .IsSection }}
+{{ partial "section_list.html" . }}
+{{ else }}
+{{ partial "section.html" . }}
+{{ end }}
+{{ end }}
+{{ end }}

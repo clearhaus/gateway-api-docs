@@ -1,0 +1,6 @@
+dist/
+node_modules/
+website/public/
+website/static/
+.hugo_build.lock
+.yarn*

@@ -1,0 +1,6 @@
+<input class="input" name="tabs" type="radio" id='tab-{{ .Get "id" }}' {{ with .Get "checked" }} checked="{{.}}" {{ end }} />
+<label class="label" for='tab-{{ .Get "id" }}'>{{ .Get "name" }}</label>
+
+<div class="panel">
+  {{ .Inner }}
+</div>

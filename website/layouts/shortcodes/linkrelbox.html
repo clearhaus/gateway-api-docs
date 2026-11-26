@@ -1,0 +1,25 @@
+<div class="link-rel">
+   <div class="link-rel-header">
+      <span class="link-rel-name">
+      {{ with .Get "name" }}
+         {{ . }}
+      {{ end }}
+      </span>
+      <span class="link-rel-label">
+        {{ if (not (isset .Params "link")) }}
+          LINK RELATION
+        {{ end }}
+        {{ if and (not (isset .Params "link")) (isset .Params "embedded") }}
+          ,
+        {{ end }}
+        {{ with .Get "embedded" }}
+          EMBEDDED RELATION
+        {{ end }}
+      </span>
+   </div>
+   {{ if not (isset .Params "link") }}
+     <div class="link-rel-content">
+       {{ .Inner }}
+     </div>
+   {{ end }}
+</div>

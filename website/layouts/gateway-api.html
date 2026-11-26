@@ -1,0 +1,7 @@
+<div class="content">
+  {{ with .Sections }}
+      {{ range .ByWeight }}
+          {{ partial "section_list.html" . }}
+      {{ end }}
+  {{ end }}
+</div>

@@ -1,0 +1,16 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gateway-api-docs
+  description: API documentation for the Clearhaus transaction gateway
+  tags:
+    - confidentiality:public
+    - integrity:integrity-neutral
+    - availability:standard
+    - pci-dss:no
+spec:
+  type: website
+  lifecycle: production
+  owner: AEP
+  system: clearhaus

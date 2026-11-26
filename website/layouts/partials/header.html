@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Clearhaus Transaction API Documentation</title>
+	{{ $favicon := resources.Get "img/favicon.ico" }}
+	<link rel="icon" href="{{ $favicon.Permalink }}" type="image/x-icon" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="Clearhaus Transaction API">
+	<meta name="author" content="Clearhaus A/S">
+
+	{{- range resources.Match "fonts/*" }}{{ $_ := .Permalink }}{{ end -}}
+	{{ $mainCss := resources.Get "css/main.css" | fingerprint }}
+	{{ $docsCss := resources.Get "css/docs.css" | fingerprint }}
+	<link rel="stylesheet" href="{{ $mainCss.Permalink }}">
+	<link rel="stylesheet" href="{{ $docsCss.Permalink }}">
+</head>
