@@ -2,7 +2,7 @@
 title: "transfer_debits"
 date: 2026-11-25T12:00:00+01:00
 anchor: "transfer_debits"
-weight: 283
+weight: 282
 ---
 ## Transfer debits
 To take the money of a transfer from the sender's card you make a new debit on the transfer.

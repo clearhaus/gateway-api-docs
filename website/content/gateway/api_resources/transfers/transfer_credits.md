@@ -2,7 +2,7 @@
 title: "transfer_credits"
 date: 2026-11-25T12:00:00+01:00
 anchor: "transfer_credits"
-weight: 284
+weight: 283
 ---
 ## Transfer credits
 To pay out the money of a transfer to the recipient's card you make a new credit on the transfer.
