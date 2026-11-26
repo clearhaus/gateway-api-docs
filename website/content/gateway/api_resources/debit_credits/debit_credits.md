@@ -13,15 +13,10 @@ POST https://gateway.clearhaus.com/debits/:id/credits
 
 The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`.
 
-Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
+The credit is for the debit's full amount. Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
 
 ##### Parameters
 {{% description_list %}}
-{{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Amount in minor units of the debit's currency.
-{{% regex_optional %}}Optional, defaults to the debit's amount. Must not exceed the debit's amount.{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}A reference to an external object.
 {{% regex_optional %}}Optional{{% /regex_optional %}}
