@@ -25,6 +25,9 @@ https://gateway.clearhaus.com/debits
 # debit refunds 
 https://gateway.clearhaus.com/debits/:id/refunds
 
+# debit credits
+https://gateway.clearhaus.com/debits/:id/credits
+
 # credits
 https://gateway.clearhaus.com/credits
 
