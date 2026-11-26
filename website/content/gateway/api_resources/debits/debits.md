@@ -17,10 +17,16 @@ Information about sender and recipient is required for debits under certain circ
 **Notice:** Only merchants with selected Merchant Category Codes (MCCs) and assigned Business Application Identifiers (BAIs) (Visa) or Transaction Type Indicators (TTIs) (Mastercard) are able to process a debit; namely exactly those that will result in the debit being a Visa Account Funding Transaction (AFT) or Mastercard Funding Transaction (FT).
 {{% /notice %}}
 
+{{% notice %}}
+**Notice**: For person-to-person money transfers (Visa BAI PP and AA), `text_on_statement` is not allowed. The transaction gateway sets the text on the sender's statement to `<abbreviation>*<recipient name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<recipient name>` is `recipient[name]` truncated to 20 characters, as required by the card scheme rules.
+{{% /notice %}}
+
 ##### Person-to-person money transfers
 To transfer the money to a recipient's card (person-to-person money transfer), add the recipient's card to the debit. If the debit is approved, the transaction gateway makes a credit for the same amount on the recipient's card, linked to the debit as required by the card scheme rules. If the credit is declined, the transaction gateway refunds the debit.
 
 Any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency.
+
+The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<sender name>` is the debit's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
 
 {{% description_list %}}
 {{% description_term %}}credit[card][pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
@@ -38,10 +44,6 @@ Any currency conversion must be done before the debit; the debit and the credit 
 {{% regex_optional %}}Optional.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}credit[text_on_statement]{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Text that will be placed on the recipient's bank statement.
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
-{{% /description_details %}}
 {{% /description_list %}}
 
 The response then contains the credit and, if made, the debit refund:
