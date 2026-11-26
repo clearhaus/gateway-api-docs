@@ -13,17 +13,19 @@ POST https://gateway.clearhaus.com/credits
 {{% description_list %}}
 {{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Amount in minor units of given currency (e.g. cents if in Euro).
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must equal the debit's amount.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.) 
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must equal the debit's currency.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
 {{% regex_optional %}}May not be all digits, all same character, or all sequential characters (e.g. “abc”).{{% /regex_optional %}}
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor. Not allowed if `debit[id]` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
@@ -32,16 +34,26 @@ POST https://gateway.clearhaus.com/credits
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}debit[id]{{% regex %}}UUID{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The ID of the approved debit that funds this credit. The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`. The card parameters are optional; if present, they are validated against the debit.
+
+The credit is for the debit's full amount.
+{{% regex_optional %}}Required for person-to-person money transfers. Not allowed for other credits.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Primary account number of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must match the debit's `recipient[account_number]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Expiry month of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Expiry year of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[csc] {{% regex %}} [0-9]{3}{{% /regex %}}{{% /description_term %}}
@@ -58,4 +70,8 @@ POST https://gateway.clearhaus.com/credits
 
 {{% notice %}}
 **Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`.
+{{% /notice %}}
+
+{{% notice %}}
+**Notice**: For person-to-person money transfers, any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency. Only a single credit can be made for a debit, and only if the debit is approved and has not been refunded. If the credit is declined, refund the debit using [Debit refunds](#debit_refunds).
 {{% /notice %}}
