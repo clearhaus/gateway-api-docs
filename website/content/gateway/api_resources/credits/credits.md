@@ -13,10 +13,12 @@ POST https://gateway.clearhaus.com/credits
 {{% description_list %}}
 {{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Amount in minor units of given currency (e.g. cents if in Euro).
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must equal the debit's amount.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}[3-letter currency code](/currencies). (Some exponents differ from ISO 4217.) 
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must equal the debit's currency.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
@@ -35,7 +37,7 @@ POST https://gateway.clearhaus.com/credits
 {{% description_term %}}debit[id]{{% regex %}}UUID{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The ID of the approved debit that funds this credit. The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`. The card parameters are optional; if present, they are validated against the debit.
 
-`currency` must be the debit's currency, and `amount` must not exceed the debit's amount.
+The credit is for the debit's full amount.
 {{% regex_optional %}}Required for person-to-person money transfers. Not allowed for other credits.{{% /regex_optional %}}
 {{% /description_details %}}
 
