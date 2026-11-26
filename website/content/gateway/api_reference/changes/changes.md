@@ -10,6 +10,11 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of transfers
+Starting TBD, a person-to-person money transfer can be made in a single call
+using `POST /transfers`, which makes a debit on the sender's card and a linked
+credit on the recipient's card. See [Transfers](#transfers) for details.
+
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a
 cardholder's name matches the name held by the issuing bank for a Visa or
