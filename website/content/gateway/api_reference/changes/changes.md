@@ -10,6 +10,14 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Person-to-person money transfer requirements for debits
+Starting TBD, for debits for person-to-person money transfers (Visa BAI PP and AA):
+- `sender[name]`, `sender[city]` and `sender[country]` are required, also for domestic debits.
+- `text_on_statement` is not allowed; the text on the sender's bank statement is generated from `recipient[name]`.
+- A debit cannot be refunded once its money has been credited to the recipient.
+
+See [Debits](#debits), [Sender information](#sender_information) and [Debit refunds](#debit_refunds) for details.
+
 #### Addition of transfers
 Starting TBD, a person-to-person money transfer can be made using a transfer
 resource: `POST /transfers` holds the amount, sender and recipient, followed by
