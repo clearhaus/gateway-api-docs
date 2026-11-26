@@ -21,7 +21,7 @@ Example: "Doe Jane A." (last name, first name, optional middle initial).
 {{% description_term %}}recipient[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
 {{% description_details %}}The recipient's account number, i.e. an identification of the account being funded by the debit.
 
-If `recipient[account_number_type]` is `pan`, this is the primary account number of the recipient's card (`[0-9]{12,19}`).
+For person-to-person money transfers, this is the recipient's card number (12–19 digits).
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
