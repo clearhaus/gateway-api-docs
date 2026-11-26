@@ -39,8 +39,8 @@ Any currency conversion must be done before the transfer; the debit and the cred
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 
-{{% description_term %}}recipient[name]{{% /description_term %}}
-{{% description_details %}}See [Recipient information](#recipient_information).
+{{% description_term %}}recipient[...]{{% /description_term %}}
+{{% description_details %}}See [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`.
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
