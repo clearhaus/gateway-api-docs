@@ -7,6 +7,8 @@ weight: 278
 ## Debit refunds
 To refund money to a cardholder's bank account that has been transferred by a debit you make a new refund resource. Only a single refund can be made for a debit and it can only be for the full amount.
 
+For person-to-person money transfers (Visa BAI PP and AA), a debit cannot be refunded once its money has been credited to the recipient.
+
 ```shell
 POST https://gateway.clearhaus.com/debits/:id/refunds
 ```
