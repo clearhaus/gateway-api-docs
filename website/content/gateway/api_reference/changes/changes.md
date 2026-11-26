@@ -10,6 +10,20 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Person-to-person money transfer requirements for debits
+Starting TBD, for debits for person-to-person money transfers:
+- `sender[name]`, `sender[city]` and `sender[country]` are required, also for domestic debits.
+- `recipient[account_number_type]` is required and must be the new value `pan`, with `recipient[account_number]` containing the recipient's card number.
+- `text_on_statement` is not allowed; the text on the sender's bank statement is generated from `recipient[name]`.
+- A debit cannot be refunded once its money has been credited to the recipient.
+
+See [Debits](#debits), [Sender information](#sender_information), [Recipient information](#recipient_information) and [Debit refunds](#debit_refunds) for details.
+
+#### Addition of credits to debits
+Starting TBD, a person-to-person money transfer can be made in a single call by
+setting `credit` to `true` on a debit. If the debit is approved, a credit is made
+to the recipient's card. See [Debits](#debits) for details.
+
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a
 cardholder's name matches the name held by the issuing bank for a Visa or
