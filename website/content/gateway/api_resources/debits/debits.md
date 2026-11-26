@@ -34,19 +34,6 @@ Any currency conversion must be done before the debit. The debit and the credit 
 {{% /description_details %}}
 {{% /description_list %}}
 
-The response then contains the credit and, if made, the debit refund:
-
-```json
-{
-    "id": "4b6c5f0e-8d0a-4a51-9f1e-2a3c1b7d9e10",
-    "status": { "code": 20000 },
-    "amount": 50000,
-    "currency": "EUR",
-    "credit": { "id": "...", "status": { "code": 20000 } },
-    "refund": null
-}
-```
-
 {{% notice %}}
 **Notice**: If the credit times out, its outcome is unknown and the debit is not refunded automatically. TBD how the outcome is resolved.
 {{% /notice %}}
