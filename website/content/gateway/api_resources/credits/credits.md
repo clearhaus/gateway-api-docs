@@ -32,6 +32,13 @@ POST https://gateway.clearhaus.com/credits
 {{% regex_optional %}}Optional{{% /regex_optional %}}
 {{% /description_details %}}
 
+{{% description_term %}}debit[id]{{% regex %}}UUID{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The ID of the approved debit that funds this credit. The credit is linked to the debit as required by the card scheme rules, and sender information, recipient name and source of funds are taken from the debit.
+
+`currency` must be the debit's currency, and `amount` must not exceed the debit's amount.
+{{% regex_optional %}}Required for person-to-person money transfers (Visa BAI PP and AA). Not allowed for other credits.{{% /regex_optional %}}
+{{% /description_details %}}
+
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Primary account number of card to charge.
 {{% /description_details %}}
@@ -58,4 +65,8 @@ POST https://gateway.clearhaus.com/credits
 
 {{% notice %}}
 **Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`.
+{{% /notice %}}
+
+{{% notice %}}
+**Notice**: For person-to-person money transfers, any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency. Only a single credit can be made for a debit, and only if the debit is approved and has not been refunded. If the credit is declined, refund the debit using [Debit refunds](#debit_refunds).
 {{% /notice %}}
