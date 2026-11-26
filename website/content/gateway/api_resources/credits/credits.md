@@ -23,7 +23,7 @@ POST https://gateway.clearhaus.com/credits
 {{% description_details %}}Text that will be placed on cardholder’s bank statement.
 
 {{% regex_optional %}}May not be all digits, all same character, or all sequential characters (e.g. “abc”).{{% /regex_optional %}}
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
+{{% regex_optional %}}Optional, defaults to account's descriptor. Not allowed for person-to-person money transfers.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
@@ -59,3 +59,55 @@ POST https://gateway.clearhaus.com/credits
 {{% notice %}}
 **Notice**: Implicitly, `initiator` is `merchant` and `credential_on_file` is `use`.
 {{% /notice %}}
+
+##### Person-to-person money transfers
+Credits completing a person-to-person money transfer must contain the following parameters. Any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency.
+
+`card[expire_month]` and `card[expire_year]` are optional.
+
+{{% description_list %}}
+{{% description_term %}}funding_transaction_id{{% regex %}}[0-9]{15}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The card scheme transaction ID of the debit funding the credit, as returned in the debit response. Links the credit to the debit. `amount` and `currency` must equal the debit's.
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[name] {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's legal name. Same format as for [Sender information](#sender_information).
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[address] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's primary residential address (street name, house number, etc.).
+{{% regex_optional %}}Required for intra-EEA and international credits.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[city] {{% regex %}}[\x20-\x7E]{1,25} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's city.
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[state] {{% regex %}}[A-Z]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's state.
+{{% regex_optional %}}Required if the country is CA (Canada) or US (USA).{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[country] {{% regex %}}[A-Z]{2}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The sender's country of residence (ISO 3166-1 2-letter country code).
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[account_number] {{% regex %}}[\x20-\x7E]{1,34} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The account used to fund the transfer, i.e. the primary account number of the sender's card.
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}sender[source_of_funds] {{% regex %}}(visa_credit|visa_debit|visa_prepaid|cash|deposit_account|credit_account){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}How the transfer was funded.
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}recipient[name] {{% regex %}}[\x20-\x7E]{2,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}The recipient's legal name. Same format as for [Recipient information](#recipient_information).
+{{% regex_optional %}}Required for intra-EEA and international credits.{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
