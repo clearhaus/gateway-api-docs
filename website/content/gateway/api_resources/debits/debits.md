@@ -18,7 +18,7 @@ Information about sender and recipient is required for debits under certain circ
 {{% /notice %}}
 
 {{% notice %}}
-**Notice**: For person-to-person money transfers (Visa BAI PP and AA), `text_on_statement` is not allowed. As required by the card scheme rules, the transaction gateway sets the text on the sender's bank statement to `<abbreviation>*<recipient name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and `<recipient name>` is `recipient[name]` truncated to 20 characters.
+**Notice**: For person-to-person money transfers, `text_on_statement` is not allowed. As required by the card scheme rules, the transaction gateway sets the text on the sender's bank statement to `<abbreviation>*<recipient name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and `<recipient name>` is `recipient[name]` truncated to 20 characters.
 {{% /notice %}}
 
 ##### Person-to-person money transfers
