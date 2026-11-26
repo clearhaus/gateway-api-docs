@@ -22,9 +22,17 @@ Information about sender and recipient is required for debits under certain circ
 {{% /notice %}}
 
 ##### Person-to-person money transfers
-For person-to-person money transfers, if the debit is approved, the transaction gateway makes a credit for the same amount to the recipient's card (`recipient[account_number]`). If the credit is declined, the transaction gateway refunds the debit.
+To complete a person-to-person money transfer in the same call, set `credit` to `true`. If the debit is approved, the transaction gateway then makes a credit for the same amount to the recipient's card (`recipient[account_number]`). If the credit is declined, the transaction gateway refunds the debit.
 
 Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
+
+{{% description_list %}}
+{{% description_term %}}credit{{% regex %}}(true|false){{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Indicates whether to credit the recipient's card if the debit is approved.
+
+{{% regex_optional %}}Optional, defaults to `false`. If `true`, `recipient[account_number_type]` must be `pan`.{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
 
 The response then contains the credit and, if made, the debit refund:
 

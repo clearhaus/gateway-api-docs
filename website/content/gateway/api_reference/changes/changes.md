@@ -20,8 +20,9 @@ Starting TBD, for debits for person-to-person money transfers:
 See [Debits](#debits), [Sender information](#sender_information), [Recipient information](#recipient_information) and [Debit refunds](#debit_refunds) for details.
 
 #### Addition of credits to debits
-Starting TBD, an approved debit for a person-to-person money transfer is followed
-by a credit to the recipient's card. See [Debits](#debits) for details.
+Starting TBD, a person-to-person money transfer can be made in a single call by
+setting `credit` to `true` on a debit. If the debit is approved, a credit is made
+to the recipient's card. See [Debits](#debits) for details.
 
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a
