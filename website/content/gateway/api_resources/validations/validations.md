@@ -2,7 +2,7 @@
 title: "Validations"
 date: 2026-10-13T12:00:00+02:00
 anchor: "validations"
-weight: 282
+weight: 284
 ---
 ## Validations
 To check whether a cardholder-supplied name matches the name held by the issuing bank, you make a new validation resource.
