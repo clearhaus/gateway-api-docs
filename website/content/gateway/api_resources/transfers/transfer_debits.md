@@ -16,7 +16,7 @@ The debit is made for the transfer's amount and currency, with the transfer's se
 The sender's bank statement shows `<abbreviation>*<recipient name>`, e.g. `ABCD*Doe Jane A.`
 
 ##### Parameters
-Transfer debits support the same payment methods and authentication as [Debits](#debits). `amount`, `currency`, `text_on_statement`, `sender[...]` and `recipient[...]` are not allowed.
+Transfer debits support the same payment methods and authentication as [Debits](#debits).
 
 {{% description_list %}}
 {{% description_term %}}card[...]{{% /description_term %}}

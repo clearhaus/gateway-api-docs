@@ -44,19 +44,3 @@ Any currency conversion must be done before the transfer; the debit and the cred
 {{% regex_optional %}}Required.{{% /regex_optional %}}
 {{% /description_details %}}
 {{% /description_list %}}
-
-##### Response
-The response contains the transfer's state and its debit and credit, once made:
-
-```json
-{
-    "id": "4b6c5f0e-8d0a-4a51-9f1e-2a3c1b7d9e10",
-    "state": "created",
-    "amount": 50000,
-    "currency": "EUR",
-    "debit": null,
-    "credit": null
-}
-```
-
-`state` is one of `created`, `debited`, `credited`, `refunded` or `failed`.
