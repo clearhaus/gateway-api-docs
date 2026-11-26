@@ -61,7 +61,7 @@ POST https://gateway.clearhaus.com/credits
 {{% /notice %}}
 
 ##### Person-to-person money transfers
-Credits completing a person-to-person money transfer (Visa BAI PP and AA) must contain the following parameters. Any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency.
+Credits completing a person-to-person money transfer must contain the following parameters. Any currency conversion must be done before the debit; the debit and the credit are in the recipient's currency.
 
 The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is a 1–4 character abbreviation of the money transfer service and `<sender name>` is `sender[name]` truncated to 20 characters, as required by the card scheme rules.
 
@@ -77,7 +77,7 @@ The transaction gateway sets the text on the recipient's statement to `<abbrevia
 {{% /description_details %}}
 
 {{% description_term %}}sender[address] {{% regex %}}[\x20-\x7E]{1,35} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters){{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The sender's primary residential address (street name, house number, etc.). Must not be a P.O. box.
+{{% description_details %}}The sender's primary residential address (street name, house number, etc.).
 {{% regex_optional %}}Required for intra-EEA and international credits.{{% /regex_optional %}}
 {{% /description_details %}}
 
