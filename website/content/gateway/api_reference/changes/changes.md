@@ -10,6 +10,12 @@ Follow coming changes on the [source code repository](https://github.com/clearha
 
 Sorted by descending timestamp.
 
+#### Addition of debit credits
+Starting TBD, a person-to-person money transfer can be completed by making a
+credit on an approved debit using `POST /debits/:id/credits`. The credit is linked
+to the debit, and sender information, recipient name and source of funds are taken
+from the debit. See [Debit credits](#debit_credits) for details.
+
 #### Addition of Account Name Validation
 Starting 2026-11-20, a new `validations` resource can be used to check whether a
 cardholder's name matches the name held by the issuing bank for a Visa or
