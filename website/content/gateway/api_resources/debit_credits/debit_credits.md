@@ -13,6 +13,8 @@ POST https://gateway.clearhaus.com/debits/:id/credits
 
 The credit is linked to the debit as required by the card scheme rules. Sender information, recipient name and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information).
 
+The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<sender name>` is the debit's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
+
 Any currency conversion must be done before the debit. The debit and the credit are in the recipient's currency.
 
 ##### Parameters
@@ -20,11 +22,6 @@ Any currency conversion must be done before the debit. The debit and the credit 
 {{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Amount in minor units of the debit's currency.
 {{% regex_optional %}}Optional, defaults to the debit's amount. Must not exceed the debit's amount.{{% /regex_optional %}}
-{{% /description_details %}}
-
-{{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Text that will be placed on the recipient's bank statement.
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
