@@ -13,13 +13,10 @@ POST https://gateway.clearhaus.com/transfers/:id/credits
 
 The credit is made for the transfer's amount and currency, and is linked to the transfer's debit as required by the card scheme rules. Sender information, recipient name and source of funds are taken from the transfer and its debit.
 
+The transaction gateway sets the text on the recipient's statement to `<abbreviation>*<sender name>` (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and `<sender name>` is the transfer's `sender[name]` truncated to 20 characters, as required by the card scheme rules.
+
 ##### Parameters
 {{% description_list %}}
-{{% description_term %}}text_on_statement{{% regex %}}[\x20-\x7E]{2,22} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
-{{% description_details %}}Text that will be placed on the recipient's bank statement.
-{{% regex_optional %}}Optional, defaults to account's descriptor.{{% /regex_optional %}}
-{{% /description_details %}}
-
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Primary account number of the recipient's card.
 {{% /description_details %}}
