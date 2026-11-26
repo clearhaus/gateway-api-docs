@@ -45,21 +45,6 @@ Any currency conversion must be done before the transfer; the debit and the cred
 {{% /description_details %}}
 {{% /description_list %}}
 
-##### Response
-The response contains the transfer's status and the debit, credit and, if made, debit refund:
-
-```json
-{
-    "id": "4b6c5f0e-8d0a-4a51-9f1e-2a3c1b7d9e10",
-    "status": { "code": 20000 },
-    "amount": 50000,
-    "currency": "EUR",
-    "debit": { "id": "...", "status": { "code": 20000 } },
-    "credit": { "id": "...", "status": { "code": 20000 } },
-    "debit_refund": null
-}
-```
-
 {{% notice %}}
 **Notice**: If the credit times out, the transfer's status is unknown and the debit is not refunded automatically. TBD how the outcome is resolved.
 {{% /notice %}}
