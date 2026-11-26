@@ -33,7 +33,7 @@ POST https://gateway.clearhaus.com/credits
 {{% /description_details %}}
 
 {{% description_term %}}debit[id]{{% regex %}}UUID{{% /regex %}}{{% /description_term %}}
-{{% description_details %}}The ID of the approved debit that funds this credit. The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`. `card[...]` is not allowed.
+{{% description_details %}}The ID of the approved debit that funds this credit. The recipient's card, recipient name, sender information and source of funds are taken from the debit, so the debit must contain [Sender information](#sender_information) and [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`. The card parameters are optional; if present, they are validated against the debit.
 
 `currency` must be the debit's currency, and `amount` must not exceed the debit's amount.
 {{% regex_optional %}}Required for person-to-person money transfers. Not allowed for other credits.{{% /regex_optional %}}
@@ -41,14 +41,17 @@ POST https://gateway.clearhaus.com/credits
 
 {{% description_term %}}card[pan] {{% regex %}}[0-9]{12,19}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Primary account number of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present, in which case it must match the debit's `recipient[account_number]`.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_month] {{% regex %}}[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Expiry month of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[expire_year] {{% regex %}}20[0-9]{2}{{% /regex %}}{{% /description_term %}}
 {{% description_details %}}Expiry year of card to charge.
+{{% regex_optional %}}Optional if `debit[id]` is present.{{% /regex_optional %}}
 {{% /description_details %}}
 
 {{% description_term %}}card[csc] {{% regex %}} [0-9]{3}{{% /regex %}}{{% /description_term %}}
