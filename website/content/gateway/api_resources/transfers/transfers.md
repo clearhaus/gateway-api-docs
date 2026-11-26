@@ -1,0 +1,50 @@
+---
+title: "transfers"
+date: 2026-11-25T12:00:00+01:00
+anchor: "transfers"
+weight: 281
+---
+## Transfers
+To transfer money from a sender's card to a recipient's card (person-to-person money transfer) you make a new transfer resource.
+
+```shell
+POST https://gateway.clearhaus.com/transfers
+```
+
+The transaction gateway makes a [debit](#debits) on the sender's card and, if it is approved, a [credit](#credits) on the recipient's card. If the credit is declined, the transaction gateway refunds the debit.
+
+Any currency conversion must be done before the transfer; the debit and the credit are in the recipient's currency.
+
+##### Parameters
+{{% description_list %}}
+{{% description_term %}}amount{{% regex %}}[1-9][0-9]{,8}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}Amount in minor units of the recipient's currency.
+{{% /description_details %}}
+
+{{% description_term %}}currency{{% regex %}}[A-Z]{3}{{% /regex %}}{{% /description_term %}}
+{{% description_details %}}[3-letter currency code](/currencies) of the recipient's card.
+{{% /description_details %}}
+
+{{% description_term %}}reference{{% regex %}}[\x20-\x7E]{1,30} [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters) {{% /regex %}}{{% /description_term %}}
+{{% description_details %}}A reference to an external object.
+{{% regex_optional %}}Optional{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}debit[...]{{% /description_term %}}
+{{% description_details %}}The sender's payment method and authentication, as for [Debits](#debits) (e.g. `debit[card][pan]`, `debit[card][3dsecure][v2][...]`).
+{{% /description_details %}}
+
+{{% description_term %}}sender[...]{{% /description_term %}}
+{{% description_details %}}See [Sender information](#sender_information).
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+
+{{% description_term %}}recipient[...]{{% /description_term %}}
+{{% description_details %}}See [Recipient information](#recipient_information), with `recipient[account_number_type]` set to `pan`.
+{{% regex_optional %}}Required.{{% /regex_optional %}}
+{{% /description_details %}}
+{{% /description_list %}}
+
+{{% notice %}}
+**Notice**: If the credit times out, the transfer's status is unknown and the debit is not refunded automatically. TBD how the outcome is resolved.
+{{% /notice %}}

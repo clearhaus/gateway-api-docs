@@ -28,6 +28,9 @@ https://gateway.clearhaus.com/debits/:id/refunds
 # credits
 https://gateway.clearhaus.com/credits
 
+# transfers
+https://gateway.clearhaus.com/transfers
+
 # validations
 https://gateway.clearhaus.com/validations
 

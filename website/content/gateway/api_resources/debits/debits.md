@@ -16,3 +16,7 @@ Information about sender and recipient is required for debits under certain circ
 {{% notice %}}
 **Notice:** Only merchants with selected Merchant Category Codes (MCCs) and assigned Business Application Identifiers (BAIs) (Visa) or Transaction Type Indicators (TTIs) (Mastercard) are able to process a debit; namely exactly those that will result in the debit being a Visa Account Funding Transaction (AFT) or Mastercard Funding Transaction (FT).
 {{% /notice %}}
+
+{{% notice %}}
+**Notice**: For person-to-person money transfers, `text_on_statement` is not allowed. The sender's bank statement shows `<abbreviation>*<recipient name>`, e.g. `ABCD*Doe Jane A.`
+{{% /notice %}}
