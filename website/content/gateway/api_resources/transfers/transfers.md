@@ -13,6 +13,8 @@ POST https://gateway.clearhaus.com/transfers
 
 The transaction gateway makes a [debit](#debits) on the sender's card and, if it is approved, a [credit](#credits) on the recipient's card. The credit is linked to the debit as required by the card scheme rules. If the credit is declined, the transaction gateway refunds the debit.
 
+The transaction gateway sets the text on the cardholders' statements as required by the card scheme rules: `<abbreviation>*<recipient name>` on the sender's statement and `<abbreviation>*<sender name>` on the recipient's statement (e.g. `ABCD*Doe Jane A.`), where `<abbreviation>` is the merchant account's 1–4 character statement abbreviation and the names are truncated to 20 characters.
+
 Any currency conversion must be done before the transfer; the debit and the credit are in the recipient's currency.
 
 ##### Parameters
